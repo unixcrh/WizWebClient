@@ -40,7 +40,7 @@ define(function (require, exports, module) {
 
 		function addDiyDom(treeId, treeNode) {
 			console.log('addDiyDom');
-			var spaceWidth = 5;
+			var spaceWidth = 10;
 			var switchObj = $("#" + treeNode.tId + "_switch"),
 			icoObj = $("#" + treeNode.tId + "_ico");
 			icoObj.before(switchObj);
@@ -60,7 +60,6 @@ define(function (require, exports, module) {
  			if (treeNode.bLoading) {
  				return;
  			}
- 			console.log(treeNode);
 			//获取到当前的kb_guid
 			var kbGuid = treeNode.kb_guid ? treeNode.kb_guid : context.userInfo.kb_guid;
 			if ('category' === treeNode.type) {
@@ -71,7 +70,6 @@ define(function (require, exports, module) {
 				//获取父标签的GUID，如果没有，则设为''
 				var parentTagGuid = treeNode.tag_group_guid ? treeNode.tag_group_guid : '';
 				remote.getChildTag(kbGuid, parentTagGuid, function (data) {
-					console.log(data);
 					addChildToNode(data.list, treeNode);
 				});
 

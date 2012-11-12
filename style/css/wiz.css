@@ -135,7 +135,7 @@ input, button, select, textarea, ul, li {
 	height: 100%;
 	top: 0;
 	left: 0;
-	background: #F3F3F3;
+	background: #f0f0f0;
 	min-width: 120px;
 	z-index: 2;
 	overflow: hidden;
