@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>登录</title>
+		<!-- twitter css样式 -->
+		<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="style/css/login_zh_CN.css"/>
+		<link rel="stylesheet" type="text/css" href="style/css/common_zh_CN.css"/>
+
+	</head>
+
+	<body style="background-color: #EBEBEB">
+		<!--<div class="logo-bar">
+			<div class="wiz-logo"></div>
+		</div>
+
+		--><div class="container">
+			<div class="container-fluid span12"
+				style="background-color: #FFFFFF; border: 1px solid #BDBDBD; margin-top: 50px;">
+				<div class="row-fluid" style="margin-bottom: 20px;">
+					<div class="span12"
+						style="border-bottom: 1px solid #BDBDBD; margin-top: 10px; margin-bottom: 10px; height: 50px;">
+						<h1>
+							欢迎回来
+						</h1>
+					</div>
+					<div class="span5" style="margin-top: 16px;">
+						<form class="form-horizontal">
+							<fieldset>
+								<div class="control-group" style="margin-bottom: 20px;">
+									<label class="">
+										为知笔记 帮助你记录点点滴滴，并且能够跨电脑、手机和平板使用。
+									</label>
+
+									<div class="tour">
+										<div id="img1"></div>
+										<div class="title1">
+											<h4>
+												高效的知识管理
+											</h4>
+										</div>
+										<div class="content">
+											集中管理显性知识，快速记录重要信息，定制专属于你的百科全书
+										</div>
+									</div>
+									<div class="tour">
+										<div id="img2"></div>
+										<div class="title1">
+											<h4>
+												便捷的生活百科
+											</h4>
+										</div>
+										<div class="content">
+											轻松地时间规划与管理，随时随地生活备忘与回顾，不可或缺的贴身工具
+										</div>
+									</div>
+									<div class="tour">
+										<div id="img3"></div>
+										<div class="title1">
+											<h4>
+												精准的内容检索
+											</h4>
+										</div>
+										<div class="content">
+											通过目录管理形式组织笔记，结合标签、关键词，令查找更加准确、快速
+										</div>
+									</div>
+								</div>
+							</fieldset>
+						</form>
+					</div>
+					<div class="span6" style="width:55%; margin-top: 16px; background-color: #F5F5F5; border: 1px solid #E4E4E4;">
+								<div id="tip_error_login" style="display: none"
+								class="alert alert-error"></div>
+						<form class="form-horizontal">
+							<fieldset>
+								<div class="control-group" style="margin-bottom: 20px;">
+									<label class="control-label">
+										<h3>
+											登录
+										</h3>
+									</label>
+									<label class="control-label" style="float: right;font-family: helvetica,arial,sans-serif; margin-right: 25px; border: 0 none;font: inherit; font-size:14px;font-weight:normal;color:#747474;">
+											或者
+											<a href="./registerweb_zh_CN.html" style="font-size:13px;color: #4A8DB8;font-family: helvetica,arial,sans-serif;">创建账户</a>
+									</label>
+
+								</div>
+								<div class="control-group">
+									<label class="control-label" for="userid">
+										用户名
+									</label>
+									<div class="controls">
+										<input type="text" class="input-xlarge span3" id="login_name">
+									</div>
+								</div>
+
+								<div class="control-group">
+									<label class="control-label" for="password">
+										密码
+									</label>
+									<div class="controls">
+										<input type="password" class="input-xlarge span3"
+											id="login_password">
+									</div>
+								</div>
+
+								<div class="control-group">
+									<label class="control-label" for="optionsCheckbox"></label>
+									<div class="controls">
+										<label class="checkbox">
+											<input type="checkbox" id="login_keeppassword" value="on">
+											记住密码
+										</label>
+									</div>
+								</div>
+
+								<div class="form-actions span4">
+									<a class="btn btn-primary btn-large" id="loginkeycode" href="javascript:void(0);">
+										<span>
+											&nbsp;&nbsp;&nbsp;&nbsp;登&nbsp;&nbsp;&nbsp;&nbsp;录&nbsp;&nbsp;&nbsp;&nbsp;
+										</span>
+									</a>
+									<!-- <button class="btn btn-primary btn-large"
+										id="loginkeycode" >
+									</button> -->
+								</div>
+
+							</fieldset>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div><!--container end-->
+		<div class="footer">
+			<span class="footer-entry">&copy;2012&nbsp;</span><a class="footer-entry" href="http://www.wiz.cn/">wiz.cn</a>
+			<a class="footer-entry" target="_blank" href="http://cn.wizbrother.com/feedback/?product=WizServer">反馈</a>
+			&nbsp; <span class="footer-entry">京公网安备110105005543 鄂ICP备09036440</span> 
+		</div>
+		<script type="text/javascript" src="libs/common/seaJs/sea1.2.1.js" data-main="./libs/entity/loginEntry"></script>
+	</body>
+</html>

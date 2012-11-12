@@ -1,0 +1,250 @@
+html, body{
+	margin: 0;
+	border: 0;
+	padding: 0;
+	overflow: hidden;
+	height: 100%;
+	width: 100%;
+}
+body {
+	-moz-user-select: none;  
+	-webkit-user-select: none;  
+	-ms-user-select: none;  
+}
+
+/*隐藏聚焦时显示的黄色边框*/
+input, button, select, textarea, ul, li {
+	outline: none;
+	font-family: "微软雅黑", "宋体", Helvetica, Arial, sans-serif;
+	font-size: 100%;
+}
+
+/*--------------------------------wiz控件------------------------------*/
+/*顶部按钮*/
+.wiz-button {
+}
+
+.wiz-button:hover {
+	background-color: #0264AF;
+}
+
+.wiz-button:active, .wiz-button.active{
+	background-color: #005897;
+}
+
+.wiz-button, .wiz-button:hover, .wiz-button.hover, .wiz-button:link, .wiz-button:active , .wiz-button.active, .wiz-button:visited {
+	color: white;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+
+
+/*----------------------------------------------*/
+.main-container{
+	overflow: hidden;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
+
+.opacity-layer {
+	opacity: 0;
+	filter: literal("alpha(opacity=0)");
+	z-index: 9999;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+}
+
+/*-----------------------------顶部css--------------------------------------*/
+#header_container {
+	height: 40px;
+	cursor:auto;
+	background: #0072C6;
+}
+
+.logo {
+	top:0;
+	padding: 0;
+	margin: 0;
+	cursor: pointer;
+	height: 40px;
+}
+
+.logo-img {
+	padding: 0;
+	border: 0;
+	margin: -1px 0 0 10px;
+}
+
+.header-right {
+	position: absolute;
+	right: 0;
+	top: 0;
+	height: 40px;
+}
+.u-hd-ct {
+	display: inline-block;
+	height: 40px;
+}
+
+.u-hd {
+	display: inline-block;
+	height: 40px;
+	top: 0;
+}
+.u-menu {
+	display: inline-block;
+}
+
+.u-name {
+	display: inline;
+	vertical-align: top;
+	overflow: hidden;
+}
+
+.u-img {
+	display: inline;
+}
+
+
+/*--------------------------------------------------------*/
+.below_container {
+	position:absolute;
+	top: 40px;
+	bottom: 0;
+	right: 0;
+	left: 0;
+}
+
+
+/*----------------------左侧树------------------------*/
+.content-left{
+	width: 265px;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background: #F3F3F3;
+	min-width: 120px;
+	z-index: 2;
+	overflow: hidden;
+	position: absolute;
+}
+.search-box-content {
+	position: relative;
+	height: 40px;
+}
+
+.search-box {
+	position: absolute;
+	right: 10px;
+	left: 10px;
+	top: 10px;
+	bottom: 10px;
+}
+.search-box-md {
+	position: relative;
+	height: 28px;
+	border: 1px solid #BBB;
+	background-color: white;
+	padding: 0 35px 0 0;
+	z-index: 100;
+}
+.search-box-md:hover {
+	border: 1px solid #888;
+}
+
+.search-box-input {
+	width: 100%;
+	height: 20px;
+	border: 0;
+	padding: 5px 0 1px 0;
+	margin: 0px 0 0 6px;
+	z-index: 99;
+}
+.search-box-btn {
+	width: 16px;
+	height: 16px;	
+	padding: 0;
+	border: 0;
+	background: url(../images/search.png) no-repeat;
+	cursor: pointer;
+	top: 6px;
+	right: 8px;
+	position: absolute;
+}
+
+.ztreeContainner {
+	overflow-x: hidden;
+	overflow-y: auto;
+	position: absolute;
+	top: 40px;
+	left: 0;
+	bottom: 0;
+	right: 0;
+}
+
+#leftTree {
+}
+/*---------------------------通用-----------------------*/
+
+.content-right{
+	position: absolute;
+	left: 265px;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	height: 100%;
+	min-width: 420px;
+	overflow: hidden;
+	z-index: 3;
+}
+
+.splitter {
+	position: absolute;
+	height: 100%;
+	width: 5px;
+	top: 0;
+	overflow: hidden;
+	cursor: col-resize;
+	z-index: 5;
+}
+/*-----------------------------文档列表-------------------------------*/
+#left_splitter {
+	left: 265px;
+}
+
+#content_splitter {
+	left: 300px;
+}
+#docList_containner_wrapper {
+	width: 300px;
+	height: 100%;
+	min-width: 120px;
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+
+.active {
+	background-color: gray;
+}
+
+/*----------------------右侧文档内容-------------------*/
+.content-center {
+	width: 100%;
+	height: 100%;
+	left: 300px;
+	top: 0;
+	position: absolute;
+}

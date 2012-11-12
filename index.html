@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<link type="text/css" rel="stylesheet" href="style/css/normalize.css">
+		<link type="text/css" rel="stylesheet" href="style/css/zTreeStyle.css">
+		<link type="text/css" rel="Stylesheet" href="style/css/wiz.css">
+		<link type="text/css" rel="stylesheet" href="style/css/demo.css">
+		<title></title>
+		<style>
+		</style>
+	</head>
+	<body>
+		<div id="head" style="display:none;"></div>
+		<div class="main-container">
+			<div id="header_container">
+				<div class="header-left">
+					<div class="logo-div">
+						<a title="" onclick="" class="logo">
+							<img src="style/images/logo.png" alt="logo" class="logo-img" />
+						</a>
+					</div>
+				</div>
+				<div class="header-md"></div>
+				<div class="header-right">
+					<!-- 顶部右侧 -->
+					<div class="u-hd-ct">
+						<span  class="u-hd">
+							<div>
+								<a href="#" class="u-hd wiz-button" >
+									<img src="" alt="" id="u_setting">
+								</a>
+							</div>
+						</span>
+						<span class="u-hd">
+							<a href="#" id="user_info" class="u-hd wiz-button">
+								<span class="u-hd">
+									<span id="user_name" class="u-name u-hd"></span>
+									<div id="user_image" class="u-img">
+										<img src="" alt="">
+									</div>
+								</span>
+							</a>
+						</span>
+					</div>
+				</div>
+				<!-- 顶部 -->
+			</div>
+			<div id="resize_container" class="below_container">
+				<div id="leftTree_container" class="content-left">
+					<div class="search-box-content">
+						<!--搜索栏 -->
+						<span class="search-box">
+							<div class="search-box-md">
+								<input type="text" id="s_box_input" aria-label="搜索文档" class="search-box-input">
+								<input type="button" id="s_box_submit" class="search-box-btn" title="search">
+							</div>
+						</span>
+					</div>
+					<div class="ztreeContainner">
+						<div id="leftTree" class="ztree">
+							<!-- 树控件 -->
+						</div>
+			  </div>
+			</div>
+				<!-- 左侧树和右侧内容的分割 -->		
+			<div id="left_splitter" class="splitter"></div>
+				<div id="content_container" class="content-right">
+					<div id="docList_containner_wrapper">
+						<div id="sort_filter_container" class="sort-filter-contanier">
+							<!-- 排序过滤 -->
+						</div>
+						<div id="docList_containner">
+							<!-- 文档列表 -->
+						</div>
+					</div>
+					<div id="content_splitter" class="splitter"></div>
+					<div id="doc_detail" class="content-center">右侧内容</div>
+				</div>
+		</div>
+		<script type="text/javascript" src="./libs/common/seaJs/sea1.2.1.js" data-main="./libs/entity/webEntry"></script>
+	</body>
+</html>
