@@ -60,6 +60,7 @@ define(function (require, exports, module) {
  			if (treeNode.bLoading) {
  				return;
  			}
+ 			console.log(treeNode);
 			//获取到当前的kb_guid
 			var kbGuid = treeNode.kb_guid ? treeNode.kb_guid : context.userInfo.kb_guid;
 			if ('category' === treeNode.type) {
@@ -68,7 +69,7 @@ define(function (require, exports, module) {
 				});
 			} else if ('tag' === treeNode.type) {
 				//获取父标签的GUID，如果没有，则设为''
-				var parentTagGuid = treeNode.tag_group_group ? treeNode.tag_group_group : '';
+				var parentTagGuid = treeNode.tag_group_guid ? treeNode.tag_group_guid : '';
 				remote.getChildTag(kbGuid, parentTagGuid, function (data) {
 					console.log(data);
 					addChildToNode(data.list, treeNode);
@@ -98,6 +99,9 @@ define(function (require, exports, module) {
 					child.name = child.tag_name ? child.tag_name : child.category_name;
 				}
 				child.type = treeNode.childType ? treeNode.childType: treeNode.type;
+				if (!child.kb_guid) {
+					child.kb_guid = treeNode.kb_guid;
+				}
 			});
 
 			treeObj.addNodes(treeNode, respList, true);
