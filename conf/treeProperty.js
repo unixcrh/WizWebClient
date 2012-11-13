@@ -30,7 +30,6 @@ define(function (require, exports, module) {
 		childType: 'tag',
 		isParent: true
 	}];
-	console.log(initTreeObj);
 
 	module.exports = initTreeObj;
 });

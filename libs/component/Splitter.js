@@ -18,10 +18,10 @@ define(function(require, exports, module){
         _rightContainner = $('#' + config.right);
         _splitter = $('#' + config.splitter);
       } catch (err) {
-        console.log('Splitter.init() id= ' + config.splitter + ' Error: ' + err);
+        console.error('Splitter.init() id= ' + config.splitter + ' Error: ' + err);
       }
       if (!_leftContainer || !_rightContainner || !_splitter) {
-        console.log('Splitter.init() id= ' + config.splitter + ' Error');
+        console.error('Splitter.init() id= ' + config.splitter + ' Error');
       }
       _maxLeft = config.max_left;
       _maxRight = config.max_right;

@@ -200,7 +200,6 @@ define(function(require, exports) {
 
 	// 注册回调函数
 	function callBackRegister(data, status){
-		console.log(data);
 		$("#tip_error_register").hide();
 		
 		if(status=="success"){

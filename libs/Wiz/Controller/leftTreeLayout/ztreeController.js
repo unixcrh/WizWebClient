@@ -1,8 +1,7 @@
 define(function (require, exports, module) {
 	var treeProterty = require('/conf/treeProperty');
-	// var GlobalCtrl = require('Wiz/Controller/GlobalController');	//全局的控制器
+	var GlobalCtrl = require('Wiz/Controller/GlobalController');	//全局的控制器
 	var zTree = require('ztree');
-
 	var remote = require('Wiz/remote');
 	var context = require('Wiz/context');
 
@@ -118,8 +117,17 @@ define(function (require, exports, module) {
 				treeObj.expandNode(treeNode);
 				zTreeOnExpand(event, treeId, treeNode);
 			} else if (treeNode.level > 1) {
-				// GlobalCtrl.showDocumentList(); 	
+				GlobalCtrl.requestDocList(getParamsFromTreeNode(treeNode));
 			}
+		}
+
+		/* 从treenode中获取请求的数据		 */
+		function getParamsFromTreeNode(treeNode) {
+			var params = {};
+			params.action_cmd = treeNode.type;
+			params.action_value = treeNode.location ? treeNode.location : treeNode.tag_guid;
+			params.count = 200;
+			return params;
 		}
 
 		function initTree(id) {
