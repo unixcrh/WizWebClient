@@ -44,6 +44,8 @@ input, button, select, textarea, ul, li {
 .main-container{
 	overflow: hidden;
 	position: absolute;
+	height: 100%;
+	width: 100%;
 	top: 0;
 	left: 0;
 	right: 0;
@@ -74,10 +76,15 @@ input, button, select, textarea, ul, li {
 	background: #0072C6;
 }
 
+.logo-div {
+	height: 40px;	
+}
+
 .logo {
 	top:0;
 	padding: 0;
 	margin: 0;
+	border: 0;
 	cursor: pointer;
 	height: 40px;
 }
@@ -86,6 +93,7 @@ input, button, select, textarea, ul, li {
 	padding: 0;
 	border: 0;
 	margin: -1px 0 0 10px;
+	height: 40px;
 }
 
 .header-right {
@@ -122,7 +130,10 @@ input, button, select, textarea, ul, li {
 /*--------------------------------------------------------*/
 .below_container {
 	position:absolute;
+	height: 100%;
+	width: 100%;
 	top: 40px;
+	_top: 42px;
 	bottom: 0;
 	right: 0;
 	left: 0;
@@ -206,9 +217,10 @@ input, button, select, textarea, ul, li {
 	top: 0;
 	right: 0;
 	bottom: 0;
-	height: 100%;
 	min-width: 30em;
 	overflow: hidden;
+	width: 100%;
+	height: 100%;
 	z-index: 3;
 }
 
@@ -230,6 +242,7 @@ input, button, select, textarea, ul, li {
 	left: 20em;
 }
 #docList_containner_wrapper {
+	position: absolute;
 	width: 20em;
 	height: 100%;
 	min-width: 120px;

@@ -53,8 +53,6 @@ define(function(require, exports, module) {
 
 		/* 获取用户信息 */
 		getUserInfo: function (callback, callError) {
-			console.log('getUserInfo start!');
-			console.log(constant.api.GET_USER_INFO);
 			sendRequest(constant.api.GET_USER_INFO, getRequestParams(), callback, callError);
 		},
 
@@ -119,10 +117,8 @@ define(function(require, exports, module) {
 		refreshToken: function (callback, callError) {
 			var requestParams = getRequestParams();
 			callback = callback ? callback : function(data) {
-				console.log('refreshToken success');
 			};
 			callError = callError ? callError : function (err) {
-				console.log('refreshToken Error: ' + err);
 			};
 			sendRequest(constant.api.KEEPALIVE, requestParams, callback, callError);
 		}

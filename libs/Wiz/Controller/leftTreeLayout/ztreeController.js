@@ -8,7 +8,6 @@ define(function (require, exports, module) {
 
 	var locale= require('locale');
 	var specialLocation = locale.DefaultCategory;
-	console.log(locale);
 
 	function ZtreeController() {
 		
@@ -43,7 +42,6 @@ define(function (require, exports, module) {
 		}
 
 		function addDiyDom(treeId, treeNode) {
-			console.log('addDiyDom');
 			var spaceWidth = 10;
 			var switchObj = $("#" + treeNode.tId + "_switch"),
 			icoObj = $("#" + treeNode.tId + "_ico");
@@ -93,7 +91,7 @@ define(function (require, exports, module) {
 			if (!respList) {
 				return;
 			}
-			respList.forEach ( function ( child) {
+			$.each(respList, function (key, child){
 				if (child.kb_name) {
 					child.name = child.kb_name;
 					child.isParent = true;
@@ -107,7 +105,6 @@ define(function (require, exports, module) {
 
 				//目录需要经过国际化处理
 				if ('category' === treeNode.type && specialLocation[child.name]) {
-					console.log(child.name);
 					child.name = changeSpecilaLocation(child.name);
 				}
 			});

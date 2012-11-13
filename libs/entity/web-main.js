@@ -19,7 +19,6 @@ define(function(require, exports) {
 		remote.getUserInfo(function (data) {
 			if (data.code !== '200') {
 				window.location.href = constant.url.LOGIN;
-				console.error(data.message);
 				return;
 			}
 			//开始调用保持在线
@@ -31,10 +30,10 @@ define(function(require, exports) {
 
 		}, function (err) {
 			//错误处理
-			console.error(err);
 		});
 
 	}
+	alert('ok');
 	//初始化Splitter
 	var Splitter = require('component/Splitter');
 	var leftSplitter = new Splitter();
