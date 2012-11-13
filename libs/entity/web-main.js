@@ -6,6 +6,7 @@ define(function(require, exports) {
 	var remote = require('Wiz/remote');
 
 	var treeCtrl = require('Wiz/Controller/leftTreeLayout/ztreeController');
+	var searchBoxCtrl = require('Wiz/Controller/leftTreeLayout/searchBoxController');
 	var listCtrl = require('Wiz/Controller/docListLayout/Controller');
 
 	initialize();
@@ -32,7 +33,9 @@ define(function(require, exports) {
 				//首先加载为私人库
 				context.kbGuid = data.user_info.kb_guid;
 				//顶部功能初始化
-
+				//
+				//搜索栏初始化
+				searchBoxCtrl.init();
 				//左侧树初始化
 				treeCtrl.init('leftTree');
 

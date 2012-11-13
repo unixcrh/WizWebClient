@@ -143,7 +143,6 @@ define(function (require, exports, module) {
 			});
 		}
 
-
 		/**
 		 * 对特殊的文件夹处理，返回相应的显示名
 		 */
