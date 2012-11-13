@@ -37,8 +37,11 @@ define(function(require, exports) {
 	}
 
 	//初始化Splitter
-	var Splitter = require('DOM/Splitter');
-	Splitter.init({left: 'leftTree_container', right: 'content_container', 'splitter': 'left_splitter', max_left: 120, max_right: 450});
+	var Splitter = require('component/Splitter');
+	var leftSplitter = new Splitter();
+	var rightSplitter = new Splitter();
+	leftSplitter.init({left: 'leftTree_container', right: 'content_container', 'splitter': 'left_splitter'});
+	rightSplitter.init({left: 'docList_containner_wrapper', right: 'doc_detail', 'splitter': 'content_splitter'});
 
 	// cookie(token);
 	// if (token){

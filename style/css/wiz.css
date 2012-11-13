@@ -131,12 +131,13 @@ input, button, select, textarea, ul, li {
 
 /*----------------------左侧树------------------------*/
 .content-left{
-	width: 265px;
+	width: 20%;
 	height: 100%;
 	top: 0;
 	left: 0;
 	background: #f0f0f0;
-	min-width: 120px;
+	min-width: 10%;
+	max-width: 80%;
 	z-index: 2;
 	overflow: hidden;
 	position: absolute;
@@ -201,12 +202,12 @@ input, button, select, textarea, ul, li {
 
 .content-right{
 	position: absolute;
-	left: 265px;
+	left: 20%;
 	top: 0;
 	right: 0;
 	bottom: 0;
 	height: 100%;
-	min-width: 420px;
+	min-width: 30em;
 	overflow: hidden;
 	z-index: 3;
 }
@@ -222,14 +223,14 @@ input, button, select, textarea, ul, li {
 }
 /*-----------------------------文档列表-------------------------------*/
 #left_splitter {
-	left: 265px;
+	left: 20%;
 }
 
 #content_splitter {
-	left: 300px;
+	left: 20em;
 }
 #docList_containner_wrapper {
-	width: 300px;
+	width: 20em;
 	height: 100%;
 	min-width: 120px;
 	overflow-y: scroll;
@@ -242,9 +243,11 @@ input, button, select, textarea, ul, li {
 
 /*----------------------右侧文档内容-------------------*/
 .content-center {
-	width: 100%;
-	height: 100%;
-	left: 300px;
+	min-width: 10%;
+	left: 20em;
 	top: 0;
+	right: 0;
+	bottom: 0;
 	position: absolute;
+	overflow: hidden;
 }

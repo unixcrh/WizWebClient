@@ -1,6 +1,6 @@
-//分割
+//横向分割栏
 define(function(require, exports, module){
-  var opacity = require('DOM/opacity');
+  var opacity = require('component/opacity');
 
   function Splitter () {
 
@@ -9,6 +9,8 @@ define(function(require, exports, module){
     var _rightContainner = null;
     var _maxLeft;
     var _maxRight;
+    var _lastClientX;        //click的时候记录当前的clientx
+    var _leftWidth;          //记录当前左侧容器的宽度
 
     this.init = function(config) {
       try {
@@ -30,6 +32,8 @@ define(function(require, exports, module){
 
     //
     function start(event) {
+      _lastClientX = event.clientX;
+      _leftWidth = _leftContainer.width();
       opacity.show();
       _splitter.addClass('active');
       document.onmousemove = move;
@@ -39,15 +43,15 @@ define(function(require, exports, module){
     //
     function move(evt) {
       evt = evt ? evt : window.event;
-      var moveX = evt.clientX;
-      console.log(moveX);
-      console.log(_maxLeft);
-      console.log(_maxRight);
-      if (_maxLeft < moveX && moveX < ($(document).width() - _maxRight)) {
-        _leftContainer.css('width', moveX + "px"); 
-        _rightContainner.css('left', moveX+ "px");
-        _splitter.css('left', moveX + "px");
-      }
+      var curClientX = evt.clientX;
+
+      var curWidth = _leftWidth + curClientX - _lastClientX;
+
+      _leftContainer.css('width', curWidth + "px"); 
+
+      var nowWidth = _leftContainer.width();
+      _rightContainner.css('left', nowWidth+ "px");
+      _splitter.css('left', nowWidth + "px");
     }
 
     //
@@ -59,5 +63,5 @@ define(function(require, exports, module){
     }
   };
 
-  module.exports = new Splitter();
+  module.exports = Splitter;
 })
