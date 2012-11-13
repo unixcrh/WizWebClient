@@ -15,5 +15,12 @@ define({
 		"My Photos": "My Photos",
 		"My Sticky Notes": "My Sticky Notes",
 		"My Tasks": "My Tasks"
+	},
+	//根节点名称
+	DefaultNode: {
+		'category': 'Folders',
+		'tag': 'Tags',
+		'group': 'My Groups',
+		'personal': 'My Notes'
 	}
 })

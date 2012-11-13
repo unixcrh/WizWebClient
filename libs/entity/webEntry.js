@@ -12,7 +12,7 @@ seajs.config({
 	preload: [
 		'jquery'
 	],
-	locale: 'zh-cn'
+	locale: 'zh-cn'																						//默认语言包
 });
 seajs.modify('jquery', function (require, exports, module) {
 	module.exports = jQuery = $;

@@ -1,6 +1,6 @@
 define(function (require, exports, module) {
 	var treeProterty = require('/conf/treeProperty');
-	var GlobalCtrl = require('Wiz/Controller/GlobalController');	//全局的控制器
+	// var GlobalCtrl = require('Wiz/Controller/GlobalController');	//全局的控制器
 	var zTree = require('ztree');
 
 	var remote = require('Wiz/remote');

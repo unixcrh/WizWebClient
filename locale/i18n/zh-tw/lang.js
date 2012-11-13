@@ -15,5 +15,12 @@ define({
 		"My Photos": "我的照片",
 		"My Sticky Notes": "我的桌面筆記",
 		"My Tasks": "我的任務"
+	},
+	//根节点名称
+	DefaultNode: {
+		'categroy': '文件夾',
+		'tag': '標簽',
+		'group': '我的群組',
+		'personal': '我的筆記'
 	}
 })

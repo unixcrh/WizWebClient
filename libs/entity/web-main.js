@@ -31,9 +31,7 @@ define(function(require, exports) {
 		}, function (err) {
 			//错误处理
 		});
-
 	}
-	alert('ok');
 	//初始化Splitter
 	var Splitter = require('component/Splitter');
 	var leftSplitter = new Splitter();
