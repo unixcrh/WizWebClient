@@ -1,10 +1,14 @@
 define(function (require, exports, module) {
 	var treeProterty = require('/conf/treeProperty');
-	var GlobalCtrl = require('Wiz/controller/GlobalController');	//全局的控制器
+	var GlobalCtrl = require('Wiz/Controller/GlobalController');	//全局的控制器
 	var zTree = require('ztree');
 
 	var remote = require('Wiz/remote');
 	var context = require('Wiz/context');
+
+	var locale= require('locale');
+	var specialLocation = locale.DefaultCategory;
+	console.log(locale);
 
 	function ZtreeController() {
 		
@@ -100,12 +104,17 @@ define(function (require, exports, module) {
 				if (!child.kb_guid) {
 					child.kb_guid = treeNode.kb_guid;
 				}
+
+				//目录需要经过国际化处理
+				if ('category' === treeNode.type && specialLocation[child.name]) {
+					console.log(child.name);
+					child.name = changeSpecilaLocation(child.name);
+				}
 			});
 
 			treeObj.addNodes(treeNode, respList, true);
 			treeNode.bLoading = true;
 		} 
-
 
 		function zTreeOnClick(event, treeId, treeNode) {
 			if (treeNode.level === 0 || treeNode.level === 1) {
@@ -128,6 +137,28 @@ define(function (require, exports, module) {
 				treeElem.removeClass("showIcon");
 			});
 		}
+
+
+		/**
+		 * 对特殊的文件夹处理，返回相应的显示名
+		 */
+		function changeSpecilaLocation(location) {
+			// 'use strict' ;
+			$.each(specialLocation, function (key, value) {
+				var index = location.indexOf(key);
+
+				if (index === 0 && location === key) {
+					location = value;
+					return false;
+				}
+				if (index === 1 && location.indexOf('/') === 0) {
+					location = '/' + value + location.substr(key.length + 1);
+					return false;
+				}
+			});
+			return location;
+		}
+
 
 		this.initTree = initTree;
 	}

@@ -6,11 +6,13 @@ seajs.config({
 		'common': '/libs/common',																//通用库
 		'component': '/libs/component',													//小组件
 		'config': '/conf/config',																//web的配置
-		'Wiz': '/libs/Wiz'																			//Wiz相关模块
+		'Wiz': '/libs/Wiz',																			//Wiz相关模块
+		'locale': '/locale/main'
 	},
 	preload: [
 		'jquery'
-	]
+	],
+	locale: 'zh-cn'
 });
 seajs.modify('jquery', function (require, exports, module) {
 	module.exports = jQuery = $;
@@ -22,4 +24,4 @@ seajs.modify('ztree', function (require, exports, module) {
 	module.exports = $.fn.zTree;
 });
 
-seajs.use('./libs/entity/web-main');
+seajs.use(['seajs/plugins/plugin-i18n', './libs/entity/web-main']);//'./libs/entity/web-main');

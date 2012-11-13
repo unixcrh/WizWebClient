@@ -7,7 +7,7 @@ define(function(require, exports) {
 	var constant = require('Wiz/constant');
 	var remote = require('Wiz/remote');
 
-	var treeController = require('Wiz/Controller/treeController');
+	var treeController = require('Wiz/Controller/leftTreeLayout/ztreeController');
 
 	var token = GlobalUtil.getUrlParam('t');
 	if (!token || typeof token !== 'string') {
@@ -35,7 +35,6 @@ define(function(require, exports) {
 		});
 
 	}
-
 	//初始化Splitter
 	var Splitter = require('component/Splitter');
 	var leftSplitter = new Splitter();
