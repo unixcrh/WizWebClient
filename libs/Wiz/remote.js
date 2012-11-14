@@ -16,7 +16,7 @@ define(function(require, exports, module) {
 			url: apiObj.url,
 			data: data,
 			dateType: 'json',
-			async: false,
+			async: apiObj.async,
 			type: apiObj.action,
 			success: callback,
 			error: callError

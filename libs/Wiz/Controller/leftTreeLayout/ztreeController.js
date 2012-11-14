@@ -1,6 +1,6 @@
 define(function (require, exports, module) {
 	var treeProterty = require('/conf/treeProperty');
-	var GlobalCtrl = require('Wiz/Controller/GlobalController');	//全局的控制器
+	var messageCenter = null;
 	var zTree = require('ztree');
 	var remote = require('Wiz/remote');
 	var context = require('Wiz/context');
@@ -117,7 +117,7 @@ define(function (require, exports, module) {
 				treeObj.expandNode(treeNode);
 				zTreeOnExpand(event, treeId, treeNode);
 			} else if (treeNode.level > 1) {
-				GlobalCtrl.requestDocList(getParamsFromTreeNode(treeNode));
+				messageCenter.requestDocList(getParamsFromTreeNode(treeNode));
 			}
 		}
 
@@ -163,10 +163,14 @@ define(function (require, exports, module) {
 			return location;
 		}
 
+		function init(id, messageHandler) {
+			messageCenter = messageHandler;
+			initTree(id);
+		}
 
-		this.initTree = initTree;
+		this.init = init;
 	}
 	var controller = new ZtreeController();
 
-	exports.init = controller.initTree;
+	exports.init = controller.init;
 });

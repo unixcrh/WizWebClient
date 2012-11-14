@@ -1,10 +1,11 @@
 define(function (require, exports, module) {
-	var GlobalCtrl = require('Wiz/Controller/GlobalController');	//全局的控制器
+	var messageCenter = null;					
 
 	var searchInput = $('#s_box_input');
 	var searchBtn = $('#s_box_submit');
 
-	function init() {
+	function init(messageHandler) {
+		messageCenter = messageHandler;
 		initHandler();
 	}
 
@@ -24,7 +25,6 @@ define(function (require, exports, module) {
 
 	function keyPressHandler(evt) {
      evt = evt ? evt : window.event;
-     console.log(evt);
      if (evt.keyCode === 13) {
      	doSearch();
      }
@@ -37,7 +37,8 @@ define(function (require, exports, module) {
 		}
 		var params = getSearchParams();
 		params.action_value = keyword;
-		GlobalCtrl.requestDocList(params);
+
+		messageCenter.requestDocList(params);
 	}
 
 	function getSearchParams() {
