@@ -6,6 +6,19 @@ html, body{
 	height: 100%;
 	width: 100%;
 }
+
+body {
+	margin: 0;
+	font-family: "Microsoft Yahei",Verdana,Simsun,"Segoe UI","Segoe UI Web Regular","Segoe UI Symbol","Helvetica Neue","BBAlpha Sans","S60 Sans",Arial,"sans-serif";
+	color: #000;
+	background-color: #fff;
+	background-image: none;
+	background-repeat: repeat;
+	background-position: top left;
+	direction: ltr;
+	font-size: 88%;
+	-webkit-font-smoothing: antialiased;
+}
 body {
 	-moz-user-select: none;  
 	-webkit-user-select: none;  
@@ -19,6 +32,64 @@ input, button, select, textarea, ul, li {
 	font-size: 100%;
 }
 
+/*------------------webkit专有属性------------------------*/
+::-webkit-scrollbar {
+	width: 17px;
+	height: 17px;
+	background-color: #f0f0f0;
+	border: none;
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: #cdcdcd;
+	border: 1px solid #f0f0f0;
+}
+::-webkit-scrollbar-corner {
+	background-color: #f0f0f0;
+}
+
+/* 垂直滚动条 */
+::-webkit-scrollbar-button{
+  background-image: url(../images/controls.png);
+  background-repeat: no-repeat;
+  background-color: #f0f0f0;
+}
+
+/*垂直滚动条 渐减按钮*/
+::-webkit-scrollbar-button:vertical:decrement {
+  background-position: -1px -358px;
+  height: 33px;
+}
+
+::-webkit-scrollbar-button:vertical:decrement:hover {
+	background-color: #DADADA;
+  background-position: -1px -462px;
+}
+
+::-webkit-scrollbar-button:vertical:decrement:active {
+	background-color: #606060;
+  background-position: -1px -566px;
+}
+
+
+/*垂直滚动条 渐增按钮*/
+::-webkit-scrollbar-button:vertical:increment {
+  background-position: -1px -391px;
+  height: 33px;
+}
+
+::-webkit-scrollbar-button:vertical:increment:hover {
+	background-color: #DADADA;
+  background-position: -1px -495px;
+}
+
+::-webkit-scrollbar-button:vertical:increment:active {
+	background-color: #606060;
+  background-position: -1px -599px;
+}
+
+
+/*-----------------------------------------*/
 
 .dropdown-menu-larger {
 	background-position: -82px -33px;
@@ -251,6 +322,7 @@ input, button, select, textarea, ul, li {
 	overflow-x: hidden;
 	overflow-y: auto;
 	position: absolute;
+	margin-top: 7px;
 	top: 40px;
 	left: 0;
 	bottom: 0;
@@ -259,7 +331,7 @@ input, button, select, textarea, ul, li {
 
 #leftTree {
 }
-/*---------------------------通用-----------------------*/
+/*---------------------------右侧文档列表和文档内容-----------------------*/
 
 .content-right{
 	position: absolute;
@@ -298,6 +370,16 @@ input, button, select, textarea, ul, li {
 	min-width: 120px;
 	overflow-y: scroll;
 	overflow-x: hidden;
+}
+.sort-filter-contanier {
+	position: relative;
+	height: 50px;
+	margin-bottom: 1px;
+}
+.sort_split {
+	border-bottom: 1px solid #ccc;
+	margin: 0 20px;
+	clear: both;
 }
 
 .active {
