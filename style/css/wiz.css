@@ -19,6 +19,16 @@ input, button, select, textarea, ul, li {
 	font-size: 100%;
 }
 
+
+.dropdown-menu-larger {
+	background-position: -82px -33px;
+	background-image: url(../images/c4.png);
+	width: 11px;
+	height: 9px;
+	border: 0;
+	padding: 0;
+	margin: 0;
+}
 /*--------------------------------wiz控件------------------------------*/
 /*顶部按钮*/
 .wiz-button {
@@ -70,37 +80,77 @@ input, button, select, textarea, ul, li {
 }
 
 /*-----------------------------顶部css--------------------------------------*/
-#header_container {
+.header_container {
 	height: 40px;
 	cursor:auto;
 	background: #0072C6;
 }
 
-.logo-div {
-	height: 40px;	
+.header-left a:hover {
+	background-color: #015DA0;
 }
-
-.logo {
+.h-link {
+	display: inline-block;
+	height: 40px;
 	top:0;
 	padding: 0;
 	margin: 0;
 	border: 0;
 	cursor: pointer;
+}
+.header-left {
+	float: left;
 	height: 40px;
+	font-size: 0;
 }
 
-.logo-img {
-	padding: 0;
-	border: 0;
-	margin: -1px 0 0 10px;
-	height: 40px;
+.header-md{
+	float: left;
 }
-
 .header-right {
 	position: absolute;
 	right: 0;
 	top: 0;
 	height: 40px;
+}
+.logo-split {
+	border-left: 1px solid #f0f0f0;
+	height: 20px;
+	display: inline-block;
+	margin-bottom: 8px;
+	padding: 0;
+	opacity: .65;
+	filter: alpha(opacity=65);
+}
+
+.logo {
+	top:0;
+	padding: 0 ;
+	margin: 0 5px;
+	border: 0;
+	cursor: pointer;
+}
+
+.logo-img {
+	padding: 0;
+	border: 0;
+	margin: -1px 0 0 0;
+	height: 40px;
+}
+
+.group-entry {
+	position: relative;
+	width: 23px;
+	margin: 0;
+	border: 0;
+	padding-left: 10px;
+}
+
+
+.g_menu_span {
+	position: absolute;
+	top: 17px;
+	vertical-align: top;
 }
 .u-hd-ct {
 	display: inline-block;
