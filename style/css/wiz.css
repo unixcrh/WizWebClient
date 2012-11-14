@@ -32,6 +32,11 @@ input, button, select, textarea, ul, li {
 	font-size: 100%;
 }
 
+/*隐藏默认的，自己设置*/
+input[type="checkbox"], body:not(.IE_M9) input[type="radio"] {
+	opacity: 0.8;
+}
+
 /*------------------webkit专有属性------------------------*/
 ::-webkit-scrollbar {
 	width: 17px;
@@ -86,6 +91,10 @@ input, button, select, textarea, ul, li {
 ::-webkit-scrollbar-button:vertical:increment:active {
 	background-color: #606060;
   background-position: -1px -599px;
+}
+
+::webkit-scrollbar-button:vertical:increment:disabled {
+	background-color: red;
 }
 
 
@@ -355,6 +364,43 @@ input, button, select, textarea, ul, li {
 	cursor: col-resize;
 	z-index: 5;
 }
+
+.doc-title {
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+	width: 100%;
+}
+
+.table {
+	overflow: hidden;
+	width: 100%;
+	color: #666;
+	cursor: pointer;
+}
+.table tr {
+	height: 50px;
+	line-height: 150%;
+}
+
+.table tr:hover {
+	background-color: #F3F3F3;
+}
+
+.table tr:active {
+	background-color: #0072C6;
+	color:#FFF6F0;
+}
+
+.CK {
+	vertical-align: top;
+	padding-left: 17px;
+}
+
+.CK div {
+	padding: 5px 10px 0 0;
+}
+
 /*-----------------------------文档列表-------------------------------*/
 #left_splitter {
 	left: 20%;
@@ -372,9 +418,13 @@ input, button, select, textarea, ul, li {
 	overflow-x: hidden;
 }
 .sort-filter-contanier {
-	position: relative;
+	position: absolute;
+	top: 0;
+	right: 0px;
+	left: 0;
 	height: 50px;
 	margin-bottom: 1px;
+	z-index: 999;
 }
 .sort_split {
 	border-bottom: 1px solid #ccc;

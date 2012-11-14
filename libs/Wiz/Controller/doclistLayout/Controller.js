@@ -14,12 +14,12 @@ define(function (require, exports, module) {
 	    return ;
 	  }
 
-	  var content = '<table class="table table-striped" >';
+	  var content = '<table id="doclist" class="table table-striped" cellspacing="0" cellpadding="0" unselectable="on">';
 	  content += '<tbody>';
 	  $.each(docs,function(i,item){
-	    content += '<tr><td class="CK"></td><td id=' +item.document_guid+ ' style="cursor:pointer" >' 
+	    content += '<tr><td class="CK"><div><input type="checkbox"></div></td><td class="doc-title" >' 
 	      + item.document_title
-	      + '<br/><span style="color:#AAAAAA">' + formatDate(item.dt_modified)
+	      + '<br/><span>' + formatDate(item.dt_modified)
 	      + '</span></td></tr>';
 	  });
 	  content +='</tbody>';
