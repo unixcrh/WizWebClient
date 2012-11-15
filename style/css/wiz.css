@@ -32,6 +32,16 @@ input, button, select, textarea, ul, li {
 	font-size: 100%;
 }
 
+ul, menu, dir {
+	display: block;
+	list-style-type: none;
+	-webkit-margin-before: 0;
+	-webkit-margin-after: 0;
+	-webkit-margin-start: 0;
+	-webkit-margin-end: 0;
+	-webkit-padding-start: 40;
+}
+
 /*隐藏默认的，自己设置*/
 input[type="checkbox"], body:not(.IE_M9) input[type="radio"] {
 	opacity: 0.8;
@@ -143,9 +153,11 @@ input[type="checkbox"], body:not(.IE_M9) input[type="radio"] {
 }
 
 .opacity-layer {
+	width: 100%;
+	height: 100%;
 	opacity: 0;
 	filter: literal("alpha(opacity=0)");
-	z-index: 9999;
+	z-index: 9999999;
 	margin-top: 0px;
 	margin-right: 0px;
 	margin-bottom: 0px;
@@ -157,6 +169,50 @@ input[type="checkbox"], body:not(.IE_M9) input[type="radio"] {
 	position: absolute;
 	left: 0px;
 	top: 0px;
+}
+
+
+/*-------------------------群组入口显示模块---------------------------------*/
+
+.header_group_ct {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 0px;
+	background-color: #1D1D1D;
+	z-index: 999999;
+	display: none;
+	padding: 37px;
+}
+
+.header_group_bg {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	z-index: 10000;
+}
+
+
+.group-list a, .group-list li {
+	width: 120px;
+	height: 120px;
+	display: block;
+	float: left;
+	color: #fff;
+	margin-right: 10px;
+	background: #666;
+	margin-bottom: 6px;
+	top: 2px;
+	left: 2px;
+}
+
+.group-list a:hover {
+	border: 2px solid #325068;
+}
+
+span.img-ct {
+
 }
 
 /*-----------------------------顶部css--------------------------------------*/
@@ -272,7 +328,7 @@ input[type="checkbox"], body:not(.IE_M9) input[type="radio"] {
 
 /*----------------------左侧树------------------------*/
 .content-left{
-	width: 20%;
+	width: 18%;
 	height: 100%;
 	top: 0;
 	left: 0;
@@ -344,14 +400,14 @@ input[type="checkbox"], body:not(.IE_M9) input[type="radio"] {
 
 .content-right{
 	position: absolute;
-	left: 20%;
+	left: 18%;
 	top: 0;
 	right: 0;
 	bottom: 0;
 	min-width: 30em;
 	overflow: hidden;
 	z-index: 3;
-	_width: 80%;
+	_width: 82%;
 	_height: 100%;
 }
 
@@ -368,7 +424,7 @@ input[type="checkbox"], body:not(.IE_M9) input[type="radio"] {
 
 /*-----------------------------文档列表-------------------------------*/
 #left_splitter {
-	left: 20%;
+	left: 18%;
 }
 
 #content_splitter {
@@ -483,6 +539,6 @@ input[type="checkbox"], body:not(.IE_M9) input[type="radio"] {
 	bottom: 0;
 	position: absolute;
 	overflow: hidden;
-	_width: 75%;
+	_width: 70%;
 	_height: 100%;
 }

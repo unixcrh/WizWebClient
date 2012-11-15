@@ -12,6 +12,7 @@ define(function (require, exports, module) {
 	var treeCtrl = require('Wiz/Controller/leftTreeLayout/ztreeController');
 	var searchBoxCtrl = require('Wiz/Controller/leftTreeLayout/searchBoxController');
 	var listCtrl = require('Wiz/Controller/doclistLayout/Controller');
+	var groupCtrl = require('Wiz/Controller/groupHeaderLayout/Controller');
 
 
 	var messageHandler = {
@@ -48,6 +49,8 @@ define(function (require, exports, module) {
 
 				//初始化中间文档列表
 				listCtrl.init(messageHandler);
+
+				groupCtrl.init(messageHandler);
 
 				//右侧内容初始化
 

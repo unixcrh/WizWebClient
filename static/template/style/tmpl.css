@@ -54,5 +54,11 @@
 
 /*---------------------页脚样式---------------------*/
 .ft {
-
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40px;
+  background-image: url(img/ft_bg.gif);
+  background-repeat: repeat-x;
 }
