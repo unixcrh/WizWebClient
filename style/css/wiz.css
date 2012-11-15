@@ -365,41 +365,6 @@ input[type="checkbox"], body:not(.IE_M9) input[type="radio"] {
 	z-index: 5;
 }
 
-.doc-title {
-	text-overflow: ellipsis;
-	overflow: hidden;
-	white-space: nowrap;
-	width: 100%;
-}
-
-.table {
-	overflow: hidden;
-	width: 100%;
-	color: #666;
-	cursor: pointer;
-}
-.table tr {
-	height: 50px;
-	line-height: 150%;
-}
-
-.table tr:hover {
-	background-color: #F3F3F3;
-}
-
-.table tr:active {
-	background-color: #0072C6;
-	color:#FFF6F0;
-}
-
-.CK {
-	vertical-align: top;
-	padding-left: 17px;
-}
-
-.CK div {
-	padding: 5px 10px 0 0;
-}
 
 /*-----------------------------文档列表-------------------------------*/
 #left_splitter {
@@ -407,16 +372,11 @@ input[type="checkbox"], body:not(.IE_M9) input[type="radio"] {
 }
 
 #content_splitter {
-	left: 25%;
+	left: 30%;
 }
-#docList_containner_wrapper {
-	position: absolute;
-	width: 25%;
-	height: 100%;
-	min-width: 120px;
-	overflow-y: scroll;
-	overflow-x: hidden;
-}
+
+
+/*排序模块*/
 .sort-filter-contanier {
 	position: absolute;
 	top: 0;
@@ -436,10 +396,88 @@ input[type="checkbox"], body:not(.IE_M9) input[type="radio"] {
 	background-color: gray;
 }
 
+
+/*文档列表模块*/
+
+#doc_list_containner_wrapper {
+	position: absolute;
+	width: 30%;
+	height: 100%;
+	min-width: 120px;
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+
+.doc-single{
+	vertical-align: top;
+}
+#doc_list_containner {
+	position: relative;
+	top: 50px;
+}
+
+.table {
+	width: 100%;
+	overflow: hidden;
+	clear: both;
+	color: #666;
+	cursor: pointer;
+}
+.table tr, .table td, .table span, .table span a {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.table tr {
+	height: 50px;
+	line-height: 142%;
+}
+
+.table tr:hover {
+	background-color: #F3F3F3;
+}
+
+.table tr.doc-active {
+	background-color: #0072C6;
+	color:#FFF6F0;
+}
+
+.tnd {
+	padding-top: 5px;
+}
+
+.tnd .title span{
+	width: 100%;
+}
+.title a {
+	display: block;
+}
+
+.dt {
+	font-weight: normal!important;
+	font-family: "Segoe UI","Segoe UI Web Regular","Segoe UI Symbol","Helvetica Neue","BBAlpha Sans","S60 Sans",Arial,"sans-serif"!important;
+	padding-left: 15px;
+	float: right;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	font-size: 86%;
+}
+
+.CK {
+	vertical-align: top;
+	padding-left: 17px;
+	width: 23px;
+}
+
+.CK div {
+	padding: 5px 10px 0 0;
+}
+
+
 /*----------------------右侧文档内容-------------------*/
 .content-center {
 	min-width: 10%;
-	left: 25%;
+	left: 30%;
 	top: 0;
 	right: 0;
 	bottom: 0;

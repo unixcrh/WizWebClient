@@ -108,6 +108,7 @@ define(function (require, exports, module) {
 				}
 			});
 
+			console.log(treeObj);
 			treeObj.addNodes(treeNode, respList, true);
 			treeNode.bLoading = true;
 		} 
@@ -132,7 +133,6 @@ define(function (require, exports, module) {
 
 		function initTree(id) {
 			treeObj =zTree.init($('#' + id), setting, zNodesObj);
-
 			var treeElem = $('#' + id);
 			treeElem.hover(function () {
 				if (!treeElem.hasClass("showIcon")) {

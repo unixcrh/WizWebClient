@@ -47,7 +47,7 @@ define(function (require, exports, module) {
 				treeCtrl.init('leftTree', messageHandler);
 
 				//初始化中间文档列表
-				// listCtrl.init();
+				listCtrl.init(messageHandler);
 
 				//右侧内容初始化
 
@@ -66,7 +66,7 @@ define(function (require, exports, module) {
 		var leftSplitter = new Splitter();
 		var rightSplitter = new Splitter();
 		leftSplitter.init({left: 'leftTree_container', right: 'content_container', 'splitter': 'left_splitter'});
-		rightSplitter.init({left: 'docList_containner_wrapper', right: 'doc_detail', 'splitter': 'content_splitter'});
+		rightSplitter.init({left: 'doc_list_containner_wrapper', right: 'doc_detail', 'splitter': 'content_splitter'});
 	}
 
 	//显示文档列表

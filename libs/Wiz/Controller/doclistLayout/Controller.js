@@ -1,39 +1,87 @@
 define(function (require, exports, module) {
-	function renderList(docList) {
-		console.log('DocList.renderList() ');
-		console.log(docList);
-		renderDocsList(null, null, docList);
-	}
+	var _messageCenter = null,
+		_node = {
+			tableId: 'doc_list',
+			trClass: 'doc-single',
+			inputId: 'doc-check',
+			containerId: 'doc_list_containner'
+		},
+		_action = {
+			active: 'doc-active'
+		},
+		_event = {
+			CLICK: 'doc_click'
+		},
+		_data = {
+			docList: null
+		};
 
-	/**
-	 * 展示文档列表
-	 */
-	function renderDocsList(kbGuid,tagGuid,docs){
-	  var docList = $('#docList_containner');  
-	  if(docs.length == 0){
-	    return ;
-	  }
 
-	  var content = '<table id="doclist" class="table table-striped" cellspacing="0" cellpadding="0" unselectable="on">';
-	  content += '<tbody>';
-	  $.each(docs,function(i,item){
-	    content += '<tr><td class="CK"><div><input type="checkbox"></div></td><td class="doc-title" >' 
-	      + item.document_title
-	      + '<br/><span>' + formatDate(item.dt_modified)
-	      + '</span></td></tr>';
-	  });
-	  content +='</tbody>';
-	  content +='</table>';
-	  docList.empty().append(content);
-	}
-
+	// 格式化日期
 	function formatDate(dateStr) {
 		var date = new Date(dateStr);
 		return date.toLocaleDateString();
 	}
 
+	function initHandler() {
+		var doc = $('#' + _node.containerId);
+		doc.delegate('tr', 'click', function (evt) {
+			evt = evt || window.event;
+			$('.' + _action.active).removeClass(_action.active);
+			var curTarget = $(evt.currentTarget);
+			curTarget.addClass(_action.active);
+		});
+		doc.delegate('tr', 'mouseup', function (evt) {
+			evt = evt || window.event;
+			$('.' + _action.active).removeClass(_action.active);
+			var curTarget = $(evt.currentTarget);
+			curTarget.addClass(_action.active);
+		})
+	}
+
+	
+
+	function View(id) {
+		var _containerId = id;
+
+		function renderList (docs) {
+			console.log(docs);
+		  var docList = $('#' + _containerId);  
+		  if(docs.length == 0){
+		    return ;
+		  }
+
+		  var content = '<table id="'
+		  		+ _node.tableId 
+		  		+'" class="table table-striped" cellspacing="0" cellpadding="0" unselectable="on">';
+		  content += '<tbody>';
+		  $.each(docs,function(i,doc){
+		    content += '<tr class = ' 
+		    	+ _node.trClass
+		    	+ ' id=' + doc.document_guid 
+		    	+ '><td class="CK"><div><input type="checkbox"></div></td><td class="info"><div class="tnd"><div class="dt"><span><a><span>' + formatDate(doc.dt_modified)
+		      + '</span></a></span></div><div class="title"><span><a>' 
+		      + doc.document_title
+		      + '</a></span></div></div><div></div></td></tr>';
+		  });
+		  content +='</tbody>';
+		  content +='</table>';
+		  docList.empty().append(content);
+		  _data.docList = docs;
+		}
+		this.renderList = renderList;
+	}
+	
+	function init(messageCenter) {
+		console.log('docList Controller init');
+		_messageCenter = messageCenter;
+		initHandler();
+	}
+
+	var view = new View(_node.containerId);
 	//接口
 	return {
-		show: renderList
+		show: view.renderList,
+		init: init
 	}
 });
