@@ -1,16 +1,59 @@
+html, body {
+  margin: 0;
+  font-family: "Microsoft Yahei",Verdana,Simsun,"Segoe UI","Segoe UI Web Regular","Segoe UI Symbol","Helvetica Neue","BBAlpha Sans","S60 Sans",Arial,"sans-serif";
+  color: #000;
+  background-color: #fff;
+  background-image: none;
+  background-repeat: repeat;
+  background-position: top left;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+}
 
+body {
+  overflow: scroll;
+}
+
+h1 {
+  -webkit-margin-before: 0;
+  -webkit-margin-after: 0;
+  -webkit-margin-start: 0;
+  -webkit-margin-end: 0px;
+}
+ul, menu, dir {
+  display: block;
+  list-style-type: none;
+  -webkit-margin-before: 0;
+  -webkit-margin-after: 0;
+  -webkit-margin-start: 0;
+  -webkit-margin-end: 0;
+  -webkit-padding-start: 0;
+}
 
 /*---------------------顶部样式---------------------*/
 .hd {
 	position: fixed;
+  background-color: #0072c6;
 	width: 100%;
 	height: 94px;
-
+  z-index: 9999; 
 }
 
+.hd-box {
+  position: relative;
+  padding: 20px 18%;
+  height: 48px;
+  white-space: nowrap;
+}
+
+.logo {
+  display: inline-block;
+}
 .nav-ct {
-	height: 88px;
-  background-color: #0072c6;
+  display: inline-block;
+  position: relative;
+  top: -10px;
+  left: 50px;
   /*background-image: -moz-linear-gradient(top, #1967A4, #189FCF);*/
   /*background-image: -ms-linear-gradient(top, #1967A4, #189FCF);*/
   /*background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#1967A4), to(#189FCF));*/
@@ -18,6 +61,26 @@
   /*background-image: -o-linear-gradient(top, #1967A4, #189FCF);*/
   /*background-image: linear-gradient(top, #1967A4, #189FCF);*/
   /*background-repeat: repeat-x;*/
+}
+.nav {
+  white-space: nowrap;
+}
+.nav a {
+  color: #FFF;
+  font-weight: bolder;
+  text-decoration: none;
+}
+
+.nav li {
+  padding: 0 50px;
+}
+
+.nav a:hover{
+  text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 40px #ff00de, 0 0 70px #ff00de;
+}
+
+.nav>li{
+  display:inline-block;
 }
 
 .split {
@@ -31,8 +94,9 @@
 /*---------------------内容样式---------------------*/
 .bd {
 	position: relative;
+  padding-top: 94px;
+  padding-bottom: 30px;
 	width: 100%;
-	top: 94px;
 }
 
 .outline {
@@ -48,17 +112,43 @@
 }
 
 .main-content {
-
 }
 
+.content {
+  position: relative;
+  padding: 0 20%;
+}
 
 /*---------------------页脚样式---------------------*/
 .ft {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 40px;
+  height: 264px;
+  zoom: 1;
   background-image: url(img/ft_bg.gif);
-  background-repeat: repeat-x;
+  background-repeat: repeat;
+  z-index: 9999;
+  position: relative;
+}
+
+
+
+/*页脚装饰*/
+.decorate {
+  width: 80%;
+  position: relative;
+  left: 10%;
+}
+.decorate div {
+  height: 25px;
+}
+.above {
+  position: relative;
+  background-image: url(img/above.png);
+  background-repeat: no-repeat;
+  top: -50px;
+}
+
+.below {
+  position: relative;
+  background-image: url(img/below.png);
+  background-repeat: no-repeat;
 }
