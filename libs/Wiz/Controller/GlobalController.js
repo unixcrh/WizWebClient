@@ -13,6 +13,7 @@ define(function (require, exports, module) {
 	var searchBoxCtrl = require('Wiz/Controller/leftTreeLayout/searchBoxController');
 	var listCtrl = require('Wiz/Controller/doclistLayout/Controller');
 	var groupCtrl = require('Wiz/Controller/headLayout/groupEntryController');
+	var headCtrl = require('Wiz/Controller/headLayout/headController');
 
 
 	var messageHandler = {
@@ -41,6 +42,7 @@ define(function (require, exports, module) {
 				//首先加载为私人库
 				context.kbGuid = data.user_info.kb_guid;
 				//顶部功能初始化
+				headCtrl.init(data.user_info, messageHandler);
 				//
 				//搜索栏初始化
 				searchBoxCtrl.init(messageHandler);

@@ -211,10 +211,6 @@ input[type="checkbox"], body:not(.IE_M9) input[type="radio"] {
 	border: 2px solid #325068;
 }
 
-span.img-ct {
-
-}
-
 /*-----------------------------顶部css--------------------------------------*/
 .header_container {
 	height: 40px;
@@ -289,15 +285,35 @@ span.img-ct {
 	top: 17px;
 	vertical-align: top;
 }
-.u-hd-ct {
+
+
+/*顶部右侧*/
+.header-right {
+	padding-right: 10px;
+}
+.hd-ct {
 	display: inline-block;
 	height: 40px;
 }
 
-.u-hd {
+.hd-ct a {
+	height: 30px;
+	padding-top: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+
+/*页面设置模块*/
+.setting-hd-ct {
 	display: inline-block;
 	height: 40px;
-	top: 0;
+}
+
+
+.u-hd {
+	display: inline-block;
+	vertical-align: top;
 }
 .u-menu {
 	display: inline-block;
@@ -309,9 +325,14 @@ span.img-ct {
 	overflow: hidden;
 }
 
-.u-img {
-	display: inline;
+.u-img{
+	display: inline-block;
 }
+.u-img img {
+	height: 20px;
+	width: 20px;
+}
+
 
 
 /*--------------------------------------------------------*/
