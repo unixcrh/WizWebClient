@@ -30,6 +30,8 @@ define(function (require, exports, module) {
 			$('.' + _action.active).removeClass(_action.active);
 			var curTarget = $(evt.currentTarget);
 			curTarget.addClass(_action.active);
+			console.log(this.id);
+			requestDocumentBody(this.id);
 		});
 		doc.delegate('tr', 'mouseup', function (evt) {
 			evt = evt || window.event;
@@ -39,6 +41,10 @@ define(function (require, exports, module) {
 		})
 	}
 
+
+	function requestDocumentBody(docGuid) {
+		_messageCenter.requestDocumentBody(docGuid);
+	}
 	
 
 	function View(id) {

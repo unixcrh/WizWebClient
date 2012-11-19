@@ -17,7 +17,8 @@ define(function (require, exports, module) {
 
 
 	var messageHandler = {
-		requestDocList: requestDocList
+		requestDocList: requestDocList,
+		requestDocumentBody: requestDocumentBody
 	};
 
 	//整个页面的初始化
@@ -96,6 +97,17 @@ define(function (require, exports, module) {
 		};
 		remote.getDocumentList(context.kbGuid, params, callback, callError);
 	}
+
+	function requestDocumentBody(docGuid) {
+		var callback = function (data) {
+			console.log(data);
+		};
+		var callError = function (error) {
+			console.error(error);
+		}
+		remote.getDocumentBody(context.kbGuid, docGuid, callback , callError);
+	}
+
 
 	return {
 		init: init

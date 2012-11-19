@@ -112,6 +112,14 @@ define(function(require, exports, module) {
 			requestParams.kbGuid = kbGuid;
 			sendRequest(constant.api.DOCUMENT_GET_LIST, requestParams, callback, callError);
 		},
+		getDocumentBody: function (kbGuid, docGuid, callback, callError) {
+			var requestParams = getRequestParams();
+			requestParams.kbGuid = kbGuid;
+			requestParams.docGuid = docGuid;
+			requestParams.actionCmd = 'body';
+			console.log(requestParams);
+			sendRequest(constant.api.DOCUMENT_GET_INFO, requestParams, callback, callError);
+		},
 
 		/* 保持登陆状态 */
 		refreshToken: function (callback, callError) {
