@@ -13,7 +13,7 @@ define(function (require, exports, module) {
 			CLICK: 'doc_click'
 		},
 		_data = {
-			docList: null
+			docList: {}
 		};
 
 
@@ -43,7 +43,8 @@ define(function (require, exports, module) {
 
 
 	function requestDocumentBody(docGuid) {
-		_messageCenter.requestDocumentBody(docGuid);
+		var doc = _data.docList[docGuid];
+		_messageCenter.requestDocumentBody(docGuid, doc.version);
 	}
 	
 
@@ -69,11 +70,16 @@ define(function (require, exports, module) {
 		      + '</span></a></span></div><div class="title"><span><a>' 
 		      + doc.document_title
 		      + '</a></span></div></div><div></div></td></tr>';
+
+		      try {
+		  			_data.docList[doc.document_guid] = doc;
+		  		} catch (error) {
+		  			console.log(error);
+		  		}
 		  });
 		  content +='</tbody>';
 		  content +='</table>';
 		  docList.empty().append(content);
-		  _data.docList = docs;
 		}
 		this.renderList = renderList;
 	}

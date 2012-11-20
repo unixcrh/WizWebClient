@@ -35,6 +35,7 @@ define(function (require, exports, module) {
 					window.location.href = constant.url.LOGIN;
 					return;
 				}
+				console.log(data);
 				//开始调用保持在线
 				setInterval(remote.refreshToken, constant.remote.KEEP_ALIVE_TIME_MS);
 
@@ -91,6 +92,7 @@ define(function (require, exports, module) {
 			var errorMsg = 'GlobalController.requestDocList() Error: ' + error;
 			if (console) {
 				console.error(errorMsg);
+				console.log(error);
 			} else {
 				alert(errorMsg);
 			}
@@ -98,14 +100,14 @@ define(function (require, exports, module) {
 		remote.getDocumentList(context.kbGuid, params, callback, callError);
 	}
 
-	function requestDocumentBody(docGuid) {
+	function requestDocumentBody(docGuid, version) {
 		var callback = function (data) {
 			console.log(data);
 		};
 		var callError = function (error) {
 			console.error(error);
 		}
-		remote.getDocumentBody(context.kbGuid, docGuid, callback , callError);
+		remote.getDocumentBody(context.kbGuid, docGuid, version, callback, callError);
 	}
 
 

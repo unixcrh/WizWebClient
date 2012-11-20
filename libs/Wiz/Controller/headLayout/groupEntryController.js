@@ -10,7 +10,7 @@ define(function (require, exports, module) {
 		},
 		_setting = {
 			height: '126px',
-			animate_delay_ms: 200,
+			animate_delay_ms: 200
 		};
 
 	function getJqClassSelector(className) {
@@ -34,6 +34,8 @@ define(function (require, exports, module) {
 			addBackgroundDiv(containerSelector);
 		});
 	}
+
+	function 
 
 	function addBackgroundDiv(containerSelector) {
 		$('body').append('<div class="'+ _node.bgClass + '"></div>');

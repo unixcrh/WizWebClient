@@ -112,11 +112,12 @@ define(function(require, exports, module) {
 			requestParams.kbGuid = kbGuid;
 			sendRequest(constant.api.DOCUMENT_GET_LIST, requestParams, callback, callError);
 		},
-		getDocumentBody: function (kbGuid, docGuid, callback, callError) {
+		getDocumentBody: function (kbGuid, docGuid, version, callback, callError) {
 			var requestParams = getRequestParams();
 			requestParams.kbGuid = kbGuid;
 			requestParams.docGuid = docGuid;
 			requestParams.actionCmd = 'body';
+			requestParams.version = version;
 			console.log(requestParams);
 			sendRequest(constant.api.DOCUMENT_GET_INFO, requestParams, callback, callError);
 		},
