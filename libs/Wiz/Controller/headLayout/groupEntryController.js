@@ -35,8 +35,6 @@ define(function (require, exports, module) {
 		});
 	}
 
-	function 
-
 	function addBackgroundDiv(containerSelector) {
 		$('body').append('<div class="'+ _node.bgClass + '"></div>');
 		// 动态注入的元素，需要加载后再获取选择器对象

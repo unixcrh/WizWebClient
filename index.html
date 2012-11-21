@@ -68,22 +68,50 @@
 			</div>
 				<!-- 左侧树和右侧内容的分割 -->		
 			<div id="left_splitter" class="splitter"></div>
-				<div id="content_container" class="content-right">
-					<div id="doc_list_containner_wrapper">
-						<div id="sort_filter_container" class="sort-filter-contanier">
-							<!-- 排序过滤 -->
-							<div></div>
-							<div class="sort_split"></div>
-						</div>
-						<div id="doc_list_containner">
-							<!-- 文档列表 -->
-						</div>
-						<div class="pagination-containner" ></div>
+			<div id="content_container" class="content-right">
+				<div id="doc_list_containner_wrapper">
+					<div id="sort_filter_container" class="sort-filter-contanier">
+						<!-- 排序过滤 -->
+						<div class="sort_split"></div>
+						<div class="sort-filter-wrapper">排序选择占位</div>
 					</div>
-					<div id="content_splitter" class="splitter"></div>
-					<div id="doc_detail" class="content-center"></div>
+					<div id="doc_list_containner" class="doc-list">
+						<!-- 文档列表 -->
+					</div>
+					<div class="pagination-containner" ></div>
 				</div>
-		</div>
+				<div id="content_splitter" class="splitter"></div>
+				<div class="doc-detail-ct">
+					<div id="doc_params" class="d-params">
+						<div id="doc_params_title" class="params-title bottom-line">
+							<h2>标题</h2>
+						</div>
+						<!-- 显示文档目录和出处链接信息 -->
+						<div class="d-brief-info bottom-line">
+							<span>
+								<span class="d-category-info">
+									<img src="" alt="">
+									<div id="params_category"></div>
+								</span>
+								<span class="d-url-info">
+									<img src="" alt="">
+									<div id="params_url"></div>
+								</span>
+							</span>
+							<div class="show-more">
+								<a href="#" id="showMoreHref"></a>
+							</div>
+						</div>	<!--d-brief-info-->
+
+						<!-- 显示文档相信信息 -->
+						<div class="d_detail_ct"></div>
+
+					</div> <!-- d-params-->
+					<div id="doc_body_ct" class="frame-ct">
+						<iframe src="http://www.wiz.cn/" frameborder="0" id="wiz_doc_frame" scrolling="no" ></iframe>
+					</div>
+				</div>
+			</div>
 		</div>
 		<script type="text/javascript" src="./libs/common/seaJs/sea-debug.js" data-main="./libs/entity/webEntry"></script>
 
