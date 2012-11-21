@@ -14,12 +14,15 @@ define(function (require, exports, module) {
 			listCtrl = require('Wiz/Controller/doclistLayout/Controller'),
 			groupCtrl = require('Wiz/Controller/headLayout/groupEntryController'),
 			headCtrl = require('Wiz/Controller/headLayout/headController'),
+			docViewCtrl = require('Wiz/Controller/docViewLayout/DocView'),
 
 			//负责接收下级controller的消息
 			messageHandler = {
 				requestDocList: requestDocList,
 				requestDocumentBody: requestDocumentBody
-			};
+			},
+
+			_curDoc = null;
 
 	//整个页面的初始化
 	function init() {
@@ -100,14 +103,22 @@ define(function (require, exports, module) {
 		remote.getDocumentList(context.kbGuid, params, callback, callError);
 	}
 
-	function requestDocumentBody(docGuid, version) {
+	function requestDocumentBody(doc) {
+		_curDoc = doc;
 		var callback = function (data) {
+			if (data.code === 200) {
+				//成功获取内容后，开始加载右侧内容
+				_curDoc.document_body = data.body;
+				docViewCtrl.viewDoc(_curDoc);
+			} else {
+
+			}
 			console.log(data);
 		};
 		var callError = function (error) {
 			console.error(error);
 		}
-		remote.getDocumentBody(context.kbGuid, docGuid, version, callback, callError);
+		remote.getDocumentBody(context.kbGuid, doc.document_guid, doc.version, callback, callError);
 	}
 
 

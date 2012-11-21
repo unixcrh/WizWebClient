@@ -44,7 +44,7 @@ define(function (require, exports, module) {
 
 	function requestDocumentBody(docGuid) {
 		var doc = _data.docList[docGuid];
-		_messageCenter.requestDocumentBody(docGuid, doc.version);
+		_messageCenter.requestDocumentBody(doc);
 	}
 	
 
