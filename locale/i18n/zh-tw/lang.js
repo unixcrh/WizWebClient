@@ -1,5 +1,5 @@
 define({
-
+	title: '為知筆記（Wiz）網頁版',
 	//目录相关
 	DefaultCategory : {
 		"Completed": "已完成",

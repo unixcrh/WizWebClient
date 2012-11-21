@@ -1,5 +1,5 @@
 define({
-
+	title: 'WizNote Web',
 	//目录相关
 	DefaultCategory : {
 	  "Completed": "Completed",

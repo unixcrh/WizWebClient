@@ -3,23 +3,23 @@
  */
 
 define(function (require, exports, module) {
-	var GlobalUtil = require('common/util/GlobalUtil');
-	var config = require('config');
-	var context = require('Wiz/context');
-	var constant = require('Wiz/constant');
-	var remote = require('Wiz/remote');
+	var GlobalUtil = require('common/util/GlobalUtil'),
+			config = require('config'),
+			context = require('Wiz/context'),
+			constant = require('Wiz/constant'),
+			remote = require('Wiz/remote'),
 
-	var treeCtrl = require('Wiz/Controller/leftTreeLayout/ztreeController');
-	var searchBoxCtrl = require('Wiz/Controller/leftTreeLayout/searchBoxController');
-	var listCtrl = require('Wiz/Controller/doclistLayout/Controller');
-	var groupCtrl = require('Wiz/Controller/headLayout/groupEntryController');
-	var headCtrl = require('Wiz/Controller/headLayout/headController');
+			treeCtrl = require('Wiz/Controller/leftTreeLayout/ztreeController'),
+			searchBoxCtrl = require('Wiz/Controller/leftTreeLayout/searchBoxController'),
+			listCtrl = require('Wiz/Controller/doclistLayout/Controller'),
+			groupCtrl = require('Wiz/Controller/headLayout/groupEntryController'),
+			headCtrl = require('Wiz/Controller/headLayout/headController'),
 
-
-	var messageHandler = {
-		requestDocList: requestDocList,
-		requestDocumentBody: requestDocumentBody
-	};
+			//负责接收下级controller的消息
+			messageHandler = {
+				requestDocList: requestDocList,
+				requestDocumentBody: requestDocumentBody
+			};
 
 	//整个页面的初始化
 	function init() {
