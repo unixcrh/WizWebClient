@@ -2,7 +2,12 @@ define(function (require, exports, module) {
 
 	var FrameCtrl = require('./FrameController'),
 			_readFrameId = 'wiz_doc_iframe',
-			_curDoc = null;
+			_curDoc = null,
+			// 保存jQuery选择器关键字
+			_selector = {
+				title: 'doc_params_title'
+			},
+			titleElem = document.getElementById(_selector.title);
 
 	function DocView() {
 		//初始化
@@ -10,8 +15,9 @@ define(function (require, exports, module) {
 
 		function viewDoc(doc) {
 			_curDoc = doc;
-
-			console.log(doc.document_body);
+			//显示标题
+			titleElem.innerText = doc.document_title;
+			// 显示内容
 			readFrameCtrl.setHTML(doc.document_body);
 		}
 
