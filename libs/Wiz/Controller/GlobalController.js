@@ -108,10 +108,9 @@ define(function (require, exports, module) {
 		var callback = function (data) {
 			if (data.code === 200) {
 				//成功获取内容后，开始加载右侧内容
-				_curDoc.document_body = data.body;
 				docViewCtrl.viewDoc(_curDoc);
 			} else {
-
+				alert('Get Document Body Error!');
 			}
 			console.log(data);
 		};

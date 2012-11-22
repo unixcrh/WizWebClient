@@ -33,13 +33,14 @@ define(function (require, exports, module) {
 	    }
 		}
 
-		function setHTML(htmlStr) {
+		function setURL(url) {
 			var fdoc = (_frameObj.contentDocument) ? _frameObj.contentDocument
 					: _frameObj.contentWindow.document;//兼容firefox和ie
 
-			fdoc.open("text/html", "replace");
-			fdoc.write(htmlStr);
-			fdoc.close();
+			_frameObj.src = url;
+			// fdoc.open("text/html", "replace");
+			// fdoc.write(htmlStr);
+			// fdoc.close();
 		}
 
 		function getHTML() {
@@ -49,7 +50,7 @@ define(function (require, exports, module) {
 		}
 
 		return {
-			setHTML: setHTML,
+			setUrl: setURL,
 			getHTML: getHTML
 		}
 	}
