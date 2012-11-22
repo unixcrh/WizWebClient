@@ -111,9 +111,40 @@ input[type="checkbox"], body:not(.IE_M9) input[type="radio"] {
   background-position: -1px -599px;
 }
 
-::webkit-scrollbar-button:vertical:increment:disabled {
-	background-color: red;
+
+/*水平滚动条 渐减按钮*/
+::-webkit-scrollbar-button:horizontal:decrement {
+  background-position: 13px -425px;
+  width: 33px;
 }
+
+::-webkit-scrollbar-button:horizontal:decrement:hover {
+	background-color: #DADADA;
+  background-position: 13px -529px;
+}
+
+::-webkit-scrollbar-button:horizontal:decrement:active {
+	background-color: #606060;
+  background-position: 13px -633px;
+}
+
+
+/*水平滚动条 渐增按钮*/
+::-webkit-scrollbar-button:horizontal:increment {
+  background-position: 1px -444px;
+  width: 33px;
+}
+
+::-webkit-scrollbar-button:horizontal:increment:hover {
+	background-color: #DADADA;
+  background-position: 1px -548px;
+}
+
+::-webkit-scrollbar-button:horizontal:increment:active {
+	background-color: #606060;
+  background-position: 1px -652px;
+}
+
 
 
 /*-----------------------------------------*/
