@@ -583,6 +583,11 @@ input[type="checkbox"], body:not(.IE_M9) input[type="radio"] {
 .params-title {
 	padding: 5px 0;
 }
+.params-title h2 {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
 
 .d-brief-info {
 	height: 35px;;
