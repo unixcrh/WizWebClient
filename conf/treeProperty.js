@@ -2,7 +2,6 @@ define(function (require, exports, module) {
 	var DefaultNode = require('locale').DefaultNode;
 
 	var initTreeObj = [{
-		children: [{
 			name: DefaultNode.category,			//显示名称
 			level: 1,																//节点层级	
 			type: 'category',												//子节点类型
@@ -17,19 +16,7 @@ define(function (require, exports, module) {
 			childType: 'tag',
 			isParent: true,
 			parentTag: ''											//父标签的GUID，根标签为''
-		}], 
-		name: DefaultNode.personal,
-		level: 0,
-		open: true
-	},
-	{
-		children: [],
-		name: DefaultNode.group,
-		level: 0,
-		type: 'group',
-		childType: 'tag',
-		isParent: true
-	}];
+		}];
 
 	module.exports = initTreeObj;
 });

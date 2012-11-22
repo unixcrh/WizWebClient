@@ -23,7 +23,7 @@ define(function (require, exports, module) {
 
 	function initialize() {
 		var entrySelector = getJqIdSelector(_node.groupEntryId),
-			containerSelector = getJqClassSelector(_node.containerClass);
+				containerSelector = getJqClassSelector(_node.containerClass);
 
 		entrySelector.css('display', 'inline-block');
 		entrySelector.bind('click',	function (evt){
@@ -39,14 +39,23 @@ define(function (require, exports, module) {
 		$('body').append('<div class="'+ _node.bgClass + '"></div>');
 		// 动态注入的元素，需要加载后再获取选择器对象
 		var bgSelector = getJqClassSelector(_node.bgClass);
-		bgSelector.bind('click', function (evt){
+		var hideContainner = function (evt) {
+			var evt = evt ? evt : window.event,
+					target = evt.srcElement ? evt.srcElement : evt.target;
+			console.log(target.className);
+			if (target.className ==='group-per') {
+				return;
+			}
 			containerSelector.animate({height: '0'}, _setting.animate_delay_ms);
 
 			setTimeout(function(){
 				containerSelector.hide();
 				bgSelector.remove();
 			}, 200);
-		});
+		};
+		bgSelector.bind('click', hideContainner);
+		containerSelector.bind('click', hideContainner);
+
 	}
 
 
@@ -56,7 +65,7 @@ define(function (require, exports, module) {
 		$.each(kbList, function (index, kb) {
 			content = content + '<li><a class ="'
 				+ _node.groupClass
-				+ ' id=' + kb.kb_guid
+				+ '" id="' + kb.kb_guid
 				+ '"><span></span><span>'
 				+ kb.kb_name
 				+ '</span></a></li>';

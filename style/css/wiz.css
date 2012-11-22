@@ -214,29 +214,35 @@ input[type="checkbox"], body:not(.IE_M9) input[type="radio"] {
 /*-------------------------群组入口显示模块---------------------------------*/
 
 .header_group_ct {
-	position: absolute;
-	top: 0;
+	position: fixed;
+	top: 0px;
 	left: 0;
 	right: 0;
 	height: 0px;
 	background-color: #1D1D1D;
-	z-index: 999999;
+	z-index: 10001;
 	display: none;
 	padding: 37px;
 }
 
 .header_group_bg {
-	position: fixed;
+	position: relative;
 	width: 100%;
 	height: 100%;
 	z-index: 10000;
 }
-
+.group-list {
+	position: relative;
+	height: 120px;
+	left: 0;
+	right: 0;
+	overflow: hidden;
+	white-space: nowrap;
+}
 
 .group-list a, .group-list li {
 	width: 120px;
 	height: 120px;
-	display: block;
 	float: left;
 	color: #fff;
 	margin-right: 10px;
@@ -249,7 +255,6 @@ input[type="checkbox"], body:not(.IE_M9) input[type="radio"] {
 .group-list a:hover {
 	border: 2px solid #325068;
 }
-
 /*-----------------------------顶部css--------------------------------------*/
 .header_container {
 	height: 40px;

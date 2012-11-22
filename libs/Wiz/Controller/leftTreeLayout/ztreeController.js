@@ -114,10 +114,10 @@ define(function (require, exports, module) {
 		} 
 
 		function zTreeOnClick(event, treeId, treeNode) {
-			if (treeNode.level === 0 || treeNode.level === 1) {
+			if (treeNode.level === 0) {
 				treeObj.expandNode(treeNode);
 				zTreeOnExpand(event, treeId, treeNode);
-			} else if (treeNode.level > 1) {
+			} else if (treeNode.level > 0) {
 				messageCenter.requestDocList(getParamsFromTreeNode(treeNode));
 			}
 		}
