@@ -358,6 +358,7 @@ input[type="checkbox"], body:not(.IE_M9) input[type="radio"] {
 .u-hd {
 	display: inline-block;
 	vertical-align: top;
+	float: left;
 }
 .u-menu {
 	display: inline-block;
