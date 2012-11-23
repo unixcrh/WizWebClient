@@ -14,14 +14,11 @@ define(function (require, exports, module) {
 		},
 		_data = {
 			docList: {}
-		};
+		},
+		GlobalUtil = require('common/util/GlobalUtil');
 
 
-	// 格式化日期
-	function formatDate(dateStr) {
-		var date = new Date(dateStr);
-		return date.toLocaleDateString();
-	}
+	
 
 	function initHandler() {
 		var doc = $('#' + _node.containerId);
@@ -66,7 +63,7 @@ define(function (require, exports, module) {
 		    content += '<tr class = ' 
 		    	+ _node.trClass
 		    	+ ' id=' + doc.document_guid 
-		    	+ '><td class="CK"><div><input type="checkbox"></div></td><td class="info"><div class="tnd"><div class="dt"><span><a><span>' + formatDate(doc.dt_modified)
+		    	+ '><td class="CK"><div><input type="checkbox"></div></td><td class="info"><div class="tnd"><div class="dt"><span><a><span>' + GlobalUtil.formatDate(doc.dt_modified)
 		      + '</span></a></span></div><div class="title"><span><a>' 
 		      + doc.document_title
 		      + '</a></span></div></div><div></div></td></tr>';

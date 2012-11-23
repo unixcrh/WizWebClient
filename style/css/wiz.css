@@ -543,7 +543,7 @@ input[type="checkbox"], body:not(.IE_M9) input[type="radio"] {
 	color: #666;
 	cursor: pointer;
 }
-.table tr, .table td, .table span{
+.table tr, .table td, .title {
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
@@ -564,15 +564,6 @@ input[type="checkbox"], body:not(.IE_M9) input[type="radio"] {
 
 .tnd {
 	padding-top: 5px;
-	width: 100%;
-}
-
-.title {
-	overflow: hidden;
-	text-overflow: ellipsis;
-	white-space: nowrap;
-}
-.tnd .title span{
 	width: 100%;
 }
 .dt {
