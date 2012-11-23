@@ -500,10 +500,7 @@ input[type="checkbox"], body:not(.IE_M9) input[type="radio"] {
 
 /*排序模块*/
 .sort-filter-contanier {
-	position: absolute;
-	top: 0;
-	right: 0px;
-	left: 0;
+	display: block;
 	height: 50px;
 	margin-bottom: 1px;
 	z-index: 999;
@@ -539,19 +536,14 @@ input[type="checkbox"], body:not(.IE_M9) input[type="radio"] {
 .doc-single{
 	vertical-align: top;
 }
-#doc_list_containner {
-	position: relative;
-	top: 50px;
-}
 
 .table {
 	width: 100%;
-	overflow: hidden;
-	clear: both;
+	table-layout: fixed;
 	color: #666;
 	cursor: pointer;
 }
-.table tr, .table td, .table span, .table span a {
+.table tr, .table td, .table span{
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
@@ -572,15 +564,17 @@ input[type="checkbox"], body:not(.IE_M9) input[type="radio"] {
 
 .tnd {
 	padding-top: 5px;
+	width: 100%;
 }
 
+.title {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
 .tnd .title span{
 	width: 100%;
 }
-.title a {
-	display: block;
-}
-
 .dt {
 	font-weight: normal!important;
 	font-family: "Segoe UI","Segoe UI Web Regular","Segoe UI Symbol","Helvetica Neue","BBAlpha Sans","S60 Sans",Arial,"sans-serif"!important;

@@ -14,7 +14,6 @@ define(function (require, exports, module) {
 		// 'use strict';
 		var setting = {
 			view : {
-				dblClickExpand : dblClickExpand,
 				showLine : false,
 				selectedMulti : false,
 				showIcon: false,
@@ -29,16 +28,13 @@ define(function (require, exports, module) {
 			},
 			callback : {
 				onClick : zTreeOnClick,
-				onExpand: zTreeOnExpand
+				onExpand: zTreeOnExpand,
+				onRightClick: zTreeOnRightClick
 			}
 
 		},
 			zNodesObj = treeProterty;
 
-
-		function dblClickExpand(treeId, treeNode) {
-
-		}
 
 		function addDiyDom(treeId, treeNode) {
 			var spaceWidth = 10;
@@ -55,6 +51,13 @@ define(function (require, exports, module) {
 		function showIconForTree(treeId, treeNode) {
 			return treeNode.level !== 0;
 		};
+
+
+		function zTreeOnRightClick(event, treeId, treeNode) {
+			event.preventDefault();
+			event.returnValue = false;
+			console.log(event);
+		}
 
 		function zTreeOnExpand(event, treeId, treeNode) {
 			//bLoading参数为了防止多次加载同1数据
@@ -141,6 +144,9 @@ define(function (require, exports, module) {
 			}, function() {
 				treeElem.removeClass("showIcon");
 			});
+
+			// $("#leftTree_1_a").offset( {left:10});
+			// $("#leftTree_2_a").offset( {left:10});
 		}
 
 		/**

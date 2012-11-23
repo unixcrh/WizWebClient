@@ -38,9 +38,6 @@ define(function (require, exports, module) {
 					: _frameObj.contentWindow.document;//兼容firefox和ie
 
 			_frameObj.src = url;
-			// fdoc.open("text/html", "replace");
-			// fdoc.write(htmlStr);
-			// fdoc.close();
 		}
 
 		function getHTML() {
