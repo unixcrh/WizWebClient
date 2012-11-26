@@ -8,6 +8,7 @@ define(function (require, exports, module) {
 			context = require('Wiz/context'),
 			constant = require('Wiz/constant'),
 			remote = require('Wiz/remote'),
+			loadCtrl = require('component/loading'),
 
 			treeCtrl = require('Wiz/Controller/leftTreeLayout/ztreeController'),
 			searchBoxCtrl = require('Wiz/Controller/leftTreeLayout/searchBoxController'),
@@ -18,11 +19,71 @@ define(function (require, exports, module) {
 
 			//负责接收下级controller的消息
 			messageHandler = {
-				requestDocList: requestDocList,
-				requestDocumentBody: requestDocumentBody
+				// 显示文档列表
+				requestDocList: function (params) {
+					showLoading();
+					
+					var callError = function (error) {
+						var errorMsg = 'GlobalController.requestDocList() Error: ' + error;
+						if (console) {
+							console.error(errorMsg);
+							console.log(error);
+						} else {
+							alert(errorMsg);
+						}
+					};
+					remote.getDocumentList(context.kbGuid, params, messageDistribute.showDocList, callError);
+				},
+				// 加载文档内容
+				requestDocumentBody: function (doc) {
+					showLoading();
+					// 记录当前显示的文档信息
+					_curDoc = doc;
+					var callError = function (error) {
+						console.error(error);
+					}
+					remote.getDocumentBody(context.kbGuid, doc.document_guid, doc.version, messageDistribute.showDoc, callError);
+				}
 			},
+			// 负责向各控制器发送消息
+			messageDistribute = {
+				showDocList: function (data) {
+					hideLoading();
+					if (data.code == '200' && data.list) {
+						listCtrl.show(data.list);
+					} else {
+						// TODO 错误处理
+					}
+				},
+				showDoc: function (data) {
+					hideLoading();
+					if (data.code === 200) {
+						//成功获取内容后，开始加载右侧内容
+						docViewCtrl.viewDoc(_curDoc);
+					} else {
+						console.error('Get Document Body Error!');
+						console.error(data);
+					}
+				}
+			}
 
 			_curDoc = null;
+
+	/**
+	 * 显示过场动画--在接收到子控制器的消息后触发
+	 * @return {[type]} [description]
+	 */
+	function showLoading() {
+		loadCtrl.show();
+	}
+
+	/**
+	 * 隐藏过场动画--在接受到服务器返回后触发
+	 * @return {[type]} [description]
+	 */
+	function hideLoading() {
+		loadCtrl.hide();
+	}
 
 	//整个页面的初始化
 	function init() {
@@ -83,43 +144,6 @@ define(function (require, exports, module) {
 		leftSplitter.init({left: 'leftTree_container', right: 'content_container', 'splitter': 'left_splitter'});
 		rightSplitter.init({left: 'doc_list_containner_wrapper', right: 'doc_read_area', 'splitter': 'content_splitter'});
 	}
-
-	//显示文档列表
-	function requestDocList(params) {
-		var callback = function (data) {
-			if (data.code == '200' && data.list) {
-				listCtrl.show(data.list);
-			}
-		};
-		var callError = function (error) {
-			var errorMsg = 'GlobalController.requestDocList() Error: ' + error;
-			if (console) {
-				console.error(errorMsg);
-				console.log(error);
-			} else {
-				alert(errorMsg);
-			}
-		};
-		remote.getDocumentList(context.kbGuid, params, callback, callError);
-	}
-
-	function requestDocumentBody(doc) {
-		_curDoc = doc;
-		var callback = function (data) {
-			if (data.code === 200) {
-				//成功获取内容后，开始加载右侧内容
-				docViewCtrl.viewDoc(_curDoc);
-			} else {
-				alert('Get Document Body Error!');
-			}
-			console.log(data);
-		};
-		var callError = function (error) {
-			console.error(error);
-		}
-		remote.getDocumentBody(context.kbGuid, doc.document_guid, doc.version, callback, callError);
-	}
-
 
 	return {
 		init: init

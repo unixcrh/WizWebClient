@@ -55,6 +55,12 @@ input[type="checkbox"], body:not(.IE_M9) input[type="radio"] {
 	opacity: 0.8;
 }
 
+
+ /* 默认不显示的元素class */
+.hidden {
+	display: none;
+}
+
 /*------------------webkit专有属性------------------------*/
 ::-webkit-scrollbar {
 	width: 17px;
@@ -256,7 +262,32 @@ input[type="checkbox"], body:not(.IE_M9) input[type="radio"] {
 	border: 2px solid #325068;
 }
 /*-----------------------------顶部css--------------------------------------*/
-.header_container {
+
+
+/* 过场动画 */
+.head-flyingDots-ct {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+}
+
+.head-flyingDots {
+	width: 100%;
+	height: 4px;
+}
+
+.loading-fallback{
+	background-image:url(../images/flyingdots.gif);
+	background-size:100% 4px;
+	height: 4px;
+}
+
+/* 过场动画结束 */
+
+
+.header-container {
 	height: 40px;
 	cursor:auto;
 	background: #0072C6;
@@ -638,3 +669,131 @@ input[type="checkbox"], body:not(.IE_M9) input[type="radio"] {
 	width: 100%;
 	height: 100%;
 }
+
+/* outlook loading */
+
+@-moz-keyframes makedotfly{
+	0%{left:0;-moz-animation-timing-function:cubic-bezier(.01,.55,1,1)}
+	32%{left:40%}
+	62%{left:58%;-moz-animation-timing-function:cubic-bezier(.3,.1,1,1)}
+	80%{left:105%}
+	100%{left:105%}
+}
+
+@-ms-keyframes makedotfly{
+	0%{left:0;-ms-animation-timing-function:cubic-bezier(.01,.55,1,1)}
+	32%{left:40%}
+	62%{left:58%;-ms-animation-timing-function:cubic-bezier(.3,.1,1,1)}
+	80%{left:105%}
+	100%{left:105%}
+}
+
+@-webkit-keyframes makedotfly{
+	0%{left:0;-webkit-animation-timing-function:cubic-bezier(.01,.55,1,1)}
+	32%{left:40%}
+	62%{left:58%;-webkit-animation-timing-function:cubic-bezier(.3,.1,1,1)}
+	80%{left:105%}
+	100%{left:105%}
+}
+
+@keyframes makedotfly{
+	0%{left:0;animation-timing-function:cubic-bezier(.01,.55,1,1)}
+	32%{left:40%}
+	62%{left:58%;animation-timing-function:cubic-bezier(.3,.1,1,1)}
+	80%{left:105%}
+	100%{left:105%}
+}
+
+div.c_flyingDots, 
+div.c_loadingTrack {
+	position: absolute;
+	left: 0;
+	top: 0;
+	right: 0;
+	height: 4px;
+}
+div.c_flyingDots, 
+div.c_loadingTrack5 {
+	left: -3%;
+	margin-left: 15px;
+}
+div.c_flyingDots, 
+div.c_loadingTrack4 {
+	left: -6%;
+	margin-left: 30px;
+}
+div.c_flyingDots, 
+div.c_loadingTrack3 {
+	left: -9%;
+	margin-left: 45px;
+}
+div.c_flyingDots, 
+div.c_loadingTrack2 {
+	left: -12%;
+	margin-left: 60px;
+}
+div.c_flyingDots, 
+div.c_loadingTrack1 {
+	left: -15%;
+	margin-left: 75px;
+}
+
+div.c_flyingDots, 
+div.c_loadingTracks {
+	position: absolute;
+	left: 10%;
+	top: 0;
+	right: -15%;
+	bottom: 0;
+}
+div.c_loadingTrack5 div.c_loadingDot {
+	-moz-animation-delay: .9s;
+	-ms-animation-delay: .9s;
+	-webkit-animation-delay: .9s;
+	animation-delay: .9s;
+}
+div.c_loadingTrack4 div.c_loadingDot {
+	-moz-animation-delay: .75s;
+	-ms-animation-delay: .75s;
+	-webkit-animation-delay: .75s;
+	animation-delay: .75s;
+}
+div.c_loadingTrack3 div.c_loadingDot {
+	-moz-animation-delay: .6s;
+	-ms-animation-delay: .6s;
+	-webkit-animation-delay: .6s;
+	animation-delay: .6s;
+}
+div.c_loadingTrack2 div.c_loadingDot {
+		-moz-animation-delay: .45s;
+		-ms-animation-delay: .45s;
+		-webkit-animation-delay: .45s;
+		animation-delay: .45s;
+}
+div.c_loadingTrack1 div.c_loadingDot {
+	-moz-animation-delay: .3s;
+	-ms-animation-delay: .3s;
+	-webkit-animation-delay: .3s;
+	animation-delay: .3s;
+}
+div.c_flyingDots.c_dotsPlaying,
+div.c_loadingDot {
+	-moz-animation: makedotfly 3.3s linear .1s infinite normal;
+	-ms-animation: makedotfly 3.3s linear 0 infinite normal;
+	-webkit-animation: makedotfly 3.3s linear 0 infinite normal;
+	animation: makedotfly 3.3s linear 0 infinite normal;
+}
+div.c_flyingDots,
+div.c_loadingDot {
+	width: 4px;
+	height: 4px;
+	border-radius: 6px;
+	background-color: #fff;
+}
+div.c_loadingDots,
+div.c_loadingDot {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+}
+/* outlook loading */
