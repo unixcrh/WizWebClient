@@ -59,11 +59,21 @@ define(function (require, exports, module) {
 			console.log(event);
 		}
 
+		function loadingNode(treeNode) {
+			var switchIconId = treeNode.tId + '_switch';
+			$('#' + switchIconId).addClass('ico_loading');
+		}
+		function loadedNode(treeNode) {
+			var switchIconId = treeNode.tId + '_switch';
+			$('#' + switchIconId).removeClass('ico_loading');
+		}
+
 		function zTreeOnExpand(event, treeId, treeNode) {
-			//bLoading参数为了防止多次加载同1数据
+			//bLoading参数为了防止多次加载同一数据
  			if (treeNode.bLoading) {
  				return;
  			}
+ 			loadingNode(treeNode);
 			//获取到当前的kb_guid
 			var kbGuid = treeNode.kb_guid ? treeNode.kb_guid : context.userInfo.kb_guid;
 			if ('category' === treeNode.type) {
@@ -90,6 +100,7 @@ define(function (require, exports, module) {
 		 * @param {object} treeNode 当前的节点
 		 */
 		function addChildToNode(respList, treeNode) {
+			loadedNode(treeNode);
 			if (!respList) {
 				return;
 			}

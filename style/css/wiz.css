@@ -577,10 +577,15 @@ input[type="checkbox"], body:not(.IE_M9) input[type="radio"] {
 	font-size: 86%;
 }
 
+.info {
+	padding: 0 5px;
+}
+
 .CK {
 	vertical-align: top;
 	padding-left: 17px;
 	width: 23px;
+	display: none;/*暂时先隐藏该功能，以后编辑版本的时候再显示 2012-11-26 * lsl*/
 }
 
 .CK div {

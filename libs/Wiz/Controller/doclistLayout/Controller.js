@@ -60,11 +60,11 @@ define(function (require, exports, module) {
 		  		+'" class="table table-striped" cellspacing="0" cellpadding="0" unselectable="on">';
 		  content += '<tbody>';
 		  $.each(docs,function(i,doc){
-		    content += '<tr class = ' 
+		    content += '<tr class = '
 		    	+ _node.trClass
-		    	+ ' id=' + doc.document_guid 
+		    	+ ' id=' + doc.document_guid
 		    	+ '><td class="CK"><div><input type="checkbox"></div></td><td class="info"><div class="tnd"><div class="dt"><span><a><span>' + GlobalUtil.formatDate(doc.dt_modified)
-		      + '</span></a></span></div><div class="title"><span><a>' 
+		      + '</span></a></span></div><div class="title"><span><a>'
 		      + doc.document_title
 		      + '</a></span></div></div><div></div></td></tr>';
 
