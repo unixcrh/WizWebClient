@@ -11,8 +11,10 @@ html, body {
 }
 
 body {
-  overflow: scroll;
+  *overflow: hidden;
+  _overflow:scroll;
 }
+
 
 h1 {
   -webkit-margin-before: 0;
@@ -31,6 +33,11 @@ ul, menu, dir {
 }
 
 /*---------------------顶部样式---------------------*/
+/*样式框架：fixed at the top
+ logo&nav-ct "inline-block"
+ these in nav-ct also "inline-block"
+ nav "margin:0"
+ */
 .hd {
 	position: fixed;
   background-color: #0072c6;
@@ -40,7 +47,7 @@ ul, menu, dir {
 }
 
 .hd-box {
-  position: relative;
+  /*position: relative;*/
   padding: 20px 18%;
   height: 48px;
   white-space: nowrap;
@@ -48,12 +55,18 @@ ul, menu, dir {
 
 .logo {
   display: inline-block;
+  *display:inline;
+  *zoom:1;
 }
 .nav-ct {
   display: inline-block;
+  *display:inline;
+  *zoom:1;
+
   position: relative;
-  top: -10px;
+  top:-10px;
   left: 50px;
+  /*margin-top: 10px;*/
   /*background-image: -moz-linear-gradient(top, #1967A4, #189FCF);*/
   /*background-image: -ms-linear-gradient(top, #1967A4, #189FCF);*/
   /*background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#1967A4), to(#189FCF));*/
@@ -64,37 +77,56 @@ ul, menu, dir {
 }
 .nav {
   white-space: nowrap;
+  margin:0;
 }
+
+.nav li {
+  padding: 0 50px;
+  display:inline-block;
+  /*make the li display in-line*/
+  *display:inline; 
+  *zoom:1; 
+}
+
 .nav a {
   color: #FFF;
   font-weight: bolder;
   text-decoration: none;
 }
-
-.nav li {
-  padding: 0 50px;
-}
-
 .nav a:hover{
   text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 40px #ff00de, 0 0 70px #ff00de;
 }
 
-.nav>li{
+/*advanced selector is not supported in low-level browser*/
+/*.nav>li{
   display:inline-block;
-}
+  display:inline-block;
+  *display:inline; 
+  *zoom:1; 
+}*/
 
 .split {
 	height: 4px;
-	background-color: #000;
-	border-top: 1px solid #3F6370;
-	border-bottom: 1px solid #3F6370;
+	background-color: black;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+
+
+	/*border-top: 1px solid rgba(0,0,0,0.2);
+	border-bottom: 1px solid rgba(255,255,255,0.1);*/
+  /*IE6 下默认字体大小12-14，不允许有低于此的div
+  因此可以强制定义字体大小为合适高度*/
+  _font-size: 4px;
+  /*_border:none;*/
 }
 
 
 /*---------------------内容样式---------------------*/
 .bd {
-	position: relative;
-  padding-top: 94px;
+  /*   *position:relative;  解决IE7自动出现灰色滚动条的hack*/
+  padding-top:94px;
+  _padding-top:0px;
+  /*为解决IE6盒模型问题和padding双倍问题而做的hack*/
   padding-bottom: 30px;
 	width: 100%;
 }
@@ -102,6 +134,7 @@ ul, menu, dir {
 .outline {
 	height: 246px;
   background-color: #0072c6;
+  width:100%;
   /*background-image: -moz-linear-gradient(top, #189FCF, #1967A4);*/
   /*background-image: -ms-linear-gradient(top, #189FCF, #1967A4);*/
   /*background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#189FCF), to(#1967A4));*/
@@ -111,12 +144,20 @@ ul, menu, dir {
   /*background-repeat: repeat-x;*/
 }
 
-.main-content {
-}
 
 .content {
-  position: relative;
-  padding: 0 20%;
+  padding:0 20%;
+  *position:relative;
+  scollbar:none;
+}
+.content h1{
+  /*此处的h1继承了上面定义的样式，导致在FF和ie下表现异常
+  特地清除一下*/
+  margin:0;
+  padding:10px 0;
+}
+.content span{
+  display:inline-block;
 }
 
 /*---------------------页脚样式---------------------*/
