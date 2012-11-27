@@ -117,6 +117,14 @@ define(function (require, exports, module){
 				return true;
 			}
 			return false;
+		},
+		// 通过classname获取jquery对象
+		getJqueryObjByClass: function (className) {
+			return $('.' + className);
+		},
+		// 通过id获取jquery对象
+		getJqueryObjById: function (id) {
+			return $('#' + id);
 		}
 	};
 

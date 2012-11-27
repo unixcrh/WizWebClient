@@ -15,22 +15,25 @@ define(function (require, exports, module) {
 		_data = {
 			docList: {}
 		},
-		GlobalUtil = require('common/util/GlobalUtil');
+		GlobalUtil = require('common/util/GlobalUtil'),
+		_containerObj = GlobalUtil.getJqueryObjById(_node.containerId);
 
 
 	
 
 	function initHandler() {
-		var doc = $('#' + _node.containerId);
-		doc.delegate('tr', 'click', function (evt) {
+		if (!_containerObj) {
+			console.error('DocList Controller Error: _containerObj not found.')
+			return;
+		}
+		_containerObj.delegate('tr', 'click', function (evt) {
 			evt = evt || window.event;
 			$('.' + _action.active).removeClass(_action.active);
 			var curTarget = $(evt.currentTarget);
 			curTarget.addClass(_action.active);
-			console.log(this.id);
 			requestDocumentBody(this.id);
 		});
-		doc.delegate('tr', 'mouseup', function (evt) {
+		_containerObj.delegate('tr', 'mouseup', function (evt) {
 			evt = evt || window.event;
 			$('.' + _action.active).removeClass(_action.active);
 			var curTarget = $(evt.currentTarget);
@@ -48,8 +51,10 @@ define(function (require, exports, module) {
 	function View(id) {
 		var _containerId = id;
 
-		function renderList (docs) {
-			console.log(docs);
+		function renderList (docs, bSelectFirst) {
+			// 清空文档
+			flushAll();
+
 		  var docList = $('#' + _containerId);  
 		  if(docs.length == 0){
 		    return ;
@@ -77,14 +82,38 @@ define(function (require, exports, module) {
 		  content +='</tbody>';
 		  content +='</table>';
 		  docList.empty().append(content);
+
+		  // 只有初次加载页面时会触发
+		  if (bSelectFirst) {
+		  	selectFirstNode();
+		  }
 		}
+
+		// 选择文档列表第一个
+		function selectFirstNode() {
+			try {
+				var firstNodeId = document.getElementById(_node.tableId).firstChild.firstChild.id;
+				$('#' + firstNodeId).trigger('click');
+			} catch (error) {
+				// 无需对此处理
+				console.error('Doclist Controller selectFirstNode Error:' + error);
+			}
+		}
+
 		this.renderList = renderList;
 	}
 	
 	function init(messageCenter) {
-		console.log('docList Controller init');
 		_messageCenter = messageCenter;
 		initHandler();
+	}
+
+	// 清空文档列表
+	function flushAll() {
+		var children = _containerObj.chidren;
+		if (children && children.length > 0) {
+			_containerObj.chidren[0].remove();
+		}
 	}
 
 	var view = new View(_node.containerId);

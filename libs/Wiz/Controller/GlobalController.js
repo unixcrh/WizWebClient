@@ -17,11 +17,16 @@ define(function (require, exports, module) {
 			headCtrl = require('Wiz/Controller/headLayout/headController'),
 			docViewCtrl = require('Wiz/Controller/docViewLayout/DocView'),
 
+			// 判断首次加载页面，增加首次加载时默认初始化功能
+			_bFirst = true,
+
 			//负责接收下级controller的消息
 			messageHandler = {
 				// 显示文档列表
 				requestDocList: function (params) {
+					// 显示加载动画
 					showLoading();
+					// 清空当前文档列表
 					
 					var callError = function (error) {
 						var errorMsg = 'GlobalController.requestDocList() Error: ' + error;
@@ -49,8 +54,9 @@ define(function (require, exports, module) {
 			messageDistribute = {
 				showDocList: function (data) {
 					hideLoading();
+					// 首次加载，默认选择文档第一项
 					if (data.code == '200' && data.list) {
-						listCtrl.show(data.list);
+						listCtrl.show(data.list, _bFirst);
 					} else {
 						// TODO 错误处理
 					}
@@ -118,12 +124,12 @@ define(function (require, exports, module) {
 				//初始化中间文档列表
 				listCtrl.init(messageHandler);
 
-				
-				remote.getGroupKbList(function (data) {
-					if (data.code === 200) {
-						groupCtrl.init(data.list, messageHandler);
-					}
-				});
+				// v1暂时不上群组功能
+				// remote.getGroupKbList(function (data) {
+				// 	if (data.code === 200) {
+				// 		groupCtrl.init(data.list, messageHandler);
+				// 	}
+				// });
 
 				//右侧内容初始化
 
@@ -133,6 +139,11 @@ define(function (require, exports, module) {
 				//错误处理
 			});
 		}
+	}
+
+	// 初始化页面，自动选择左侧树和文档列表首项
+	function initSelect() {
+
 	}
 
 

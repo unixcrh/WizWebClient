@@ -59,10 +59,13 @@ define(function (require, exports, module) {
 			console.log(event);
 		}
 
+
+		// 节点正在加载中
 		function loadingNode(treeNode) {
 			var switchIconId = treeNode.tId + '_switch';
 			$('#' + switchIconId).addClass('ico_loading');
 		}
+		// 节点加载完成
 		function loadedNode(treeNode) {
 			var switchIconId = treeNode.tId + '_switch';
 			$('#' + switchIconId).removeClass('ico_loading');
@@ -127,6 +130,7 @@ define(function (require, exports, module) {
 			treeNode.bLoading = true;
 		} 
 
+		// 点击事件
 		function zTreeOnClick(event, treeId, treeNode) {
 			if (treeNode.level === 0) {
 				if (treeNode.type === 'keyword') {
@@ -142,7 +146,6 @@ define(function (require, exports, module) {
 
 		/* 从treenode中获取请求的数据		 */
 		function getParamsFromTreeNode(treeNode) {
-			console.log(treeNode);
 			var params = {};
 			params.action_cmd = treeNode.type;
 			params.action_value = treeNode.location ? treeNode.location : treeNode.tag_guid;
@@ -161,9 +164,19 @@ define(function (require, exports, module) {
 			}, function() {
 				treeElem.removeClass("showIcon");
 			});
-
+			// 树加载完成后，默认选择首项
+			setFirstNodeSelectd();
 			// $("#leftTree_1_a").offset( {left:10});
 			// $("#leftTree_2_a").offset( {left:10});
+		}
+
+		function setFirstNodeSelectd() {
+			// 选中第一个节点
+			var nodes = treeObj.getNodes();
+			if (nodes.length>0) {
+				$('#' + nodes[0].tId + '_a').trigger('click');
+				treeObj.selectNode(nodes[0]);
+			}
 		}
 
 		/**
