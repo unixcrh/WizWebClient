@@ -129,8 +129,12 @@ define(function (require, exports, module) {
 
 		function zTreeOnClick(event, treeId, treeNode) {
 			if (treeNode.level === 0) {
-				treeObj.expandNode(treeNode);
-				zTreeOnExpand(event, treeId, treeNode);
+				if (treeNode.type === 'keyword') {
+					messageCenter.requestDocList(getParamsFromTreeNode(treeNode));
+				} else {
+					treeObj.expandNode(treeNode);
+					zTreeOnExpand(event, treeId, treeNode);
+				}
 			} else if (treeNode.level > 0) {
 				messageCenter.requestDocList(getParamsFromTreeNode(treeNode));
 			}
@@ -138,10 +142,12 @@ define(function (require, exports, module) {
 
 		/* 从treenode中获取请求的数据		 */
 		function getParamsFromTreeNode(treeNode) {
+			console.log(treeNode);
 			var params = {};
 			params.action_cmd = treeNode.type;
 			params.action_value = treeNode.location ? treeNode.location : treeNode.tag_guid;
 			params.count = 200;
+			console.log(params);
 			return params;
 		}
 

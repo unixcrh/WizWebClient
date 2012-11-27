@@ -18,6 +18,7 @@ define({
 	},
 	//根节点名称
 	DefaultNode: {
+		'recent': '最近修改',
 		'category': '文件夹',
 		'tag': '标签',
 		'group': '我的群组',

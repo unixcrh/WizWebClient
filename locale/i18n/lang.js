@@ -18,6 +18,7 @@ define({
 	},
 	//根节点名称
 	DefaultNode: {
+		'recent': 'Recent Modified',
 		'category': 'Folders',
 		'tag': 'Tags',
 		'group': 'My Groups',
