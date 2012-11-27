@@ -15,19 +15,24 @@ define(function(require, exports, module) {
 		if (!callError) {
 			callError = alert;
 		}
-		var callSuccess = function (data) {
-			// 统一在发送请求这一层处理，不用每个地方都处理
+
+		// 统一在发送请求这一层处理，不用每个地方都处理
+		var _callSuccess = function (data) {
 			loadCtrl.hide();
 			callback(data);
-		}
+		},
+			_callError = function (error) {
+				loadCtrl.hide();
+				callError(error);
+			};
 		$.ajax({
 			url: apiObj.url,
 			data: data,
 			dateType: 'json',
 			async: apiObj.async,
 			type: apiObj.action,
-			success: callSuccess,
-			error: callError
+			success: _callSuccess,
+			error: _callError
 		});
 	}
 

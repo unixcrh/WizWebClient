@@ -8,7 +8,6 @@ define(function (require, exports, module) {
 			context = require('Wiz/context'),
 			constant = require('Wiz/constant'),
 			remote = require('Wiz/remote'),
-			loadCtrl = require('component/loading'),
 
 			treeCtrl = require('Wiz/Controller/leftTreeLayout/ztreeController'),
 			searchBoxCtrl = require('Wiz/Controller/leftTreeLayout/searchBoxController'),
@@ -24,8 +23,6 @@ define(function (require, exports, module) {
 			messageHandler = {
 				// 显示文档列表
 				requestDocList: function (params) {
-					// 显示加载动画
-					// showLoading();
 					// 清空当前文档列表
 					
 					var callError = function (error) {
@@ -41,7 +38,6 @@ define(function (require, exports, module) {
 				},
 				// 加载文档内容
 				requestDocumentBody: function (doc) {
-					// showLoading();
 					// 记录当前显示的文档信息
 					_curDoc = doc;
 					var callError = function (error) {
@@ -53,7 +49,6 @@ define(function (require, exports, module) {
 			// 负责向各控制器发送消息
 			messageDistribute = {
 				showDocList: function (data) {
-					// hideLoading();
 					// 首次加载，默认选择文档第一项
 					if (data.code == '200') {
 						console.log('date.list' + data.list);
@@ -63,7 +58,6 @@ define(function (require, exports, module) {
 					}
 				},
 				showDoc: function (data) {
-					// hideLoading();
 					if (data.code === 200) {
 						//成功获取内容后，开始加载右侧内容
 						docViewCtrl.viewDoc(_curDoc);
@@ -76,21 +70,6 @@ define(function (require, exports, module) {
 
 			_curDoc = null;
 
-	/**
-	 * 显示过场动画--在接收到子控制器的消息后触发
-	 * @return {[type]} [description]
-	 */
-	function showLoading() {
-		loadCtrl.show();
-	}
-
-	/**
-	 * 隐藏过场动画--在接受到服务器返回后触发
-	 * @return {[type]} [description]
-	 */
-	function hideLoading() {
-		loadCtrl.hide();
-	}
 
 	//整个页面的初始化
 	function init() {
