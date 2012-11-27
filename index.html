@@ -74,6 +74,13 @@
 									</div>
 								</span>
 							</a>
+							<ul class="wiz-menu" id="user_menu">
+								<li>
+									<a href="#" class="wiz-menu-item" tabindex="1" style="zoom: 0;">
+										<span>注销</span>
+									</a>
+								</li>
+							</ul>
 						</span>
 					</div>
 				</div>
@@ -101,9 +108,52 @@
 			<div id="content_container" class="content-right">
 				<div id="doc_list_containner_wrapper">
 					<div id="sort_filter_container" class="sort-filter-contanier">
-						<!-- 排序过滤 -->
-						<div class="sort_split"></div>
-						<div class="sort-filter-wrapper">排序选择占位</div>
+						<span>
+							<!-- 排序过滤 -->
+							<div class="sort-split"></div>
+							<!-- TODO国际化、封装成jQuery插件方式，业余时间做 -->
+							<div class="sort-filter-wrapper">
+								<div class="menu-ct">
+									<a href="#">
+										<span>选择排序方式</span>
+										<img src="style/images/clear.gif" alt="" class="drop-down-small">
+									</a>
+									<ul id="sort_menu" class="wiz-menu">
+										<li>
+											<a href="#" class="wiz-menu-item" tabindex="1" style="zoom: 0;">
+												<span>按创建时间(降序)</span>
+											</a>
+										</li>
+										<li>
+											<a href="#" class="wiz-menu-item" tabindex="1" style="zoom: 0;">
+												<span>按创建时间(升序)</span>
+											</a>
+										</li>
+										<li>
+											<a href="#" class="wiz-menu-item" tabindex="1" style="zoom: 0;">
+												<span>按修改时间(降序)</span>
+											</a>
+										</li>
+										<li>
+											<a href="#" class="wiz-menu-item" tabindex="1" style="zoom: 0;">
+												<span>按修改时间(升序)</span>
+											</a>
+										</li>
+										<li>
+											<a href="#" class="wiz-menu-item" tabindex="1" style="zoom: 0;">
+												<span>按名称(降序)</span>
+											</a>
+										</li>
+										<li>
+											<a href="#" class="wiz-menu-item" tabindex="1" style="zoom: 0;">
+												<span>按名称(升序)</span>
+											</a>
+										</li>
+									</ul>
+								</div>
+							</span>
+						</div>
+
 					</div>
 					<div id="doc_list_containner" class="doc-list">
 						<!-- 文档列表 -->

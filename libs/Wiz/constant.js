@@ -17,7 +17,8 @@ define(function (require, exports, module) {
 	};
 
 	var url = {
-		LOGIN : BASE_URL + '/loginweb_zh_CN.html'
+		LOGIN : BASE_URL + '/loginweb_zh_CN.html',
+		LOGOFF: 'http://service.wiz.cn/wizkm/a/logout?url='
 	};
 
 	//每个API对象属性如下:

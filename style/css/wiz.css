@@ -55,6 +55,11 @@ input[type="checkbox"], body:not(.IE_M9) input[type="radio"] {
 	opacity: 0.8;
 }
 
+.menu-ct >a{
+	color: #000;
+	text-decoration: none;
+	cursor: pointer;
+}
 
  /* 默认不显示的元素class */
 .hidden {
@@ -150,7 +155,7 @@ input[type="checkbox"], body:not(.IE_M9) input[type="radio"] {
 	background-color: #606060;
   background-position: 1px -652px;
 }
-
+/* webkit专用属性 */
 
 
 /*-----------------------------------------*/
@@ -164,6 +169,18 @@ input[type="checkbox"], body:not(.IE_M9) input[type="radio"] {
 	padding: 0;
 	margin: 0;
 }
+
+.drop-down-small {
+	background-image: url(../images/strip_metro_sp2.png);
+	background-position: -35px -10px;
+	width: 9px;
+	height:7px;
+	border: 0;
+	padding: 0;
+	margin: 0;
+	*background-position: -34px -10px;
+}
+
 /*--------------------------------wiz控件------------------------------*/
 /*顶部按钮*/
 .wiz-button {
@@ -173,17 +190,60 @@ input[type="checkbox"], body:not(.IE_M9) input[type="radio"] {
 	background-color: #0264AF;
 }
 
-.wiz-button:active, .wiz-button.active{
+.wiz-button:active,
+.wiz-button.active{
 	background-color: #005897;
 }
 
-.wiz-button, .wiz-button:hover, .wiz-button.hover, .wiz-button:link, .wiz-button:active , .wiz-button.active, .wiz-button:visited {
+.wiz-button,
+.wiz-button:hover,
+.wiz-button.hover,
+.wiz-button:link,
+.wiz-button:active,
+.wiz-button.active,
+.wiz-button:visited{
 	color: white;
 	text-decoration: none;
 	cursor: pointer;
 }
 
+/*--wiz-menubar--*/
 
+.wiz-menu-item{
+	display: block;
+	padding: 0 15px 2px;
+	text-decoration: none;
+	cursor: pointer;
+	text-decoration: none;
+	color: #000;
+	line-height: 28px;
+}
+
+.wiz-menu-item:hover {
+	background-color: #f3f3f3;
+}
+
+.wiz-menu-item:active {
+	background-color: #0072C6;
+	color: #fff;
+}
+.wiz-menu {
+	background: #fff;
+	border: 2px solid #000;
+	position: absolute;
+	visibility: hidden;/* 调试显示 */
+	margin: 0;
+	padding: 5px 0;
+	list-style: none;
+	z-index: 4000001;
+	min-width: 130px;
+	top: 0;
+	left: 0;
+	text-align: left;
+}
+
+
+/*--------------------------wiz插件----------------------------------*/
 
 /*----------------------------------------------*/
 .main-container{
@@ -362,6 +422,14 @@ input[type="checkbox"], body:not(.IE_M9) input[type="radio"] {
 }
 
 
+/*选择排序*/
+.menu-ct {
+	font-size: 88%;
+	padding-top: 15px;
+}
+/*选择排序*/
+
+
 /*顶部右侧*/
 .header-right {
 	padding-right: 10px;
@@ -371,13 +439,18 @@ input[type="checkbox"], body:not(.IE_M9) input[type="radio"] {
 	height: 40px;
 }
 
-.hd-ct a {
+.hd-ct >a {
 	height: 30px;
 	padding-top: 10px;
 	padding-left: 10px;
 	padding-right: 10px;
 }
 
+#user_menu {
+	top: 38px;
+	right: 10px;
+	border-color: #0072C6;
+}
 
 /*页面设置模块*/
 .setting-hd-ct {
@@ -537,7 +610,7 @@ input[type="checkbox"], body:not(.IE_M9) input[type="radio"] {
 	margin-bottom: 1px;
 	z-index: 999;
 }
-.sort_split {
+.sort-split {
 	border-bottom: 1px solid #ccc;
 	margin: 0 20px;
 	clear: both;
@@ -547,6 +620,9 @@ input[type="checkbox"], body:not(.IE_M9) input[type="radio"] {
 
 .sort-filter-wrapper {
 	height: 100%;
+	margin: 0 20px;
+	clear: both;
+	position: relative;
 }
 
 .active {
