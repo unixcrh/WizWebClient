@@ -4,7 +4,9 @@ define(function (require, exports, module) {
 			tableId: 'doc_list',
 			trClass: 'doc-single',
 			inputId: 'doc-check',
-			containerId: 'doc_list_containner'
+			containerId: 'doc_list_containner',
+			sortMenuId: 'sort_menu',
+			sortListId: 'sort_list'
 		},
 		_action = {
 			active: 'doc-active'
@@ -18,6 +20,40 @@ define(function (require, exports, module) {
 		GlobalUtil = require('common/util/GlobalUtil'),
 		_containerObj = GlobalUtil.getJqueryObjById(_node.containerId);
 
+		function bindSortHandler() { 
+			var sortMenuElem = GlobalUtil.getJqueryObjById(_node.sortMenuId),
+					sortListElem = GlobalUtil.getJqueryObjById(_node.sortListId);
+			sortMenuElem.click(function (event) {
+				event = event || window.event;
+				// 阻止默认行为
+				event.preventDefault();
+				event.returnValue = false;
+				var visible = sortListElem.css('visibility');
+				if (visible === 'visible') {
+					sortListElem.css('visibility', 'hidden');
+				} else {
+					var top = document.getElementById(_node.sortMenuId).offsetTop + sortMenuElem.height();
+					console.log(top);
+					sortListElem.css('top', top + 'px');
+					sortListElem.css('visibility', 'visible');
+				}
+			});
+
+			// 绑定menu list事件
+			var cmdLinkList = sortListElem.children('li').children('a'),
+					listLength = cmdLinkList.length;
+			for(var index=0; index < listLength; index ++) {
+				var cmdLink = cmdLinkList[index];
+				cmdLink.onclick = function (event) {
+					sortListElem.css('visibility', 'hidden');
+					event = event || window.event;
+					event.preventDefault();
+					// event.returnValue = false;
+					
+					// ie6下无反应
+				}
+			}
+		}
 
 	
 
@@ -39,6 +75,8 @@ define(function (require, exports, module) {
 			var curTarget = $(evt.currentTarget);
 			curTarget.addClass(_action.active);
 		})
+		// 绑定排序功能事件
+		bindSortHandler();
 	}
 
 
@@ -87,6 +125,10 @@ define(function (require, exports, module) {
 		  if (bSelectFirst) {
 		  	selectFirstNode();
 		  }
+		}
+
+		function showDocList() {
+
 		}
 
 		// 选择文档列表第一个

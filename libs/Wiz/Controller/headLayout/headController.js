@@ -33,14 +33,6 @@ define(function (require, exports, module) {
 						userMenuListElem.css('visibility', 'visible');
 					}
 				});
-				userInfoElem.blur(function(event) {
-
-					console.log('userInfoElem blur');
-					event = event || window.event;
-					event.preventDefault();
-					event.returnValue = false;
-					userInfoElem.css('visibility', 'hidden');
-				});
 
 				// 绑定menu list事件
 				var cmdLinkList = userMenuListElem.children('li').children('a'),
