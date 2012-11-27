@@ -100,7 +100,6 @@ ul.ztree.zTreeDragUL {margin:0; padding:0; position:absolute; width:auto; height
 .ztree li span.button.switch {width: 16px;height: 16px;}
 
 .ztree li a.level0 span {font-size: 150%;}
-.ztree li a.level1 span {font-size: 120%;}
 .ztree li span.button {background-image:url("../images/left_menuForOutLook.png"); *background-image:url("../images/left_menuForOutLook.gif")}
 .ztree li span.button.switch.level0 {width: 20px; height:20px}
 .ztree li span.button.switch.level1 {width: 20px; height:20px}
