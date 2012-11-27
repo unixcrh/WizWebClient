@@ -170,15 +170,24 @@ input[type="checkbox"], body:not(.IE_M9) input[type="radio"] {
 	margin: 0;
 }
 
-.drop-down-small {
+.drop-down-small,
+.sort-item-selected {
 	background-image: url(../images/strip_metro_sp2.png);
-	background-position: -35px -10px;
-	width: 9px;
-	height:7px;
 	border: 0;
 	padding: 0;
 	margin: 0;
 	*background-position: -34px -10px;
+}
+
+.drop-down-small {
+	background-position: -35px -10px;
+	width: 9px;
+	height:7px;
+}
+.sort-item-selected {
+	width: 8px;
+	height: 11px;
+	background-position: -35px -155px;
 }
 
 /*--------------------------------wiz控件------------------------------*/
@@ -211,7 +220,7 @@ input[type="checkbox"], body:not(.IE_M9) input[type="radio"] {
 
 .wiz-menu-item{
 	display: block;
-	padding: 0 15px 2px;
+	padding: 0 15px 2px 7px;
 	text-decoration: none;
 	cursor: pointer;
 	text-decoration: none;
@@ -227,6 +236,16 @@ input[type="checkbox"], body:not(.IE_M9) input[type="radio"] {
 	background-color: #0072C6;
 	color: #fff;
 }
+.wiz-menu-item span {
+	font-size: 102%;
+}
+
+.wiz-menu-item img {
+	margin: 0 5px 0 7px;
+	width: 8px;
+	height: 11px;
+}
+
 .wiz-menu {
 	background: #fff;
 	border: 2px solid #000;

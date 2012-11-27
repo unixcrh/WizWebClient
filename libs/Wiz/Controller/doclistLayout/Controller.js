@@ -15,7 +15,7 @@ define(function (require, exports, module) {
 			CLICK: 'doc_click'
 		},
 		_data = {
-			docList: {}
+			docList: []
 		},
 		GlobalUtil = require('common/util/GlobalUtil'),
 		_containerObj = GlobalUtil.getJqueryObjById(_node.containerId);
@@ -32,8 +32,9 @@ define(function (require, exports, module) {
 				if (visible === 'visible') {
 					sortListElem.css('visibility', 'hidden');
 				} else {
+					// 必须用DOM来操作，jQuery是获取当前元素对应文档的坐标。
+					// 这里只需要获取到同胞元素的坐标即可---lsl---2012-11-27
 					var top = document.getElementById(_node.sortMenuId).offsetTop + sortMenuElem.height();
-					console.log(top);
 					sortListElem.css('top', top + 'px');
 					sortListElem.css('visibility', 'visible');
 				}
@@ -44,14 +45,24 @@ define(function (require, exports, module) {
 					listLength = cmdLinkList.length;
 			for(var index=0; index < listLength; index ++) {
 				var cmdLink = cmdLinkList[index];
-				cmdLink.onclick = function (event) {
+				$(cmdLink).click(function (event) {
 					sortListElem.css('visibility', 'hidden');
-					event = event || window.event;
-					event.preventDefault();
-					// event.returnValue = false;
-					
-					// ie6下无反应
-				}
+					// 阻止默认行为
+					if (event.preventDefault) {
+						event.preventDefault();	
+					} else {
+						event.returnValue = false;	
+					}
+					var target = event.target;
+					var nodeName = target.nodeName.toLowerCase();
+					if (nodeName !== 'a') {
+						target = $(target).parent('a')[0];
+					}
+					// 根据排序命令刷新当前文档列表
+					refreshList($(target).attr('cmd'), $(target).attr('bDes'));
+					$('.sort-item-selected').removeClass('sort-item-selected');
+					$(target).children('img').addClass('sort-item-selected');
+				});
 			}
 		}
 
@@ -81,17 +92,56 @@ define(function (require, exports, module) {
 
 
 	function requestDocumentBody(docGuid) {
-		var doc = _data.docList[docGuid];
+		var doc = getDocbyGuid(docGuid);
 		_messageCenter.requestDocumentBody(doc);
 	}
+
+	function getDocbyGuid(docGuid) {
+		var length = _data.docList.length;
+		for(var index=0; index<length; index++) {
+			var doc = _data.docList[index];
+			if (docGuid === doc.document_guid) {
+				return doc;
+			}
+		}
+	}
+
+	function refreshList(cmd, bDes) {
+		var docList = sortDocList(_data.docList, cmd, bDes);
+		// 首先清空当前文档
+		flushAll();
+		// 开始加载
+		view.renderList(docList, null, cmd);
+	}
 	
+
+	function sortDocList(docList, cmd, bDes) {
+		docList.sort(function(a, b) {
+			try {
+				if (bDes === 'false') {
+					return a[cmd].localeCompare(b[cmd]);	
+				} else {
+					return b[cmd].localeCompare(a[cmd]);
+				}
+			} catch (error) {
+				// TODO记录
+			}
+			// 默认按照修改日期降序
+			return b.dt_modified.localeCompare(a.dt_modified);
+		});
+		return docList;
+	}
 
 	function View(id) {
 		var _containerId = id;
 
-		function renderList (docs, bSelectFirst) {
+		function renderList (docs, bSelectFirst, dateCmd) {
 			// 清空文档
 			flushAll();
+
+			if ('document_title' === dateCmd) {
+				dateCmd = null;
+			}
 
 		  var docList = $('#' + _containerId);  
 		  if(docs.length == 0){
@@ -106,16 +156,11 @@ define(function (require, exports, module) {
 		    content += '<tr class = '
 		    	+ _node.trClass
 		    	+ ' id=' + doc.document_guid
-		    	+ '><td class="CK"><div><input type="checkbox"></div></td><td class="info"><div class="tnd"><div class="dt"><span><a><span>' + GlobalUtil.formatDate(doc.dt_modified)
+		    	+ '><td class="CK"><div><input type="checkbox"></div></td><td class="info"><div class="tnd"><div class="dt"><span><a><span>' + GlobalUtil.formatDate(doc[dateCmd?dateCmd:'dt_modified'])
 		      + '</span></a></span></div><div class="title"><span><a>'
 		      + doc.document_title
 		      + '</a></span></div></div><div></div></td></tr>';
 
-		      try {
-		  			_data.docList[doc.document_guid] = doc;
-		  		} catch (error) {
-		  			console.log(error);
-		  		}
 		  });
 		  content +='</tbody>';
 		  content +='</table>';
@@ -126,11 +171,6 @@ define(function (require, exports, module) {
 		  	selectFirstNode();
 		  }
 		}
-
-		function showDocList() {
-
-		}
-
 		// 选择文档列表第一个
 		function selectFirstNode() {
 			try {
@@ -144,24 +184,30 @@ define(function (require, exports, module) {
 
 		this.renderList = renderList;
 	}
+
 	
 	function init(messageCenter) {
 		_messageCenter = messageCenter;
 		initHandler();
 	}
 
+	function showDocList(docs, bSelectFirst) {
+		_data.docList = sortDocList(docs);
+		view.renderList(_data.docList, bSelectFirst);
+	}
+
 	// 清空文档列表
 	function flushAll() {
-		var children = _containerObj.chidren;
+		var children = _containerObj.children();
 		if (children && children.length > 0) {
-			_containerObj.chidren[0].remove();
+			$(children[0]).remove();
 		}
 	}
 
 	var view = new View(_node.containerId);
 	//接口
 	return {
-		show: view.renderList,
+		show: showDocList,
 		init: init
 	}
 });

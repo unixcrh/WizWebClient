@@ -1,10 +1,13 @@
 define(function(require, exports, module) {
-	var config = require('config');
-	var context = require('Wiz/context');
-	var constant = require('Wiz/constant');
+	var config = require('config'),
+			context = require('Wiz/context'),
+			constant = require('Wiz/constant'),
+			loadCtrl = require('component/loading');
 
 	//发送请求函数
 	function sendRequest(apiObj, data, callback, callError) {
+		// 发请求的时候，显示
+		loadCtrl.show();
 		if (!apiObj || !apiObj.url || !apiObj.action) {
 			console.error('remote.sendRequest apiObj: ' + apiObj.url + '-' + apiObj.action + ' Error');
 			return;
@@ -12,13 +15,18 @@ define(function(require, exports, module) {
 		if (!callError) {
 			callError = alert;
 		}
+		var callSuccess = function (data) {
+			// 统一在发送请求这一层处理，不用每个地方都处理
+			loadCtrl.hide();
+			callback(data);
+		}
 		$.ajax({
 			url: apiObj.url,
 			data: data,
 			dateType: 'json',
 			async: apiObj.async,
 			type: apiObj.action,
-			success: callback,
+			success: callSuccess,
 			error: callError
 		});
 	}

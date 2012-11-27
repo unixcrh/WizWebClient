@@ -25,7 +25,7 @@ define(function (require, exports, module) {
 				// 显示文档列表
 				requestDocList: function (params) {
 					// 显示加载动画
-					showLoading();
+					// showLoading();
 					// 清空当前文档列表
 					
 					var callError = function (error) {
@@ -41,7 +41,7 @@ define(function (require, exports, module) {
 				},
 				// 加载文档内容
 				requestDocumentBody: function (doc) {
-					showLoading();
+					// showLoading();
 					// 记录当前显示的文档信息
 					_curDoc = doc;
 					var callError = function (error) {
@@ -53,16 +53,17 @@ define(function (require, exports, module) {
 			// 负责向各控制器发送消息
 			messageDistribute = {
 				showDocList: function (data) {
-					hideLoading();
+					// hideLoading();
 					// 首次加载，默认选择文档第一项
-					if (data.code == '200' && data.list) {
+					if (data.code == '200') {
+						console.log('date.list' + data.list);
 						listCtrl.show(data.list, _bFirst);
 					} else {
 						// TODO 错误处理
 					}
 				},
 				showDoc: function (data) {
-					hideLoading();
+					// hideLoading();
 					if (data.code === 200) {
 						//成功获取内容后，开始加载右侧内容
 						docViewCtrl.viewDoc(_curDoc);
