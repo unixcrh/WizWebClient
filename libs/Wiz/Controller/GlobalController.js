@@ -46,22 +46,15 @@ define(function (require, exports, module) {
 					remote.getDocumentBody(context.kbGuid, doc.document_guid, doc.version, messageDistribute.showDoc, callError);
 				},
 				// 所有请求创建的处理
-				requestCreateItem: function(name, type) {
+				// 需要callback函数，自动处理相应的节点
+				requestCreateItem: function(name, type, callback) {
 					if (type === 'category') {
-						remote.createCategory(context.kbGuid, name, messageDistribute.callbackAddCategory);	
+						remote.createCategory(context.kbGuid, name, callback);	
 					}
 				}
 			},
 			// 负责向各控制器发送消息
 			messageDistribute = {
-				// 新建目录回调处理
-				callbackAddCategory: function (data) {
-					console.log('GlobalController.messageDistribute.callbackAddCategory!');
-					console.warn(data);
-					if(data.code != '200') {
-						// TODO 删除对应的节点，并提示
-					}
-				},
 				showDocList: function (data) {
 					// 首次加载，默认选择文档第一项
 					if (data.code == '200') {

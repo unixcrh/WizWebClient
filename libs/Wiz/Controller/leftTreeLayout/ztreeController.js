@@ -52,7 +52,17 @@ define(function (require, exports, module) {
 			}
 			// 新建目录
 			console.log(treeNode.type);
-			messageCenter.requestCreateItem(newName, treeNode.type);
+			var location = '/' + newName + '/';
+			treeNode.location = location;
+			messageCenter.requestCreateItem(newName, treeNode.type, function (data) {
+				if (data.code != '200') {
+					// 创建失败，删除该节点
+					// TODO 提示
+					treeObj.removeNode(treeNode, false);
+				} else {
+					treeObj.updateNode(treeNode);
+				}
+			});
 			return true;
 		}
 
@@ -132,6 +142,10 @@ define(function (require, exports, module) {
 			if (!respList) {
 				return;
 			}
+			// 排序
+			respList.sort(function(a, b) {
+				return a.category_name.localeCompare(b.category_name);
+			});
 			$.each(respList, function (key, child){
 				if (child.kb_name) {
 					child.name = child.kb_name;
