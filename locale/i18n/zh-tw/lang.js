@@ -22,6 +22,8 @@ define({
 		'category': '文件夾',
 		'tag': '標簽',
 		'group': '我的群組',
-		'personal': '我的筆記'
+		'personal': '我的筆記',
+		'createCategory': '新建文件夾...',
+		'createTag': '新建標簽...'
 	}
 })

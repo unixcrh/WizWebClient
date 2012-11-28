@@ -22,6 +22,8 @@ define({
 		'category': '文件夹',
 		'tag': '标签',
 		'group': '我的群组',
-		'personal': '我的笔记'
+		'personal': '我的笔记',
+		'createCategory': '新建文件夹...',
+		'createTag': '新建标签...'
 	}
 })

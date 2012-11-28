@@ -5,17 +5,20 @@ define(function(require, exports, module) {
 			loadCtrl = require('component/loading');
 
 	//发送请求函数
-	function sendRequest(apiObj, data, callback, callError) {
+	//options主要是处理url后衔接的objValue，如document_title、category_name...
+	function sendRequest(apiObj, data, callback, callError, options) {
 		// 发请求的时候，显示
 		loadCtrl.show();
 		if (!apiObj || !apiObj.url || !apiObj.action) {
 			console.error('remote.sendRequest apiObj: ' + apiObj.url + '-' + apiObj.action + ' Error');
+			loadCtrl.hide();
 			return;
 		}
 		if (!callError) {
 			callError = alert;
 		}
-
+		console.log(apiObj);
+		console.log(options);
 		// 统一在发送请求这一层处理，不用每个地方都处理
 		var _callSuccess = function (data) {
 			loadCtrl.hide();
@@ -24,9 +27,11 @@ define(function(require, exports, module) {
 			_callError = function (error) {
 				loadCtrl.hide();
 				callError(error);
-			};
+			},
+			url = options ? (apiObj.url + '/' + options) : apiObj.url;
+			console.log(url);
 		$.ajax({
-			url: apiObj.url,
+			url: url,
 			data: data,
 			dateType: 'json',
 			async: apiObj.async,
@@ -95,6 +100,12 @@ define(function(require, exports, module) {
 			requestParams.parentValue = parentValue;
 			sendRequest(constant.api.CATEGORY_GET_CHILD, requestParams, callback, callError);
 		},
+		/* 新建目录 */
+		createCategory: function (kbGuid, name, callback, callError) {
+			var requestParams = getRequestParams();
+			requestParams.kbGuid = kbGuid;
+			sendRequest(constant.api.CATEGORY_CREATE, requestParams, callback, callError, name);
+		},
 
 		/* 获取所有标签列表 */
 		getAllTag: function (kbGuid, callback, callError) {
@@ -131,7 +142,6 @@ define(function(require, exports, module) {
 			requestParams.docGuid = docGuid;
 			requestParams.actionCmd = 'body';
 			requestParams.version = version;
-			console.log(requestParams);
 			sendRequest(constant.api.DOCUMENT_GET_INFO, requestParams, callback, callError);
 		},
 

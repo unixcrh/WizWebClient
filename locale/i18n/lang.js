@@ -22,6 +22,8 @@ define({
 		'category': 'Folders',
 		'tag': 'Tags',
 		'group': 'My Groups',
-		'personal': 'My Notes'
+		'personal': 'My Notes',
+		'createCategory': 'New folder...',
+		'createTag': 'New tag...'
 	}
 })

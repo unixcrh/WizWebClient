@@ -1,12 +1,13 @@
 define(function (require, exports, module) {
-	var treeProterty = require('/conf/treeProperty');
-	var messageCenter = null;
-	var zTree = require('ztree');
-	var remote = require('Wiz/remote');
-	var context = require('Wiz/context');
+	var treeProperty = require('/conf/treeProperty'),
+		messageCenter = null,
+		zTree = require('ztree'),
+		GlobalUtil = require('common/util/GlobalUtil'),
+		remote = require('Wiz/remote'),
+		context = require('Wiz/context'),
 
-	var locale= require('locale');
-	var specialLocation = locale.DefaultCategory;
+		locale= require('locale'),
+		specialLocation = locale.DefaultCategory;
 
 	function ZtreeController() {
 		
@@ -22,19 +23,38 @@ define(function (require, exports, module) {
 			},
 			data : {
 				simpleData : {
+					editNameSelectAll: true,
 					enable : false
 				}
-
+			},
+			edit : {
+				enable: true
 			},
 			callback : {
 				onClick : zTreeOnClick,
 				onExpand: zTreeOnExpand,
-				onRightClick: zTreeOnRightClick
+				onRightClick: zTreeOnRightClick,
+				beforeRename: zTreeBeforeRename
 			}
 
 		},
-			zNodesObj = treeProterty;
+			zNodesObj = treeProperty.initNodes;
 
+
+		function zTreeBeforeRename(treeId, treeNode, newName) {
+			if (newName === '') {
+				alert('Folder name can not be null');
+				return false;
+			}
+			if (GlobalUtil.isConSpeCharacters(newName)) {
+				alert('Folder name can not contain flowing characters: \\,/,:,<,>,*,?,\",&,\'');
+				return false;
+			}
+			// 新建目录
+			console.log(treeNode.type);
+			messageCenter.requestCreateItem(newName, treeNode.type);
+			return true;
+		}
 
 		function addDiyDom(treeId, treeNode) {
 			var spaceWidth = 10;
@@ -46,6 +66,12 @@ define(function (require, exports, module) {
 				var spaceStr = "<span style='display: inline-block;width:" + (spaceWidth * treeNode.level)+ "px'></span>";
 				switchObj.before(spaceStr);
 			}
+			// 修改新建功能的子节点显示样式
+			if (treeNode.level === 1 && treeNode.cmd === 'create') {
+				console.log(treeNode);
+				var hypertextObj = $('#' + treeNode.tId + '_a');
+				hypertextObj.addClass('create-link');
+			}
 		}
 
 		function showIconForTree(treeId, treeNode) {
@@ -56,7 +82,6 @@ define(function (require, exports, module) {
 		function zTreeOnRightClick(event, treeId, treeNode) {
 			event.preventDefault();
 			event.returnValue = false;
-			console.log(event);
 		}
 
 
@@ -125,13 +150,40 @@ define(function (require, exports, module) {
 				}
 			});
 
-			console.log(treeObj);
 			treeObj.addNodes(treeNode, respList, true);
+			if (treeNode.level === 0) {
+				addDefaultNodes(treeNode, treeNode.type);
+			}
 			treeNode.bLoading = true;
 		} 
 
+		// 增加默认的一些节点，如：新用户下默认的目录、新建目录
+		function addDefaultNodes(treeNode, type) {
+			var newNode = null;
+			if (type === 'category') {
+				newNode = treeProperty.createCategoryNodes;
+			} else if (type === 'tag') {
+				newNode = treeProperty.createTagNodes;
+			} else {
+				console.error('addDefaultNodes Error: type can not be none');
+				return;
+			}
+			treeObj.addNodes(treeNode, newNode, true);
+
+		}
+
 		// 点击事件
 		function zTreeOnClick(event, treeId, treeNode) {
+			if (treeNode.cmd === 'create') {
+				var parentNode = treeNode.getParentNode(),
+						newNode = treeObj.addNodes(parentNode, {'name': '', 'type': treeNode.type}, true);
+				treeObj.editName(newNode[0])
+				// 删除当前新建目录的节点
+				treeObj.removeNode(treeNode);
+				// 在最后增加
+				addDefaultNodes(parentNode, treeNode.type);
+				return;
+			}
 			if (treeNode.level === 0) {
 				if (treeNode.type === 'keyword') {
 					messageCenter.requestDocList(getParamsFromTreeNode(treeNode));
@@ -150,7 +202,6 @@ define(function (require, exports, module) {
 			params.action_cmd = treeNode.type;
 			params.action_value = treeNode.location ? treeNode.location : treeNode.tag_guid;
 			params.count = 200;
-			console.log(params);
 			return params;
 		}
 

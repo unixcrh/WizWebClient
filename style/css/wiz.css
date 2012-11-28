@@ -583,9 +583,6 @@ input[type="checkbox"], body:not(.IE_M9) input[type="radio"] {
 	bottom: 0;
 	right: 0;
 }
-
-#leftTree {
-}
 /*---------------------------右侧文档列表和文档内容-----------------------*/
 
 .content-right{

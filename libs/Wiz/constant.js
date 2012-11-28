@@ -68,6 +68,11 @@ define(function (require, exports, module) {
 	  	action: 'put',
 	  	async: true
 	  },
+	  CATEGORY_CREATE: {
+	  	url: CATEGORY_BASE + '/item',
+	  	action: 'post',
+	  	async: true
+	  },
 	  CATEGORY_DELETE: {
 	  	url: CATEGORY_BASE,
 	  	action: 'delete',

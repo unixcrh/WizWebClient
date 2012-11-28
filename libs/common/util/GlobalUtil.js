@@ -125,6 +125,16 @@ define(function (require, exports, module){
 		// 通过id获取jquery对象
 		getJqueryObjById: function (id) {
 			return $('#' + id);
+		},
+		isConSpeCharacters: function (value) {
+			var special = '\\,/,:,<,>,*,?,\",&,\'',
+				specialList = special.split(',');
+			for(var index=0, length=specialList.length; index < length; index++) {
+				if (value.indexOf(specialList[index]) > -1) {
+					return true;
+				}
+			}
+			return false;
 		}
 	};
 
