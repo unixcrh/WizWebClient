@@ -2,6 +2,9 @@ html, body {
   margin: 0;
   font-family: "Microsoft Yahei",Verdana,Simsun,"Segoe UI","Segoe UI Web Regular","Segoe UI Symbol","Helvetica Neue","BBAlpha Sans","S60 Sans",Arial,"sans-serif";
   color: #000;
+  font-size: 100%;
+  _text-align:center;
+  _width:100%;
   background-color: #fff;
   background-image: none;
   background-repeat: repeat;
@@ -32,69 +35,109 @@ ul, menu, dir {
   -webkit-padding-start: 0;
 }
 
-/*---------------------顶部样式---------------------*/
-/*样式框架：fixed at the top
- logo&nav-ct "inline-block"
- these in nav-ct also "inline-block"
- nav "margin:0"
- */
-.hd {
+/*-------------顶部样式---------------*/
+
+#header {
 	position: fixed;
-  background-color: #0072c6;
-	width: 100%;
+  background-color: #1a1a1a;
 	height: 94px;
   z-index: 9999; 
+
+/*  _position: absolute;
+  _bottom: auto; 
+  _top: expression(eval(document.documentElement.scrollTop+94)); */
 }
 
-.hd-box {
-  /*position: relative;*/
-  padding: 20px 18%;
-  height: 48px;
+#header-container {
+  height: 94px;
+  /*position: fixed;*/
   white-space: nowrap;
 }
 
-.logo {
-  display: inline-block;
+#logo {
+  display:block;
+  float:left;
+  clear:right;
+  margin-top: 20px;
+  min-width: 400px;
+  _min-width: 400px;
+  *min-width: 400px;
+  /*display: inline-block;
   *display:inline;
-  *zoom:1;
+  *zoom:1;*/
 }
-.nav-ct {
-  display: inline-block;
-  *display:inline;
-  *zoom:1;
+#logo img{
+  float:left;
+  }
 
-  position: relative;
-  top:-10px;
-  left: 50px;
-  /*margin-top: 10px;*/
-  /*background-image: -moz-linear-gradient(top, #1967A4, #189FCF);*/
-  /*background-image: -ms-linear-gradient(top, #1967A4, #189FCF);*/
-  /*background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#1967A4), to(#189FCF));*/
-  /*background-image: -webkit-linear-gradient(top, #1967A4, #189FCF);*/
-  /*background-image: -o-linear-gradient(top, #1967A4, #189FCF);*/
-  /*background-image: linear-gradient(top, #1967A4, #189FCF);*/
-  /*background-repeat: repeat-x;*/
+/*--------  搜索框样式  ---------*/
+#search{
+  float:right;
+  padding: 10px 0;
+  /*display: inline-block;
+  *display:inline;
+  *zoom:1;*/
 }
-.nav {
+
+#search input{
+  float:left;
+  border:0px;
+  margin:0;
+  padding:2px 8px;
+  height:20px;
+  _height:24px;
+  -webkit-box-sizing:content-box;
+  -moz-box-sizing:content-box;
+
+  background: #515151;
+}
+/*necessary?*/
+#search input:focus{
+  background: #eee;
+  outline: none;
+}
+
+#search button{
+  float:left;
+  border:none;
+  padding:0;
+  -webkit-box-sizing:content-box;
+  -moz-box-sizing:content-box;
+
+  margin:0;
+  width:26px;
+  height:24px;
+
+  background: #515151;
+}
+/*--------  导航栏样式  ---------*/
+#nav-ct {
+  float:left;
+  padding:0;
+  margin:0;
+  font-size: 0.8em;
+  color: #fff;
+}
+#nav-ct span{
+  float: right;
+}
+#nav {
   white-space: nowrap;
   margin:0;
+  padding:0;
+  min-width: 400px;
+  _min-width: 400px;
+  *min-width: 400px;
 }
 
-.nav li {
-  padding: 0 50px;
-  display:inline-block;
-  /*make the li display in-line*/
-  *display:inline; 
-  *zoom:1; 
+#nav li {
+  float:left;
 }
 
-.nav a {
+#nav a {
   color: #FFF;
   font-weight: bolder;
   text-decoration: none;
-}
-.nav a:hover{
-  text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 40px #ff00de, 0 0 70px #ff00de;
 }
 
 /*advanced selector is not supported in low-level browser*/
@@ -106,12 +149,10 @@ ul, menu, dir {
 }*/
 
 .split {
-	height: 4px;
-	background-color: black;
-  border-top: 1px solid black;
+	height: 10px;
+	background-color: rgba(26,26,26,0.6);
+  border:none;
   border-bottom: 1px solid black;
-
-
 	/*border-top: 1px solid rgba(0,0,0,0.2);
 	border-bottom: 1px solid rgba(255,255,255,0.1);*/
   /*IE6 下默认字体大小12-14，不允许有低于此的div
@@ -128,13 +169,15 @@ ul, menu, dir {
   _padding-top:0px;
   /*为解决IE6盒模型问题和padding双倍问题而做的hack*/
   padding-bottom: 30px;
-	width: 100%;
+  _text-align: left;
 }
 
 .outline {
 	height: 246px;
-  background-color: #0072c6;
-  width:100%;
+  background-color: #edecf1;
+  min-width: 400px;
+  _min-width: 400px;
+  *min-width: 400px;
   /*background-image: -moz-linear-gradient(top, #189FCF, #1967A4);*/
   /*background-image: -ms-linear-gradient(top, #189FCF, #1967A4);*/
   /*background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#189FCF), to(#1967A4));*/
@@ -146,9 +189,10 @@ ul, menu, dir {
 
 
 .content {
-  padding:0 20%;
   *position:relative;
-  scollbar:none;
+  min-width: 400px;
+  _min-width: 400px;
+  *min-width: 400px;
 }
 .content h1{
   /*此处的h1继承了上面定义的样式，导致在FF和ie下表现异常
@@ -159,7 +203,9 @@ ul, menu, dir {
 .content span{
   display:inline-block;
 }
-
+#second-span{
+  margin-left:15%;
+}
 /*---------------------页脚样式---------------------*/
 .ft {
   height: 264px;

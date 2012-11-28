@@ -2,25 +2,33 @@
 <html>
 	<head>
 		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="stylesheet" href="style/clear.css">
 		<link rel="stylesheet" href="style/tmpl.css">
+		<link rel="stylesheet" href="style/media-queries.css">
+
 		<title>Wiz template</title>
-		<!--<script type="text/javascript">
-			
-		</script>-->
+
+		<!--[if lt IE 9]> <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script> <![endif]-->
 	</head>
 	<body>
 		<!-- 页面顶部 -->
-		<div class="hd">
-			<div class="hd-box">
-				<span class="logo">
+		<div id="header">
+			<div id="header-container">
+				<span id="logo">
 					<a href="#">
 						<img src="style/img/logo.png" alt="wiz note" class='logo-img'>
 					</a>
+					<!-- 搜索框 -->
+					<div id="search">
+						<input type="text" name="searchText"></input>
+						<button value=""></button>
+					</div>
 				</span>
+				
 				<!-- 导航栏 -->
-				<div class="nav-ct">
-					<ul class="nav">
+				<div id="nav-ct">
+					<ul id="nav">
 						<li>
 							<a href="">了解更多</a>
 						</li>
@@ -30,8 +38,8 @@
 						<li>
 							<a href="">下载</a>
 						</li>
-						<li>
-							<a href="">登录/注册</a>
+						<li style="float:right; padding:0;">
+							<a href="">登录</a> / <a href="">注册</a>
 						</li>
 					</ul>
 				</div>
@@ -102,8 +110,7 @@
 					    <li>湖北省刘道玉教育基金会</li>
 					  </ul>
 				  </span>
-				  ----------------
-				  <span>
+				  <span id="second-span">
 					  <ul>
 					  	
 					    <li>湖北知金投资有限公司</li>
