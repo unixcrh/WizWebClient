@@ -132,6 +132,17 @@ define(function (require, exports, module) {
 			}
 		}
 
+		function sortCategoryList(respList) {
+			// TODO 根据KV提供的folders_pos来进行排序
+			respList.sort(function(a, b) {
+				if (a.position) {
+					return a.position - b.position;
+				}
+				// 如果没有顺序信息，则直接通过名称排序
+				return a[treeNode.type + '_name'].localeCompare(b[treeNode.type + '_name']);
+			});
+			return respList;
+		}
 		/**
 		 * 根据返回的列表，显示相应的树节点
 		 * @param {Array} respList 服务端返回的列表
@@ -143,15 +154,16 @@ define(function (require, exports, module) {
 				return;
 			}
 			// 排序
-			// TODO 根据KV提供的folders_pos来进行排序
-			respList.sort(function(a, b) {
-				if (a.position) {
-					return a.position - b.position;
+			var childList = [];
+			var removeIndex = null;
+			// 加入到子节点中
+			$.each(respList, function (index, child){
+
+				if (child.location === '/Deleted Items/') {
+					// 记录需要删除的节点
+					removeIndex = index; 
+					return;
 				}
-				// 如果没有顺序信息，则直接通过名称排序
-				return a[treeNode.type + '_name'].localeCompare(b[treeNode.type + '_name']);
-			});
-			$.each(respList, function (key, child){
 				if (child.kb_name) {
 					child.name = child.kb_name;
 					child.isParent = true;
@@ -167,9 +179,12 @@ define(function (require, exports, module) {
 				if ('category' === treeNode.type && specialLocation[child.name]) {
 					child.name = changeSpecilaLocation(child.name);
 				}
+				childList.push(child);
 			});
 
-			treeObj.addNodes(treeNode, respList, true);
+
+			childList = sortCategoryList(childList);
+			treeObj.addNodes(treeNode, childList, true);
 			// 暂时只对文件夹开放新建功能 lsl 2012-11-29
 			if (treeNode.level === 0 && treeNode.type === 'category') {
 				addDefaultNodes(treeNode, treeNode.type);
