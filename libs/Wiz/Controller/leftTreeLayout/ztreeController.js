@@ -145,6 +145,10 @@ define(function (require, exports, module) {
 			// 排序
 			// TODO 根据KV提供的folders_pos来进行排序
 			respList.sort(function(a, b) {
+				if (a.position) {
+					return a.position - b.position;
+				}
+				// 如果没有顺序信息，则直接通过名称排序
 				return a[treeNode.type + '_name'].localeCompare(b[treeNode.type + '_name']);
 			});
 			$.each(respList, function (key, child){

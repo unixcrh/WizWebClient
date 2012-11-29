@@ -14,7 +14,7 @@ define(function (require, exports, module) {
 				type: 'category',												//子节点类型
 				childType: 'category',									//节点类型
 				location: '/',													//目录路径	
-				isParent: true,
+				isParent: true
 			},{
 				name: DefaultNode.tag,
 				level: 1,
