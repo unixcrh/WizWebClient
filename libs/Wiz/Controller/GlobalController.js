@@ -119,19 +119,13 @@ define(function (require, exports, module) {
 
 				//右侧内容初始化
 
-				//初始化滚动条
+					//初始化滚动条
 				initSplitter();
 			}, function (err) {
 				//错误处理
 			});
 		}
 	}
-
-	// 初始化页面，自动选择左侧树和文档列表首项
-	function initSelect() {
-
-	}
-
 
 	function initSplitter() {
 		//初始化Splitter
@@ -141,6 +135,35 @@ define(function (require, exports, module) {
 		leftSplitter.init({left: 'leftTree_container', right: 'content_container', 'splitter': 'left_splitter'});
 		rightSplitter.init({left: 'doc_list_containner_wrapper', right: 'doc_read_area', 'splitter': 'content_splitter'});
 	}
+
+	
+
+
+	// 隐藏下拉菜单
+  $(document).click(function(event){
+  	var targetId = $(event.target).attr("id");
+  	var menuList = $('.wiz-menu');
+  	var length = menuList.length;
+  	var id = null;
+
+  	var obj = {
+  		'sort_menu': 'sort_list',
+  		'user_info': 'user_menu'
+  	}
+  	if($(event.target).parents('#sort_menu')[0]) {
+  		id = 'sort_menu';
+  	}
+  	if($(event.target).parents('#user_info')[0]) {
+  		id = 'user_info';
+  	}
+  	for (var i=0; i<length; i ++) {
+  		console.log($(menuList[i])[0].id);
+  		console.log(obj[id] != $(menuList[i])[0].id);
+	    if(obj[id] != $(menuList[i])[0].id){
+	    	$(menuList[i]).css('visibility', 'hidden');
+	    }
+  	}
+  });
 
 	return {
 		init: init
