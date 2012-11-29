@@ -220,6 +220,13 @@ ul, menu, dir {
 .login-intro h1{
   font-weight: normal;
 } 
+p.error-indicator{
+  width:250px;
+  height:25px;
+  color:#90784c;
+  display: none;
+}
+
 .login-intro p{
   margin: 0 0 0 10px;
   color:#FFF;
