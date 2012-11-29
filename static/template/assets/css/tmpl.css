@@ -1,7 +1,7 @@
 /*@import charset:utf-8;*/
 html, body {
   margin: 0;
-  font-family: "Microsoft Yahei",Verdana,Simsun,"Segoe UI","Segoe UI Web Regular","Segoe UI Symbol","Helvetica Neue","BBAlpha Sans","S60 Sans",Arial,"sans-serif";
+  font-family: Verdana, Simsun;
   color: #000;
   font-size: 100%;
   _text-align:center;
@@ -28,7 +28,8 @@ h1 {
   -webkit-margin-after: 0;
   -webkit-margin-start: 0;
   -webkit-margin-end: 0px;
-  margin:0 0 0 10px;
+  margin:0;
+  font-family: 'Microsoft Yahei', Verdana, Simsun;
 }
 ul, menu, dir {
   display: block;
@@ -172,7 +173,7 @@ ul, menu, dir {
   /*border:2px solid pink;*/
 }
 /*--- 不同页面专用容器  960px 居中显示   ---*/
-.gallery{
+#gallery{
   position:relative;
   margin:0 auto;
   width:960px;
@@ -219,6 +220,8 @@ ul, menu, dir {
 }
 .login-intro h1{
   font-weight: normal;
+  color:#FFF;
+  margin:0 0 5px 10px;
 } 
 p.error-indicator{
   width:250px;
@@ -233,12 +236,16 @@ p.error-indicator{
   font-weight: normal;
 } 
 #login-form{
+  position:relative;
   float:right;
+  height:80%;
   padding:10% 8% 0 0;
+  /*outline:1px solid #000;*/
 }
 #login-form h1{
   font-weight: normal;
-  margin-bottom: 20px;
+  font-size: 37px;
+  margin-bottom: 37px;
   color:#888;
 }
 #login-form table,tr,td{
@@ -262,18 +269,21 @@ p.error-indicator{
   width:300px;
   *width:250px;
   width:250px\9;
-  height:24px;
-  border:1px solid #ccc;
+  height:30px;
+  border:1px solid #aaa;
 }
 #login-form .chkbox{
   width:auto;
   height:auto;
   display:inline;
   *zoom=1;
-  font-size: 8px;
+  /*font-size: 13px;*/
   vertical-align:text-bottom;
   margin-bottom:2px;
   margin-bottom:-2px\9;
+}
+#login-form span{
+  font-size: 15px;
 }
 
 #login-form .btn{
@@ -282,7 +292,7 @@ p.error-indicator{
   border:none;
   color:#FFF;
   margin:15px 0 0 0;
-  padding:5px 15px;
+  padding:5px 25px;
   background:#2672ec;
 }
 #login-form .btn:hover{
@@ -291,16 +301,20 @@ p.error-indicator{
 #login-form .btn:active{
   background:#1a1a1a;
 }
-#login-form p{
+#login-form p.toregister{
+  position:absolute;
+  left:5px;
+  bottom:9%;
   color:#666;
-  font-size: 0.75em;
+  font-size: 15px;
   padding:0;
   margin:10px 0 0 0;
 }
 #login-form a{
   color:#2672ec;
   text-decoration: none;
-  font-size: 0.75em;
+  font-size: 100%;
+  font-weight: bold;
   margin:0;
   padding:0;
 }
@@ -324,6 +338,10 @@ p.error-indicator{
   /*height:200px;*/
   width:960px;
   text-align: left;
+}
+
+.gallery-containers{
+  position:absolute;
 }
 
 .gallery .describe {
