@@ -143,8 +143,9 @@ define(function (require, exports, module) {
 				return;
 			}
 			// 排序
+			// TODO 根据KV提供的folders_pos来进行排序
 			respList.sort(function(a, b) {
-				return a.category_name.localeCompare(b.category_name);
+				return a[treeNode.type + '_name'].localeCompare(b[treeNode.type + '_name']);
 			});
 			$.each(respList, function (key, child){
 				if (child.kb_name) {
@@ -165,7 +166,8 @@ define(function (require, exports, module) {
 			});
 
 			treeObj.addNodes(treeNode, respList, true);
-			if (treeNode.level === 0) {
+			// 暂时只对文件夹开放新建功能 lsl 2012-11-29
+			if (treeNode.level === 0 && treeNode.type === 'category') {
 				addDefaultNodes(treeNode, treeNode.type);
 			}
 			treeNode.bLoading = true;

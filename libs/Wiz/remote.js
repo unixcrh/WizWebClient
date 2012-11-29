@@ -37,7 +37,8 @@ define(function(require, exports, module) {
 			async: apiObj.async,
 			type: apiObj.action,
 			success: _callSuccess,
-			error: _callError
+			error: _callError,
+			cache: false
 		});
 	}
 

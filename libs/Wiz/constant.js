@@ -2,7 +2,7 @@
  * 常量
  */
 define(function (require, exports, module) {
-	var BASE_URL = 'http://localhost';
+	var BASE_URL = '';
 	var API_BASE = BASE_URL + '/api';
 	var CATEGORY_BASE = API_BASE + '/category';
 	var TAG_BASE = API_BASE + '/tag';
