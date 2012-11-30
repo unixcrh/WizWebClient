@@ -298,6 +298,17 @@ define(function (require, exports, module) {
 		function init(id, messageHandler) {
 			messageCenter = messageHandler;
 			initTree(id);
+			// 首次加载默认展开目录
+			expandCategory();
+		}
+
+		// 默认展开根目录节点
+		function expandCategory(){
+			var nodes = treeObj.getNodes();
+			if (nodes.length>1) {
+				$('#' + nodes[1].tId + '_a').trigger('click');
+			}
+
 		}
 
 		this.init = init;
