@@ -359,7 +359,7 @@ p.error-indicator{
   margin:20px 20px;
   height:32px;
   /*width:300px;*/
-  z-index: 100;
+  /*z-index: 100;*/
   background:url("../img/slogan.png") no-repeat;
   background-size: 50% 50%;
 }
