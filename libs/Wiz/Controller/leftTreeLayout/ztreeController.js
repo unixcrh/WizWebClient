@@ -5,7 +5,7 @@ define(function (require, exports, module) {
 		remote = require('../../remote'),
 		context = require('../../context'),
 
-		locale= require('../../../../locale/main'),
+		locale= require('locale'),
 		specialLocation = locale.DefaultCategory;
 
 	function ZtreeController() {

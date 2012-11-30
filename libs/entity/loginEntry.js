@@ -1,6 +1,6 @@
 seajs.config({
 	alias: {
-		'jquery': '/libs/common/jquery/jquery-1.7.2.min.js',
+		'jquery': '/libs/common/jquery/jquery-1.7.2.js',
 		'cookie': '/libs/common/jquery/jquery.cookie.js',
 		'common': '/libs/common',
 		'Wiz': '/libs/Wiz'
