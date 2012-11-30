@@ -63,7 +63,7 @@ input[type="checkbox"], body:not(.IE_M9) input[type="radio"] {
 
  /* 默认不显示的元素class */
 .hidden {
-	display: none;
+	visibility: hidden;
 }
 
 /*------------------webkit专有属性------------------------*/

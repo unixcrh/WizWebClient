@@ -142,14 +142,14 @@ define(function (require, exports, module) {
 			}
 		}
 
-		function sortCategoryList(respList) {
+		function sortCategoryList(respList, type) {
 			// TODO 根据KV提供的folders_pos来进行排序
 			respList.sort(function(a, b) {
 				if (a.position) {
 					return a.position - b.position;
 				}
 				// 如果没有顺序信息，则直接通过名称排序
-				return a[treeNode.type + '_name'].localeCompare(b[treeNode.type + '_name']);
+				return a[type + '_name'].localeCompare(b[type + '_name']);
 			});
 			return respList;
 		}
@@ -193,7 +193,7 @@ define(function (require, exports, module) {
 			});
 
 
-			childList = sortCategoryList(childList);
+			childList = sortCategoryList(childList, treeNode.type);
 			treeObj.addNodes(treeNode, childList, true);
 			// 暂时只对文件夹开放新建功能 lsl 2012-11-29
 			if (treeNode.level === 0 && treeNode.type === 'category') {
