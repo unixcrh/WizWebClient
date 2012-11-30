@@ -1,7 +1,7 @@
 /*@import charset:utf-8;*/
 html, body {
   margin: 0;
-  font-family: "Microsoft Yahei",Verdana,Simsun,"Segoe UI","Segoe UI Web Regular","Segoe UI Symbol","Helvetica Neue","BBAlpha Sans","S60 Sans",Arial,"sans-serif";
+  font-family: Verdana, Simsun;
   color: #000;
   font-size: 100%;
   _text-align:center;
@@ -28,7 +28,8 @@ h1 {
   -webkit-margin-after: 0;
   -webkit-margin-start: 0;
   -webkit-margin-end: 0px;
-  margin:0 0 0 10px;
+  margin:0;
+  font-family: 'Microsoft Yahei', Verdana, Simsun;
 }
 ul, menu, dir {
   display: block;
@@ -105,12 +106,16 @@ ul, menu, dir {
   padding:0;
   -webkit-box-sizing:content-box;
   -moz-box-sizing:content-box;
-
   margin:0;
   width:26px;
   height:24px;
+  background: url("../img/css-sprite.png") no-repeat top left;
+  background-position:0 0;
+  background-size: 1000%;
 
-  background: #515151;
+}
+#search button:hover{
+  background-position:0 -27px;
 }
 /*--------  导航栏样式  ---------*/
 #nav-ct {
@@ -176,9 +181,9 @@ ul, menu, dir {
   position:relative;
   margin:0 auto;
   width:960px;
-  height:500px;
+  height:450px;
   text-align: left;
-  outline:2px solid green;
+  /*outline:2px solid green;*/
 }
 .intro{
   position: relative;
@@ -219,6 +224,8 @@ ul, menu, dir {
 }
 .login-intro h1{
   font-weight: normal;
+  color:#FFF;
+  margin:0 0 5px 10px;
 } 
 p.error-indicator{
   width:250px;
@@ -232,29 +239,36 @@ p.error-indicator{
   color:#FFF;
   font-weight: normal;
 } 
-#login-form{
+#login-form, #register-form{
+  /*display:none;*/
+  position:relative;
   float:right;
+  height:80%;
   padding:10% 8% 0 0;
+  /*outline:1px solid #000;*/
 }
-#login-form h1{
+/*#login-form{
+  display:none;
+}*/
+#register-form {
+  display:none;
+  padding:6% 8% 0 0;
+}
+#login-form h1, #register-form h1{
   font-weight: normal;
-  margin-bottom: 20px;
+  font-size: 37px;
+  margin-bottom: 37px;
   color:#888;
 }
-#login-form table,tr,td{
-  margin:0;
-  padding:0;
-  border:none;
-  width: auto;
-} 
-#login-form label{
+
+#login-form label, #register-form label{
   display:none;
   margin:0;
   padding:0;
   *display: inline;
   display: inline\9;
 }
-#login-form input{
+#login-form input, #register-form input{
   display:block;
   /**display:inline;*/
   margin:0 0 20px 0;
@@ -262,55 +276,64 @@ p.error-indicator{
   width:300px;
   *width:250px;
   width:250px\9;
-  height:24px;
-  border:1px solid #ccc;
+  height:30px;
+  *height:24px;
+  border:1px solid #aaa;
 }
 #login-form .chkbox{
   width:auto;
   height:auto;
   display:inline;
   *zoom=1;
-  font-size: 8px;
+  /*font-size: 13px;*/
   vertical-align:text-bottom;
   margin-bottom:2px;
   margin-bottom:-2px\9;
 }
+#login-form span, #register-form span{
+  font-size: 15px;
+}
 
-#login-form .btn{
+#login-form .btn, #register-form .btn{
   width:auto;
   height:auto;
   border:none;
   color:#FFF;
   margin:15px 0 0 0;
-  padding:5px 15px;
+  padding:5px 25px;
   background:#2672ec;
 }
-#login-form .btn:hover{
+#login-form .btn:hover, #register-form .bnt:hover{
   background:#95b4e2;
 }
-#login-form .btn:active{
+#login-form .btn:active, #register-form .btn:active{
   background:#1a1a1a;
 }
-#login-form p{
+#login-form p.toregister{
+  position:absolute;
+  left:5px;
+  bottom:9%;
   color:#666;
-  font-size: 0.75em;
+  font-size: 15px;
   padding:0;
   margin:10px 0 0 0;
 }
-#login-form a{
+#login-form a, #register-form a{
   color:#2672ec;
   text-decoration: none;
-  font-size: 0.75em;
+  font-size: 100%;
+  font-weight: bold;
   margin:0;
   padding:0;
 }
 
+
 #login-footer{
   /*height:9%;*/
-  margin:0 auto;
+  margin:30px auto;
   border:none;
   width:960px;
-  font-size: 10px;
+  font-size: 13px;
   text-align: left;
   border-top:1px solid #ccc;
 }
@@ -326,6 +349,10 @@ p.error-indicator{
   text-align: left;
 }
 
+.gallery-containers{
+  position:absolute;
+}
+
 .gallery .describe {
   float:left;
   margin:30px 0 0 0;
@@ -333,17 +360,16 @@ p.error-indicator{
 .gallery .pic {
   float:right;
   width:400px;
-  margin:10px 20px 0 0 ;
+  margin:-80px 20px 0 0 ;
 }
 .slogan{
-  /*height:auto;*/
-  /*float:left;*/
   margin:20px 20px;
-  height:32px;
+  height:50px;
+  width:700px;
   /*width:300px;*/
-  z-index: 100;
+  /*z-index: 100;*/
   background:url("../img/slogan.png") no-repeat;
-  background-size: 50% 50%;
+  /*background-size:80%;*/
 }
 /*.gallery span{
     background:#0CF;
