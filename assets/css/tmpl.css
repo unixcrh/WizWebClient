@@ -112,6 +112,7 @@ ul, menu, dir {
   background: url("../img/css-sprite.png") no-repeat top left;
   background-position:0 0;
   background-size: 1000%;
+
 }
 #search button:hover{
   background-position:0 -27px;
@@ -329,7 +330,7 @@ p.error-indicator{
 
 #login-footer{
   /*height:9%;*/
-  margin:30px auto 0 auto;
+  margin:30px auto;
   border:none;
   width:960px;
   font-size: 13px;
@@ -425,27 +426,17 @@ button.direct:hover {
 #footer {
   height: 100px;
   zoom: 1;
-  background: #555;
-  /*background-repeat: repeat;*/
+  background-image: url(../img/ft_bg.gif);
+  background-repeat: repeat;
   z-index: 9999;
   position: relative;
-  clear:both;
+  clear:both
 }
 #footer span{ 
   display:block;
   width:100%;
   padding:20px 0 0 0;
   text-align: center;
-  color:#FFF;
-  font-weight: bold;
-  font-size:13px
 }
-#footer a{
-  color:#8E8E8E;
-  font-weight: bold;
-  font-size:13px
-}
-
-
 
 
