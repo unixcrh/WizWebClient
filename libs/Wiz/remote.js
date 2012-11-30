@@ -1,8 +1,7 @@
 define(function(require, exports, module) {
-	var config = require('config'),
-			context = require('Wiz/context'),
-			constant = require('Wiz/constant'),
-			loadCtrl = require('component/loading');
+	var context = require('./context'),
+			constant = require('./constant'),
+			loadCtrl = require('../component/loading');
 
 	//发送请求函数
 	//options主要是处理url后衔接的objValue，如document_title、category_name...

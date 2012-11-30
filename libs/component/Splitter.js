@@ -1,6 +1,6 @@
 //横向分割栏
 define(function(require, exports, module){
-  var opacity = require('component/opacity');
+  var opacity = require('./opacity');
 
   function Splitter () {
 

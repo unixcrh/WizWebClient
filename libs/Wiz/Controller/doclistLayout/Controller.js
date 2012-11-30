@@ -17,12 +17,11 @@ define(function (require, exports, module) {
 		_data = {
 			docList: []
 		},
-		GlobalUtil = require('common/util/GlobalUtil'),
-		_containerObj = GlobalUtil.getJqueryObjById(_node.containerId);
+		_containerObj = $('#' + _node.containerId);
 
 		function bindSortHandler() { 
-			var sortMenuElem = GlobalUtil.getJqueryObjById(_node.sortMenuId),
-					sortListElem = GlobalUtil.getJqueryObjById(_node.sortListId);
+			var sortMenuElem = $('#' + _node.sortMenuId),
+					sortListElem = $('#' + _node.sortListId);
 			sortMenuElem.click(function (event) {
 				event = event || window.event;
 				// 阻止默认行为
@@ -66,7 +65,12 @@ define(function (require, exports, module) {
 			}
 		}
 
-	
+	function bIe() {
+		if(document.all) {
+			return true;
+		}
+		return false;
+	}
 
 	function initHandler() {
 		if (!_containerObj) {
@@ -156,7 +160,7 @@ define(function (require, exports, module) {
 		    content += '<tr class = '
 		    	+ _node.trClass
 		    	+ ' id=' + doc.document_guid
-		    	+ '><td class="CK"><div><input type="checkbox"></div></td><td class="info"><div class="tnd"><div class="dt"><span><a><span>' + GlobalUtil.formatDate(doc[dateCmd?dateCmd:'dt_modified'])
+		    	+ '><td class="CK"><div><input type="checkbox"></div></td><td class="info"><div class="tnd"><div class="dt"><span><a><span>' + formatDate(doc[dateCmd?dateCmd:'dt_modified'])
 		      + '</span></a></span></div><div class="title"><span><a>'
 		      + doc.document_title
 		      + '</a></span></div></div><div></div></td></tr>';
@@ -185,7 +189,18 @@ define(function (require, exports, module) {
 		this.renderList = renderList;
 	}
 
-	
+	function formatDate(dateStr) {
+		//标准游览器，如果数组里面最后一个字符为逗号，JS引擎会自动剔除它。
+		//参考https://developer.mozilla.org/en-US/docs/JavaScript/Guide/Values,_variables,_and_literals?redirectlocale=en-US&redirectslug=Core_JavaScript_1.5_Guide%2FValues%2C_Variables%2C_and_Literals#Literals
+		var ie = bIe();
+		if (ie) {
+			//ie6,7下 new Date(dateStr) 不支持dateStr为xxxx-xx-xx格式，需要转换格式
+			dateStr = dateStr.replace(/\-/ig, '/').split('.')[0];
+		}
+		var date = new Date(dateStr);
+		return date.toLocaleDateString();
+	}
+
 	function init(messageCenter) {
 		_messageCenter = messageCenter;
 		initHandler();

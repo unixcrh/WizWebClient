@@ -1,10 +1,9 @@
 define(function (require, exports, module) {
-	var treeProperty = require('/conf/treeProperty'),
+	var treeProperty = require('./treeProperty'),
 		messageCenter = null,
 		zTree = require('ztree'),
-		GlobalUtil = require('common/util/GlobalUtil'),
-		remote = require('Wiz/remote'),
-		context = require('Wiz/context'),
+		remote = require('../../remote'),
+		context = require('../../context'),
 
 		locale= require('locale'),
 		specialLocation = locale.DefaultCategory;
@@ -46,7 +45,7 @@ define(function (require, exports, module) {
 				alert('Folder name can not be null');
 				return false;
 			}
-			if (GlobalUtil.isConSpeCharacters(newName)) {
+			if (isConSpeCharacters(newName)) {
 				alert('Folder name can not contain flowing characters: \\,/,:,<,>,*,?,\",&,\'');
 				return false;
 			}
@@ -64,6 +63,17 @@ define(function (require, exports, module) {
 				}
 			});
 			return true;
+		}
+
+		function isConSpeCharacters (value) {
+			var special = '\\,/,:,<,>,*,?,\",&,\'',
+				specialList = special.split(',');
+			for(var index=0, length=specialList.length; index < length; index++) {
+				if (value.indexOf(specialList[index]) > -1) {
+					return true;
+				}
+			}
+			return false;
 		}
 
 		function addDiyDom(treeId, treeNode) {
@@ -132,14 +142,14 @@ define(function (require, exports, module) {
 			}
 		}
 
-		function sortCategoryList(respList) {
+		function sortCategoryList(respList, type) {
 			// TODO 根据KV提供的folders_pos来进行排序
 			respList.sort(function(a, b) {
 				if (a.position) {
 					return a.position - b.position;
 				}
 				// 如果没有顺序信息，则直接通过名称排序
-				return a[treeNode.type + '_name'].localeCompare(b[treeNode.type + '_name']);
+				return a[type + '_name'].localeCompare(b[type + '_name']);
 			});
 			return respList;
 		}
@@ -183,7 +193,7 @@ define(function (require, exports, module) {
 			});
 
 
-			childList = sortCategoryList(childList);
+			childList = sortCategoryList(childList, treeNode.type);
 			treeObj.addNodes(treeNode, childList, true);
 			// 暂时只对文件夹开放新建功能 lsl 2012-11-29
 			if (treeNode.level === 0 && treeNode.type === 'category') {

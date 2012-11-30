@@ -1,14 +1,20 @@
 define(function (require, exports, module) {
 	var loadingElemId = 'loading',
 			loadingElem = $('#' + loadingElemId),
-			GlobalUtil = require('common/util/GlobalUtil'),
 			showDelay = 0;
 
 	// ie下无法使用css3 animation 2012-11-26 lsl
-	if (GlobalUtil.bIe()) {
+	if (bIe()) {
 		$('.loading-fallback').show();
 		$('.c_loadingTracks').hide();
 		showDelay = 500;
+	}
+
+	function bIe() {
+		if(document.all) {
+			return true;
+		}
+		return false;
 	}
 
 	function show() {

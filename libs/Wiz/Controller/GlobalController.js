@@ -3,18 +3,17 @@
  */
 
 define(function (require, exports, module) {
-	var GlobalUtil = require('common/util/GlobalUtil'),
-			config = require('config'),
-			context = require('Wiz/context'),
-			constant = require('Wiz/constant'),
-			remote = require('Wiz/remote'),
+	var GlobalUtil = require('../../common/util/GlobalUtil'),
+			context = require('../context'),
+			constant = require('../constant'),
+			remote = require('../remote'),
 
-			treeCtrl = require('Wiz/Controller/leftTreeLayout/ztreeController'),
-			searchBoxCtrl = require('Wiz/Controller/leftTreeLayout/searchBoxController'),
-			listCtrl = require('Wiz/Controller/doclistLayout/Controller'),
-			groupCtrl = require('Wiz/Controller/headLayout/groupEntryController'),
-			headCtrl = require('Wiz/Controller/headLayout/headController'),
-			docViewCtrl = require('Wiz/Controller/docViewLayout/DocView'),
+			treeCtrl = require('./leftTreeLayout/ztreeController'),
+			searchBoxCtrl = require('./leftTreeLayout/searchBoxController'),
+			listCtrl = require('./doclistLayout/Controller'),
+			groupCtrl = require('./headLayout/groupEntryController'),
+			headCtrl = require('./headLayout/headController'),
+			docViewCtrl = require('./docViewLayout/DocView'),
 
 			// 判断首次加载页面，增加首次加载时默认初始化功能
 			_bFirst = true,

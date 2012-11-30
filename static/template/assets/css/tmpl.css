@@ -106,12 +106,14 @@ ul, menu, dir {
   padding:0;
   -webkit-box-sizing:content-box;
   -moz-box-sizing:content-box;
-
   margin:0;
   width:26px;
   height:24px;
 
   background: #515151;
+}
+#search button:hover{
+  background-position:0 -60px;
 }
 /*--------  导航栏样式  ---------*/
 #nav-ct {
