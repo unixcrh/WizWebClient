@@ -1,5 +1,4 @@
 define(function(require, exports, module) {
-	var config = require('');
 	var _opacityElem = null;
 	var OPACITY_CLASS = 'opacity-layer';
 

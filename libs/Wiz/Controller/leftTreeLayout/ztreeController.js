@@ -1,12 +1,11 @@
 define(function (require, exports, module) {
-	var treeProperty = require('/conf/treeProperty'),
+	var treeProperty = require('./treeProperty'),
 		messageCenter = null,
 		zTree = require('ztree'),
-		GlobalUtil = require('common/util/GlobalUtil'),
-		remote = require('Wiz/remote'),
-		context = require('Wiz/context'),
+		remote = require('../../remote'),
+		context = require('../../context'),
 
-		locale= require('locale'),
+		locale= require('../../../../locale/main'),
 		specialLocation = locale.DefaultCategory;
 
 	function ZtreeController() {
@@ -46,7 +45,7 @@ define(function (require, exports, module) {
 				alert('Folder name can not be null');
 				return false;
 			}
-			if (GlobalUtil.isConSpeCharacters(newName)) {
+			if (isConSpeCharacters(newName)) {
 				alert('Folder name can not contain flowing characters: \\,/,:,<,>,*,?,\",&,\'');
 				return false;
 			}
@@ -64,6 +63,17 @@ define(function (require, exports, module) {
 				}
 			});
 			return true;
+		}
+
+		function isConSpeCharacters (value) {
+			var special = '\\,/,:,<,>,*,?,\",&,\'',
+				specialList = special.split(',');
+			for(var index=0, length=specialList.length; index < length; index++) {
+				if (value.indexOf(specialList[index]) > -1) {
+					return true;
+				}
+			}
+			return false;
 		}
 
 		function addDiyDom(treeId, treeNode) {
