@@ -82,7 +82,7 @@ define(function (require, exports, module) {
 	function init() {
 		var token = GlobalUtil.getUrlParam('t');
 		if (!token || typeof token !== 'string') {
-			document.location.replace(config.login_url);
+			document.location.replace(constant.url.LOGIN);
 		} else {
 			context.token = token;
 

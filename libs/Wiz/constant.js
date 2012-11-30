@@ -8,7 +8,7 @@ define(function (require, exports, module) {
 	var TAG_BASE = API_BASE + '/tag';
 	var DOCUMENT_BASE = API_BASE + '/document';
 	var ATTACHMENT_BASE =API_BASE + '/attachment';
-	var LOGIN_URL = BASE_URL + '/loginweb_zh_CN.html';
+	var LOGIN_URL = BASE_URL + '/login';
 
 	var remote = {
 		CLIENT_TYPE: 'web2.0',
@@ -17,7 +17,7 @@ define(function (require, exports, module) {
 	};
 
 	var url = {
-		LOGIN : BASE_URL + '/loginweb_zh_CN.html',
+		LOGIN : 'http://debug.wiz.cn/login',
 		LOGOFF: 'http://service.wiz.cn/wizkm/a/logout?url='
 	};
 
@@ -185,9 +185,9 @@ define(function (require, exports, module) {
 	  	async: true
 	  },
 
-		REGISTER_SUCCESS_URL: BASE_URL + '/regSuccess_zh_CN.html',
+		REGISTER_SUCCESS_URL: BASE_URL + '/register',
 
-		WEB_URL: BASE_URL + '/index.html'
+		WEB_URL: BASE_URL + '/web'
 	};
 
 	exports.api = api;
