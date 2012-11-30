@@ -11,7 +11,12 @@ seajs.config({
 	},
 	preload: [
 		'jquery'
-	],
+	], 
+	map: [
+	// 时间戳控制版本管理
+    [ /^(.*\/libs\/.*\.(?:css|js))(?:.*)$/i, '$1?201211301525' ]
+  ],
+
 	locale: 'zh-cn'																						//默认语言包
 });
 seajs.modify('jquery', function (require, exports, module) {

@@ -5,6 +5,10 @@ seajs.config({
 		'common': '/libs/common',
 		'Wiz': '/libs/Wiz'
 	},
+	map: [
+	// 时间戳控制版本管理
+    [ /^(.*\/libs\/.*\.(?:css|js))(?:.*)$/i, '$1?201211301525' ]
+  ],
 	preload: [
 		'jquery'
 	]
