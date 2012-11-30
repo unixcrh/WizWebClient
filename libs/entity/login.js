@@ -91,6 +91,12 @@ define(function(require, exports) {
 
 	/* 登陆按钮 */
 	function login(event){
+		if (event.preventDefault) {
+			event.preventDefault();	
+		} else {
+			event.returnValue = false;
+		}
+
 		$("#tip_error_login").hide();
 		
 		var user_id = $("#login_name").val();
