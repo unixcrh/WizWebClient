@@ -107,13 +107,15 @@ ul, menu, dir {
   padding:0;
   -webkit-box-sizing:content-box;
   -moz-box-sizing:content-box;
-
   margin:0;
   width:24px;
   height:24px;
   background:url("../img/css-sprite.png");
   background-size:1000%;
   /*background-position:0 -30px;*/
+}
+#search button:hover{
+  background-position:0 -60px;
 }
 /*--------  导航栏样式  ---------*/
 #nav-ct {
