@@ -47,13 +47,13 @@ ul, menu, dir {
 	position: fixed;
   /**position:absolute;*/
   background-color: #1a1a1a;
-	height: 94px;
+	height: 105px;
   z-index: 9999; 
 
 }
 
 #header-container {
-  height: 94px;
+  height: 105px;
   white-space: nowrap;
 }
 
@@ -77,6 +77,7 @@ ul, menu, dir {
 #search{
   float:right;
   padding: 10px 0;
+  /*background: #515151;*/
   /*display: inline-block;
   *display:inline;
   *zoom:1;*/
@@ -108,10 +109,11 @@ ul, menu, dir {
   -moz-box-sizing:content-box;
 
   margin:0;
-  width:26px;
+  width:24px;
   height:24px;
-
-  background: #515151;
+  background:url("../img/css-sprite.png");
+  background-size:1000%;
+  /*background-position:0 -30px;*/
 }
 /*--------  导航栏样式  ---------*/
 #nav-ct {
@@ -148,7 +150,7 @@ ul, menu, dir {
   color: #0CF;
 }
 .split {
-	height: 8px;
+	height: 10px;
 	background-color: rgba(26,26,26,0.6);
   border:none;
   /*IE6 下默认字体大小12-14，不允许有低于此的div
@@ -161,26 +163,28 @@ ul, menu, dir {
 /*---------------------内容样式---------------------*/
 .bd {
   /*   *position:relative;  解决IE7自动出现灰色滚动条的hack*/
-  padding-top:94px;
+  padding-top:105px;
   _padding-top:0px;
   /*为解决IE6盒模型问题和padding双倍问题而做的hack*/
   padding-bottom: 30px;
-  outline:5px solid #000;
+  /*outline:5px solid #000;*/
 }
 /*---- 包裹体  用于实现全屏幕宽度的纯色区域 ----*/
 .wraper{
   width:100%;
+  padding:0;
+  margin:0;
   /*border:2px solid pink;*/
 }
 /*--- 不同页面专用容器  960px 居中显示   ---*/
-#gallery{
+#gallery {
   position:relative;
-  margin:0 auto;
   width:960px;
-  height:500px;
-  text-align: left;
-  outline:2px solid green;
+  margin:0 auto;
+  padding:10px;
+  height:auto;
 }
+
 .intro{
   position: relative;
   margin:0 auto;
@@ -285,7 +289,9 @@ p.error-indicator{
 #login-form span{
   font-size: 15px;
 }
-
+#login-form p{
+  font-size: 15px;
+}
 #login-form .btn{
   width:auto;
   height:auto;
@@ -300,15 +306,6 @@ p.error-indicator{
 }
 #login-form .btn:active{
   background:#1a1a1a;
-}
-#login-form p.toregister{
-  position:absolute;
-  left:5px;
-  bottom:9%;
-  color:#666;
-  font-size: 15px;
-  padding:0;
-  margin:10px 0 0 0;
 }
 #login-form a{
   color:#2672ec;
@@ -348,7 +345,7 @@ p.error-indicator{
   float:left;
   margin:30px 0 0 0;
 }
-.gallery .pic {
+#gallery .pic {
   float:right;
   width:400px;
   margin:10px 20px 0 0 ;
@@ -357,16 +354,16 @@ p.error-indicator{
   /*height:auto;*/
   /*float:left;*/
   margin:20px 20px;
-  height:32px;
+  height:50px;
   /*width:300px;*/
   /*z-index: 100;*/
   background:url("../img/slogan.png") no-repeat;
-  background-size: 50% 50%;
+  background-size: 70%;
 }
 /*.gallery span{
     background:#0CF;
 }*/
-.gallery button {
+#gallery button {
   float:left;
   width:auto;
   margin:10px 20px;
@@ -429,6 +426,11 @@ button.direct:hover {
   width:100%;
   padding:20px 0 0 0;
   text-align: center;
+  font-size: 14px;
 }
-
+#footer a{
+  font-size:14px;
+  font-weight: bold;
+  color:#0072c6;
+}
 
