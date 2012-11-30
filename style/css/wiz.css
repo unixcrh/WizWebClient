@@ -524,7 +524,7 @@ input[type="checkbox"], body:not(.IE_M9) input[type="radio"] {
 	top: 0;
 	left: 0;
 	background: #f0f0f0;
-	min-width: 10%;
+	min-width: 100px;
 	max-width: 80%;
 	z-index: 2;
 	overflow: hidden;
