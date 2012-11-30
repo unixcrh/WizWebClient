@@ -741,7 +741,7 @@ input[type="checkbox"], body:not(.IE_M9) input[type="radio"] {
 }
 
 .d-brief-info {
-	height: 35px;;
+	height: 35px;
 }
 
 /*底部的分割线*/
@@ -751,11 +751,11 @@ input[type="checkbox"], body:not(.IE_M9) input[type="radio"] {
 
 .frame-ct {
 	position: absolute;
-	top: 80px;
+	top: 45px;
 	bottom: 20px;
 	left: 20px;
 	right: 20px;
-	*top: 83px;
+	*top: 48px;
 }
 
 .frame-ct iframe {
