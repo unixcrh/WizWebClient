@@ -116,7 +116,9 @@ ul.ztree.zTreeDragUL {margin:0; padding:0; position:absolute; width:auto; height
 	color: #0072C6;	
 	background-color: transparent;
 }
-
+.ztree li .level0 {
+	margin-top: 20px;
+}
 /* level style*/
 /*.ztree li span.button.level0 {
 	display:none;
