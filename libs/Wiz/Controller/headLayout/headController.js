@@ -44,7 +44,7 @@ define(function (require, exports, module) {
 						event.preventDefault();
 						// event.returnValue = false;
 
-						var return_url = window.location.origin; //自身url
+						var return_url = constant.url.LOGIN; //自身url
 						var encode_return_url = encodeURIComponent(return_url);
 						window.location.href = constant.url.LOGOFF + encode_return_url;
 						

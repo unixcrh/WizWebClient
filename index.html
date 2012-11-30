@@ -1,205 +1,94 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
 	<head>
 		<meta charset="utf-8">
-		<link type="text/css" rel="stylesheet" href="style/css/normalize.css">
-		<link type="text/css" rel="stylesheet" href="style/css/zTreeStyle.css">
-		<link type="text/css" rel="Stylesheet" href="style/css/wiz.css">
-		<title></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="assets/css/clear.css">
+		<link rel="stylesheet" href="assets/css/tmpl.css">
+		<link rel="stylesheet" href="assets/css/media-queries.css">
+
+		<title>Wiz template</title>
+		<!--[if lt IE 9]> <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script> <![endif]-->
+		
+
 	</head>
 	<body>
-		<div id="head" class="hidden"></div>
-		<div class="main-container">
-			<div class="header-container">
-				<!-- head-flyingDots 加载中动画 -->
-				<div class="head-flyingDots head-flyingDots-ct hidden" id="loading">
-					<div class="head-flyingDots">
-						<!-- for ie -->
-						<div class="loading-fallback hidden"></div>
-
-						<div class="c_loadingTracks" >
-							<div class="c_loadingTrack c_loadingTrack5">
-								<div class="c_loadingDot">
-								</div>
-							</div>
-							<div class="c_loadingTrack c_loadingTrack4">
-								<div class="c_loadingDot">
-								</div>
-							</div>
-							<div class="c_loadingTrack c_loadingTrack3">
-								<div class="c_loadingDot">
-								</div>
-							</div>
-							<div class="c_loadingTrack c_loadingTrack2">
-								<div class="c_loadingDot">
-								</div>
-							</div>
-							<div class="c_loadingTrack c_loadingTrack1">
-								<div class="c_loadingDot">	
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>	<!-- head-flyingDots 加载中动画 -->
-				<div class="header-left">
-					<a class="logo h-link">
-						<img src="style/images/logo.png" alt="logo" class="logo-img" />
+		<!-- 页面顶部 -->
+		<div id="header">
+			<div id="header-container">
+				<span id="logo">
+					<a href="#">
+						<img src="assets/img/logo.png" alt="wiz note" class='logo-img'>
 					</a>
-					<span class="logo-split"></span>
-					<a id="group_ctrl" class="h-link group-entry" >
-						<span>
-							<span class="g_menu_span" dir="ltr">
-								<img src="style/images/invis.gif" alt="group-entry" class="dropdown-menu-larger">
-							</span>
-						</span>
-					</a>
-				</div>
-				<ul class="header-md"></ul>
-				<div class="header-right">
-					<!-- 顶部右侧 -->
-					<div class="hd-ct">
-						<span  class="hd-ct">
-							<div>
-								<a href="#" class="wiz-button" >
-									<img src="style/images/clear.gif" alt="" id="m_setting">
-								</a>
-							</div>
-						</span>
-						<span class="hd-ct">
-							<a href="#" id="user_info" class=" wiz-button hd-ct">
-								<span class="hd-ct">
-									<span id="user_name" class="u-name u-hd"></span>
-									<div id="user_image" class="u-img">
-										<img src="style/images/bluemanm.png" alt="">
-									</div>
-								</span>
-							</a>
-							<ul class="wiz-menu" id="user_menu">
-								<li>
-									<a href="#" class="wiz-menu-item" tabindex="1" style="zoom: 0;">
-										<span>注销</span>
-									</a>
-								</li>
-							</ul>
-						</span>
+					<!-- 搜索框 -->
+					<div id="search">
+						<input type="text" name="searchText"></input>
+						<button value=""></button>
 					</div>
+				</span>
+				
+				<!-- 导航栏 -->
+				<div id="nav-ct">
+					<ul id="nav">
+						<li><a href="/">首页</a></li>
+						<li><a href="/download">下载</a></li>
+						<li><a href="/enterprise">企业方案</a></li>
+						<li><a href="/support">支持</a></li>
+						<li><a href="/joinus">加入我们</a></li>
+						<li style="float:right; padding:0;"><a href="/login">登录</a> / <a href="/register">注册</a></li>
+					</ul>
 				</div>
-				<!-- 顶部 -->
 			</div>
-			<div id="resize_container" class="below_container">
-				<div id="leftTree_container" class="content-left">
-					<div class="search-box-content">
-						<!--搜索栏 -->
-						<span class="search-box">
-							<div class="search-box-md">
-								<input type="text" id="s_box_input" aria-label="" class="search-box-input">
-								<input type="button" id="s_box_submit" class="search-box-btn" title="search">
-							</div>
-						</span>
+			<div class="split"></div>
+		</div>
+		<!-- 页面内容 -->
+		<div class="bd">
+			<!-- 页面概述 -->
+			<div class="wraper">
+				<div class="gallery">
+					<div class="describe">
+						<div class="slogan"></div>
+						<button>了解为知笔记</button>
 					</div>
-					<div class="ztreeContainner">
-						<div id="leftTree" class="ztree">
-							<!-- 树控件 -->
-						</div>
-			  </div>
-			</div>
-				<!-- 左侧树和右侧内容的分割 -->		
-			<div id="left_splitter" class="splitter"></div>
-			<div id="content_container" class="content-right">
-				<div id="doc_list_containner_wrapper">
-					<div id="sort_filter_container" class="sort-filter-contanier">
-						<span>
-							<!-- 排序过滤 -->
-							<div class="sort-split"></div>
-							<!-- TODO国际化、封装成jQuery插件方式，业余时间做 -->
-							<div class="sort-filter-wrapper">
-								<div class="menu-ct">
-									<a href="#" id="sort_menu">
-										<span>选择排序方式</span>
-										<img src="style/images/clear.gif" alt="" class="drop-down-small">
-									</a>
-									<ul id="sort_list" class="wiz-menu">
-										<li>
-											<a href="#" class="wiz-menu-item" cmd="dt_created" bDes="true" tabindex="1" style="zoom: 0;">
-												<img src="style/images/clear.gif" class="" alt="">
-												<span>按创建时间(降序)</span>
-											</a>
-										</li>
-										<li>
-											<a href="#" class="wiz-menu-item" cmd="dt_created" bDes="false" tabindex="1" style="zoom: 0;">
-												<img src="style/images/clear.gif" class="" alt="">
-												<span>按创建时间(升序)</span>
-											</a>
-										</li>
-										<li>
-											<a href="#" class="wiz-menu-item" cmd="dt_modified" bDes="true" tabindex="1" style="zoom: 0;">
-												<img src="style/images/clear.gif" class="sort-item-selected" alt="">
-												<span>按修改时间(降序)</span>
-											</a>
-										</li>
-										<li>
-											<a href="#" class="wiz-menu-item" cmd="dt_modified" bDes="false" tabindex="1" style="zoom: 0;">
-												<img src="style/images/clear.gif" class="" alt="">
-												<span>按修改时间(升序)</span>
-											</a>
-										</li>
-										<li>
-											<a href="#" class="wiz-menu-item" cmd="document_title" bDes="true" tabindex="1" style="zoom: 0;">
-												<img src="style/images/clear.gif" class="" alt="">
-												<span>按名称(降序)</span>
-											</a>
-										</li>
-										<li>
-											<a href="#" class="wiz-menu-item" cmd="document_title" bDes="false" tabindex="1" style="zoom: 0;">
-												<img src="style/images/clear.gif" class="" alt="">
-												<span>按名称(升序)</span>
-											</a>
-										</li>
-									</ul>
-								</div>
-							</span>
-						</div>
-
-					</div>
-					<div id="doc_list_containner" class="doc-list">
-						<!-- 文档列表 -->
-					</div>
-					<div class="pagination-containner" ></div>
+					<img class="pic" src="assets/img/gallery-img1.png"></img>
+					<br clear="all"/>
 				</div>
-				<div id="content_splitter" class="splitter"></div>
-				<div class="doc-detail-ct" id="doc_read_area">
-					<div id="doc_params" class="d-params">
-						<div class="params-title bottom-line">
-							<h2 id="doc_params_title"></h2>
-						</div>
-						<!-- 显示文档目录和出处链接信息 -->
-						<div class="d-brief-info bottom-line">
-							<!-- <span>
-								<span class="d-category-info">
-									<img src="" alt="">
-									<div id="params_category"></div>
-								</span>
-								<span class="d-url-info">
-									<img src="" alt="">
-									<div id="params_url"></div>
-								</span>
-							</span> -->
-							<div class="show-more">
-								<a href="#" id="showMoreHref"></a>
-							</div>
-						</div>	<!--d-brief-info-->
-
-						<!-- 显示文档相信信息 -->
-						<div class="d_detail_ct"></div>
-
-					</div> <!-- d-params-->
-					<div class="frame-ct">
-						<iframe src="blank.html" scrolling='no' frameborder="0" id="wiz_doc_iframe"></iframe>
+				<div id="indicator"></div>
+			</div>
+			<div class="wraper">
+				<div class="intro">
+					<div class="intro-highlights">
+						<h1>多客户端同步</h1>
+						<p>想把Wiz服务器和客户端部署在企业内部？
+	没问题，您只需要使用Wiz企业版本即可。</p> 
+						<button class="direct"> <a href=""></a></button>
 					</div>
+					<div class="intro-highlights">
+						<h1>数据安全</h1>
+						<p>想把Wiz服务器和客户端部署在企业内部？
+	没问题，您只需要使用Wiz企业版本即可.把Wiz服务器和客户端部署在企业内部？
+	没问题，您只需要使用Wiz企业版本即可。</p> 
+						<button class="direct"> <a href=""></a></button>
+					</div>
+					<div class="intro-highlights">
+						<h1>多客户端同步</h1>
+						<p>想把Wiz服务器和客户端部署在企业内部？
+	没问题，您只需要使用Wiz企业版本即可。</p> 
+						<button class="direct"> <a href=""></a></button>
+					</div>
+					<br clear="all" />
+				</div>
+			</div>
+			<div class="wraper">
+				<div class="rasterlze">
+					
 				</div>
 			</div>
 		</div>
-		<script type="text/javascript" src="./libs/common/seaJs/sea-debug.js" data-main="./libs/entity/webEntry"></script>
-		<div class="header_group_ct"></div>
+		<!-- 页脚 公司相关信息 -->
+		<div id="footer">
+			<!-- 装饰 -->
+			<span id="info">© 2001-2012  <a href="">关于</a>  <a href="">联系我们</a>  京ICP备11038801号</span>
+		</div>
 	</body>
 </html>
