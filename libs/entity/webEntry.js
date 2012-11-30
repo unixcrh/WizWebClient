@@ -1,8 +1,8 @@
 seajs.config({
 	alias: {
-		'jquery': '/libs/common/jquery/jquery-1.7.2.js',
+		'jquery': '/libs/common/jquery/jquery-1.7.2.min.js',
 		'cookie': '/libs/common/jquery/jquery.cookie.js',
-		'ztree': '/libs/common/jquery/jquery.ztree.all-3.3.js',
+		'ztree': '/libs/common/jquery/jquery.ztree.core-3.3.min.js',
 		'common': '/libs/common',																//通用库
 		'component': '/libs/component',													//小组件
 		'config': '/conf/config',																//web的配置
@@ -14,7 +14,7 @@ seajs.config({
 	], 
 	map: [
 	// 时间戳控制版本管理
-    [ /^(.*\/libs\/.*\.(?:css|js))(?:.*)$/i, '$1?201211301525' ]
+    [ /^(.*\/libs\/.*\.(?:css|js))(?:.*)$/i, '$1?201211301534' ]
   ],
 
 	locale: 'zh-cn'																						//默认语言包
