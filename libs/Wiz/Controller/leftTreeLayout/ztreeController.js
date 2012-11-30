@@ -255,7 +255,7 @@ define(function (require, exports, module) {
 			var treeElem = $('#' + id);
 			treeElem.hover(function () {
 				if (!treeElem.hasClass("showIcon")) {
-					treeElem.addClass("showIcon");
+					treeElem.fadeIn().addClass("showIcon");
 				}
 			}, function() {
 				treeElem.removeClass("showIcon");
