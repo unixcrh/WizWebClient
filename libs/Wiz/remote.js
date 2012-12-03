@@ -43,7 +43,8 @@ define(function(require, exports, module) {
 		var params = {
 			client_type: constant.remote.CLIENT_TYPE,
 			api_version: constant.remote.API_VERSION,
-			token: context.token
+			token: context.token,
+			debug: context.debug
 		}
 		return params;
 	}
