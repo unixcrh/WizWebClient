@@ -10,7 +10,10 @@ define(function (require, exports, module) {
 				userMenuId: 'user_menu'
 			},
 			_data = {
-				_userInfo: null
+				_userInfo: null,
+				operateList: {
+					create: 'create_note'
+				}
 			},
 			_view = {
 				showUser: function(userInfo) {
@@ -21,6 +24,12 @@ define(function (require, exports, module) {
 					var signOutValue = _locale.UserSetting.singOut,
 							signOutElem = $('#user_menu li a span');
 					signOutElem.html(signOutValue);
+					// 已经成功登陆后再开始加载
+					_view.localizeOperateList();
+				},
+				// 本地化相应的操作列表
+				localizeOperateList: function() {
+					$('#' + _data.operateList.create).html(_locale.HeadMenuForDoc.Create);
 				}
 			},
 			_bindInitHandler= function() {
@@ -59,6 +68,8 @@ define(function (require, exports, module) {
 			},
 			event = {
 			}
+
+
 
 
 	function getJqClassSelector(className) {

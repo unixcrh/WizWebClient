@@ -28,8 +28,7 @@ body {
 /*隐藏聚焦时显示的黄色边框*/
 input, button, select, textarea, ul, li {
 	outline: none;
-	font-family: "微软雅黑", "宋体", Helvetica, Arial, sans-serif;
-	font-size: 100%;
+	font-family: "Microsoft Yahei",Verdana,Simsun,"Segoe UI","Segoe UI Web Regular","Segoe UI Symbol","Helvetica Neue","BBAlpha Sans","S60 Sans",Arial,"sans-serif";
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -192,13 +191,35 @@ input[type="checkbox"], body:not(.IE_M9) input[type="radio"] {
 
 /*--------------------------------button组件------------------------------*/
 
-.button-group>li{
+.button-group li{
 	display: inline-block;
+	position: relative;
+	top: 0;
+	height: 40px;
+	*float: left;
+	font-size: 110%;
+	padding: 0;
+	margin: 0;
+	border: 0;
 }
 
 
 /*顶部按钮*/
 .wiz-button {
+	height: 40px;
+	display: inline-block;
+	padding: 0 10px;
+	margin: 0;
+}
+
+.new-doc-icon {
+	display: inline-block;
+	height: 26px;
+	width: 26px;
+	background-image: url("../images/command2.png");
+	background-position: -1px -1px;
+	position: relative;
+	top: 7px;
 }
 
 .wiz-button:hover {
@@ -393,17 +414,20 @@ input[type="checkbox"], body:not(.IE_M9) input[type="radio"] {
 .header-left {
 	float: left;
 	height: 40px;
-	font-size: 0;
 }
 
 .header-md{
 	float: left;
+	height: 40px;
+	margin: 0;
 }
 .header-right {
 	position: absolute;
 	right: 0;
 	top: 0;
+	bottom: 0;
 	height: 40px;
+	_float: right;
 }
 .logo-split {
 	border-left: 1px solid #f0f0f0;
