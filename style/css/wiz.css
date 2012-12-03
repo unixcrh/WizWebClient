@@ -190,7 +190,13 @@ input[type="checkbox"], body:not(.IE_M9) input[type="radio"] {
 	background-position: -35px -155px;
 }
 
-/*--------------------------------wiz控件------------------------------*/
+/*--------------------------------button组件------------------------------*/
+
+.button-group>li{
+	display: inline-block;
+}
+
+
 /*顶部按钮*/
 .wiz-button {
 }
@@ -216,7 +222,7 @@ input[type="checkbox"], body:not(.IE_M9) input[type="radio"] {
 	cursor: pointer;
 }
 
-/*--wiz-menubar--*/
+/*--wiz-menubar  组件--*/
 
 .wiz-menu-item{
 	display: block;
