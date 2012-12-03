@@ -1,7 +1,7 @@
 /*@import charset:utf-8;*/
 html, body {
   margin: 0;
-  font-family: Verdana, Simsun;
+  font-family: 'Microsoft YaHei UI', 'Microsoft YaHei', SimSun, 'Segoe UI', Tahoma, Helvetica, sans-serif;
   color: #000;
   font-size: 100%;
   _text-align:center;
@@ -43,31 +43,36 @@ ul, menu, dir {
 
 /*-------------顶部样式---------------*/
 
-#header {
+#headerCtn {
+  width: 100%;
 	position: fixed;
   /**position:absolute;*/
   background-color: #1a1a1a;
-	height: 94px;
+	height: auto;
   z-index: 9999; 
 
 }
 
-#header-container {
-  height: 94px;
+#header {
+  height: 105px;
+  width:998px;
+  margin:0 auto;
+  padding:0 4px;
+  position:relative;
   white-space: nowrap;
 }
 
 #logo {
   display:block;
+  width:100%;
+  height:36px;
   float:left;
   clear:right;
-  margin-top: 20px;
+  margin-top: 30px;
   min-width: 400px;
   _min-width: 400px;
   *min-width: 400px;
-  /*display: inline-block;
-  *display:inline;
-  *zoom:1;*/
+  /*outline:1px solid #FFF;*/
 }
 #logo img{
   float:left;
@@ -116,48 +121,81 @@ ul, menu, dir {
 #search button:hover{
   background-position:0 -27px;
 }
-/*--------  导航栏样式  ---------*/
-#nav-ct {
+/*--------  主导航栏样式  ---------*/
+#primaryNav {
+width:998px;
+bottom: 7px;
+color: #CFCFCF;
+display: block;
+font-weight: 600;
+height: 20px;
+left: 0px;
+margin:0;
+padding:0 4px;
+position: absolute;
+text-align: left;
+top: auto;
+white-space: nowrap;
+_zoom:1;
+/*border:1px solid white;*/
+}
+#primaryNav li {
   float:left;
-  padding:0;
-  margin:4px 0 0 0 ;
-  font-size: 0.8em;
-  color: #fff;
-}
-#nav-ct span{
-  float: right;
-}
-#nav {
-  white-space: nowrap;
-  margin:0;
-  padding:0;
-  min-width: 400px;
-  _min-width: 400px;
-  *min-width: 400px;
-}
-
-#nav li {
-  float:left;
+  /*padding:0 ;*/
+  margin:0 18px 0 0;
+  height:15px; 
+  display:block;
+  font-size: 13px;
   /*font-family: 'Battlestar';*/
 }
 
-#nav a {
-  font-size: 1em;
-  color: #FFF;
-  font-weight: bolder;
-  text-decoration: none;
+#primaryNav a, #subNav a {
+  font-size: 13px;
+  color: #CFCFCF;
+  cursor:pointer;
+  /*a是in-line元素 转换为block后格式化其样式*/
+  letter-spacing: 1px;
+  vertical-align: baseline;
+  line-height: 15px;
 }
-#nav a:hover {
+
+#primaryNav a.currentPage {
   color: #0CF;
 }
-.split {
-	height: 8px;
-	background-color: rgba(26,26,26,0.6);
+#primaryNav a:hover, #primaryNav a.currentPage:hover, #subNav a:hover{
+  color:#FFF;
+}
+#subNavCtn {
+  position:fixed;
+  margin: 105px 0 0 0;
+  padding:8px 0 3px 0;
+	height: 22px;
+  width:100%;
+	background-color: #2A2A2A;
+  filter: alpha(opacity=90);
+  opacity:0.9;
   border:none;
+  z-index: 9999;
   /*IE6 下默认字体大小12-14，不允许有低于此的div
   因此可以强制定义字体大小为合适高度*/
-  _font-size: 4px;
+  /*_font-size: 4px;*/
   /*_border:none;*/
+}
+#subNav{
+  width:998px;
+  margin:0 auto;
+  padding:0 4px;
+}
+#subNav li{
+  float:left;
+  font-size: 13px;
+  line-height: 15px;
+  vertical-align: baseline;
+  font-weight: 600;
+  margin:0 18px 0 0;
+  height:15px; 
+  display:block;
+  font-size: 13px;
 }
 
 
@@ -173,29 +211,161 @@ ul, menu, dir {
 /*---- 包裹体  用于实现全屏幕宽度的纯色区域 ----*/
 .wraper{
   width:100%;
-  /*border:2px solid pink;*/
+  height:auto;
+  /*padding:10px 0;*/
+  /*outline:1px solid #000;*/
 }
 /*--- 不同页面专用容器  960px 居中显示   ---*/
-.gallery{
-  position:relative;
+.presentation{
+  height:auto;
+  width:1006px;
   margin:0 auto;
-  width:960px;
-  height:450px;
+  padding:35px 0 0 0;
+  /*color:#454545;*/
+  color:#FFF;
   text-align: left;
-  /*outline:2px solid green;*/
+  /*outline:1px solid #000;*/
 }
-.intro{
-  position: relative;
+.slogan{
+  float:left;
+  width:499px;
+  height:auto;
+  margin:0 4px 0 0;
+}
+.slogan h1{
+  font-size: 66px;
+  font-weight: 500;
+  margin:0 0 0 -2px;
+  /*color:#454545;*/
+  line-height: 66px;
+  vertical-align: baseline;
+  /*white-space: nowrap;*/
+  /*letter-spacing: -1px;*/
+}
+.slogan h3{
+  font-size: 16px;
+  font-weight: bold;
+  /*color:#454545;*/
+  line-height: 22px;
+  white-space: nowrap;
+  padding:0 4px;
+  /*letter-spacing: 1px;*/
+}
+.slogan button{
+  border:none;
+  margin:32px 0 0 4px;
+  padding:4px 13px 8px 13px;
+  background:#0CF;
+}
+.slogan button:hover{
+  background:#24459A;
+}
+.slogan span{
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 22px;
+  color:#FFF;
+}
+.display{
+  float:right;
+  /*width:495px;*/
+  height:auto;
+  margin:0 0 0 4px;
+  padding:4px 4px 0 0;
+}
+.display img{
+  float:right;
+}
+.feature{
+  width:1006px;
+  padding:0 0 60px 0;
   margin:0 auto;
-  /*height:200px;*/
-  width:960px;
+  color:#454545;
+  text-align: left;
+  /*outline: 1px solid #000;*/
+}
+.feature h2{
+  width:100%;
+  font-size: 40px;
+  line-height: 50px;
+  font-weight: 200;
+  padding:10px 0 3px 0;
+  margin:0;
+}
+.feature .featureThmb{
+  float:left;
+  padding:0 0 0 4px;
+  width:484px;
+  /*outline: 1px solid #000;*/
+}
+.feature .featureThmb h3{
+  margin:0 0 0 0;
+  -webkit-margin-before: 0em;
+  -webkit-margin-after: 0em;
+  padding:5px 0;
+  font-size: 16px;
+  font-weight: normal;
+  line-height: 22px;
+}
+.feature .featureDescribe{
+  float:right;
+  width:484px;
+  padding:0 4px 0 0;
+  /*outline: 1px solid #000;*/
+}
+.feature .featureDescribe p{
+  margin: 6px 0 13px 0;
+  padding: 0;
+  font-size: 13px;
+  font-weight:  normal;
+}
+.feature .featureDescribe a, .feature .featureDescribe a:visited{
+  font-size: 13px;
+  font-weight: 600;
+  color: #1570A6;
+}
+.feature .featureDescribe a:hover {
+  color:#24459A;
+}
+
+#topic{
+  width:998px;
+  margin: 0 auto;
+  padding:10px 0 30px 0;
+  border:none;
+  color:#454545;
+  border-top: 4px solid #EDEDF0; 
   text-align: left;
 }
-.epcu{
-  margin:0 auto;
-  /*height:200px;*/
-  width:960px;
-  text-align: left;
+#topic ul{
+  width: 998px;
+  /*float:left;*/
+  margin:0;
+  padding:0;
+}
+#topic ul li{
+  display: block;
+  float: left;
+  margin:0 30px 0 0;
+  padding:0;
+  width:227px;
+  height:auto;
+}
+#topic ul li a{
+  font-size: 16px;
+  font-weight: bolder;
+  border-collapse: collapse;
+  line-height: 22px;
+  text-decoration: none;
+  vertical-align: baseline;
+  color:#24459A;
+}
+#topic ul li p{
+  font-size: 13px;
+  line-height: 20px;
+  font-weight: normal;
+  margin:0;
+  padding:0;
 }
 #login{
   margin:0 auto;
@@ -341,109 +511,50 @@ p.error-indicator{
 } 
 
 
-.rasterlze{
-  margin:0 auto;
-  /*height:200px;*/
-  width:960px;
-  text-align: left;
-}
 
-.gallery-containers{
-  position:absolute;
-}
 
-.gallery .describe {
-  float:left;
-  margin:30px 0 0 0;
-}
-.gallery .pic {
-  float:right;
-  width:400px;
-  margin:-80px 20px 0 0 ;
-}
-.slogan{
-  margin:20px 20px;
-  height:50px;
-  width:700px;
-  /*width:300px;*/
-  /*z-index: 100;*/
-  background:url("../img/slogan.png") no-repeat;
-  /*background-size:80%;*/
-}
-/*.gallery span{
-    background:#0CF;
-}*/
-.gallery button {
-  float:left;
-  width:auto;
-  margin:10px 20px;
-  padding:5px 10px;
-  *padding:5px 0;
-  font-size: 1.2em;
-  font-weight: bold;
-  color:#FFF;
-  background:#0CF;
-  border:none;
-  z-index:110;
-}
-
-.epcu ul{
-  /*display:inline-block;*/
-  float:left;
-}
-.intro-highlights{
-  position: relative;
-  width:250px;
-  /*height:50%;*/
-  height:250px;
-  margin:20px;
-  color:#FFF;
-  -webkit-box-sizing:content-box;
-  -moz-box-sizing:content-box;
-  padding:15px;
-  float:left;
-  background:#0072c6;
-  overflow: hidden;
-}
-
-button.direct{
-  position:absolute;
-  right:10px;
-  bottom:10px;
-  /*margin:10% 0 0 0;*/
-  width:30px;
-  height:30px;
-  background:url("../img/css-sprite.png") no-repeat;
-  background-position: -30px 0px;
-  border:none;
-}
-button.direct:hover {
-  background:url("../img/css-sprite.png") no-repeat;
-  background-position: -30px -30px;
-}
 /*---------------------页脚样式---------------------*/
 #footer {
   height: 100px;
   zoom: 1;
-  background: #555;
+  background: #1a1a1a;
   /*background-repeat: repeat;*/
+  _text-align:center;
+  _width:100%;
   z-index: 9999;
   position: relative;
   clear:both;
 }
+#footer .innerFooter{
+  width:998px;
+  margin:0 auto;
+  padding:0 4px;
+  /*outline: 1px solid #FFF;*/
+}
+.innerFooter img{
+  float:right;
+  margin:32px 0 0 0;
+}
 #footer span{ 
   display:block;
+  float:right;
+  margin:65px 0 0 0;
   width:100%;
-  padding:20px 0 0 0;
-  text-align: center;
+  padding:0;
+  text-align: right;
   color:#FFF;
   font-weight: bold;
   font-size:13px
 }
 #footer a{
-  color:#8E8E8E;
+  color:#FFF;
   font-weight: bold;
-  font-size:13px
+  font-size:13px;
+  padding:0 10px;
+  line-height:15px;
+}
+#footer a:hover{
+  color:#8E8E8E;
 }
 
 

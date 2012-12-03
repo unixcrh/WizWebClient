@@ -5,13 +5,13 @@
   /*position: relative;*/
   /*padding: 20px 18%;*/
   width:960px;
-  margin:0 auto;
+  
 }
 #logo {
   width:100%;
 }
 #nav-ct{
-	  width:100%;
+	width:100%;
 }
 #nav li {
   padding: 0 20px 0 0px;
