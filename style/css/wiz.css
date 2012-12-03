@@ -563,7 +563,7 @@ input[type="checkbox"], body:not(.IE_M9) input[type="radio"] {
 	z-index: 99;
 }
 .search-box-btn {
-	width: 16px;
+	width: 15px;
 	height: 16px;	
 	padding: 0;
 	border: 0;
@@ -702,7 +702,7 @@ input[type="checkbox"], body:not(.IE_M9) input[type="radio"] {
 }
 
 .info {
-	padding: 0 17px;
+	padding: 0 19px 0 21px;
 }
 
 .CK {

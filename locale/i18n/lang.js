@@ -25,5 +25,21 @@ define({
 		'personal': 'My Notes',
 		'createCategory': 'New folder...',
 		'createTag': 'New tag...'
+	},
+	// 显示用户设置相关
+	UserSetting: {
+		'singOut': 'Sing out'
+	},
+	// 文档列表排序国际化资源
+	DocSortArea: {
+		'menuName': 'Arrange By',
+		'items': [
+			'Date created(Descending)',
+			'Date created(Ascending)',
+			'Date modified(Descending)',
+			'Date modified(Descending)',
+			'Title(Descending)',
+			'Title(Ascending)'
+		]
 	}
 })

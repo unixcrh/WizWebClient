@@ -50,7 +50,6 @@ define(function (require, exports, module) {
 				return false;
 			}
 			// 新建目录
-			console.log(treeNode.type);
 			var location = '/' + newName + '/';
 			treeNode.location = location;
 			messageCenter.requestCreateItem(newName, treeNode.type, function (data) {
@@ -88,7 +87,6 @@ define(function (require, exports, module) {
 			}
 			// 修改新建功能的子节点显示样式
 			if (treeNode.level === 1 && treeNode.cmd === 'create') {
-				console.log(treeNode);
 				var hypertextObj = $('#' + treeNode.tId + '_a');
 				hypertextObj.addClass('create-link');
 			}

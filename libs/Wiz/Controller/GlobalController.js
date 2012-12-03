@@ -156,8 +156,6 @@ define(function (require, exports, module) {
   		id = 'user_info';
   	}
   	for (var i=0; i<length; i ++) {
-  		console.log($(menuList[i])[0].id);
-  		console.log(obj[id] != $(menuList[i])[0].id);
 	    if(obj[id] != $(menuList[i])[0].id){
 	    	$(menuList[i]).css('visibility', 'hidden');
 	    }

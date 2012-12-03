@@ -42,7 +42,6 @@ define(function (require, exports, module) {
 		var hideContainner = function (evt) {
 			var evt = evt ? evt : window.event,
 					target = evt.srcElement ? evt.srcElement : evt.target;
-			console.log(target.className);
 			if (target.className ==='group-per') {
 				return;
 			}

@@ -8,6 +8,11 @@ define(function (require, exports, module) {
 			sortMenuId: 'sort_menu',
 			sortListId: 'sort_list'
 		},
+		_htmlTag = {
+			SPAN: 'span',
+			A: 'a',
+			LI: 'li'
+		},
 		_action = {
 			active: 'doc-active'
 		},
@@ -17,7 +22,8 @@ define(function (require, exports, module) {
 		_data = {
 			docList: []
 		},
-		_containerObj = $('#' + _node.containerId);
+		_containerObj = $('#' + _node.containerId),
+		_locale = require('locale');
 
 		function bindSortHandler() { 
 			var sortMenuElem = $('#' + _node.sortMenuId),
@@ -115,7 +121,7 @@ define(function (require, exports, module) {
 		// 首先清空当前文档
 		flushAll();
 		// 开始加载
-		view.renderList(docList, null, cmd);
+		_view.renderList(docList, null, cmd);
 	}
 	
 
@@ -186,6 +192,25 @@ define(function (require, exports, module) {
 			}
 		}
 
+		// 将国际化的内容填充到html中
+		function fillContentByI18N() {
+			var docListI18N = _locale.DocSortArea,
+				  sortMenuElem = $('#' + _node.sortMenuId),
+					childList = $('#' + _node.sortListId + ' ' + _htmlTag.A + ' ' + _htmlTag.SPAN),
+					listLength = childList.length,
+					listI18N = _locale.DocSortArea.items,
+					child = null;
+
+			// sort menu的显示名称
+			sortMenuElem.children(_htmlTag.SPAN).html(docListI18N.menuName);
+			// 加载list内的名称
+			for (var index = 0; index < listLength; index ++) {
+				child = childList[index];
+				$(child).html(docListI18N.items[index]);
+			}
+		}
+
+		this.fillContentByI18N = fillContentByI18N;
 		this.renderList = renderList;
 	}
 
@@ -203,12 +228,13 @@ define(function (require, exports, module) {
 
 	function init(messageCenter) {
 		_messageCenter = messageCenter;
+		_view.fillContentByI18N();
 		initHandler();
 	}
 
 	function showDocList(docs, bSelectFirst) {
 		_data.docList = sortDocList(docs);
-		view.renderList(_data.docList, bSelectFirst);
+		_view.renderList(_data.docList, bSelectFirst);
 	}
 
 	// 清空文档列表
@@ -219,7 +245,7 @@ define(function (require, exports, module) {
 		}
 	}
 
-	var view = new View(_node.containerId);
+	var _view = new View(_node.containerId);
 	//接口
 	return {
 		show: showDocList,

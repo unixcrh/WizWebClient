@@ -16,8 +16,6 @@ define(function(require, exports, module) {
 		if (!callError) {
 			callError = alert;
 		}
-		console.log(apiObj);
-		console.log(options);
 		// 统一在发送请求这一层处理，不用每个地方都处理
 		var _callSuccess = function (data) {
 			loadCtrl.hide();
@@ -28,7 +26,6 @@ define(function(require, exports, module) {
 				callError(error);
 			},
 			url = options ? (apiObj.url + '/' + options) : apiObj.url;
-			console.log(url);
 		$.ajax({
 			url: url,
 			data: data,
