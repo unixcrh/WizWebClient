@@ -13,7 +13,6 @@ define(function (require, exports, module) {
 			},
 			_view = {
 				showUser: function(userInfo) {
-					console.log(userInfo.user.displayname);
 					var nameSelector = getJqIdSelector(_node.userNameId);
 					nameSelector.html(userInfo.user.displayname);
 				}
