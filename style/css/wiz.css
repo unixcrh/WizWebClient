@@ -191,25 +191,36 @@ input[type="checkbox"], body:not(.IE_M9) input[type="radio"] {
 
 /*--------------------------------button组件------------------------------*/
 
+.button-group {
+	display: inline-block;
+	height: 40px;
+}
 .button-group li{
 	display: inline-block;
 	position: relative;
 	top: 0;
-	height: 40px;
 	*float: left;
 	font-size: 110%;
 	padding: 0;
 	margin: 0;
 	border: 0;
+	line-height: 37px;
 }
-
+.button-group li a { 
+	display: inline-block;
+}
+.ul-span {
+	position: relative;
+	height: 40px
+}
 
 /*顶部按钮*/
 .wiz-button {
 	height: 40px;
-	display: inline-block;
 	padding: 0 10px;
 	margin: 0;
+	*margin-top: -4px;
+	*padding-bottom: 4px;
 }
 
 .new-doc-icon {
@@ -221,7 +232,6 @@ input[type="checkbox"], body:not(.IE_M9) input[type="radio"] {
 	position: relative;
 	top: 7px;
 }
-
 .wiz-button:hover {
 	background-color: #0264AF;
 }
@@ -420,6 +430,7 @@ input[type="checkbox"], body:not(.IE_M9) input[type="radio"] {
 	float: left;
 	height: 40px;
 	margin: 0;
+	position: relative;
 }
 .header-right {
 	position: absolute;
@@ -535,7 +546,8 @@ input[type="checkbox"], body:not(.IE_M9) input[type="radio"] {
 
 
 /*--------------------------------------------------------*/
-.below_container {
+.below-container,
+.edit-page {
 	position:absolute;
 	top: 40px;
 	_height: 100%;
