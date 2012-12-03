@@ -50,7 +50,6 @@ define(function (require, exports, module) {
 				return false;
 			}
 			// 新建目录
-			console.log(treeNode.type);
 			var location = '/' + newName + '/';
 			treeNode.location = location;
 			messageCenter.requestCreateItem(newName, treeNode.type, function (data) {
@@ -88,7 +87,6 @@ define(function (require, exports, module) {
 			}
 			// 修改新建功能的子节点显示样式
 			if (treeNode.level === 1 && treeNode.cmd === 'create') {
-				console.log(treeNode);
 				var hypertextObj = $('#' + treeNode.tId + '_a');
 				hypertextObj.addClass('create-link');
 			}
@@ -255,7 +253,7 @@ define(function (require, exports, module) {
 			var treeElem = $('#' + id);
 			treeElem.hover(function () {
 				if (!treeElem.hasClass("showIcon")) {
-					treeElem.addClass("showIcon");
+					treeElem.fadeIn().addClass("showIcon");
 				}
 			}, function() {
 				treeElem.removeClass("showIcon");
@@ -298,6 +296,17 @@ define(function (require, exports, module) {
 		function init(id, messageHandler) {
 			messageCenter = messageHandler;
 			initTree(id);
+			// 首次加载默认展开目录
+			expandCategory();
+		}
+
+		// 默认展开根目录节点
+		function expandCategory(){
+			var nodes = treeObj.getNodes();
+			if (nodes.length>1) {
+				$('#' + nodes[1].tId + '_a').trigger('click');
+			}
+
 		}
 
 		this.init = init;

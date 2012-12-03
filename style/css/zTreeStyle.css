@@ -8,8 +8,8 @@ website:	http://code.google.com/p/jquerytree/
 
 -------------------------------------*/
 
-.ztree * {padding:0; margin:0; font-family: Verdana, Arial, Helvetica, AppleGothic, sans-serif}
-.ztree {margin:0; padding:5px; color:#333}
+.ztree * {padding:0; margin:0; font-family: Verdana, Arial, Helvetica, AppleGothic, sans-serif;}
+.ztree {margin:0; padding:5px 0; color:#333;margin-top:-20px;}
 .ztree li{padding:0; margin:0; list-style:none; line-height:14px; text-align:left; white-space:nowrap; outline:0}
 .ztree li ul{ margin:0; padding:0 0 0 18px}
 .ztree li ul.line{ background:url(../images/ztree/line_conn.gif) 0 0 repeat-y;}
@@ -96,13 +96,13 @@ ul.ztree.zTreeDragUL {margin:0; padding:0; position:absolute; width:auto; height
 .ztree.showIcon li a span.button.switch {visibility:visible}
 .ztree li a.curSelectedNode {background-color:#D4D4D4;border:0;height:30px;}
 .ztree li span {line-height:30px;font-weight: normal; color: #666}
-.ztree li span.button {margin-top: -7px;}
+.ztree li span.button {margin-top: -5px;}
 .ztree li span.button.switch {width: 16px;height: 16px;}
 
 .ztree li a.level0 span {font-size: 150%;}
 .ztree li span.button {background-image:url("../images/left_menuForOutLook.png"); *background-image:url("../images/left_menuForOutLook.gif")}
-.ztree li span.button.switch.level0 {width: 20px; height:20px}
-.ztree li span.button.switch.level1 {width: 20px; height:20px}
+.ztree li span.button.switch.level0 {width: 16px; height:20px}
+.ztree li span.button.switch.level1 {width: 16px; height:20px}
 .ztree li span.button.noline_open {background-position: 0 0;}
 .ztree li span.button.noline_close {background-position: -18px 0;}
 .ztree li span.button.noline_open.level0 {background-position: 0 -18px;}
@@ -116,7 +116,9 @@ ul.ztree.zTreeDragUL {margin:0; padding:0; position:absolute; width:auto; height
 	color: #0072C6;	
 	background-color: transparent;
 }
-
+.ztree li a.level0 {
+	margin-top: 20px;
+}
 /* level style*/
 /*.ztree li span.button.level0 {
 	display:none;
