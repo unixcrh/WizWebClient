@@ -3,6 +3,7 @@ define(function (require, exports, module) {
 
 	var _messageCenter = null,
 			constant = require('Wiz/constant'),
+			_locale = require('locale'),
 			_node = {
 				userInfoId: 'user_info',
 				userNameId: 'user_name',
@@ -15,6 +16,11 @@ define(function (require, exports, module) {
 				showUser: function(userInfo) {
 					var nameSelector = getJqIdSelector(_node.userNameId);
 					nameSelector.html(userInfo.user.displayname);
+				},
+				initFillContent: function() {
+					var signOutValue = _locale.UserSetting.singOut,
+							signOutElem = $('#user_menu li a span');
+					signOutElem.html(signOutValue);
 				}
 			},
 			_bindInitHandler= function() {
@@ -52,7 +58,6 @@ define(function (require, exports, module) {
 				}
 			},
 			event = {
-				
 			}
 
 
@@ -70,6 +75,7 @@ define(function (require, exports, module) {
 		_messageCenter = messageCenter;
 		_data.userInfo = userInfo;
 		_view.showUser(userInfo);
+		_view.initFillContent();
 		_bindInitHandler();
 
 	}
