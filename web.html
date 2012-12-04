@@ -2,9 +2,13 @@
 <html>
 	<head>
 		<meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache" />
+		<meta http-equiv="cache-control" content="no-cache">
+		<meta http-equiv="expires" content="0">
 		<link type="text/css" rel="stylesheet" href="style/css/normalize.css">
 		<link type="text/css" rel="stylesheet" href="style/css/zTreeStyle.css">
 		<link type="text/css" rel="Stylesheet" href="style/css/wiz.css">
+		<link rel="stylesheet" href="ueditor/themes/default/ueditor.css">
 		<title></title>
 	</head>
 	<body>
@@ -91,8 +95,8 @@
 				<!-- 顶部左侧操作栏 -->
 				<ul class="header-md button-group">
 					<li>
-						<a href="#" class="wiz-button" id="create_doc_ct">
-							<span class="ul-span">
+						<a href="#" class="wiz-button hidden" id="create_doc_ct">
+							<span>
 								<img src="https://secure.wlxrs.com/$live.controls.images/is/invis.gif" alt="" class="new-doc-icon" />
 							</span>
 							<span id="create_note" class="button-value">
@@ -222,11 +226,33 @@
 				<!-- 右侧列表和内容区域 -->
 
 			</div>
-			<div class="edit-page">
-				编辑页面
+			<!-- 新建、编辑页面 -->
+			<div class="edit-page-wrapper hidden" id="edit_page">
+				<div>
+					<!-- 文档附属信息 -->
+					<div class="edit-params">
+						
+					</div>
+					<!-- 文档主内容区域 -->
+					<div class="edit-content">
+						<div class="edit-title">
+							<div class="save-area"></div>
+							<div class="title-area">
+								<input type="text" placehover="标题">
+							</div>
+						</div>
+						<div class="editor-wrapper">
+							
+						</div>
+					</div>
+				</div>
 			</div>
+			<!-- 新建、编辑页面 -->
 		</div>
+		<script type="text/javascript" src="ueditor/editor_config.js"></script>
+		<script type="text/javascript" src="ueditor/editor_all.js"></script>
 		<script type="text/javascript" src="./libs/common/seaJs/sea-debug.js" data-main="./libs/entity/webEntry"></script>
+		<!-- 群组入口预留 -->
 		<div class="header_group_ct"></div>
 	</body>
 </html>
