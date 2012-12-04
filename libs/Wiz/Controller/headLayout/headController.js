@@ -3,18 +3,33 @@ define(function (require, exports, module) {
 
 	var _messageCenter = null,
 			constant = require('Wiz/constant'),
+			_locale = require('locale'),
 			_node = {
 				userInfoId: 'user_info',
 				userNameId: 'user_name',
 				userMenuId: 'user_menu'
 			},
 			_data = {
-				_userInfo: null
+				_userInfo: null,
+				operateList: {
+					create: 'create_note'
+				}
 			},
 			_view = {
 				showUser: function(userInfo) {
 					var nameSelector = getJqIdSelector(_node.userNameId);
 					nameSelector.html(userInfo.user.displayname);
+				},
+				initFillContent: function() {
+					var signOutValue = _locale.UserSetting.singOut,
+							signOutElem = $('#user_menu li a span');
+					signOutElem.html(signOutValue);
+					// 已经成功登陆后再开始加载
+					_view.localizeOperateList();
+				},
+				// 本地化相应的操作列表
+				localizeOperateList: function() {
+					$('#' + _data.operateList.create).html(_locale.HeadMenuForDoc.Create);
 				}
 			},
 			_bindInitHandler= function() {
@@ -52,8 +67,9 @@ define(function (require, exports, module) {
 				}
 			},
 			event = {
-				
 			}
+
+
 
 
 	function getJqClassSelector(className) {
@@ -70,6 +86,7 @@ define(function (require, exports, module) {
 		_messageCenter = messageCenter;
 		_data.userInfo = userInfo;
 		_view.showUser(userInfo);
+		_view.initFillContent();
 		_bindInitHandler();
 
 	}

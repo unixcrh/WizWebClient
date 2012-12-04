@@ -41,5 +41,8 @@ define({
 			'Title(Descending)',
 			'Title(Ascending)'
 		]
+	},
+	HeadMenuForDoc: {
+		Create: 'New Note'
 	}
 })

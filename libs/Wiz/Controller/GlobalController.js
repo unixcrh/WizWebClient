@@ -84,6 +84,7 @@ define(function (require, exports, module) {
 			document.location.replace(constant.url.LOGIN);
 		} else {
 			context.token = token;
+			context.debug = GlobalUtil.getUrlParam('debug');
 
 			//必须先获取到用户信息
 			remote.getUserInfo(function (data) {

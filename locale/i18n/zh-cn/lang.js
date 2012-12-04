@@ -41,5 +41,8 @@ define({
 			'按名称(降序)',
 			'按名称(升序)'
 		]
+	},
+	HeadMenuForDoc: {
+		Create: '新建笔记'
 	}
 })

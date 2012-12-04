@@ -4,7 +4,8 @@ define(function(require, exports) {
 	var cookie = require('cookie');
 	var GlobalUtil = require('common/util/GlobalUtil');
 	var api = require('Wiz/constant').api;
-
+	var debugModel = GlobalUtil.getUrlParam('debug');
+				
 	var arr_ = new Array();
 	$(document).ready(function() {
 		$("#login_name").select();
@@ -113,11 +114,11 @@ define(function(require, exports) {
 					keep_password = "off";
 				}
 				
-				
 				var params = { 
 					user_id : user_id, 
 					password : password,
-					isKeep_password : keep_password
+					isKeep_password : keep_password,
+					debug: debugModel
 				};
 				// 调用一下ajax
 				$('#loginkeycode').attr('disabled', 'disabled');
@@ -158,7 +159,7 @@ define(function(require, exports) {
 			
 			
 			if(data.code==200){
-				var url = api.WEB_URL + '?t=' + data.token;
+				var url = api.WEB_URL + '?t=' + data.token + '&debug=' + debugModel;
 				window.location.replace(url);
 			} else if (data.code == 1108) {
 				$('#tip_error_login').html('登陆尝试次数过多，请稍后重试').fadeIn();
