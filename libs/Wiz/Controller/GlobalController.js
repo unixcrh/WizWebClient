@@ -14,12 +14,13 @@ define(function (require, exports, module) {
 			groupCtrl = require('./headLayout/groupEntryController'),
 			headCtrl = require('./headLayout/headController'),
 			docViewCtrl = require('./docViewLayout/DocView'),
+			editPageCtrl = require('./editLayout/EditController'),
 
 			// 判断首次加载页面，增加首次加载时默认初始化功能
 			_bFirst = true,
 
 			//负责接收下级controller的消息
-			messageHandler = {
+			_messageHandler = {
 				// 显示文档列表
 				requestDocList: function (params) {
 					// 清空当前文档列表
@@ -33,7 +34,7 @@ define(function (require, exports, module) {
 							alert(errorMsg);
 						}
 					};
-					remote.getDocumentList(context.kbGuid, params, messageDistribute.showDocList, callError);
+					remote.getDocumentList(context.kbGuid, params, _messageDistribute.showDocList, callError);
 				},
 				// 加载文档内容
 				requestDocumentBody: function (doc) {
@@ -42,7 +43,7 @@ define(function (require, exports, module) {
 					var callError = function (error) {
 						console.error(error);
 					}
-					remote.getDocumentBody(context.kbGuid, doc.document_guid, doc.version, messageDistribute.showDoc, callError);
+					remote.getDocumentBody(context.kbGuid, doc.document_guid, doc.version, _messageDistribute.showDoc, callError);
 				},
 				// 所有请求创建的处理
 				// 需要callback函数，自动处理相应的节点
@@ -50,10 +51,15 @@ define(function (require, exports, module) {
 					if (type === 'category') {
 						remote.createCategory(context.kbGuid, name, callback);	
 					}
+				},
+				// 阅读和编辑页面切换
+				switchEditMode: function (bEditMode) {
+					$('#resize_container').addClass('hidden');
+					editPageCtrl.show();
 				}
 			},
 			// 负责向各控制器发送消息
-			messageDistribute = {
+			_messageDistribute = {
 				showDocList: function (data) {
 					// 首次加载，默认选择文档第一项
 					if (data.code == '200') {
@@ -100,24 +106,15 @@ define(function (require, exports, module) {
 				//首先加载为私人库
 				context.kbGuid = data.user_info.kb_guid;
 				//顶部功能初始化
-				headCtrl.init(data.user_info, messageHandler);
+				headCtrl.init(data.user_info, _messageHandler);
 				//
 				//搜索栏初始化
-				searchBoxCtrl.init(messageHandler);
+				searchBoxCtrl.init(_messageHandler);
 				//左侧树初始化
-				treeCtrl.init('leftTree', messageHandler);
+				treeCtrl.init('leftTree', _messageHandler);
 
 				//初始化中间文档列表
-				listCtrl.init(messageHandler);
-
-				// v1暂时不上群组功能
-				// remote.getGroupKbList(function (data) {
-				// 	if (data.code === 200) {
-				// 		groupCtrl.init(data.list, messageHandler);
-				// 	}
-				// });
-
-				//右侧内容初始化
+				listCtrl.init(_messageHandler);
 
 					//初始化滚动条
 				initSplitter();
