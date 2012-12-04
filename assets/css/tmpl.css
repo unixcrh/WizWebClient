@@ -1,7 +1,8 @@
 /*@import charset:utf-8;*/
 html, body {
   margin: 0;
-  font-family: 'Microsoft YaHei UI', 'Microsoft YaHei', SimSun, 'Segoe UI', Tahoma, Helvetica, sans-serif;
+  font-family: Verdana, Simsun;
+  /*font-family: 'Microsoft YaHei UI', 'Microsoft YaHei', SimSun, 'Segoe UI', Tahoma, Helvetica, sans-serif;*/
   color: #000;
   font-size: 100%;
   _text-align: center;
@@ -466,8 +467,9 @@ _zoom: 1;
 p.error-indicator{
   width: 250px;
   height: 25px;
-  color: #90784c;
+  color: #C85305;
   display: none;
+  font-size: 80%;
 }
 
 .login-intro p{
