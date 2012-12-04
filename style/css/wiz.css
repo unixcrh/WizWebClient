@@ -194,37 +194,33 @@ input[type="checkbox"], body:not(.IE_M9) input[type="radio"] {
 .button-group {
 	display: inline-block;
 	height: 40px;
+	font-size:0;
 }
 .button-group li{
 	display: inline-block;
 	position: relative;
 	top: 0;
-	*float: left;
-	font-size: 110%;
+	height: 40px;
+	font-size: 15px;
 	padding: 0;
 	margin: 0;
 	border: 0;
-	line-height: 37px;
+	line-height: 38px;
+	vertical-align:top;
+	*display:inline;
+	*zoom:1;
 }
-.button-group li a { 
-	display: inline-block;
-}
-.ul-span {
-	position: relative;
-	height: 40px
-}
-
 /*顶部按钮*/
 .wiz-button {
+	display: inline-block;
 	height: 40px;
 	padding: 0 10px;
 	margin: 0;
-	*margin-top: -4px;
-	*padding-bottom: 4px;
 }
 
 .new-doc-icon {
-	display: inline-block;
+	float:left;
+	display:inline;
 	height: 26px;
 	width: 26px;
 	background-image: url("../images/command2.png");
