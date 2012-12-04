@@ -290,7 +290,7 @@ _zoom: 1;
   text-align: left;
   /*outline: 1px solid #000;*/
 }
-.feature h2, #topicPic h2{
+.feature h2, .topicPic h2{
   width: 100%;
   font-size: 40px;
   line-height: 50px;
@@ -337,7 +337,7 @@ _zoom: 1;
 .topic{
   width: 998px;
   margin: 0 auto;
-  padding: 10px 0 30px 0;
+  padding: 10px 0 20px 0;
   border: none;
   color: #454545;
   border-top: 4px solid #EDEDF0; 
@@ -353,7 +353,7 @@ _zoom: 1;
   display: block;
   float: left;
   margin: 0 30px 0 0;
-  padding: 0;
+  padding: 0 0 30px 0;
   width: 227px;
   height: auto;
 }
@@ -429,10 +429,6 @@ _zoom: 1;
   position:absolute;
   bottom:;
 }
-
-
-
-
 
 
 
