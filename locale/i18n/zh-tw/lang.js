@@ -43,6 +43,9 @@ define({
 		]
 	},
 	HeadMenuForDoc: {
-		Create: '新建筆記'
+		Create: '新建筆記',
+		Save: '保存',
+		SaveAndQuit: '保存並閱讀',
+		Cancel: '取消'
 	}
 })

@@ -43,6 +43,9 @@ define({
 		]
 	},
 	HeadMenuForDoc: {
-		Create: 'New Note'
+		Create: 'New Note',
+		Save: 'Save',
+		SaveAndQuit: 'Save and Read',
+		Cancel: 'Cancel'
 	}
 })
