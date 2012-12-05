@@ -949,6 +949,17 @@ div.c_loadingDot {
 .params-tags {
 	padding-bottom: 20px;
 }
+
+.params-tags-wrapper {
+	height: 35px;
+	padding: 2px 0;
+	width: 100%;
+}
+.params-tags-wrapper input {
+	width: 344px;
+	height: 100%;
+	padding: 0 13px;
+}
 /* edit-params */
 /* edit-content */
 .edit-content {

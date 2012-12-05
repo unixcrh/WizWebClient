@@ -130,7 +130,7 @@
 						<!--搜索栏 -->
 						<span class="search-box">
 							<div class="search-box-md">
-								<input type="text" id="s_box_input" aria-label="" class="search-box-input">
+								<input type="text" id="s_box_input" aria-label="" class="search-box-input" placeholder="搜索">
 								<input type="button" id="s_box_submit" class="search-box-btn" title="search">
 							</div>
 						</span>
@@ -255,8 +255,9 @@
 							</span>
 						</div>
 						<div class="params-tags">
-							<label for="params_tags">标签：</label>
-							<input type="text" id="params_tags">
+							<div class="params-tags-wrapper">
+								<input type="text" id="params_tags" placeholder="输入标签">
+							</div>
 						</div>
 						<div class="params-attachment">附件：</div>
 					</div>
@@ -279,6 +280,14 @@
 		<script type="text/javascript" src="./libs/common/ueditor/editor_config.js"></script>
 		<script type="text/javascript" src="./libs/common/ueditor/editor_all.js"></script>
 		<script type="text/javascript" src="./libs/common/seaJs/sea-debug.js" data-main="./libs/entity/webEntry"></script>
+		<script type="text/javascript" src="./libs/common/jquery/jquery-1.7.2.js"></script>
+		<script type="text/javascript" src="./libs/common/jquery/jquery.cookie.js"></script>
+		<script type="text/javascript" src="./libs/common/jquery/jquery.placeholder.js"></script>
+	  <script>
+	   $(function() {
+	    $('input, textarea').placeholder();
+	   });
+	  </script>
 		<!-- 群组入口预留 -->
 		<div class="header_group_ct"></div>
 	</body>
