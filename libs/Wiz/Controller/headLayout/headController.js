@@ -10,7 +10,13 @@ define(function (require, exports, module) {
 				userMenuId: 'user_menu',
 				id: {
 					createSpan: 'create_note',
-					createBtn: 'create_doc_ct'
+					createBtn: 'create_doc_ct',
+					saveSpan: 'save',
+					saveBtn: 'save_ct',
+					cancelSpan: 'cancel',
+					cancelBtn: 'cancel_ct',
+					saveAndQuitSpan: 'save_and_quit',
+					saveAndQuitBtn: 'save_and_quit_ct'
 				}
 			},
 			_data = {
@@ -31,6 +37,9 @@ define(function (require, exports, module) {
 				// 本地化相应的操作列表
 				localizeOperateList: function() {
 					$('#' + _node.id.createSpan).html(_locale.HeadMenuForDoc.Create);
+					$('#' + _node.id.saveSpan).html(_locale.HeadMenuForDoc.Save);
+					$('#' + _node.id.cancelSpan).html(_locale.HeadMenuForDoc.Cancel);
+					$('#' + _node.id.saveAndQuitSpan).html(_locale.HeadMenuForDoc.SaveAndQuit);
 				}
 			},
 			_event = {
@@ -47,6 +56,28 @@ define(function (require, exports, module) {
 					createBtn.bind('click', function(){
 						_messageCenter.switchEditMode(true);
 						createBtn.addClass('hidden');
+						createBtn.parent().css('display', 'none');
+						cancelBtn.removeClass('hidden');
+						cancelBtn.parent().css('display', 'inline-block');
+						saveBtn.removeClass('hidden');
+						saveBtn.parent().css('display', 'inline-block');
+						saveAndQuitBtn.removeClass('hidden');
+						saveAndQuitBtn.parent().css('display', 'inline-block');
+					});
+
+					var cancelBtn = $('#' + _node.id.cancelBtn);
+					var saveBtn = $('#' + _node.id.saveBtn);
+					var saveAndQuitBtn = $('#' + _node.id.saveAndQuitBtn);
+					cancelBtn.bind('click', function(){
+						_messageCenter.switchEditMode(false);
+						cancelBtn.addClass('hidden');
+						cancelBtn.parent().css('display', 'none');
+						saveBtn.addClass('hidden');
+						saveBtn.parent().css('display', 'none');
+						saveAndQuitBtn.addClass('hidden');
+						saveAndQuitBtn.parent().css('display', 'none');
+						createBtn.removeClass('hidden');
+						createBtn.parent().css('display', 'inline-block');
 					});
 				},
 				// 初始化用户操作的注册事件

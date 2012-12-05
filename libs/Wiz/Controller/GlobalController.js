@@ -54,8 +54,14 @@ define(function (require, exports, module) {
 				},
 				// 阅读和编辑页面切换
 				switchEditMode: function (bEditMode) {
-					$('#resize_container').addClass('hidden');
-					editPageCtrl.show();
+					if (bEditMode) {
+						$('#resize_container').addClass('hidden');
+						$('#edit_page').removeClass('hidden');
+						editPageCtrl.show();
+					} else {
+						$('#edit_page').addClass('hidden');
+						$('#resize_container').removeClass('hidden');
+					}
 				}
 			},
 			// 负责向各控制器发送消息
