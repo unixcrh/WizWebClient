@@ -6,7 +6,9 @@ define(function (require, exports, module) {
 		context = require('../../context'),
 
 		locale= require('locale'),
-		specialLocation = locale.DefaultCategory;
+		specialLocation = locale.DefaultCategory,
+
+		_curCategory = null;
 
 	function ZtreeController() {
 		
@@ -195,10 +197,11 @@ define(function (require, exports, module) {
 			treeObj.addNodes(treeNode, childList, true);
 			// 暂时只对文件夹开放新建功能 lsl 2012-11-29
 			if (treeNode.level === 0 && treeNode.type === 'category') {
+				console.log(treeNode);
 				addDefaultNodes(treeNode, treeNode.type);
 			}
 			treeNode.bLoading = true;
-		} 
+		}
 
 		// 增加默认的一些节点，如：新用户下默认的目录、新建目录
 		function addDefaultNodes(treeNode, type) {
@@ -226,6 +229,11 @@ define(function (require, exports, module) {
 				// 在最后增加
 				addDefaultNodes(parentNode, treeNode.type);
 				return;
+			}
+			if (treeNode.type === 'category') {
+				_curCategory = treeNode.location;
+				console.log(treeNode);
+				console.log(_curCategory);	
 			}
 			if (treeNode.level === 0) {
 				if (treeNode.type === 'keyword') {
@@ -309,9 +317,16 @@ define(function (require, exports, module) {
 
 		}
 
+		// 获取当前目录
+		function getCurrentCategory() {
+			return _curCategory;
+		}
+
 		this.init = init;
+		this.getCurrentCategory = getCurrentCategory;
 	}
 	var controller = new ZtreeController();
 
 	exports.init = controller.init;
+	exports.getCurrentCategory = controller.getCurrentCategory;
 });

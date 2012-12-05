@@ -955,6 +955,9 @@ div.c_loadingDot {
 	padding: 2px 0;
 	width: 100%;
 }
+#params_category {
+	width: 350px;
+}
 .params-tags-wrapper input {
 	width: 344px;
 	height: 100%;

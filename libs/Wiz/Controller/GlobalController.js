@@ -53,11 +53,12 @@ define(function (require, exports, module) {
 					}
 				},
 				// 阅读和编辑页面切换
+				// TODO  category应该直接传入一个document对象模型
 				switchEditMode: function (bEditMode) {
 					if (bEditMode) {
 						$('#resize_container').addClass('hidden');
 						$('#edit_page').removeClass('hidden');
-						editPageCtrl.show();
+						editPageCtrl.show(treeCtrl.getCurrentCategory());
 					} else {
 						$('#edit_page').addClass('hidden');
 						$('#resize_container').removeClass('hidden');
