@@ -981,5 +981,8 @@ div.c_loadingDot {
 	border: 0;
 	padding: 0;
 }
+.editor-wrapper {
+	height: 100%;
+}
 /* edit-content */
 /* edit page */

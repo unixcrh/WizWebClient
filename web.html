@@ -8,7 +8,7 @@
 		<link type="text/css" rel="stylesheet" href="style/css/normalize.css">
 		<link type="text/css" rel="stylesheet" href="style/css/zTreeStyle.css">
 		<link type="text/css" rel="Stylesheet" href="style/css/wiz.css">
-		<link rel="stylesheet" href="ueditor/themes/default/ueditor.css">
+		<link rel="stylesheet" href="./libs/common/ueditor//themes/default/ueditor.css">
 		<title></title>
 	</head>
 	<body>
@@ -238,20 +238,26 @@
 						<div class="edit-title">
 							<div class="save-area"></div>
 							<div class="title-area">
-								<input type="text" placehover="标题">
+								<input type="text" placeholder="输入标题">
 							</div>
 						</div>
 						<div class="editor-wrapper">
-							
+							<textarea id="wiz_edit_area"></textarea>
 						</div>
 					</div>
 				</div>
 			</div>
 			<!-- 新建、编辑页面 -->
 		</div>
-		<script type="text/javascript" src="ueditor/editor_config.js"></script>
-		<script type="text/javascript" src="ueditor/editor_all.js"></script>
+		<script type="text/javascript" src="./libs/common/ueditor/editor_config.js"></script>
+		<script type="text/javascript" src="./libs/common/ueditor/editor_all.js"></script>
 		<script type="text/javascript" src="./libs/common/seaJs/sea-debug.js" data-main="./libs/entity/webEntry"></script>
+		<script type="text/javascript">
+			window.onload = function() {
+		    var editor = new UE.ui.Editor();
+		    editor.render("wiz_edit_area");	
+			}
+    </script>
 		<!-- 群组入口预留 -->
 		<div class="header_group_ct"></div>
 	</body>
