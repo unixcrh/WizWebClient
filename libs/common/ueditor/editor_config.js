@@ -125,7 +125,7 @@
 
         //,focus:false //初始化时，是否让编辑器获得焦点true或false
 
-        ,minFrameHeight:120  // 最小高度,默认320
+        ,minFrameHeight:document.documentElement.clientHeight - 180  // 最小高度,默认320
 
         //,autoClearEmptyNode : true //getContent时，是否删除空的inlineElement节点（包括嵌套的情况）
 

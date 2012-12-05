@@ -231,7 +231,19 @@
 				<div>
 					<!-- 文档附属信息 -->
 					<div class="edit-params">
-						
+						<div class="params-category">
+							<span>
+								文件夹：
+							</span>
+							<span>
+								/我的笔记/
+							</span>
+						</div>
+						<div class="params-tags">
+							<label for="params_tags">标签：</label>
+							<input type="text" id="params_tags">
+						</div>
+						<div class="params-attachment">附件：</div>
 					</div>
 					<!-- 文档主内容区域 -->
 					<div class="edit-content">
@@ -252,12 +264,6 @@
 		<script type="text/javascript" src="./libs/common/ueditor/editor_config.js"></script>
 		<script type="text/javascript" src="./libs/common/ueditor/editor_all.js"></script>
 		<script type="text/javascript" src="./libs/common/seaJs/sea-debug.js" data-main="./libs/entity/webEntry"></script>
-		<script type="text/javascript">
-			window.onload = function() {
-		    var editor = new UE.ui.Editor();
-		    editor.render("wiz_edit_area");	
-			}
-    </script>
 		<!-- 群组入口预留 -->
 		<div class="header_group_ct"></div>
 	</body>

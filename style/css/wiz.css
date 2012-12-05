@@ -942,6 +942,12 @@ div.c_loadingDot {
 	padding: 20px;
 	background-color: #f3f3f3;
 	z-index: 2;
+	font-size: 110%;
+}
+
+.params-category,
+.params-tags {
+	padding-bottom: 20px;
 }
 /* edit-params */
 /* edit-content */
