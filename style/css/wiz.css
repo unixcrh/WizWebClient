@@ -218,6 +218,11 @@ input[type="checkbox"], body:not(.IE_M9) input[type="radio"] {
 	*display:inline;
 	*zoom:1;
 }
+
+.button-value {
+	padding-left: 5px;
+	font-size: 90%;
+}
 /*顶部按钮*/
 .wiz-button,
 .sending {
