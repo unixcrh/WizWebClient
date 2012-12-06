@@ -58,8 +58,143 @@ input[type="checkbox"], body:not(.IE_M9) input[type="radio"] {
 	color: #000;
 	text-decoration: none;
 	cursor: pointer;
+<<<<<<< HEAD
+=======
 }
 
+ /* 默认不显示的元素class */
+.hidden {
+	visibility: hidden;
+}
+
+/*------------------webkit专有属性------------------------*/
+::-webkit-scrollbar {
+	width: 17px;
+	height: 17px;
+	background-color: #f0f0f0;
+	border: none;
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: #cdcdcd;
+	border: 1px solid #f0f0f0;
+}
+::-webkit-scrollbar-corner {
+	background-color: #f0f0f0;
+}
+
+/* 垂直滚动条 */
+::-webkit-scrollbar-button{
+  background-image: url(../images/controls.png);
+  background-repeat: no-repeat;
+  background-color: #f0f0f0;
+}
+
+/*垂直滚动条 渐减按钮*/
+::-webkit-scrollbar-button:vertical:decrement {
+  background-position: -1px -358px;
+  height: 33px;
+}
+
+::-webkit-scrollbar-button:vertical:decrement:hover {
+	background-color: #DADADA;
+  background-position: -1px -462px;
+}
+
+::-webkit-scrollbar-button:vertical:decrement:active {
+	background-color: #606060;
+  background-position: -1px -566px;
+}
+
+
+/*垂直滚动条 渐增按钮*/
+::-webkit-scrollbar-button:vertical:increment {
+  background-position: -1px -391px;
+  height: 33px;
+}
+
+::-webkit-scrollbar-button:vertical:increment:hover {
+	background-color: #DADADA;
+  background-position: -1px -495px;
+}
+
+::-webkit-scrollbar-button:vertical:increment:active {
+	background-color: #606060;
+  background-position: -1px -599px;
+}
+
+
+/*水平滚动条 渐减按钮*/
+::-webkit-scrollbar-button:horizontal:decrement {
+  background-position: 13px -425px;
+  width: 33px;
+}
+
+::-webkit-scrollbar-button:horizontal:decrement:hover {
+	background-color: #DADADA;
+  background-position: 13px -529px;
+}
+
+::-webkit-scrollbar-button:horizontal:decrement:active {
+	background-color: #606060;
+  background-position: 13px -633px;
+}
+
+
+/*水平滚动条 渐增按钮*/
+::-webkit-scrollbar-button:horizontal:increment {
+  background-position: 1px -444px;
+  width: 33px;
+}
+
+::-webkit-scrollbar-button:horizontal:increment:hover {
+	background-color: #DADADA;
+  background-position: 1px -548px;
+}
+
+::-webkit-scrollbar-button:horizontal:increment:active {
+	background-color: #606060;
+  background-position: 1px -652px;
+}
+/* webkit专用属性 */
+
+
+/*-----------------------------------------*/
+
+.dropdown-menu-larger {
+	background-position: -82px -33px;
+	background-image: url(../images/c4.png);
+	width: 11px;
+	height: 9px;
+	border: 0;
+	padding: 0;
+	margin: 0;
+}
+
+.drop-down-small,
+.sort-item-selected {
+	background-image: url(../images/strip_metro_sp2.png);
+	border: 0;
+	padding: 0;
+	margin: 0;
+	*background-position: -34px -10px;
+}
+
+.drop-down-small {
+	background-position: -35px -10px;
+	width: 9px;
+	height:7px;
+>>>>>>> origin/DEV
+}
+.sort-item-selected {
+	width: 8px;
+	height: 11px;
+	background-position: -35px -155px;
+}
+
+/*--------------------------------button组件------------------------------*/
+
+<<<<<<< HEAD
  /* 隐藏显示的元素class，仍然在页面中占据布局 */
 .hidden {
 	visibility: hidden;
@@ -199,6 +334,8 @@ input[type="checkbox"], body:not(.IE_M9) input[type="radio"] {
 
 /*--------------------------------button组件------------------------------*/
 
+=======
+>>>>>>> origin/DEV
 .button-group {
 	display: inline-block;
 	height: 40px;
@@ -258,6 +395,7 @@ input[type="checkbox"], body:not(.IE_M9) input[type="radio"] {
 }
 
 /*--wiz-menubar  组件--*/
+<<<<<<< HEAD
 
 .wiz-menu-item{
 	display: block;
@@ -303,6 +441,53 @@ input[type="checkbox"], body:not(.IE_M9) input[type="radio"] {
 }
 
 
+=======
+
+.wiz-menu-item{
+	display: block;
+	padding: 0 15px 2px 7px;
+	text-decoration: none;
+	cursor: pointer;
+	text-decoration: none;
+	color: #000;
+	line-height: 28px;
+}
+
+.wiz-menu-item:hover {
+	background-color: #f3f3f3;
+}
+
+.wiz-menu-item:active {
+	background-color: #0072C6;
+	color: #fff;
+}
+.wiz-menu-item span {
+	font-size: 102%;
+}
+
+.wiz-menu-item img {
+	margin: 0 5px 0 7px;
+	width: 8px;
+	height: 11px;
+}
+
+.wiz-menu {
+	background: #fff;
+	border: 2px solid #000;
+	position: absolute;
+	visibility: hidden;/* 调试显示 */
+	margin: 0;
+	padding: 5px 0;
+	list-style: none;
+	z-index: 4000001;
+	min-width: 130px;
+	top: 0;
+	left: 0;
+	text-align: left;
+}
+
+
+>>>>>>> origin/DEV
 /*--------------------------wiz插件----------------------------------*/
 
 /*----------------------------------------------*/
@@ -427,7 +612,42 @@ input[type="checkbox"], body:not(.IE_M9) input[type="radio"] {
 }
 .header-left {
 	float: left;
+<<<<<<< HEAD
+=======
 	height: 40px;
+}
+
+.header-md{
+	float: left;
+	height: 40px;
+	margin: 0;
+	position: relative;
+}
+.header-right {
+	position: absolute;
+	right: 0;
+	top: 0;
+	bottom: 0;
+>>>>>>> origin/DEV
+	height: 40px;
+	_float: right;
+}
+.logo-split {
+	border-left: 1px solid #f0f0f0;
+	height: 20px;
+	display: inline-block;
+	margin-bottom: 8px;
+	padding: 0;
+	opacity: .65;
+	filter: alpha(opacity=65);
+}
+
+.logo {
+	top:0;
+	padding: 0 ;
+	margin: 0 5px;
+	border: 0;
+	cursor: pointer;
 }
 
 .header-md{
@@ -805,6 +1025,7 @@ input[type="checkbox"], body:not(.IE_M9) input[type="radio"] {
 }
 
 .frame-ct iframe {
+<<<<<<< HEAD
 	width: 100%;
 	height: 100%;
 }
@@ -962,6 +1183,8 @@ div.c_loadingDot {
 .params-tags-wrapper {
 	height: 35px;
 	padding: 2px 0;
+=======
+>>>>>>> origin/DEV
 	width: 100%;
 }
 #params_category {
@@ -970,6 +1193,7 @@ div.c_loadingDot {
 .params-tags-wrapper input {
 	width: 344px;
 	height: 100%;
+<<<<<<< HEAD
 	padding: 0 13px;
 }
 /* edit-params */
@@ -992,6 +1216,191 @@ div.c_loadingDot {
 }
 .edit-title .save-area {
 	position: absolute;
+=======
+}
+
+/* outlook loading */
+
+@-moz-keyframes makedotfly{
+	0%{left:0;-moz-animation-timing-function:cubic-bezier(.01,.55,1,1)}
+	32%{left:40%}
+	62%{left:58%;-moz-animation-timing-function:cubic-bezier(.3,.1,1,1)}
+	80%{left:105%}
+	100%{left:105%}
+}
+
+@-ms-keyframes makedotfly{
+	0%{left:0;-ms-animation-timing-function:cubic-bezier(.01,.55,1,1)}
+	32%{left:40%}
+	62%{left:58%;-ms-animation-timing-function:cubic-bezier(.3,.1,1,1)}
+	80%{left:105%}
+	100%{left:105%}
+}
+
+@-webkit-keyframes makedotfly{
+	0%{left:0;-webkit-animation-timing-function:cubic-bezier(.01,.55,1,1)}
+	32%{left:40%}
+	62%{left:58%;-webkit-animation-timing-function:cubic-bezier(.3,.1,1,1)}
+	80%{left:105%}
+	100%{left:105%}
+}
+
+@keyframes makedotfly{
+	0%{left:0;animation-timing-function:cubic-bezier(.01,.55,1,1)}
+	32%{left:40%}
+	62%{left:58%;animation-timing-function:cubic-bezier(.3,.1,1,1)}
+	80%{left:105%}
+	100%{left:105%}
+}
+
+div.c_flyingDots, 
+div.c_loadingTrack {
+	position: absolute;
+	left: 0;
+	top: 0;
+	right: 0;
+	height: 4px;
+}
+div.c_flyingDots, 
+div.c_loadingTrack5 {
+	left: -3%;
+	margin-left: 15px;
+}
+div.c_flyingDots, 
+div.c_loadingTrack4 {
+	left: -6%;
+	margin-left: 30px;
+}
+div.c_flyingDots, 
+div.c_loadingTrack3 {
+	left: -9%;
+	margin-left: 45px;
+}
+div.c_flyingDots, 
+div.c_loadingTrack2 {
+	left: -12%;
+	margin-left: 60px;
+}
+div.c_flyingDots, 
+div.c_loadingTrack1 {
+	left: -15%;
+	margin-left: 75px;
+}
+
+div.c_flyingDots, 
+div.c_loadingTracks {
+	position: absolute;
+	left: 10%;
+	top: 0;
+	right: -15%;
+	bottom: 0;
+}
+div.c_loadingTrack5 div.c_loadingDot {
+	-moz-animation-delay: .9s;
+	-ms-animation-delay: .9s;
+	-webkit-animation-delay: .9s;
+	animation-delay: .9s;
+}
+div.c_loadingTrack4 div.c_loadingDot {
+	-moz-animation-delay: .75s;
+	-ms-animation-delay: .75s;
+	-webkit-animation-delay: .75s;
+	animation-delay: .75s;
+}
+div.c_loadingTrack3 div.c_loadingDot {
+	-moz-animation-delay: .6s;
+	-ms-animation-delay: .6s;
+	-webkit-animation-delay: .6s;
+	animation-delay: .6s;
+}
+div.c_loadingTrack2 div.c_loadingDot {
+		-moz-animation-delay: .45s;
+		-ms-animation-delay: .45s;
+		-webkit-animation-delay: .45s;
+		animation-delay: .45s;
+}
+div.c_loadingTrack1 div.c_loadingDot {
+	-moz-animation-delay: .3s;
+	-ms-animation-delay: .3s;
+	-webkit-animation-delay: .3s;
+	animation-delay: .3s;
+}
+div.c_flyingDots.c_dotsPlaying,
+div.c_loadingDot {
+	-moz-animation: makedotfly 3.3s linear .1s infinite normal;
+	-ms-animation: makedotfly 3.3s linear 0 infinite normal;
+	-webkit-animation: makedotfly 3.3s linear 0 infinite normal;
+	animation: makedotfly 3.3s linear 0 infinite normal;
+}
+div.c_flyingDots,
+div.c_loadingDot {
+	width: 4px;
+	height: 4px;
+	border-radius: 6px;
+	background-color: #fff;
+}
+div.c_loadingDots,
+div.c_loadingDot {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+}
+/* outlook loading */
+
+/* edit page */
+
+
+/* edit-params */
+.edit-params {
+	position: absolute;
+	left: 0;
+	right: 70%;
+	top: 0;
+	bottom: 0;
+	padding: 20px;
+	background-color: #f3f3f3;
+	z-index: 2;
+	font-size: 110%;
+}
+
+.params-category,
+.params-tags {
+	padding-bottom: 20px;
+}
+
+.params-tags-wrapper {
+	height: 35px;
+	padding: 2px 0;
+	width: 100%;
+}
+#params_category {
+	width: 350px;
+}
+.params-tags-wrapper input {
+	width: 344px;
+	height: 100%;
+	padding: 0 13px;
+}
+/* edit-params */
+/* edit-content */
+.edit-content {
+	position: absolute;
+	left: 30%;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	z-index: 2;
+	padding: 8px 25px;
+}
+.edit-title {
+	width: 100%;
+	height: 42px;
+	padding: 0 0 10px 5px;
+	border-bottom: 1px solid #ccc;
+}
+.edit-title .save-area {
+	position: absolute;
+>>>>>>> origin/DEV
 	width: 150px;
 	font-size: 86%;
 	color: #666;

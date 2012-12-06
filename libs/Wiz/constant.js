@@ -127,7 +127,10 @@ define(function (require, exports, module) {
 	  	action: 'get',
 	  	async: true
 	  },	
+<<<<<<< HEAD
 	  // 新建、编辑文档先调用旧的接口
+=======
+>>>>>>> origin/DEV
 	  DOCUMENT_POST_DATA: {
 	  	url: DOCUMENT_BASE + '/data',
 	  	action: 'post',

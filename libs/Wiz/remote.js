@@ -1,8 +1,12 @@
 define(function(require, exports, module) {
 	var context = require('./context'),
 			constant = require('./constant'),
+<<<<<<< HEAD
 			loadCtrl = require('../component/loading'),
 			bPostDocLock = false;
+=======
+			loadCtrl = require('../component/loading');
+>>>>>>> origin/DEV
 
 	//发送请求函数
 	//options主要是处理url后衔接的objValue，如document_title、category_name...
@@ -20,12 +24,18 @@ define(function(require, exports, module) {
 		// 统一在发送请求这一层处理，不用每个地方都处理
 		var _callSuccess = function (data) {
 			loadCtrl.hide();
+<<<<<<< HEAD
 			bPostDocLock = false;
+=======
+>>>>>>> origin/DEV
 			callback(data);
 		},
 			_callError = function (error) {
 				loadCtrl.hide();
+<<<<<<< HEAD
 				bPostDocLock = false;
+=======
+>>>>>>> origin/DEV
 				callError(error);
 			},
 			url = options ? (apiObj.url + '/' + options) : apiObj.url;
@@ -47,8 +57,12 @@ define(function(require, exports, module) {
 			client_type: constant.remote.CLIENT_TYPE,
 			api_version: constant.remote.API_VERSION,
 			token: context.token,
+<<<<<<< HEAD
 			debug: context.debug,
 			token_guid: context.token
+=======
+			debug: context.debug
+>>>>>>> origin/DEV
 		}
 		return params;
 	}
@@ -146,6 +160,7 @@ define(function(require, exports, module) {
 			requestParams.version = version;
 			sendRequest(constant.api.DOCUMENT_GET_INFO, requestParams, callback, callError);
 		},
+<<<<<<< HEAD
 
 		postDocument: function (kbGuid, docInfo , callback, callError) {
 			var requestParams = getRequestParams();
@@ -158,6 +173,8 @@ define(function(require, exports, module) {
 			bPostDocLock = true;
 			sendRequest(constant.api.DOCUMENT_POST_DATA, requestParams, callback, callError);
 		},
+=======
+>>>>>>> origin/DEV
 
 		/* 保持登陆状态 */
 		refreshToken: function (callback, callError) {

@@ -22,10 +22,13 @@ define(function (require, exports, module) {
 			_data = {
 				_userInfo: null
 			},
+<<<<<<< HEAD
 			_stateMachine = null,
 			_createOnlyCtrl = null,
 			_docReadCtrl = null,
 			_docEditCtrl = null,
+=======
+>>>>>>> origin/DEV
 			_view = {
 				showUser: function(userInfo) {
 					var nameSelector = getJqIdSelector(_node.userNameId);
@@ -48,9 +51,14 @@ define(function (require, exports, module) {
 			},
 			_event = {
 				init: function() {
+<<<<<<< HEAD
 					this.initOperateListHandler();
 					this.initUserHandler();
 					this.initStateControll();
+=======
+					_event.initOperateListHandler();
+					_event.initUserHandler();
+>>>>>>> origin/DEV
 				},
 				// 初始化所有操作列表的注册事件
 				// TODO 需要完善，如何解耦
@@ -60,7 +68,18 @@ define(function (require, exports, module) {
 					createBtn.removeClass('hidden');
 					createBtn.bind('click', function(){
 						_messageCenter.switchEditMode(true);
+<<<<<<< HEAD
 						_docEditCtrl.active();
+=======
+						createBtn.addClass('hidden');
+						createBtn.parent().css('display', 'none');
+						cancelBtn.removeClass('hidden');
+						cancelBtn.parent().css('display', 'inline-block');
+						saveBtn.removeClass('hidden');
+						saveBtn.parent().css('display', 'inline-block');
+						saveAndQuitBtn.removeClass('hidden');
+						saveAndQuitBtn.parent().css('display', 'inline-block');
+>>>>>>> origin/DEV
 					});
 
 					var cancelBtn = $('#' + _node.id.cancelBtn);
@@ -68,6 +87,7 @@ define(function (require, exports, module) {
 					var saveAndQuitBtn = $('#' + _node.id.saveAndQuitBtn);
 					cancelBtn.bind('click', function(){
 						_messageCenter.switchEditMode(false);
+<<<<<<< HEAD
 						_docReadCtrl.active();
 					});
 					saveBtn.bind('click', function() {
@@ -75,6 +95,16 @@ define(function (require, exports, module) {
 					});
 					saveAndQuitBtn.bind('click', function() {
 						_messageCenter.saveDocument(true);
+=======
+						cancelBtn.addClass('hidden');
+						cancelBtn.parent().css('display', 'none');
+						saveBtn.addClass('hidden');
+						saveBtn.parent().css('display', 'none');
+						saveAndQuitBtn.addClass('hidden');
+						saveAndQuitBtn.parent().css('display', 'none');
+						createBtn.removeClass('hidden');
+						createBtn.parent().css('display', 'inline-block');
+>>>>>>> origin/DEV
 					});
 				},
 				// 初始化用户操作的注册事件
@@ -111,6 +141,7 @@ define(function (require, exports, module) {
 							// ie6下无反应
 						}
 					}
+<<<<<<< HEAD
 				},
 				// 初始化状态机
 				initStateControll: function() {
@@ -195,6 +226,16 @@ define(function (require, exports, module) {
       this.trigger("change", controller);
     }, this);
   };
+=======
+				}
+			},
+			// 使用状态机来控制顶部操作列表的显示
+			_state = {
+
+			};
+
+
+>>>>>>> origin/DEV
 
 
 	function getJqClassSelector(className) {

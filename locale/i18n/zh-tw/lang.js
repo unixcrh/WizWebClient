@@ -47,9 +47,12 @@ define({
 		Save: '保存',
 		SaveAndQuit: '保存並閱讀',
 		Cancel: '取消'
+<<<<<<< HEAD
 	},
 	EditPage: {
 		Saving: '正在保存...',
 		Saved: '筆記已於 {time} 保存'
+=======
+>>>>>>> origin/DEV
 	}
 })

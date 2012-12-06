@@ -63,6 +63,7 @@ define(function (require, exports, module) {
 						$('#edit_page').addClass('hidden');
 						$('#resize_container').removeClass('hidden');
 					}
+<<<<<<< HEAD
 				},
 				/**
 				 * 
@@ -82,6 +83,8 @@ define(function (require, exports, module) {
 					remote.postDocument(context.kbGuid, docInfo, function(data) {
 						_messageDistribute.saveDocumentCallback(data, bQuit, docInfo);
 					});
+=======
+>>>>>>> origin/DEV
 				}
 			},
 			// 负责向各控制器发送消息
@@ -103,6 +106,7 @@ define(function (require, exports, module) {
 						console.error('Get Document Body Error!');
 						console.error(data);
 					}
+<<<<<<< HEAD
 				},
 				saveDocumentCallback: function(data, bQuit, docInfo) {
 					if (data.code == '200') {
@@ -111,6 +115,8 @@ define(function (require, exports, module) {
 					} else {
 
 					}
+=======
+>>>>>>> origin/DEV
 				}
 			}
 
