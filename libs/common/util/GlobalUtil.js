@@ -98,6 +98,43 @@ define(function (require, exports, module){
 				}
 			}
 			return true;
+		},
+		// 格式化日期timestamp
+		formatDate: function (dateStr) {
+			//标准游览器，如果数组里面最后一个字符为逗号，JS引擎会自动剔除它。
+			//参考https://developer.mozilla.org/en-US/docs/JavaScript/Guide/Values,_variables,_and_literals?redirectlocale=en-US&redirectslug=Core_JavaScript_1.5_Guide%2FValues%2C_Variables%2C_and_Literals#Literals
+			var ie = GlobalUtil.bIe();
+			if (ie) {
+				//ie6,7下 new Date(dateStr) 不支持dateStr为xxxx-xx-xx格式，需要转换格式
+				dateStr = dateStr.replace(/\-/ig, '/').split('.')[0];
+			}
+			var date = new Date(dateStr);
+			return date.toLocaleDateString();
+		},
+		//判断是否为ie浏览器
+		bIe: function () {
+			if(document.all) {
+				return true;
+			}
+			return false;
+		},
+		// 通过classname获取jquery对象
+		getJqueryObjByClass: function (className) {
+			return $('.' + className);
+		},
+		// 通过id获取jquery对象
+		getJqueryObjById: function (id) {
+			return $('#' + id);
+		},
+		isConSpeCharacters: function (value) {
+			var special = '\\,/,:,<,>,*,?,\",&,\'',
+				specialList = special.split(',');
+			for(var index=0, length=specialList.length; index < length; index++) {
+				if (value.indexOf(specialList[index]) > -1) {
+					return true;
+				}
+			}
+			return false;
 		}
 	};
 

@@ -190,7 +190,6 @@
 			if (tools.eqs(target.tagName, "span") && target.getAttribute("treeNode"+ consts.id.SWITCH) !== null) {
 				tId = target.parentNode.parentNode.id;
 				nodeEventType = "switchNode";
-				console.log(tId);
 			} else {
 				tmp = tools.getMDom(setting, target, [{tagName:"a", attrName:"treeNode"+consts.id.A}]);
 				if (tmp) {

@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+    <meta http-equiv="pragma" content="no-cache" />
+		<meta http-equiv="cache-control" content="no-cache">
+		<meta http-equiv="expires" content="0">
+		<link type="text/css" rel="stylesheet" href="style/css/normalize.css">
+		<link type="text/css" rel="stylesheet" href="style/css/zTreeStyle.css">
+		<link type="text/css" rel="Stylesheet" href="style/css/wiz.css">
+		<link rel="stylesheet" href="./libs/common/ueditor//themes/default/ueditor.css">
+		<title></title>
+	</head>
+	<body>
+		<div id="head" class="hidden"></div>
+		<div class="main-container">
+			<!-- 顶部 -->
+			<div class="header-container">
+				<!-- head-flyingDots 加载中动画 -->
+				<div class="head-flyingDots head-flyingDots-ct hidden" id="loading">
+					<div class="head-flyingDots">
+						<!-- for ie -->
+						<div class="loading-fallback hidden"></div>
+
+						<div class="c_loadingTracks" >
+							<div class="c_loadingTrack c_loadingTrack5">
+								<div class="c_loadingDot">
+								</div>
+							</div>
+							<div class="c_loadingTrack c_loadingTrack4">
+								<div class="c_loadingDot">
+								</div>
+							</div>
+							<div class="c_loadingTrack c_loadingTrack3">
+								<div class="c_loadingDot">
+								</div>
+							</div>
+							<div class="c_loadingTrack c_loadingTrack2">
+								<div class="c_loadingDot">
+								</div>
+							</div>
+							<div class="c_loadingTrack c_loadingTrack1">
+								<div class="c_loadingDot">	
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>	
+				<!-- head-flyingDots 加载中动画 -->
+				<!-- 顶部右侧 -->
+				<div class="header-right">
+					<div class="hd-ct">
+						<span  class="hd-ct">
+							<div>
+								<a href="#" class="wiz-button" >
+									<img src="style/images/clear.gif" alt="" id="m_setting">
+								</a>
+							</div>
+						</span>
+						<span class="hd-ct">
+							<a href="#" id="user_info" class=" wiz-button hd-ct">
+								<span class="hd-ct">
+									<span id="user_name" class="u-name u-hd"></span>
+									<div id="user_image" class="u-img">
+										<img src="style/images/bluemanm.png" alt="">
+									</div>
+								</span>
+							</a>
+							<ul class="wiz-menu" id="user_menu">
+								<li>
+									<a href="#" class="wiz-menu-item" tabindex="1" style="zoom: 0;">
+										<span></span>
+									</a>
+								</li>
+							</ul>
+						</span>
+					</div>
+				</div>
+				<!-- 顶部右侧 -->
+				<!-- 顶部左侧 -->
+				<div class="header-left">
+					<a class="logo h-link" href="/">
+						<img src="style/images/logo.png" alt="logo" class="logo-img" />
+					</a>
+					<span class="logo-split hidden"></span>
+					<a id="group_ctrl" class="h-link group-entry" >
+						<span>
+							<span class="g_menu_span" dir="ltr">
+								<img src="style/images/invis.gif" alt="group-entry" class="dropdown-menu-larger">
+							</span>
+						</span>
+					</a>
+				</div>
+				<!-- 顶部左侧 -->
+				<!-- 顶部左侧操作栏 -->
+				<ul class="header-md button-group">
+					<li>
+						<a href="#" class="wiz-button hidden" id="create_doc_ct">
+							<span>
+								<img src="https://secure.wlxrs.com/$live.controls.images/is/invis.gif" alt="" class="new-doc-icon" />
+							</span>
+							<span id="create_note" class="button-value">
+							</span>
+						</a>
+					</li>
+					<li>
+						<a href="#" class="wiz-button hidden" id="save_and_quit_ct">
+							<span id="save_and_quit" class="button-value"></span>
+						</a>
+					</li>
+					<li>
+						<a href="#" class="wiz-button hidden" id="save_ct">
+							<span id="save" class="button-value"></span>
+						</a>
+					</li>
+					<li>
+						<a href="#" class="wiz-button hidden" id="cancel_ct">
+							<span id="cancel" class="button-value"></span>
+						</a>
+					</li>
+				</ul>
+				<!-- 顶部左侧操作栏 -->
+			</div>
+			<!-- 顶部 -->
+			<!-- 下方可变区域 -->
+			<div id="resize_container" class="below-container">
+				<!-- 左侧布局 -->
+				<div id="leftTree_container" class="content-left">
+					<div class="search-box-content">
+						<!--搜索栏 -->
+						<span class="search-box">
+							<div class="search-box-md">
+								<input type="text" id="s_box_input" aria-label="" class="search-box-input" placeholder="搜索">
+								<input type="button" id="s_box_submit" class="search-box-btn" title="search">
+							</div>
+						</span>
+					</div>
+					<div class="ztreeContainner">
+						<div id="leftTree" class="ztree">
+							<!-- 树控件 -->
+						</div>
+			  	</div>
+				</div>
+				<!-- 左侧布局 -->
+				<!-- 左侧树和右侧内容的分割 -->		
+				<div id="left_splitter" class="splitter"></div>
+				<!-- 右侧列表和内容区域 -->
+				<div id="content_container" class="content-right">
+					<div id="doc_list_containner_wrapper">
+						<div id="sort_filter_container" class="sort-filter-contanier">
+							<span>
+								<!-- 排序过滤 -->
+								<div class="sort-split"></div>
+								<!-- TODO国际化、封装成jQuery插件方式，业余时间做 -->
+								<div class="sort-filter-wrapper">
+									<div class="menu-ct">
+										<a href="#" id="sort_menu">
+											<span></span>
+											<img src="style/images/clear.gif" alt="" class="drop-down-small">
+										</a>
+										<ul id="sort_list" class="wiz-menu">
+											<li>
+												<a href="#" class="wiz-menu-item" cmd="dt_created" bDes="true" tabindex="1" style="zoom: 0;">
+													<img src="style/images/clear.gif" class="" alt="">
+													<span></span>
+												</a>
+											</li>
+											<li>
+												<a href="#" class="wiz-menu-item" cmd="dt_created" bDes="false" tabindex="1" style="zoom: 0;">
+													<img src="style/images/clear.gif" class="" alt="">
+													<span></span>
+												</a>
+											</li>
+											<li>
+												<a href="#" class="wiz-menu-item" cmd="dt_modified" bDes="true" tabindex="1" style="zoom: 0;">
+													<img src="style/images/clear.gif" class="sort-item-selected" alt="">
+													<span></span>
+												</a>
+											</li>
+											<li>
+												<a href="#" class="wiz-menu-item" cmd="dt_modified" bDes="false" tabindex="1" style="zoom: 0;">
+													<img src="style/images/clear.gif" class="" alt="">
+													<span></span>
+												</a>
+											</li>
+											<li>
+												<a href="#" class="wiz-menu-item" cmd="document_title" bDes="true" tabindex="1" style="zoom: 0;">
+													<img src="style/images/clear.gif" class="" alt="">
+													<span></span>
+												</a>
+											</li>
+											<li>
+												<a href="#" class="wiz-menu-item" cmd="document_title" bDes="false" tabindex="1" style="zoom: 0;">
+													<img src="style/images/clear.gif" class="" alt="">
+													<span></span>
+												</a>
+											</li>
+										</ul>
+									</div>
+								</span>
+							</div>
+
+						</div>
+						<div id="doc_list_containner" class="doc-list">
+							<!-- 文档列表 -->
+						</div>
+						<div class="pagination-containner" ></div>
+					</div>
+					<div id="content_splitter" class="splitter"></div>
+					<div class="doc-detail-ct" id="doc_read_area">
+						<div id="doc_params" class="d-params">
+							<div class="params-title bottom-line">
+								<h2 id="doc_params_title"></h2>
+							</div>
+							<!-- 显示文档目录和出处链接信息 -->
+							<div class="d-brief-info bottom-line hidden">
+								<!-- <span>
+									<span class="d-category-info">
+										<img src="" alt="">
+										<div id="params_category"></div>
+									</span>
+									<span class="d-url-info">
+										<img src="" alt="">
+										<div id="params_url"></div>
+									</span>
+								</span> -->
+								<div class="show-more">
+									<a href="#" id="showMoreHref"></a>
+								</div>
+							</div>	<!--d-brief-info-->
+
+							<!-- 显示文档相信信息 -->
+							<div class="d_detail_ct"></div>
+
+						</div> <!-- d-params-->
+						<div class="frame-ct">
+							<iframe src="blank.html" scrolling='no' frameborder="0" id="wiz_doc_iframe"></iframe>
+						</div>
+					</div>
+				</div>
+				<!-- 右侧列表和内容区域 -->
+
+			</div>
+			<!-- 新建、编辑页面 -->
+			<div class="edit-page-wrapper hidden" id="edit_page">
+				<div>
+					<!-- 文档附属信息 -->
+					<div class="edit-params">
+						<div class="params-category">
+							<span>
+								文件夹：
+							</span>
+							<span id="params_category">
+							</span>
+						</div>
+						<!-- <div class="params-tags">
+							<div class="params-tags-wrapper">
+								<input type="text" id="params_tags" placeholder="输入标签">
+							</div>
+						</div> -->
+						<!-- <div class="params-attachment">附件：</div> -->
+					</div>
+					<!-- 文档主内容区域 -->
+					<div class="edit-content">
+						<div class="edit-title">
+							<div class="save-area" id="save_tip"></div>
+							<div class="title-area">
+								<input type="text" placeholder="未命名" id="title_input">
+							</div>
+						</div>
+						<div class="editor-wrapper">
+							<textarea id="wiz_edit_area"></textarea>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- 新建、编辑页面 -->
+		</div>
+		<script type="text/javascript" src="./libs/common/ueditor/editor_config.js"></script>
+		<script type="text/javascript" src="./libs/common/ueditor/editor_all.js"></script>
+		<script type="text/javascript" src="./libs/common/seaJs/sea-debug.js" data-main="./libs/entity/webEntry"></script>
+		<script type="text/javascript" src="./libs/common/jquery/jquery-1.7.2.js"></script>
+		<script type="text/javascript" src="./libs/common/jquery/jquery.cookie.js"></script>
+		<script type="text/javascript" src="./libs/common/jquery/jquery.placeholder.js"></script>
+	  <script>
+	   $(function() {
+	    $('input, textarea').placeholder();
+	   });
+	  </script>
+		<!-- 群组入口预留 -->
+		<div class="header_group_ct"></div>
+	</body>
+</html>

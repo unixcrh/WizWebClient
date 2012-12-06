@@ -1,0 +1,74 @@
+#header {
+		width: 100%;
+}
+#header-container {
+  /*position: relative;*/
+  /*padding: 20px 18%;*/
+  width:960px;
+  
+}
+#logo {
+  width:100%;
+}
+#nav-ct{
+	width:100%;
+}
+#nav li {
+  padding: 0 20px 0 0px;
+}
+.bd{
+	width: 100%;
+}
+
+
+/************************************************************************************
+smaller than 1024
+*************************************************************************************/
+@media screen and (max-width: 1024px) {
+	#header-container {
+	  /*position: relative;*/
+	  padding: 20px 15%;
+	}
+	#second-span{
+	  margin-left:8%;
+	}
+	.content {
+	  padding:0 10%;
+	  font-size: 0.9em;
+	}
+}
+
+
+/************************************************************************************
+smaller than 800
+*************************************************************************************/
+@media screen and (max-width: 800px) {
+	#header-container {
+	  /*position: relative;*/
+	  padding: 20px 5%;
+	}
+
+	#nav-ct{
+		  width:100%;
+	}
+	#nav li {
+	  padding: 0 0 0 10px;
+	  font-size: 0.6em;
+	}
+	.bd{
+		width: 100%;
+	}
+	.outline{
+		width:100%;
+	}
+	
+}
+
+/************************************************************************************
+smaller than 650
+*************************************************************************************/
+@media screen and (max-width: 650px) {
+	#search input{
+		width:120px;
+	}
+}

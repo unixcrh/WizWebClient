@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="assets/css/clear.css">
+        <link rel="stylesheet" href="assets/css/tmpl.css">
+        <link rel="stylesheet" href="assets/css/media-queries.css">
+
+        <title>Wiz template</title>
+        <!--[if lt IE 9]> <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script> <![endif]-->
+        <script>
+            window.onload=function() {
+                var dHeight=screen.availHeight;
+                document.getElementById("login").style.height=(dHeight*0.8).toString()+"px";
+                // alert(document.getElementsByName("login-ctn")[0].style.height);
+                // alert(document.getElementsByName("login-ctn")[0].innerHTML);
+                }
+            }
+        </script>
+
+    </head>
+    <body>
+        <div class="wraper" name="login-ctn">
+            <div id="login">
+                <div class="ads">
+                    <img src="assets/img/WizNote.jpg"></img>
+                    <div class="login-intro">
+                        <h1>您的帐户</h1>
+                        <p>添加安全信息可以帮助您保护笔记</p>
+                    </div>
+                </div>
+                <div id="login-form">
+                    <h1>登录</h1>
+                    <form name="" id="" method="post">
+                        <p class="error-indicator" id="tip_error_login"></p>
+                        <label>用户名:</label>
+                        <input type="text" name="" placeholder="someone@example.com" id="login_name"></input>
+                        <p class="error-indicator"></p>
+                        <label>密&nbsp;&nbsp;&nbsp;码:</label>
+                        <input type="password" name="" placeholder="密码" id="login_password"></input>
+                        <input type="checkbox" name="" id="login_keeppassword" class="chkbox"><span>保持登录状态</span></input>
+                        <input type="submit" name="" value="&nbsp;&nbsp;登录&nbsp;&nbsp;" class="btn" id="loginkeycode"></input>
+                    </form>
+                    <p>还没有为知账户？&nbsp;</p><a href="" id="to-register">立即注册</a>
+                </div>
+                <br clear="all" />
+                <div id="register-form">
+                    <h1>注册</h1>
+                    <form name="" id="" method="post">
+                        <p class="error-indicator"></p>
+                        <label>*用&nbsp;户&nbsp;名:</label>
+                        <input type="text" name="" placeholder="邮箱* 如:someone@example.com" id="login_name"></input>
+                        <p class="error-indicator"></p>
+                        <label>*密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码:</label>
+                        <input type="password" name="" placeholder="密码*" id="login_password"></input>
+                        <label>*确认密码:</label>
+                        <input type="password" name="" placeholder="确认密码*" id="  "></input>
+                        <label>&nbsp;&nbsp;邀&nbsp;请&nbsp;码:</label>
+                        <input type="text" name="" placeholder="邀请码" id="login_name"></input>
+                        
+                        <input type="submit" name="" value="&nbsp;&nbsp;注册&nbsp;&nbsp;" class="btn" id="loginkeycode"></input>
+                    </form>
+                    <p>已经有为知账户？&nbsp;</p><a href="" id="to-login" >登录</a>
+                </div>
+            </div>
+            <div id="login-footer">
+                <span>©2012&nbsp;Wiz&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="">条款</a>&nbsp;&nbsp;<a href="">隐私和&nbsp;Cookie</a></span>
+                <span style="float:right"><a href="">帮助中心</a>&nbsp;&nbsp;<a href="">反馈</a><span>
+
+            </div>
+        </div>
+        <script type="text/javascript" src="libs/common/seaJs/sea-debug.js" data-main="./libs/entity/loginEntry"></script>
+    </body>
+</html>
