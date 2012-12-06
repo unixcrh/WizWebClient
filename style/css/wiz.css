@@ -957,7 +957,7 @@ div.c_loadingDot {
 	position: absolute;
 	left: 0;
 	right: 70%;
-	top: 10px;
+	top: 0;
 	bottom: 0;
 	padding: 20px;
 	background-color: #f3f3f3;

@@ -9,16 +9,19 @@ define(function (require, exporst, module) {
 		_locale = require('locale'),
 		_defaultLocation = _locale,
 		_editor = null,
-		_locale = require('locale');
+		_locale = require('locale'),
+		_docInfo = {};
 
 	function EditController () {
 		initEditor();
 
-		function show(category) {
+		function show(categoryObj) {
 			// TODO动态加载编辑器的script
-			if (typeof category === 'string' && category.length > 2) {
-				$('#' + _id.CategorySpan).html(category);
+			if (typeof categoryObj.location === 'string' && typeof categoryObj.localeLocation === 'string'&& categoryObj.location.length > 2) {
+				_docInfo.category = categoryObj.location;
+				$('#' + _id.CategorySpan).html(categoryObj.localeLocation);
 			} else {
+				_docInfo.category = '/My Notes/';
 				$('#' + _id.CategorySpan).html('/我的笔记/');
 			}
 			if (_editor !== null) {
@@ -37,10 +40,10 @@ define(function (require, exporst, module) {
 		function getDocumentInfo() {	
 			var documentInfo ={};
 			documentInfo.body = _editor.getAllHtml();
-			documentInfo.category = $('#' + _id.CategorySpan).val();
+			documentInfo.category = _docInfo.category;
 			documentInfo.title = $('#' + _id.TitleInput).val();
 			if (_lastGuid) {
-				documentInfo.guid = _lastGuid;	
+				documentInfo.guid = _lastGuid;
 			}
 			if (documentInfo.title === '' || documentInfo.title.length < 0) {
 				// TODO 提示
