@@ -1,7 +1,7 @@
 /*@import charset:utf-8;*/
 html, body {
   margin: 0;
-  font-family: Verdana, Simsun;
+  font-family: 'Microsoft YaHei', Simsun;
   /*font-family: 'Microsoft YaHei UI', 'Microsoft YaHei', SimSun, 'Segoe UI', Tahoma, Helvetica, sans-serif;*/
   color: #000;
   font-size: 100%;
@@ -123,7 +123,7 @@ ul, menu, dir {
   background-position: 0 -27px;
 }
 /*--------  主导航栏样式  ---------*/
-#primaryNav {
+.primaryNav {
 width: 998px;
 height:40px;
 bottom: 6px;
@@ -141,7 +141,7 @@ white-space: nowrap;
 _zoom: 1;
 }
 
-#primaryNav li {
+.primaryNav li {
   float: left;
   margin: 0 18px 0 0;
   height: 15px; 
@@ -149,7 +149,7 @@ _zoom: 1;
   font-size: 13px;
 }
 
-#primaryNav a, #subNav a {
+.primaryNav a, #subNav a {
   font-size: 13px;
   color: #CFCFCF;
   cursor: pointer;
@@ -159,10 +159,10 @@ _zoom: 1;
   line-height: 15px;
 }
 
-#primaryNav a.currentPage {
+.primaryNav a.currentPage {
   color: #0CF;
 }
-#primaryNav a:hover, #primaryNav a.currentPage:hover, #subNav a:hover{
+.primaryNav a:hover, .primaryNav a.currentPage:hover, #subNav a:hover{
   color:#FFF;
 }
 #subNavCtn {
@@ -216,6 +216,7 @@ _zoom: 1;
   /*outline:1px solid #000;*/
 }
 /*--- 不同页面专用容器  960px 居中显示   ---*/
+/*------  首页“展示”组件样式  -----*/
 .presentation{
   height: auto;
   width: 1006px;
@@ -283,9 +284,10 @@ _zoom: 1;
 .display img{
   float: right;
 }
-.feature, .topicPic, .enterprise, .tuts{
+/*------  首页“功能特性”组件样式  -----*/
+.feature, .topicPic, .enterprise, .tuts, .blog, .faq {
   width: 1006px;
-  padding: 0 0 60px 0;
+  padding: 30px 0 30px 0;
   margin: 0 auto;
   color: #454545;
   text-align: left;
@@ -335,6 +337,7 @@ _zoom: 1;
   color: #24459A;
 }
 
+/*------  首页“四栏话题”组件样式  -----*/
 .topic{
   width: 998px;
   margin: 0 auto;
@@ -386,6 +389,7 @@ _zoom: 1;
   color: #454545;
   text-align: left;
 }*/
+/*------  下载页“四栏带图话题”组件样式  -----*/
 .topicPic h2{
   font-size: 40px;
   line-height: 50px;
@@ -430,6 +434,8 @@ _zoom: 1;
   position:absolute;
   bottom:;
 }
+
+/*------  关于我们“介绍”组件样式  -----*/
 .intro {
   width: 998px;
   margin:0 auto;
@@ -487,7 +493,7 @@ _zoom: 1;
 .location p a{
   color:#;
 }
-
+/*------  加入我们“职位详情”组件样式  -----*/
 .jobs{
   display:block;
   float:left;
@@ -519,28 +525,208 @@ _zoom: 1;
   font-size: 13px;
   line-height: 20px;
 }
-
-.enterprise ul{
-  float:left;
-  width: 470px;
+/*-------------    企业方案页面样式   ----------------*/
+.enterprise ul.namelist{
+  /*display: inline;*/
   margin:0;
+  padding: 0;
   font-size: 16px;
   line-height: 22px;
 }
+.enterprise ul li{
+  float: left;
+  /*display: inline;*/
+  width: 490px;
+}
+/*---------------     支持二级页面样式   ------------*/
+.big-title{
+  width: 100%;
+  height: auto;
+  margin: 0 ;
+  padding: 20px 0 5px 0;
+  border:none;
+  border-bottom: 3px solid #EDEDF0;
+}
+.big-title h2{
+  float: left;
+  font: 40px normal;
+  line-height: 50px;
+  margin: 0 0 0px -3px;
+  padding:0;
+}
+.big-title h3{
+  float: right;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 22px;
+  margin: 30px 0 0 0;
+  padding: 0;
+}
 
 .tuts .sidebar{
-  display: inline;
-  width: 30%;
+  float:left;
+  width: 256px;
+  padding: 50px 0 20px 0;
+}
+.tuts-img-thmb{
+  float: left;
+  width: 112px;
+  padding: 0;
+  margin: 0 4px 12px 0;
+}
+.tuts-img-thmb:hover{
+  outline:3px solid #EDEDF0;
+}
+.tuts-title{
+  float: left;
+  padding: 0 0 0 8px;
+  font-size: 13px;
+  line-height: 20px;
+  font-weight: bold;
+  color:#454545;
+}
+.tuts-title:hover{
+  color:#24459A;
 }
 .detial{
-  display: inline;
+  float: left;
+  width: 741px;
+  padding: 50px 0 0 0 ;
+  /*padding: 0 0 0 300px;*/
+}
+/*-------- 博客页面样式  -----------*/
+/*------*/
+.articles{
+  float: left;
+  width: 741px;
+  padding: 0;
+  margin: 0;
+}
+.r-sidebar{
+  float: left;
+  width: 241px;
+  padding:0 0 0 20px;
+}
+.hr{
+  width:95%;
+  height: 3px;
+  margin: 20px 0;
+  background: #EDEDF0;
+}
+.piece{
+  width: 100%;
+  height: 600px;
+  padding: 20px 0 10px 0;
+  /*border: none;
+  border-bottom: 3px solid #EDEDF0;*/
+  /*margin: 0 20px 0 0;*/
+  /*text-overflow: ellipsis;*/
+  /*white-space: nowrap;*/
+  overflow: hidden;
+
+  /*text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* 第六行要顯示點點點 */
+  /*-webkit-box-orient: vertical;*/
+}
+.piece h2{
+  margin: 0;
+  padding: 0;
+  font-size: 40px;
+  font-weight: normal;
+  line-height: 50px;
+}
+.piece h2 a{
+  color:#454545;
+}
+.piece h2 a:hover{
+  color:#24459A;
+  }
+.piece p{
+  padding: 0 20px 0 0;
+  text-indent: 2em;
+  font-size: 13px;
+  line-height: 20px;
+}
+.piece img{
+  width:auto;
+}
+.r-sidebar ul{
+  list-style-type: square;
+  list-style-position: inside;
+  padding: 20px 0 20px 0;
+}
+.r-sidebar li{
+  font-size: 13px;
+  line-height: 20px;
+}
+.r-sidebar li a{
+  color:#454545;
+  font-weight: bold;
+}
+.r-sidebar li a:hover{
+  color: #24459A;
+}
+/*-------   faq页面   ---------*/
+.faq{
+  min-height: 400px;
+}
+.faq h2{
+  font-size: 40px;
+  font-weight: normal;
+  line-height: 50px;
+}
+.faq p{
+  font-size: 13px;
+  font-weight: normal;
+  line-height: 20px;
+}
+.faq span.switcher{
+  /*display: ;*/
+  font-size: 13px;
+  font-weight: normal;
+  line-height: 20px;
+  padding: 0 0 15px 0;
+  color: #1570A6;
+  cursor: pointer;
+}
+.faq ul{
+  margin: 10px 0 0 0;
+  padding: 0;
+}
+.faq ul li{
+  margin: 0;
+  padding: 0 0 0 0;
+}
+.faq .question{
+  /*display:block;*/
+  font-size: 13px;
+  line-height: 20px;
+  font-weight: bold;
+  color: #1570A6;
+  cursor: pointer;
+}
+.faq .question:hover{
+  color: #24459A;
+}
+.faq ul .highlight{
+  color: #24459A;
+}
+.faq ol{
+  display: none;
+  padding: 0 0 0 25px;
+}
+.faq ol.show{
+  display: block;
+}
+.faq ul ol li{
+  font-size: 13px;
+  font-weight: normal;
+  line-height: 16px;
 }
 
 
-
-
-
-
+/*----------------    登录页面样式     ---------------*/
 
 #login{
   margin: 0 auto;
