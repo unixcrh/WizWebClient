@@ -127,6 +127,7 @@ define(function (require, exports, module) {
 	  	action: 'get',
 	  	async: true
 	  },	
+	  // 新建、编辑文档先调用旧的接口
 	  DOCUMENT_POST_DATA: {
 	  	url: DOCUMENT_BASE + '/data',
 	  	action: 'post',

@@ -63,6 +63,25 @@ define(function (require, exports, module) {
 						$('#edit_page').addClass('hidden');
 						$('#resize_container').removeClass('hidden');
 					}
+				},
+				/**
+				 * 
+				 * 保存文档
+				 * @param  {boolean} bQuit 保存成功后是否退出
+				 * @param  {Function} callback 回调函数
+				 * @return {[type]}            [description]
+				 */
+				saveDocument: function (bQuit) {
+					var docInfo = editPageCtrl.getDocumentInfo();
+					// 取到的docInfo为null，则说明校验失败
+					if (docInfo === null) {
+						return;
+					}
+					// 显示正在保存的文字提示
+					editPageCtrl.nowSaving();
+					remote.postDocument(context.kbGuid, docInfo, function(data) {
+						_messageDistribute.saveDocumentCallback(data, bQuit);
+					});
 				}
 			},
 			// 负责向各控制器发送消息
@@ -83,6 +102,13 @@ define(function (require, exports, module) {
 					} else {
 						console.error('Get Document Body Error!');
 						console.error(data);
+					}
+				},
+				saveDocumentCallback: function(data, bQuit) {
+					if (data.code == '200') {
+						editPageCtrl.saveCallback(data.document_guid);
+					} else {
+
 					}
 				}
 			}

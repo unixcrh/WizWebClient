@@ -22,6 +22,10 @@ define(function (require, exports, module) {
 			_data = {
 				_userInfo: null
 			},
+			_stateMachine = null,
+			_createOnlyCtrl = null,
+			_docReadCtrl = null,
+			_docEditCtrl = null,
 			_view = {
 				showUser: function(userInfo) {
 					var nameSelector = getJqIdSelector(_node.userNameId);
@@ -44,8 +48,9 @@ define(function (require, exports, module) {
 			},
 			_event = {
 				init: function() {
-					_event.initOperateListHandler();
-					_event.initUserHandler();
+					this.initOperateListHandler();
+					this.initUserHandler();
+					this.initStateControll();
 				},
 				// 初始化所有操作列表的注册事件
 				// TODO 需要完善，如何解耦
@@ -55,14 +60,7 @@ define(function (require, exports, module) {
 					createBtn.removeClass('hidden');
 					createBtn.bind('click', function(){
 						_messageCenter.switchEditMode(true);
-						createBtn.addClass('hidden');
-						createBtn.parent().css('display', 'none');
-						cancelBtn.removeClass('hidden');
-						cancelBtn.parent().css('display', 'inline-block');
-						saveBtn.removeClass('hidden');
-						saveBtn.parent().css('display', 'inline-block');
-						saveAndQuitBtn.removeClass('hidden');
-						saveAndQuitBtn.parent().css('display', 'inline-block');
+						_docEditCtrl.active();
 					});
 
 					var cancelBtn = $('#' + _node.id.cancelBtn);
@@ -70,14 +68,13 @@ define(function (require, exports, module) {
 					var saveAndQuitBtn = $('#' + _node.id.saveAndQuitBtn);
 					cancelBtn.bind('click', function(){
 						_messageCenter.switchEditMode(false);
-						cancelBtn.addClass('hidden');
-						cancelBtn.parent().css('display', 'none');
-						saveBtn.addClass('hidden');
-						saveBtn.parent().css('display', 'none');
-						saveAndQuitBtn.addClass('hidden');
-						saveAndQuitBtn.parent().css('display', 'none');
-						createBtn.removeClass('hidden');
-						createBtn.parent().css('display', 'inline-block');
+						_docReadCtrl.active();
+					});
+					saveBtn.bind('click', function() {
+						_messageCenter.saveDocument(false);
+					});
+					saveAndQuitBtn.bind('click', function() {
+						_messageCenter.saveDocument(true);
 					});
 				},
 				// 初始化用户操作的注册事件
@@ -114,14 +111,90 @@ define(function (require, exports, module) {
 							// ie6下无反应
 						}
 					}
+				},
+				// 初始化状态机
+				initStateControll: function() {
+					_stateMachine = new StateMachine();
+					_createOnlyCtrl = new StateControl([_node.id.createBtn]);
+					// 选中文档列表中文档后，显示的操作
+					_docReadCtrl = new StateControl([_node.id.createBtn]);
+					// 编辑、新建文档时，显示的操作
+					_docEditCtrl = new StateControl([_node.id.saveBtn, _node.id.saveAndQuitBtn, _node.id.cancelBtn]);
+					_stateMachine.add(_createOnlyCtrl);
+					_stateMachine.add(_docReadCtrl);
+					_stateMachine.add(_docEditCtrl);
 				}
-			},
-			// 使用状态机来控制顶部操作列表的显示
-			_state = {
-
 			};
 
 
+
+	// 状态控制器
+	var StateControl = function(idList){
+		var _elemList = [];
+		init(idList);
+
+		function init(idList) {
+			var length = idList.length;
+			if (length > 0) {
+				for (var index = 0; index < length; index ++) {
+					_elemList.push(getJqIdSelector(idList[index]));
+				}
+			}
+		};
+		function activate() {
+			var length = _elemList.length;
+			for (var index = 0; index < length; index ++ ) {
+				$(_elemList[index]).removeClass('hidden');
+				$(_elemList[index]).parent().removeClass('no-display');
+			}
+		};
+		function deactivate() {
+			var length = _elemList.length;
+			for (var index = 0; index < length; index ++ ) {
+				$(_elemList[index]).addClass('hidden');
+				$(_elemList[index]).parent().addClass('no-display');
+			}
+		};
+
+		return{
+			activate: activate,
+			deactivate: deactivate
+		}
+	};
+
+	// https://github.com/maccman/book-assets/blob/master/ch04/state_machine.html
+	// 封装jQuery的绑定和触发事件函数
+	var Events = {
+    bind: function(){
+      if ( !this.o ) this.o = $({});
+      this.o.bind.apply(this.o, arguments);
+    },
+    
+    trigger: function(){
+      if ( !this.o ) this.o = $({});
+      this.o.trigger.apply(this.o, arguments);
+    }
+  };
+  
+  // 状态机类、用来控制顶部按钮组的显示
+  var StateMachine = function(){};
+  StateMachine.fn  = StateMachine.prototype;
+  $.extend(StateMachine.fn, Events);
+  
+  StateMachine.fn.add = function(controller){
+    this.bind("change", function(e, current){
+      if (controller === current) {
+        controller.activate();
+      }
+      else {
+        controller.deactivate();	
+      }
+    });
+    
+    controller.active = $.proxy(function(){
+      this.trigger("change", controller);
+    }, this);
+  };
 
 
 	function getJqClassSelector(className) {

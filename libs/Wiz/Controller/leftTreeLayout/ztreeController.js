@@ -312,9 +312,7 @@ define(function (require, exports, module) {
 		function expandCategory(){
 			var nodes = treeObj.getNodes();
 			if (nodes.length>1) {
-				treeObj.expandNode(nodes[1], true, true, true);
-				// expandNode不能响应自定义的事件，需要自行调用一下-----lsl 2012-12.05
-				zTreeOnExpand(null, null, nodes[1]);
+				$('#' + nodes[1].tId + '_a').trigger('click');
 			}
 
 		}

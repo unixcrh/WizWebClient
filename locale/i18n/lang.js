@@ -47,5 +47,9 @@ define({
 		Save: 'Save',
 		SaveAndQuit: 'Save and Read',
 		Cancel: 'Cancel'
+	},
+	EditPage: {
+		Saving: 'Saving...',
+		Saved: 'The document has to save at {time}'
 	}
 })

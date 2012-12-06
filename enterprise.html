@@ -5,239 +5,173 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="assets/css/clear.css">
         <link rel="stylesheet" href="assets/css/tmpl.css">
-        <!-- <link rel="stylesheet" href="assets/css/media-queries.css"> -->
+        <link rel="stylesheet" href="assets/css/media-queries.css">
 
-        <title>为知笔记 企业方案</title>
+        <title>Wiz template</title>
+
         <!--[if lt IE 9]> <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script> <![endif]-->
-        
 
     </head>
     <body>
         <!-- 页面顶部 -->
-        <div id="headerCtn">
-            <div id="header">
+        <div id="header">
+            <div id="header-container">
                 <span id="logo">
                     <a href="#">
                         <img src="assets/img/logo.png" alt="wiz note" class='logo-img'>
                     </a>
                     <!-- 搜索框 -->
-                    <!-- <div id="search">
+                    <div id="search">
                         <input type="text" name="searchText"></input>
                         <button value=""></button>
-                    </div> -->
+                    </div>
                 </span>
                 
                 <!-- 导航栏 -->
-                <ul id="primaryNav">
-                    <li><a href="/">了解为知</a></li>
-                    <li><a href="/download">下载</a></li>
-                    <li><a class="currentPage" href="/enterprise">企业方案</a></li>
-                    <li><a href="/support">博客</a></li>
-                    <li><a href="/joinus">加入我们</a></li>
-                    <li style="float:right; margin:0 4px 0 0;"><a href="/login">登录</a> / <a href="/register">注册</a></li>
-                </ul>
+                <div id="nav-ct">
+                    
+                    <ul id="nav">
+                        <li><a href="/">首页</a></li>
+                        <li><a href="/download">下载</a></li>
+                        <li><a href="/enterprise">企业方案</a></li>
+                        <li><a href="/support">支持</a></li>
+                        <li><a href="/joinus">加入我们</a></li>
+                        <li style="float:right; padding:0;"><a href="/login">登录</a> / <a href="/register">注册</a></li>
+                    </ul>
+                </div>
             </div>
+            <div class="split"></div>
         </div>
-        <!-- 二级菜单导航栏 -->
-        <!-- <div id="subNavCtn">
-            <ul id="subNav">
-                <li><a class="currentPage" href="/">博客</a></li>
-                <li><a href="/download">微博</a></li>
-                <li><a href="/enterprise">常见问题FAQ</a></li>
-                <li><a href="/support">使用手册</a></li>
-            </ul>
-        </div> -->
-
         <!-- 页面内容 -->
         <div class="bd">
-            <!-- 主要结构： wrapper：宽度为100%的容器，可按需定义全屏宽度的背景色 -->
-            <!-- 以及padding等其他属性 -->
-            <!-- presentation、feature等容器是宽度为1006、居中的容器，放置内容。可在标签内定义字体颜色（与wraper容器背景色对比） -->
-
-
-            <!--  产品展示组件class="presentation" -->
-            <!--  分为左右两区块-->
-            <div class="wraper" style="background:url(assets/img/img-presentation-2.jpg) top center no-repeat; padding:33px 0;">
-                <div class="presentation">
-                    <div class="slogan" style="padding:44px 0 20px 0;">
-                        <h1>企业知识管理解决方案</h1>
-                        <h3>协作 高效 创新</h3>
-                        <button><a href="http://www.wiz.cn/request_wiz_ent.html">申请试用</a></button>
+            <!-- 页面概述 -->
+            <div class="wraper">
+                <div class="gallery">
+                    <div class="describe">
+                        <img class="slogan" src=""> </img>
+                        <button>了解为知笔记</button>
                     </div>
-                    <div class="display" >
-                        <img src="assets/img/img-display-1.png"></img>
-                    </div>
+                    <img class="pic" src="assets/img/gallery-img1.png"></img>
                     <br clear="all"/>
                 </div>
+                <div id="indicator"></div>
             </div>
             <div class="wraper">
-                <div class="feature">
-                    <h2>如何实现商业价值</h2>
-                    <div class="featureThmb">
-                        <h3>知识库的构建与使用</h3>
-                        <img src="assets/img/img-feature-1.png"></img>
-                    </div>
-                    <div class="featureDescribe">
-                        <p>想把Wiz服务器和客户端部署在企业内部？没问题，您只需要使用Wiz企业版本即可。<br/>企业版本，可以帮助企业轻松构建自己的资料库，管理各种各样的文档。同时也便于企业内部跟踪记录每一个员工的工作记录，安排等等。</p>
-                        <!-- <a href=""><span>了解更多</span></a> -->
-                    </div>
+                <div class="intro">
+                    <h1>标题</h1>
+                    <p>想把Wiz服务器和客户端部署在企业内部？
+没问题，您只需要使用Wiz企业版本即可。</p> 
+                </div>
+            </div>
+            <div class="wraper">
+                <!-- "epcu" for Enterprise-Clss User -->
+                <div class="epcu">
+                        <ul >
+                            <li>沧海虚拟公司</li>
+                            <li>常州市超凡网络商贸有限公司</li>
+                            <li>成都固德科技有限责任公司</li>
+                            <li>成都华日通讯技术有限公司</li>
+                            <li>成都千木数控刀具有限公司</li>
+                            <li>成都四方信息科技有限公司</li>
+                            <li>大连易玛特软件开发中心</li>
+                            <li>德赛西威汽车电子</li>
+                            <li>电信科学技术第五研究所</li>
+                            <li>东方智胜咨询公司</li>
+                            <li>东莞市东江自来水有限公司</li>
+                            <li>风驰通信</li>
+                            <li>福建无线局</li>
+                            <li>福建翔通</li>
+                            <li>福州知学信息科技有限公司</li>
+                            <li>福州知学信息科技有限公司</li>
+                            <li>高迈特精密刀具(太仓)有限公司</li>
+                            <li>格外（加拿大）设计咨询有限公司</li>
+                            <li>管家信息科技有限公司</li>
+                            <li>广东菲安妮皮具股份有限公司</li>
+                            <li>广东华文法商中等职业学校</li>
+                            <li>广东文艺职业学院</li>
+                            <li>广州爱迪斯电子有限公司</li>
+                            <li>广州德方网络技术有限公司</li>
+                            <li>广州高清视信数码科技股份有限公司</li>
+                            <li>广州嘉文电子条码科技有限公司</li>
+                            <li>广州市般若化工有限公司</li>
+                            <li>广州市尤特新材料有限公司</li>
+                            <li>广州粤华物业有限公司</li>
+                            <li>国电南瑞科技股份有限公司</li>
+                            <li>哈尔滨工业大学</li>
+                            <li>哈尔滨龙奇税务师事务所有限责任公司</li>
+                          </ul>
+                          <ul>
+                            <li>哈默软件</li>
+                            <li>杭州久拓机电有限公司</li>
+                            <li>杭州思图化工</li>
+                            <li>浩息商务电子有限公司</li>
+                            <li>和为</li>
+                            <li>河海大学</li>
+                            <li>河源市深业地产有限公司</li>
+                            <li>恒发软件开发有限公司</li>
+                            <li>胡进新</li>
+                            <li>湖北大学</li>
+                            <li>湖北慧城建设项目管理有限公司</li>
+                            <li>湖北省刘道玉教育基金会</li>            
+                            <li>湖北知金投资有限公司</li>
+                            <li>湖南大学</li>
+                            <li>湖南铁道职业技术学院</li>
+                            <li>虎符科技</li>
+                            <li>华胜天成</li>
+                            <li>华为</li>
+                            <li>华为技术有限公司</li>
+                            <li>吉林财经大学</li>
+                            <li>简爱教育</li>
+                            <li>建明石业</li>
+                            <li>江苏省公务员信息与培训中心</li>
+                            <li>金宁电子商务有限公司</li>
+                            <li>经天纬地信息有限公司</li>
+                            <li>巨龙软件</li>
+                            <li>聚宝管理有限公司</li>
+                            <li>康欣医学美容门诊部</li>
+                            <li>肯欣</li>
+                            <li>昆山和麦品牌策划有限公司</li>
+                            <li>蓝城兄弟</li>
+                            <li>蓝盾</li>
+                            <li>隆鑫通用动力股份有限公司</li>
+                            <li>娄底市鑫德利金属材料有限公司</li>
+                            <li>美国海德能公司广州代表处</li>
+                          </ul>
+                          <ul>
+                            <li>棉花糖</li>
+                            <li>南昌南车辆段</li>
+                            <li>南京邦诚科技有限公司</li>
+                            <li>南京乐奇动漫设计有限公司</li>
+                            <li>宁波瑞宝百事达文具有限公司</li>
+                            <li>宁波永润石化科技有限公司</li>
+                            <li>平升电子</li>
+                            <li>平邑拜尔国际进出口有限公司</li>
+                            <li>七彩图文</li>
+                            <li>其其</li>
+                            <li>阡陌科技</li>
+                            <li>巧品居</li>
+                            <li>青草公益社团</li>
+                            <li>青岛帅潮集团有限公司</li>
+                            <li>清华大学</li>
+                            <li>泉州外语培训学校</li>
+                            <li>三杰软件公司</li>
+                            <li>厦门大拇哥有限公司</li>
+                            <li>厦门夏谷合协软件技术有限公司</li>
+                            <li>厦门中恒盛世科技有限公司</li>
+                          </ul>
+                </div>
+                <br clear="all" />
+            </div>
+            <div class="wraper">
+                <div class="rasterlze">
                     
-                    <br clear="all" />
                 </div>
             </div>
-            <div class="wraper">
-                <div class="feature">
-                    <h2>Wiz企业版功能</h2>
-                    <div class="featureThmb">
-                        <h3>轻松打造企业自己的知识库</h3>
-                        <img src="assets/img/img-feature-1.png"></img>
-                    </div>
-                    <div class="featureDescribe">
-                        <p>在内网部署Wiz服务端，多客户端同时使用。<br/> 提供组知识库，组权限控制。<br/>
-提供知识门户网站功能，将组知识库发布成内网网站。</p>
-                        <span>如果你想知道更多，请联系企业版客服email：<a href="">support@wiz.cn</a></span>
-                    </div>
-                    
-                    <br clear="all" />
-                </div>
-            </div>
-            
-
-            <div class="wraper">
-                <div class="topic">
-                    <ul class="iterm">
-                        <li>
-                            <a href="www.wiz.cn/wiz-ent-intro.html">Wiz企业版介绍</a>
-                            <p>完善、标准的内容管理技术，统一的知识分享平台，以解决公司内部知识的孤岛问题。</p>
-                        </li>
-                        <li>
-                            <a href="www.wiz.cn/wiz2-ent-manual.html">Wiz2企业版使用说明</a>
-                            <p>在这里，你将了解到如何方便的使用我们的产品，轻松的打造一个完整的企业内部知识库。</p>
-                        </li>
-                        <li>
-                            <a href="www.wiz.cn/wiz-ent-for-work.html">利用Wiz企业版建立企业知识库</a>
-                            <p>积累、传承企业的经验与知识。提升员工知识能力，以提高员工素质。</p>
-                        </li>
-                        <li style="margin:0;">
-                            <a href="www.wiz.cn/wiz2-ent-price.html">Wiz企业版报价</a>
-                            <p>我们提供多种解决方案。你可以选择适合你们企业的一套完整的方案。</p>
-                        </li>
-                        <!-- <br clear="all"/> -->
-                    </ul>
-                    <br clear="all"/>   
-                </div>
-            </div>
-
-            <div class="wraper">
-                <div class="enterprise">
-                    <ul style="margin:0 30px 0 0">
-                        <li>ASK科技有限公司</li>
-                        <li>JDC团队</li>
-                        <li>Moneythink全球金融教育联盟（非营利性组织）</li>
-                        <li>Newway</li>
-                        <li>Pccw</li>
-                        <li>SinTeam</li>
-                        <li>阿里巴巴（中国）网络技术有限公司</li>
-                        <li>岸琴御</li>
-                        <li>百家合符</li>
-                        <li>百事达</li>
-                        <li>百一電子</li>
-                        <li>北海天方电子有限责任公司</li>
-                        <li>北京博昂德威信息技术有限公司</li>
-                        <li>北京大同科技</li>
-                        <li>北京恒大科技发展有限责任公司</li>
-                        <li>北京华通睿诚科技有限公司</li>
-                        <li>北京瑞德方科技有限公司</li>
-                        <li>北京赛科世嘉科技发展有限公司</li>
-                        <li>北京市建筑设计研究院成都分院</li>
-                        <li>北京双鑫汇在线科技有限公司</li>
-                        <li>北京图胜网络技术有限公司</li>
-                        <li>北京网易</li>
-                        <li>北京新天地</li>
-                        <li>北京中科有限公司</li>
-                        <li>沧海虚拟公司</li>
-                        <li>常州市超凡网络商贸有限公司</li>
-                        <li>成都固德科技有限责任公司</li>
-                        <li>成都华日通讯技术有限公司</li>
-                        <li>成都千木数控刀具有限公司</li>
-                        <li>成都四方信息科技有限公司</li>
-                        <li>大连易玛特软件开发中心</li>
-                        <li>德赛西威汽车电子</li>
-                        <li>电信科学技术第五研究所</li>
-                        <li>东方智胜咨询公司</li>
-                        <li>东莞市东江自来水有限公司</li>
-                        <li>风驰通信</li>
-                        <li>福建无线局</li>
-                        <li>福州知学信息科技有限公司</li>
-                        <li>福州知学信息科技有限公司</li>
-                        <li>高迈特精密刀具(太仓)有限公司</li>
-                        <li>格外（加拿大）设计咨询有限公司</li>
-                        <li>管家信息科技有限公司</li>
-                        <li>广东菲安妮皮具股份有限公司</li>
-                        <li>广东华文法商中等职业学校</li>
-                        <li>广东文艺职业学院</li>
-                        <li>广州爱迪斯电子有限公司</li>
-                    </ul>
-                    <ul>
-                        <li>广州德方网络技术有限公司</li>
-                        <li>广州高清视信数码科技股份有限公司</li>
-                        <li>广州嘉文电子条码科技有限公司</li>
-                        <li>广州市般若化工有限公司</li>
-                        <li>广州市尤特新材料有限公司</li>
-                        <li>广州粤华物业有限公司</li>
-                        <li>国电南瑞科技股份有限公司</li>
-                        <li>哈尔滨工业大学</li>
-                        <li>哈尔滨龙奇税务师事务所有限责任公司</li>
-                        <li>哈默软件</li>
-                        <li>杭州久拓机电有限公司</li>
-                        <li>杭州思图化工</li>
-                        <li>浩息商务电子有限公司</li>
-                        <li>和为</li>
-                        <li>河海大学</li>
-                        <li>河源市深业地产有限公司</li>
-                        <li>恒发软件开发有限公司</li>
-                        <li>胡进新</li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                    </ul>
-                    <br clear="all" />
-                </div>
-            </div>
-
         </div>
         <!-- 页脚 公司相关信息 -->
         <div id="footer">
             <!-- 装饰 -->
-            <div class="innerFooter">
-                <!-- <a href="www.wiz.cn"><img src="assets/img/logo.png" class="wiz"></img></a> -->
-                <span id="info">  <a href="">联系我们</a>  <a href="">论坛</a>  京ICP备11038801号 © 2001-2012 Wiz</span>
-                <br clear="all"/>
-            </div>
+            <span id="info">© 2001-2012   关于  联系我们  京ICP备11038801号</span>
         </div>
     </body>
 </html>
