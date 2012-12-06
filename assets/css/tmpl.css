@@ -126,7 +126,7 @@ ul, menu, dir {
 .primaryNav {
 width: 998px;
 height:40px;
-bottom: 6px;
+bottom: 7px;
 color: #CFCFCF;
 /*display: block;*/
 font-weight: 600;
@@ -284,8 +284,12 @@ _zoom: 1;
 .display img{
   float: right;
 }
+<<<<<<< HEAD
 /*------  首页“功能特性”组件样式  -----*/
 .feature, .topicPic, .enterprise, .tuts, .blog, .faq {
+=======
+.feature, .topicPic{
+>>>>>>> 9a3532eba6eba60826a73eee6b8aed25f3d02483
   width: 1006px;
   padding: 30px 0 30px 0;
   margin: 0 auto;
@@ -328,12 +332,12 @@ _zoom: 1;
   font-size: 13px;
   font-weight:  normal;
 }
-.feature .featureDescribe a, .feature .featureDescribe a:visited, .location p a {
+.feature .featureDescribe a, .feature .featureDescribe a:visited{
   font-size: 13px;
   font-weight: 600;
   color: #1570A6;
 }
-.feature .featureDescribe a:hover, .location p a:hover {
+.feature .featureDescribe a:hover {
   color: #24459A;
 }
 
@@ -434,6 +438,7 @@ _zoom: 1;
   position:absolute;
   bottom:;
 }
+<<<<<<< HEAD
 
 /*------  关于我们“介绍”组件样式  -----*/
 .intro {
@@ -725,6 +730,8 @@ _zoom: 1;
   line-height: 16px;
 }
 
+=======
+>>>>>>> 9a3532eba6eba60826a73eee6b8aed25f3d02483
 
 /*----------------    登录页面样式     ---------------*/
 
@@ -757,7 +764,7 @@ _zoom: 1;
   color: #FFF;
   margin: 0 0 5px 10px;
 } 
-p.error-indicator {
+p.error-indicator{
   width: 250px;
   height: 25px;
   color: #C85305;
@@ -765,19 +772,19 @@ p.error-indicator {
   font-size: 80%;
 }
 
-.login-intro p {
+.login-intro p{
   margin: 0 0 0 10px;
   color: #FFF;
   font-weight: normal;
 } 
-#login-form, #register-form {
+#login-form, #register-form{
   /*display:none;*/
   position: relative;
   float: right;
   height: 80%;
   padding: 10% 8% 0 0;
   /*outline:1px solid #000;*/
- }
+}
 /*#login-form{
   display:none;
 }*/
@@ -857,6 +864,7 @@ p.error-indicator {
   margin: 0;
   padding: 0;
 }
+
 
 #login-footer{
   /*height:9%;*/

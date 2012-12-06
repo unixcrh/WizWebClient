@@ -47,5 +47,9 @@ define({
 		Save: '保存',
 		SaveAndQuit: '保存并阅读',
 		Cancel: '取消'
+	},
+	EditPage: {
+		Saving: '正在保存...',
+		Saved: '笔记已于 {time} 保存'
 	}
 })

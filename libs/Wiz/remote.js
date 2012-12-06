@@ -1,7 +1,8 @@
 define(function(require, exports, module) {
 	var context = require('./context'),
 			constant = require('./constant'),
-			loadCtrl = require('../component/loading');
+			loadCtrl = require('../component/loading'),
+			bPostDocLock = false;
 
 	//发送请求函数
 	//options主要是处理url后衔接的objValue，如document_title、category_name...
@@ -19,10 +20,12 @@ define(function(require, exports, module) {
 		// 统一在发送请求这一层处理，不用每个地方都处理
 		var _callSuccess = function (data) {
 			loadCtrl.hide();
+			bPostDocLock = false;
 			callback(data);
 		},
 			_callError = function (error) {
 				loadCtrl.hide();
+				bPostDocLock = false;
 				callError(error);
 			},
 			url = options ? (apiObj.url + '/' + options) : apiObj.url;
@@ -44,7 +47,8 @@ define(function(require, exports, module) {
 			client_type: constant.remote.CLIENT_TYPE,
 			api_version: constant.remote.API_VERSION,
 			token: context.token,
-			debug: context.debug
+			debug: context.debug,
+			token_guid: context.token
 		}
 		return params;
 	}
@@ -141,6 +145,18 @@ define(function(require, exports, module) {
 			requestParams.actionCmd = 'body';
 			requestParams.version = version;
 			sendRequest(constant.api.DOCUMENT_GET_INFO, requestParams, callback, callError);
+		},
+
+		postDocument: function (kbGuid, docInfo , callback, callError) {
+			var requestParams = getRequestParams();
+			requestParams = mergeParams(requestParams, docInfo);
+			requestParams.kbGuid = kbGuid;
+			if (bPostDocLock === true) {
+				return;
+			}
+			// 防止多次提交
+			bPostDocLock = true;
+			sendRequest(constant.api.DOCUMENT_POST_DATA, requestParams, callback, callError);
 		},
 
 		/* 保持登陆状态 */

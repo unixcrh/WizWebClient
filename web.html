@@ -118,6 +118,13 @@
 							<span id="cancel" class="button-value"></span>
 						</a>
 					</li>
+					<li>
+						<div href="#" class="hidden sending" id="sending_ct">
+							<div class="sending-fallback">	
+							</div>
+							<span id="sending_value" class="button-value">正在发送</span>
+						</div>
+					</li>
 				</ul>
 				<!-- 顶部左侧操作栏 -->
 			</div>
@@ -247,25 +254,22 @@
 					<!-- 文档附属信息 -->
 					<div class="edit-params">
 						<div class="params-category">
-							<span>
-								文件夹：
-							</span>
-							<span id="params_category">
-							</span>
+							<span>文件夹：</span>
+							<span id="params_category"></span>
 						</div>
-						<div class="params-tags">
+						<!-- <div class="params-tags">
 							<div class="params-tags-wrapper">
 								<input type="text" id="params_tags" placeholder="输入标签">
 							</div>
 						</div>
-						<div class="params-attachment">附件：</div>
+						<div class="params-attachment">附件：</div> -->
 					</div>
 					<!-- 文档主内容区域 -->
 					<div class="edit-content">
 						<div class="edit-title">
-							<div class="save-area"></div>
+							<div class="save-area" id="save_tip"></div>
 							<div class="title-area">
-								<input type="text" placeholder="输入标题">
+								<input type="text" placeholder="未命名" id="title_input">
 							</div>
 						</div>
 						<div class="editor-wrapper">
