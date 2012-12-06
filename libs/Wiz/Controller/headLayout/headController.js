@@ -16,7 +16,9 @@ define(function (require, exports, module) {
 					cancelSpan: 'cancel',
 					cancelBtn: 'cancel_ct',
 					saveAndQuitSpan: 'save_and_quit',
-					saveAndQuitBtn: 'save_and_quit_ct'
+					saveAndQuitBtn: 'save_and_quit_ct',
+					sendingSpan: 'sending_value',
+					sendingCt: 'sending_ct'
 				}
 			},
 			_data = {
@@ -26,6 +28,7 @@ define(function (require, exports, module) {
 			_createOnlyCtrl = null,
 			_docReadCtrl = null,
 			_docEditCtrl = null,
+			_sendingCtrl = null,
 			_view = {
 				showUser: function(userInfo) {
 					var nameSelector = getJqIdSelector(_node.userNameId);
@@ -120,9 +123,12 @@ define(function (require, exports, module) {
 					_docReadCtrl = new StateControl([_node.id.createBtn]);
 					// 编辑、新建文档时，显示的操作
 					_docEditCtrl = new StateControl([_node.id.saveBtn, _node.id.saveAndQuitBtn, _node.id.cancelBtn]);
+					_sendingCtrl = new StateControl([_node.id.sendingCt]);
+					// 将控制器添加到状态机中
 					_stateMachine.add(_createOnlyCtrl);
 					_stateMachine.add(_docReadCtrl);
 					_stateMachine.add(_docEditCtrl);
+					_stateMachine.add(_sendingCtrl);
 				}
 			};
 
@@ -205,7 +211,15 @@ define(function (require, exports, module) {
 		return $('#' + id);
 	}
 
-
+	function showSendingGroup() {
+		_sendingCtrl.active();
+	}
+	function showEditBtnGroup() {
+		_docEditCtrl.active();
+	}
+	function showReadBtnGroup() {
+		_docReadCtrl.active();
+	}
 
 	function init(userInfo, messageCenter) {
 		_messageCenter = messageCenter;
@@ -215,6 +229,9 @@ define(function (require, exports, module) {
 		_event.init();
 	}
 	return {
-		init: init
+		init: init,
+		showSendingGroup: showSendingGroup,
+		showEditBtnGroup: showEditBtnGroup,
+		showReadBtnGroup: showReadBtnGroup
 	}
 });

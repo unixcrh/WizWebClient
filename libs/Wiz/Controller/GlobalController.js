@@ -79,8 +79,15 @@ define(function (require, exports, module) {
 					}
 					// 显示正在保存的文字提示
 					editPageCtrl.nowSaving();
-					remote.postDocument(context.kbGuid, docInfo, function(data) {
+					if (bQuit) {
+						headCtrl.showSendingGroup();
+					}
+					remote.postDocument(context.kbGuid, docInfo, function callback(data) {
 						_messageDistribute.saveDocumentCallback(data, bQuit);
+					}, function callError(error) {
+						if (bQuit) {
+							headCtrl.showEditBtnGroup();	
+						}
 					});
 				}
 			},
@@ -107,6 +114,10 @@ define(function (require, exports, module) {
 				saveDocumentCallback: function(data, bQuit) {
 					if (data.code == '200') {
 						editPageCtrl.saveCallback(data.document_guid);
+						if (bQuit) {
+							headCtrl.showReadBtnGroup();
+							_messageHandler.switchEditMode();
+						}
 					} else {
 
 					}

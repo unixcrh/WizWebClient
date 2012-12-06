@@ -219,11 +219,15 @@ input[type="checkbox"], body:not(.IE_M9) input[type="radio"] {
 	*zoom:1;
 }
 /*顶部按钮*/
-.wiz-button {
+.wiz-button,
+.sending {
 	display: inline-block;
 	height: 40px;
 	padding: 0 10px;
 	margin: 0;
+	color: white;
+	text-decoration: none;
+	cursor: pointer;
 }
 
 .new-doc-icon {
@@ -245,7 +249,6 @@ input[type="checkbox"], body:not(.IE_M9) input[type="radio"] {
 	background-color: #005897;
 }
 
-.wiz-button,
 .wiz-button:hover,
 .wiz-button.hover,
 .wiz-button:link,
@@ -402,6 +405,15 @@ input[type="checkbox"], body:not(.IE_M9) input[type="radio"] {
 	background-image:url(../images/flyingdots.gif);
 	background-size:100% 4px;
 	height: 4px;
+}
+.sending-fallback {
+	background-image:url(https://a.gfx.ms//common/spinner_white_40.gif);
+	background-size:20px 20px;
+	background-color: #0072C6;
+	color: #fff;
+	height: 20px;
+	width: 20px;
+	display: inline-block;
 }
 
 /* 过场动画结束 */
@@ -945,7 +957,7 @@ div.c_loadingDot {
 	position: absolute;
 	left: 0;
 	right: 70%;
-	top: 0;
+	top: 10px;
 	bottom: 0;
 	padding: 20px;
 	background-color: #f3f3f3;
