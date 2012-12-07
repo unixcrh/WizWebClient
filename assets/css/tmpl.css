@@ -284,12 +284,8 @@ _zoom: 1;
 .display img{
   float: right;
 }
-<<<<<<< HEAD
 /*------  首页“功能特性”组件样式  -----*/
 .feature, .topicPic, .enterprise, .tuts, .blog, .faq {
-=======
-.feature, .topicPic{
->>>>>>> 9a3532eba6eba60826a73eee6b8aed25f3d02483
   width: 1006px;
   padding: 30px 0 30px 0;
   margin: 0 auto;
@@ -438,7 +434,6 @@ _zoom: 1;
   position:absolute;
   bottom:;
 }
-<<<<<<< HEAD
 
 /*------  关于我们“介绍”组件样式  -----*/
 .intro {
@@ -729,9 +724,6 @@ _zoom: 1;
   font-weight: normal;
   line-height: 16px;
 }
-
-=======
->>>>>>> 9a3532eba6eba60826a73eee6b8aed25f3d02483
 
 /*----------------    登录页面样式     ---------------*/
 
