@@ -29,7 +29,11 @@ define(function (require, exports, module) {
 				}
 			},
 			edit : {
-				enable: true
+				enable: true,
+				drag: {
+					isCopy: false,
+					isMove: false
+				}
 			},
 			callback : {
 				onClick : zTreeOnClick,
@@ -142,6 +146,7 @@ define(function (require, exports, module) {
 			}
 		}
 
+		// 目录排序
 		function sortCategoryList(respList, type) {
 			// TODO 根据KV提供的folders_pos来进行排序
 			respList.sort(function(a, b) {
@@ -314,7 +319,6 @@ define(function (require, exports, module) {
 				treeObj.expandNode(nodes[1], true, true, true);
 				zTreeOnExpand(null, null, nodes[1]);
 			}
-
 		}
 
 		// 获取当前目录
@@ -322,11 +326,23 @@ define(function (require, exports, module) {
 			return _curCategory;
 		}
 
+		// 设置选中的node，触发click事件
+		function selectNode(key, value) {
+			var nodes = treeObj.getNodesByParam(key, value, null);
+
+			console.log(nodes);
+			if (nodes.length === 1) {
+				zTreeOnClick(null, null, nodes[0]);
+				treeObj.selectNode(nodes[0]);
+			}
+		}
+
+
 		this.init = init;
 		this.getCurrentCategory = getCurrentCategory;
+		this.selectNode = selectNode;
 	}
 	var controller = new ZtreeController();
 
-	exports.init = controller.init;
-	exports.getCurrentCategory = controller.getCurrentCategory;
+	module.exports = controller;
 });

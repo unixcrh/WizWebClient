@@ -83,10 +83,10 @@ define(function (require, exports, module) {
 						headCtrl.showSendingGroup();
 					}
 					remote.postDocument(context.kbGuid, docInfo, function callback(data) {
-						_messageDistribute.saveDocumentCallback(data, bQuit);
+						_messageDistribute.saveDocumentCallback(data, bQuit, docInfo);
 					}, function callError(error) {
 						if (bQuit) {
-							headCtrl.showEditBtnGroup();	
+							headCtrl.showEditBtnGroup();
 						}
 					});
 				}
@@ -100,7 +100,7 @@ define(function (require, exports, module) {
 					} else {
 						// TODO 错误处理
 					}
-					_bFirst = false;
+					// _bFirst = false;
 				},
 				showDoc: function (data) {
 					if (data.code === 200) {
@@ -111,15 +111,17 @@ define(function (require, exports, module) {
 						console.error(data);
 					}
 				},
-				saveDocumentCallback: function(data, bQuit) {
+				saveDocumentCallback: function(data, bQuit, docInfo) {
 					if (data.code == '200') {
 						editPageCtrl.saveCallback(data.document_guid);
 						if (bQuit) {
 							headCtrl.showReadBtnGroup();
 							_messageHandler.switchEditMode();
+							console.log(docInfo);
+							treeCtrl.selectNode('location', docInfo.category);
 						}
 					} else {
-
+						// TODO错误处理
 					}
 				}
 			}
