@@ -6,12 +6,16 @@ define(function(require, exports, module) {
 
 	//发送请求函数
 	//options主要是处理url后衔接的objValue，如document_title、category_name...
-	function sendRequest(apiObj, data, callback, callError, options) {
+	function sendRequest(apiObj, data, callback, callError, options, bShowLoading) {
 		// 发请求的时候，显示
-		loadCtrl.show();
+		if (bShowLoading !== true) {
+			loadCtrl.show();	
+		}
 		if (!apiObj || !apiObj.url || !apiObj.action) {
 			console.error('remote.sendRequest apiObj: ' + apiObj.url + '-' + apiObj.action + ' Error');
-			loadCtrl.hide();
+			if (bShowLoading !== true) {
+				loadCtrl.hide();
+			}
 			return;
 		}
 		if (!callError) {
@@ -19,12 +23,16 @@ define(function(require, exports, module) {
 		}
 		// 统一在发送请求这一层处理，不用每个地方都处理
 		var _callSuccess = function (data) {
-			loadCtrl.hide();
+			if (bShowLoading !== true) {
+				loadCtrl.hide();
+			}
 			bPostDocLock = false;
 			callback(data);
 		},
 			_callError = function (error) {
-				loadCtrl.hide();
+				if (bShowLoading !== true) {
+					loadCtrl.hide();
+				}
 				bPostDocLock = false;
 				callError(error);
 			},
@@ -147,7 +155,7 @@ define(function(require, exports, module) {
 			sendRequest(constant.api.DOCUMENT_GET_INFO, requestParams, callback, callError);
 		},
 
-		postDocument: function (kbGuid, docInfo , callback, callError) {
+		postDocument: function (kbGuid, docInfo , callback, callError, bQuit) {
 			var requestParams = getRequestParams();
 			requestParams = mergeParams(requestParams, docInfo);
 			requestParams.kbGuid = kbGuid;
@@ -156,7 +164,7 @@ define(function(require, exports, module) {
 			}
 			// 防止多次提交
 			bPostDocLock = true;
-			sendRequest(constant.api.DOCUMENT_POST_DATA, requestParams, callback, callError);
+			sendRequest(constant.api.DOCUMENT_POST_DATA, requestParams, callback, callError, null, bQuit);
 		},
 
 		/* 保持登陆状态 */

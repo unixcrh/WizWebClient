@@ -88,7 +88,7 @@ define(function (require, exports, module) {
 						if (bQuit) {
 							headCtrl.showEditBtnGroup();
 						}
-					});
+					}, bQuit);
 				}
 			},
 			// 负责向各控制器发送消息
