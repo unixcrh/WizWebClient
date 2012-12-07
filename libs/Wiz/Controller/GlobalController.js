@@ -56,11 +56,15 @@ define(function (require, exports, module) {
 				// TODO  category应该直接传入一个document对象模型
 				switchEditMode: function (bEditMode) {
 					if (bEditMode) {
+						$('#resize_container').hide();
 						$('#resize_container').addClass('hidden');
+						$('#edit_page').show();
 						$('#edit_page').removeClass('hidden');
 						editPageCtrl.show(treeCtrl.getCurrentCategory());
 					} else {
+						$('#edit_page').hide();
 						$('#edit_page').addClass('hidden');
+						$('#resize_container').show();
 						$('#resize_container').removeClass('hidden');
 					}
 				},
