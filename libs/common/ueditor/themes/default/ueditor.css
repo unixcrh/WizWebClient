@@ -1043,11 +1043,10 @@ span.edui-unclickable {
     zoom: 1;
 }
 .edui-editor-toolbarboxouter {
-    border-bottom:  1px solid #ccc;
-    background: white url(images/toolbar_bg.png) repeat-x bottom left;
 }
 .edui-editor-toolbarboxinner {
-    padding: 2px;
+    padding-top: 6px;
+    padding-bottom: 12px;
 }
 .edui-editor-iframeholder {
     position: relative;
