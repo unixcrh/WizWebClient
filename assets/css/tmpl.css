@@ -475,13 +475,13 @@ _zoom: 1;
   height: 519px;
   
 }
-.location h2 {
-  margin:0;
-  padding:60px 0 10px 514px;
+.location h1 {
+  margin: 0 0 20px 0px;
+  padding: 0;
   color: #454545;
-  font-size: 16px;
-  font-weight: bold;
-  line-height: 22px;
+  font-size: 66px;
+  font-weight: normal;
+  line-height: 66px;
 }
 .location p {
   margin:0;
