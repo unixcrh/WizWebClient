@@ -9,7 +9,6 @@ define(function (require, exporst, module) {
 		_locale = require('locale'),
 		_defaultLocation = _locale,
 		_editor = null,
-		_locale = require('locale'),
 		_docInfo = {};
 
 	function EditController () {
@@ -31,9 +30,12 @@ define(function (require, exporst, module) {
 			$('#' + _id.SaveTipDiv).html('');
 			$('#' + _id.TitleInput).val('');
 		};
+
 		function initEditor() {
 	    _editor = new UE.ui.Editor();
-	    _editor.render(_id.EditorCt);	
+	    _editor.render(_id.EditorCt);
+	    console.log(_editor);
+	    console.log(_editor.ui);
 		}
 
 		// 获取当前新建或编辑的文档信息及内容

@@ -3521,6 +3521,7 @@ var fillCharReg = new RegExp( domUtils.fillChar, 'g' );
             type:"text/javascript",
             defer:"defer"
         }, function () {
+            console.log(UE.plugins);
             //初始化插件
             for ( var pi in UE.plugins ) {
                 UE.plugins[pi].call( me )
@@ -4053,6 +4054,10 @@ var fillCharReg = new RegExp( domUtils.fillChar, 'g' );
             var cmdName = args[0].toLowerCase(),
                     cmd, cmdFn;
             cmd = this.commands[cmdName] || UE.commands[cmdName];
+            if ('switchtoolbar' === cmdName) {
+                console.log(UE.commands[cmdName]);
+                console.log(UE.commands);
+            }
             cmdFn = cmd && cmd[fnName];
             //没有querycommandstate或者没有command的都默认返回0
             if ( (!cmd || !cmdFn) && fnName == 'queryCommandState' ) {
@@ -7468,6 +7473,18 @@ UE.plugins['undo'] = function() {
  * * @param   {String}   style            值为：circle,disc,square
  * @author zhanyi
  */
+UE.plugins['switchtoolbar'] = function() {
+    var me = this;
+    UE.commands['switchtoolbar'] = {
+        execCommand : function(){
+            console.log('switchtoolbar========================');
+            console.log(me);
+            console.log(this);
+            console.log(this.ui);
+            alert("Hello,UE developer!");
+        }
+    };
+}
 
 UE.plugins['list'] = function () {
     var me = this,
@@ -15374,7 +15391,7 @@ baidu.editor.ui = {};
         'blockquote', 'pasteplain', 'pagebreak',
         'selectall', 'print', 'preview', 'horizontal', 'removeformat', 'time', 'date', 'unlink',
         'insertparagraphbeforetable', 'insertrow', 'insertcol', 'mergeright', 'mergedown', 'deleterow',
-        'deletecol', 'splittorows', 'splittocols', 'splittocells', 'mergecells', 'deletetable'];
+        'deletecol', 'splittorows', 'splittocols', 'splittocells', 'mergecells', 'deletetable', 'switchtoolbar'];
 
     for ( var i = 0, ci; ci = btnCmds[i++]; ) {
         ci = ci.toLowerCase();

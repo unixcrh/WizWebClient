@@ -820,7 +820,7 @@ span.edui-unclickable {
     background-position:  -540px 0;
 }
 .edui-for-webapp .edui-icon {
-    background-position:  -601px -40px
+    background-position:  -601px -40px;
 }
 
 .edui-for-table .edui-icon {
@@ -849,15 +849,17 @@ span.edui-unclickable {
 }
 
 .edui-for-snapscreen .edui-icon {
-    background-position: -581px -40px
+    background-position: -581px -40px;
 }
 .edui-for-scrawl .edui-icon {
-    background-position: -801px -41px
+    background-position: -801px -41px;
 }
 .edui-for-background .edui-icon {
     background-position: -678px -40px;
 }
-
+.edui-for-switchToolbar .edui-icon {
+    background-position: -581px -40px;
+}
 /*link-dialog*/
 .edui-for-link .edui-dialog-content  {
     width:420px;
