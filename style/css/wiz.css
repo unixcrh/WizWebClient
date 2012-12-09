@@ -973,7 +973,9 @@ div.c_loadingDot {
 
 .params-category,
 .params-tags {
-	padding-bottom: 20px;
+	border: 1px solid #b1b1b1;
+	padding: 8px;
+	background-color: #fff;
 }
 
 .params-tags-wrapper {
@@ -983,6 +985,7 @@ div.c_loadingDot {
 }
 #params_category {
 	width: 350px;
+	cursor: pointer;
 }
 .params-tags-wrapper input {
 	width: 344px;
