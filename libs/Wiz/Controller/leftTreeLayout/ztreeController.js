@@ -8,7 +8,7 @@ define(function (require, exports, module) {
 		locale= require('locale'),
 		specialLocation = locale.DefaultCategory,
 
-		_curCategory = {};
+		_curCategory = {}
 
 	function ZtreeController() {
 		
@@ -193,7 +193,9 @@ define(function (require, exports, module) {
 				//目录需要经过国际化处理
 				if ('category' === treeNode.type && specialLocation[child.name]) {
 					child.name = changeSpecilaLocation(child.name);
+					// 增加对location的本地化处理，方便其他组件使用
 				}
+				child.displayLocation = changeSpecilaLocation(child.location);
 				childList.push(child);
 			});
 
@@ -202,7 +204,8 @@ define(function (require, exports, module) {
 			treeObj.addNodes(treeNode, childList, true);
 			// 暂时只对文件夹开放新建功能 lsl 2012-11-29
 			if (treeNode.level === 0 && treeNode.type === 'category') {
-				console.log(treeNode);
+				// 缓存左侧树信息
+				messageCenter.saveNodesInfos(treeNode.type, childList);
 				addDefaultNodes(treeNode, treeNode.type);
 			}
 			treeNode.bLoading = true;

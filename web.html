@@ -254,8 +254,13 @@
 					<!-- 文档附属信息 -->
 					<div class="edit-params">
 						<div class="params-category">
-							<span>文件夹：</span>
-							<span id="params_category"></span>
+							<div>
+								<span>文件夹：</span>
+								<span id="params_category"></span>
+							</div>
+							<div id="category_tree" class="ztree edit-tree">
+								
+							</div>
 						</div>
 						<!-- <div class="params-tags">
 							<div class="params-tags-wrapper">
@@ -286,6 +291,7 @@
 		<script type="text/javascript" src="./libs/common/seaJs/sea-debug.js" data-main="./libs/entity/webEntry"></script>
 		<script type="text/javascript" src="./libs/common/jquery/jquery-1.7.2.js"></script>
 		<script type="text/javascript" src="./libs/common/jquery/jquery.cookie.js"></script>
+		<script type="text/javascript" src="./libs/common/jquery/jquery.ztree.all-3.3.js"></script>
 		<script type="text/javascript" src="./libs/common/jquery/jquery.placeholder.js"></script>
 	  <script>
 	   $(function() {

@@ -66,7 +66,7 @@ input[type="checkbox"], body:not(.IE_M9) input[type="radio"] {
 }
 
 /* 不显示的元素，不占用页面的布局 */
-.button-group .no-display {
+.button-group .no-display{
 	display: none;
 }
 .no-display a {
@@ -974,7 +974,7 @@ div.c_loadingDot {
 .params-category,
 .params-tags {
 	border: 1px solid #b1b1b1;
-	padding: 8px;
+	padding: 3px;
 	background-color: #fff;
 }
 
@@ -986,6 +986,27 @@ div.c_loadingDot {
 #params_category {
 	width: 350px;
 	cursor: pointer;
+}
+
+.params-category>div:first-child {
+	height: 30px;
+	line-height: 142%;
+	padding: 6px 6px 0;
+}
+/* 编辑页面中需要的tree控件 */
+.edit-tree {
+	height: 300px;
+	overflow: auto;
+	margin-top: 0;
+	border-top: 1px solid #b1b1b1;
+	display: none;
+}
+
+.edit-tree >li a{
+	display: inline;
+}
+.edit-tree li a.level0 span {
+	font-size: 100%;
 }
 .params-tags-wrapper input {
 	width: 344px;

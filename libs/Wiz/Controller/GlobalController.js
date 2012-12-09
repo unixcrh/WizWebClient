@@ -93,6 +93,12 @@ define(function (require, exports, module) {
 							headCtrl.showEditBtnGroup();
 						}
 					}, bQuit);
+				},
+				getNodesInfo: function(key) {
+					return context[key];
+				},
+				saveNodesInfos: function(key, list) {
+					context[key] = list;
 				}
 			},
 			// 负责向各控制器发送消息
@@ -165,6 +171,7 @@ define(function (require, exports, module) {
 
 				//初始化中间文档列表
 				listCtrl.init(_messageHandler);
+				editPageCtrl.initMessageHandler(_messageHandler);
 
 					//初始化滚动条
 				initSplitter();

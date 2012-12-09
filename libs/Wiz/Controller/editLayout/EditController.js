@@ -3,15 +3,19 @@ define(function (require, exporst, module) {
 		CategorySpan: 'params_category',
 		EditorCt: 'wiz_edit_area',
 		TitleInput: 'title_input',
-		SaveTipDiv: 'save_tip'
+		SaveTipDiv: 'save_tip',
+		CategoryTree: 'category_tree'
 	},
 		_lastGuid = null,
 		_locale = require('locale'),
 		_defaultLocation = _locale,
 		_editor = null,
-		_docInfo = {};
+		_docInfo = {},
+		_messageHandler = null,
+		_treeObj = null;
 
 	function EditController () {
+
 		initEditor();
 
 		function show(categoryObj) {
@@ -29,13 +33,67 @@ define(function (require, exporst, module) {
 			_lastGuid = null;
 			$('#' + _id.SaveTipDiv).html('');
 			$('#' + _id.TitleInput).val('');
+			if (_treeObj === null) {
+				initCateSpanHandler();
+			}
 		};
 
 		function initEditor() {
 	    _editor = new UE.ui.Editor();
 	    _editor.render(_id.EditorCt);
-	    console.log(_editor);
-	    console.log(_editor.ui);
+		}
+
+		function initTree() {
+			var setting = {
+				view : {
+					showLine : false,
+					selectedMulti : false,
+					showIcon: false
+				},
+				data : {
+					simpleData : {
+						editNameSelectAll: true,
+						enable : false
+					}
+				},
+				edit : {
+					enable: true,
+					drag: {
+						isCopy: false,
+						isMove: false
+					}
+				},
+				callback : {
+					onClick : zTreeOnClick
+				}
+
+			},
+					zTreeNodes = _messageHandler.getNodesInfo('category');
+			console.log(zTreeNodes);
+			_treeObj =  $.fn.zTree.init($("#category_tree"), setting, zTreeNodes);
+		}
+
+
+		function zTreeOnClick(event, treeId, treeNode) {
+			var nodeLocation = treeNode.location,
+				displayLocation = treeNode.displayLocation;
+			_docInfo.category = nodeLocation;
+			$('#' + _id.CategorySpan).html(displayLocation);
+			$("#category_tree").hide(500);
+			// PopupView.hideCategoryTreeAfterSelect(displayLocation, 500);
+
+			//把最后一次选择的文件夹保存起来，下次使用
+			// localStorage['last-category'] = displayLocation + '*' + nodeLocation;
+		}
+
+		function initCateSpanHandler() {
+			$('#params_category').bind('click', function() {
+			// 点击目录信息时再加载左侧树 
+				if (_treeObj === null) {
+					initTree();	
+				}
+				$('#category_tree').toggle(500);
+			});
 		}
 
 		// 获取当前新建或编辑的文档信息及内容
@@ -84,11 +142,17 @@ define(function (require, exporst, module) {
 			return timeStr;
 		}
 
+		function initMessageHandler(messageHandler) {
+			console.log(messageHandler);
+			_messageHandler = messageHandler;
+		}
+
 		return {
 			show: show,
 			getDocumentInfo: getDocumentInfo,
 			nowSaving: nowSaving,
-			saveCallback: saveCallback
+			saveCallback: saveCallback,
+			initMessageHandler: initMessageHandler
 		}
 	 }
 
