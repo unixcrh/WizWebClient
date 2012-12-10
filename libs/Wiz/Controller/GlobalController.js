@@ -99,6 +99,18 @@ define(function (require, exports, module) {
 				},
 				saveNodesInfos: function(key, list) {
 					context[key] = list;
+				},
+				getChildNodes: function(treeNode, callback) {
+					if ('category' === treeNode.type) {
+						remote.getChildCategory(context.kbGuid, treeNode.location, callback);
+					} else if ('tag' === treeNode.type) {
+						//获取父标签的GUID，如果没有，则设为''
+						var parentTagGuid = treeNode.tag_group_guid ? treeNode.tag_group_guid : '';
+						remote.getChildTag(context.kbGuid, parentTagGuid, callback);
+
+					} else if ('group' === treeNode.type) {
+						remote.getGroupKbList(callback);
+					}
 				}
 			},
 			// 负责向各控制器发送消息

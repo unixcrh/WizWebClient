@@ -989,6 +989,9 @@ div.c_loadingDot {
 }
 
 .params-category>div:first-child {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 	height: 30px;
 	line-height: 142%;
 	padding: 6px 6px 0;
@@ -1001,9 +1004,8 @@ div.c_loadingDot {
 	border-top: 1px solid #b1b1b1;
 	display: none;
 }
-
-.edit-tree >li a{
-	display: inline;
+.edit-tree li a.level0 {
+	margin-top: 0;
 }
 .edit-tree li a.level0 span {
 	font-size: 100%;

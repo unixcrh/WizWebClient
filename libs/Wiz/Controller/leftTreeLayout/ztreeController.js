@@ -1,9 +1,10 @@
 define(function (require, exports, module) {
 	var treeProperty = require('./treeProperty'),
-		messageCenter = null,
+		_messageCenter = null,
 		zTree = require('ztree'),
 		remote = require('../../remote'),
 		context = require('../../context'),
+		zTreeBase = require('../../../component/zTreeBase'),
 
 		locale= require('locale'),
 		specialLocation = locale.DefaultCategory,
@@ -13,52 +14,26 @@ define(function (require, exports, module) {
 	function ZtreeController() {
 		
 		var treeObj = null;
-		// 'use strict';
-		var setting = {
-			view : {
-				showLine : false,
-				selectedMulti : false,
-				showIcon: false,
-				showIcon: showIconForTree,
-				addDiyDom: addDiyDom
-			},
-			data : {
-				simpleData : {
-					editNameSelectAll: true,
-					enable : false
-				}
-			},
-			edit : {
-				enable: true,
-				drag: {
-					isCopy: false,
-					isMove: false
-				}
-			},
-			callback : {
-				onClick : zTreeOnClick,
-				onExpand: zTreeOnExpand,
-				onRightClick: zTreeOnRightClick,
-				beforeRename: zTreeBeforeRename
-			}
-
-		},
-			zNodesObj = treeProperty.initNodes;
+		var zNodesObj = treeProperty.initNodes;
+		var setting = zTreeBase.getDefaultSetting();
+		setting.callback = {
+			onClick : zTreeOnClick,
+			onExpand: zTreeOnExpand,
+			onRightClick: zTreeOnRightClick,
+			beforeRename: zTreeBeforeRename
+		};
+		setting.view.showIcon = showIconForTree;
 
 
 		function zTreeBeforeRename(treeId, treeNode, newName) {
-			if (newName === '') {
-				alert('Folder name can not be null');
-				return false;
-			}
-			if (isConSpeCharacters(newName)) {
-				alert('Folder name can not contain flowing characters: \\,/,:,<,>,*,?,\",&,\'');
-				return false;
+
+			if(zTreeBase.checkNewName(newName) === false) {
+				return;
 			}
 			// 新建目录
 			var location = '/' + newName + '/';
 			treeNode.location = location;
-			messageCenter.requestCreateItem(newName, treeNode.type, function (data) {
+			_messageCenter.requestCreateItem(newName, treeNode.type, function (data) {
 				if (data.code != '200') {
 					// 创建失败，删除该节点
 					// TODO 提示
@@ -125,25 +100,17 @@ define(function (require, exports, module) {
  			if (treeNode.bLoading) {
  				return;
  			}
- 			loadingNode(treeNode);
+ 			var childList = [];
+ 			zTreeBase.loadingNode(treeNode);
 			//获取到当前的kb_guid
 			var kbGuid = treeNode.kb_guid ? treeNode.kb_guid : context.userInfo.kb_guid;
-			if ('category' === treeNode.type) {
-				remote.getChildCategory(kbGuid, treeNode.location, function (data){ 
-					addChildToNode(data.list, treeNode);
-				});
-			} else if ('tag' === treeNode.type) {
-				//获取父标签的GUID，如果没有，则设为''
-				var parentTagGuid = treeNode.tag_group_guid ? treeNode.tag_group_guid : '';
-				remote.getChildTag(kbGuid, parentTagGuid, function (data) {
-					addChildToNode(data.list, treeNode);
-				});
-
-			} else if ('group' === treeNode.type) {
-				remote.getGroupKbList(function (data) {
-					addChildToNode(data.list, treeNode);
-				});
-			}
+			_messageCenter.getChildNodes(treeNode, function(data) {
+				childList = zTreeBase.addChildToNode(treeObj, data.list, treeNode);
+				if (treeNode.level === 0 && treeNode.type === 'category') {
+					_messageCenter.saveNodesInfos(treeNode.type, childList);
+					addDefaultNodes(treeNode, treeNode.type);
+				}
+			});
 		}
 
 		// 目录排序
@@ -158,59 +125,6 @@ define(function (require, exports, module) {
 			});
 			return respList;
 		}
-		/**
-		 * 根据返回的列表，显示相应的树节点
-		 * @param {Array} respList 服务端返回的列表
-		 * @param {object} treeNode 当前的节点
-		 */
-		function addChildToNode(respList, treeNode) {
-			loadedNode(treeNode);
-			if (!respList) {
-				return;
-			}
-			// 排序
-			var childList = [];
-			var removeIndex = null;
-			// 加入到子节点中
-			$.each(respList, function (index, child){
-
-				if (child.location === '/Deleted Items/') {
-					// 记录需要删除的节点
-					removeIndex = index; 
-					return;
-				}
-				if (child.kb_name) {
-					child.name = child.kb_name;
-					child.isParent = true;
-				} else {
-					child.name = child.tag_name ? child.tag_name : child.category_name;
-				}
-				child.type = treeNode.childType ? treeNode.childType: treeNode.type;
-				if (!child.kb_guid) {
-					child.kb_guid = treeNode.kb_guid;
-				}
-
-				//目录需要经过国际化处理
-				if ('category' === treeNode.type && specialLocation[child.name]) {
-					child.name = changeSpecilaLocation(child.name);
-					// 增加对location的本地化处理，方便其他组件使用
-				}
-				child.displayLocation = changeSpecilaLocation(child.location);
-				childList.push(child);
-			});
-
-
-			childList = sortCategoryList(childList, treeNode.type);
-			treeObj.addNodes(treeNode, childList, true);
-			// 暂时只对文件夹开放新建功能 lsl 2012-11-29
-			if (treeNode.level === 0 && treeNode.type === 'category') {
-				// 缓存左侧树信息
-				messageCenter.saveNodesInfos(treeNode.type, childList);
-				addDefaultNodes(treeNode, treeNode.type);
-			}
-			treeNode.bLoading = true;
-		}
-
 		// 增加默认的一些节点，如：新用户下默认的目录、新建目录
 		function addDefaultNodes(treeNode, type) {
 			var newNode = null;
@@ -223,7 +137,6 @@ define(function (require, exports, module) {
 				return;
 			}
 			treeObj.addNodes(treeNode, newNode, true);
-
 		}
 
 		// 点击事件
@@ -240,17 +153,17 @@ define(function (require, exports, module) {
 			}
 			if (treeNode.type === 'category') {
 				_curCategory.location = treeNode.location;
-				_curCategory.localeLocation = changeSpecilaLocation(treeNode.location);
+				_curCategory.localeLocation = zTreeBase.changeSpecilaLocation(treeNode.location);
 			}
 			if (treeNode.level === 0) {
 				if (treeNode.type === 'keyword') {
-					messageCenter.requestDocList(getParamsFromTreeNode(treeNode));
+					_messageCenter.requestDocList(getParamsFromTreeNode(treeNode));
 				} else {
 					treeObj.expandNode(treeNode);
 					zTreeOnExpand(event, treeId, treeNode);
 				}
 			} else if (treeNode.level > 0) {
-				messageCenter.requestDocList(getParamsFromTreeNode(treeNode));
+				_messageCenter.requestDocList(getParamsFromTreeNode(treeNode));
 			}
 		}
 
@@ -309,7 +222,7 @@ define(function (require, exports, module) {
 		}
 
 		function init(id, messageHandler) {
-			messageCenter = messageHandler;
+			_messageCenter = messageHandler;
 			initTree(id);
 			// 首次加载默认展开目录
 			expandCategory();

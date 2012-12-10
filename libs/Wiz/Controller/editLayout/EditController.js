@@ -6,12 +6,16 @@ define(function (require, exporst, module) {
 		SaveTipDiv: 'save_tip',
 		CategoryTree: 'category_tree'
 	},
+		zTreeBase = require('../../../component/zTreeBase'),
+		remote = require('../../remote'),
+			context = require('../../context'),
+
 		_lastGuid = null,
 		_locale = require('locale'),
 		_defaultLocation = _locale,
 		_editor = null,
 		_docInfo = {},
-		_messageHandler = null,
+		_messageCenter = null,
 		_treeObj = null;
 
 	function EditController () {
@@ -44,35 +48,43 @@ define(function (require, exporst, module) {
 		}
 
 		function initTree() {
-			var setting = {
-				view : {
-					showLine : false,
-					selectedMulti : false,
-					showIcon: false
-				},
-				data : {
-					simpleData : {
-						editNameSelectAll: true,
-						enable : false
-					}
-				},
-				edit : {
-					enable: true,
-					drag: {
-						isCopy: false,
-						isMove: false
-					}
-				},
-				callback : {
-					onClick : zTreeOnClick
-				}
-
-			},
-					zTreeNodes = _messageHandler.getNodesInfo('category');
-			console.log(zTreeNodes);
+			var setting = zTreeBase.getDefaultSetting(),
+					zTreeNodes = _messageCenter.getNodesInfo('category');
+			setting.callback = {
+				onClick : zTreeOnClick,
+				onExpand: zTreeOnExpand,
+				beforeRename: zTreeBeforeRename
+			};
 			_treeObj =  $.fn.zTree.init($("#category_tree"), setting, zTreeNodes);
+			var treeElem = $('#category_tree');
+			treeElem.hover(function () {
+				if (!treeElem.hasClass("showIcon")) {
+					treeElem.fadeIn().addClass("showIcon");
+				}
+			}, function() {
+				treeElem.removeClass("showIcon");
+			});
 		}
 
+		function zTreeBeforeRename(treeId, treeNode, newName) {
+
+			if(zTreeBase.checkNewName(newName) === false) {
+				return;
+			}
+			// 新建目录
+			var location = '/' + newName + '/';
+			treeNode.location = location;
+			_messageCenter.requestCreateItem(newName, treeNode.type, function (data) {
+				if (data.code != '200') {
+					// 创建失败，删除该节点
+					// TODO 提示
+					treeObj.removeNode(treeNode, false);
+				} else {
+					treeObj.updateNode(treeNode);
+				}
+			});
+			return true;
+		}
 
 		function zTreeOnClick(event, treeId, treeNode) {
 			var nodeLocation = treeNode.location,
@@ -80,24 +92,32 @@ define(function (require, exporst, module) {
 			_docInfo.category = nodeLocation;
 			$('#' + _id.CategorySpan).html(displayLocation);
 			$("#category_tree").hide(500);
-			// PopupView.hideCategoryTreeAfterSelect(displayLocation, 500);
+		}
 
-			//把最后一次选择的文件夹保存起来，下次使用
-			// localStorage['last-category'] = displayLocation + '*' + nodeLocation;
+		function zTreeOnExpand(event, treeId, treeNode) {
+			//bLoading参数为了防止多次加载同一数据
+ 			if (treeNode.bLoading) {
+ 				return;
+ 			}
+ 			zTreeBase.loadingNode(treeNode);
+			//获取到当前的kb_guid
+			_messageCenter.getChildNodes(treeNode, function(data) {
+				zTreeBase.addChildToNode(_treeObj, data.list, treeNode);
+			});
 		}
 
 		function initCateSpanHandler() {
-			$('#params_category').bind('click', function() {
+			document.getElementById('params_category').onclick = function() {
 			// 点击目录信息时再加载左侧树 
 				if (_treeObj === null) {
 					initTree();	
 				}
 				$('#category_tree').toggle(500);
-			});
+			};
 		}
 
 		// 获取当前新建或编辑的文档信息及内容
-		function getDocumentInfo() {	
+		function getDocumentInfo() {
 			var documentInfo ={};
 			documentInfo.body = _editor.getAllHtml();
 			documentInfo.category = _docInfo.category;
@@ -143,8 +163,7 @@ define(function (require, exporst, module) {
 		}
 
 		function initMessageHandler(messageHandler) {
-			console.log(messageHandler);
-			_messageHandler = messageHandler;
+			_messageCenter = messageHandler;
 		}
 
 		return {
