@@ -1,0 +1,120 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+        <link rel="stylesheet" href="assets/css/clear.css">
+        <link rel="stylesheet" href="assets/css/tmpl.css">
+        <!-- <script src="assets/script/jquery.js" /> -->
+        <!-- <link rel="stylesheet" href="assets/css/media-queries.css"> -->
+
+        <title>为知笔记 关于</title>
+        <!--[if lt IE 9]> <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script> <![endif]-->
+        <script>
+            window.onload=function(){
+                // alert("nope");
+                var tabs=document.getElementsByClassName("tablink");
+                var articles=document.getElementsByClassName("piece");
+                articles[1].style.display="none";
+                tabs[0].onclick=function(){
+                    articles[0].style.display="block";
+                    articles[1].style.display="none";
+                }
+                tabs[1].onclick=function(){
+                    articles[1].style.display="block";
+                    articles[0].style.display="none";
+                }
+            }
+        </script>
+        
+
+    </head>
+    <body>
+        <!-- 页面顶部 -->
+        <div id="headerCtn">
+            <div id="header">
+                <span id="logo">
+                    <a href="#">
+                        <img src="assets/img/logo.png" alt="wiz note" class='logo-img'>
+                    </a>
+                    <!-- 搜索框 -->
+                    <!-- <div id="search">
+                        <input type="text" name="searchText"></input>
+                        <button value=""></button>
+                    </div> -->
+                </span>
+                
+                <!-- 导航栏 -->
+                <div></div>
+                <ul class="primaryNav">
+                    <li><a href="/">了解为知</a></li>
+                    <li><a href="/download">下载</a></li>
+                    <li><a href="/enterprise">企业方案</a></li>
+                    <li><a class="currentPage" href="/support">博客</a></li>
+                    <li><a href="/joinus">加入我们</a></li>
+                    <li style="float:right; margin:0 4px 0 0;"><a href="/login">登录</a> / <a href="/register">注册</a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- 二级菜单导航栏 -->
+        <!-- <div id="subNavCtn">
+            <ul id="subNav">
+                <li><a class="currentPage" href="/">博客</a></li>
+                <li><a href="/download">微博</a></li>
+                <li><a href="/enterprise">常见问题FAQ</a></li>
+                <li><a href="/support">使用手册</a></li>
+            </ul>
+        </div> -->
+        <!-- 页面内容 -->
+        <div class="bd">
+            <!-- 页面概述 -->
+            <div class="wraper">
+                <div class="blog">
+                    <div class="articles">
+                        <div class="piece">
+                            <h2 class="article-title">关于我们</h2>
+                            
+                            <h3 class="chapter-title">北京我知科技公司简介</h3>
+                            <p class="article-text">我知科技于2011年8月在北京正式创立。目前团队规模20人，以产品和技术人员为主，是专注于个人和团队效能提升的移动互联网创业团队。公司以为知笔记(Wiz)系列云笔记产品为核心，提供完善的个人知识管理与团队协作服务，已在国内用户中赢得较好口碑。我知科技的使命是让人们能够随时随地都可以更加高效、便捷的学习、工作与协作。基于对移动互联网时代用户行为的深入分析，我知科技在当下互联网业界尽皆“开放”的趋势下，紧紧围绕着“移动”与“云”的战略方向，以开发“轻量级产品”为指导目标，全力打造一个完整、统一的产品价值与用户体验。</p>
+                            <h3 class="chapter-title">我们的历程</h3>
+                            <p class="article-text" id="#test">2011年&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;正式开始运营为知 (Wiz)</p>
+                            <p class="article-text" id="#test">2010年&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我们正式推出基于互联网和移动互联网的新一代个人知识管理软件 为知(Wiz)，并提供试运营</p>
+                            <p class="article-text" id="#test">2009年&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我们开始研发基于互联网和移动互联网的新一代个人知识管理软件：为知(Wiz)</p>
+                            <p class="article-text" id="#test">2001年&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我们开始研发第一代个人知识管理管理软件：网文快捕(CyberArticle)，并一直持续至今，已经发布网文快捕5.5，并即将发布网文快捕6.0</p>
+                            <p class="article-text">您可能已注意到，Windows 7 的家长控制中并未包括 Web 限制和活动报告。 但是，通过在 Windows 家长控制中添加服务提供程序（例如 Windows Live Family Safety），您仍然可以限制孩子能够访问的站点，并查看其在线活动报告。 借助 Family Safety，您可以针对孩子设置 Web 筛选和活动监视，并决定孩子可以在 Windows Live Spaces、Messenger 和 Hotmail 中与谁通信。</p>
+                        </div>
+                        <div class="piece">
+                            <h2 class="article-title">联系我们</h2>
+                           <h3 class="chapter-title">客户支持</h3>
+                            <p class="article-text">如果您在使用Wiz软件或者服务的时候，遇到任何问题，请直接和我们联系。</p>
+                            <p class="article-text">客服邮箱：<a href="mailto:support@wiz.cn">support@wiz.cn</a></p>
+                            <p class="article-text">更多支持方式：<a href="http://www.wiz.cn/support" class="dark">http://www.wiz.cn/support</a></p>
+                            <h3 class="chapter-title">我们的历程</h3>
+                            <p class="article-text" id="#test">2011年&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;正式开始运营为知 (Wiz)</p>
+                            <p class="article-text" id="#test">2010年&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我们正式推出基于互联网和移动互联网的新一代个人知识管理软件 为知(Wiz)，并提供试运营</p>
+                            <p class="article-text" id="#test">2009年&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我们开始研发基于互联网和移动互联网的新一代个人知识管理软件：为知(Wiz)</p>
+                            <p class="article-text" id="#test">2001年&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我们开始研发第一代个人知识管理管理软件：网文快捕(CyberArticle)，并一直持续至今，已经发布网文快捕5.5，并即将发布网文快捕6.0</p>
+                        </div>
+                    </div>
+                    <div class="r-sidebar">
+                        <div class="tab">
+                            <h3 class="tablink" >关于我们</h3>
+                            <h3 class="tablink">联系我们</h3>
+                        </div>
+                    </div>
+                    <br clear="both"/>
+                </div>
+                
+            </div>
+        </div>
+        <!-- 页脚 公司相关信息 -->
+       <div id="footer">
+            <!-- 装饰 -->
+            <div class="innerFooter">
+                <!-- <a href="www.wiz.cn"><img src="assets/img/logo.png" class="wiz"></img></a> -->
+                <span id="info">  <a href="">联系我们</a>  <a href="">论坛</a>  京ICP备11038801号 © 2001-2012 Wiz</span>
+                <br clear="all"/>
+            </div>
+        </div>
+    </body>
+</html>

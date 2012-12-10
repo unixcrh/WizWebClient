@@ -2,14 +2,21 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="assets/css/clear.css">
         <link rel="stylesheet" href="assets/css/tmpl.css">
-        <!-- <script src="assets/script/jquery.js" /> -->
+        <script src="assets/script/jquery.js" />
+        <script src="assets/script/clamp.js" />
         <!-- <link rel="stylesheet" href="assets/css/media-queries.css"> -->
 
-        <title>为知笔记 博客</title>
+        <title>为知笔记 使用手册</title>
         <!--[if lt IE 9]> <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script> <![endif]-->
+        <script>
+            $(document).ready(function() {
+                var myPara=$("#test");
+                $clamp(myPara, {clamp: 'auto'});
+            })
+        </script>
         
 
     </head>
@@ -29,12 +36,11 @@
                 </span>
                 
                 <!-- 导航栏 -->
-                <div></div>
                 <ul class="primaryNav">
-                    <li><a href="/">了解为知</a></li>
+                    <li><a class="currentPage" href="/">了解为知</a></li>
                     <li><a href="/download">下载</a></li>
                     <li><a href="/enterprise">企业方案</a></li>
-                    <li><a class="currentPage" href="/support">博客</a></li>
+                    <li><a href="/support">博客</a></li>
                     <li><a href="/joinus">加入我们</a></li>
                     <li style="float:right; margin:0 4px 0 0;"><a href="/login">登录</a> / <a href="/register">注册</a></li>
                 </ul>
@@ -55,7 +61,7 @@
             <div class="wraper">
                 <div class="blog">
                     <div class="articles">
-                        <div class="piece">
+                        <div class="piece" style="height: 600px;">
                             <h2 class="article-title"><a href="">是否在 Windows 家长控制中寻找 Web 筛选和活动报告？</a></h2>
                             <p class="article-text">您可能已注意到，Windows 7 的家长控制中并未包括 Web 限制和活动报告。 但是，通过在 Windows 家长控制中添加服务提供程序（例如 Windows Live Family Safety），您仍然可以限制孩子能够访问的站点，并查看其在线活动报告。 借助 Family Safety，您可以针对孩子设置 Web 筛选和活动监视，并决定孩子可以在 Windows Live Spaces、Messenger 和 Hotmail 中与谁通信。</p>
                             <img src="assets/img/WizNote.jpg" alt=""></img>
@@ -64,9 +70,9 @@
                             <p class="article-text">您可能已注意到，Windows 7 的家长控制中并未包括 Web 限制和活动报告。 但是，通过在 Windows 家长控制中添加服务提供程序（例如 Windows Live Family Safety），您仍然可以限制孩子能够访问的站点，并查看其在线活动报告。 借助 Family Safety，您可以针对孩子设置 Web 筛选和活动监视，并决定孩子可以在 Windows Live Spaces、Messenger 和 Hotmail 中与谁通信。</p>
                         </div>
                         <div class="hr"></div>
-                        <div class="piece">
+                        <div class="piece" style="height: 400px;">
                             <h2 class="article-title"><a href="">是否在 Windows 家长控制中寻找 Web 筛选和活动报告？</a></h2>
-                            <p class="article-text">您可能已注意到，Windows 7 的家长控制中并未包括 Web 限制和活动报告。 但是，通过在 Windows 家长控制中添加服务提供程序（例如 Windows Live Family Safety），您仍然可以限制孩子能够访问的站点，并查看其在线活动报告。 借助 Family Safety，您可以针对孩子设置 Web 筛选和活动监视，并决定孩子可以在 Windows Live Spaces、Messenger 和 Hotmail 中与谁通信。</p>
+                            <p class="article-text">您可能已注意到，Windows 7 的家长控制中并未包括 Web 限制和活动报告。 但是，通过在 Windows 家长控制中添加服务提供程序（例如 Windows Live Family Safety），您仍然可以限制孩子能够访问的站点，并查看其在线活动报告。在 Windows 家长控制中添加服务提供程序（例如 Windows Live Family Safety），您仍然可以限制孩子能够访问的站点，并查看其在线活动报告。在 Windows 家长控制中添加服务提供程序（例如 Windows Live Family Safety），您仍然可以限制孩子能够访问的站点，并查看其在线活动报告。 借助 Family Safety，您可以针对孩子设置 Web 筛选和活动监视，并决定孩子可以在 Windows Live Spaces、Messenger 和 Hotmail 中与谁通信。</p>
                             <img src="assets/img/WizNote.jpg" alt=""></img>
                             <h3 class="chapter-title"></h3>
                             <p class="article-text">您可能已注意到，Windows 7 的家长控制中并未包括 Web 限制和活动报告。 但是，通过在 Windows 家长控制中添加服务提供程序（例如 Windows Live Family Safety），您仍然可以限制孩子能够访问的站点，并查看其在线活动报告。 借助 Family Safety，您可以针对孩子设置 Web 筛选和活动监视，并决定孩子可以在 Windows Live Spaces、Messenger 和 Hotmail 中与谁通信。</p>

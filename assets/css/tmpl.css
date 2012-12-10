@@ -212,7 +212,7 @@ _zoom: 1;
 .wraper{
   width: 100%;
   height: auto;
-  /*padding:10px 0;*/
+  padding:10px 0;
   /*outline:1px solid #000;*/
 }
 /*--- 不同页面专用容器  960px 居中显示   ---*/
@@ -238,7 +238,7 @@ _zoom: 1;
   font-weight: 500;
   margin: 0 0 0 -2px;
   /*color:#454545;*/
-  line-height: 66px;
+  line-height: 80px;
   vertical-align: baseline;
   /*white-space: nowrap;*/
   /*letter-spacing: -1px;*/
@@ -252,7 +252,7 @@ _zoom: 1;
   padding: 0 4px;
   /*letter-spacing: 1px;*/
 }
-.slogan button{
+.btn{
   border: none;
   margin: 32px 0 0 4px;
   padding: 4px 13px 6px 13px;
@@ -263,7 +263,7 @@ _zoom: 1;
   line-height: 22px;
   text-decoration: none;
 }
-.slogan button:hover{
+.btn:hover{
   background: #24459A;
   color: #FFF;
 }
@@ -285,9 +285,9 @@ _zoom: 1;
   float: right;
 }
 /*------  首页“功能特性”组件样式  -----*/
-.feature, .topicPic, .enterprise, .tuts, .blog, .faq {
+.feature, .topicPic, .enterprise, .tuts, .blog, .faq, .support, .browser, .winintro {
   width: 1006px;
-  padding: 30px 0 30px 0;
+  padding: 20px 0 10px 0;
   margin: 0 auto;
   color: #454545;
   text-align: left;
@@ -300,6 +300,28 @@ _zoom: 1;
   font-weight: 200;
   padding: 10px 0 3px 0;
   margin: 0;
+}
+.smallh1{
+  font-size: 24px;
+  font-weight: 200;
+  line-height: 30px;
+}
+.largeh3{
+  font-size: 24px;
+  line-height: 30px;
+  font-weight: 600;
+}
+.largelighth3{
+  height: 40px;
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 200;
+
+}
+.winintro p{
+  font-size: 13px;
+  font-weight: 200;
+  line-height: 20px;
 }
 .feature .featureThmb{
   float: left;
@@ -473,17 +495,21 @@ _zoom: 1;
   float: left;
   width: 484px;
   height: 519px;
-  
+  margin: 0 20px 0 0;
 }
 .location h1 {
-  margin: 0 0 20px 0px;
-  padding: 0;
+  /*float: left;*/
+  /*clear: right;*/
+  margin: 50px 0 20px 0px;
+  padding: 0 0 0 20px;
   color: #454545;
   font-size: 66px;
   font-weight: normal;
   line-height: 66px;
 }
 .location p {
+  /*float: left;*/
+  /*clear: right;*/
   margin:0;
   padding: 0 0 0 514px;
   color: #454545;
@@ -491,7 +517,7 @@ _zoom: 1;
   line-height: 16px;
 }
 .location p a{
-  color:#;
+  color: #24459A;
 }
 /*------  加入我们“职位详情”组件样式  -----*/
 .jobs{
@@ -529,14 +555,14 @@ _zoom: 1;
 .enterprise ul.namelist{
   /*display: inline;*/
   margin:0;
-  padding: 0;
+  padding: 0 30px 0 30px;
   font-size: 16px;
   line-height: 22px;
 }
 .enterprise ul li{
   float: left;
   /*display: inline;*/
-  width: 490px;
+  width: 450px;
 }
 /*---------------     支持二级页面样式   ------------*/
 .big-title{
@@ -615,7 +641,7 @@ _zoom: 1;
 }
 .piece{
   width: 100%;
-  height: 600px;
+  /*height: 600px;*/
   padding: 20px 0 10px 0;
   /*border: none;
   border-bottom: 3px solid #EDEDF0;*/
@@ -629,22 +655,17 @@ _zoom: 1;
   -webkit-line-clamp: 3; /* 第六行要顯示點點點 */
   /*-webkit-box-orient: vertical;*/
 }
-.piece h2{
+.article-title{
   margin: 0;
   padding: 0;
   font-size: 40px;
   font-weight: normal;
   line-height: 50px;
 }
-.piece h2 a{
-  color:#454545;
-}
-.piece h2 a:hover{
-  color:#24459A;
-  }
-.piece p{
+
+.article-text{
   padding: 0 20px 0 0;
-  text-indent: 2em;
+  text-indent: 0em;
   font-size: 13px;
   line-height: 20px;
 }
@@ -666,6 +687,11 @@ _zoom: 1;
 }
 .r-sidebar li a:hover{
   color: #24459A;
+}
+.r-sidebar h3{
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 20px;
 }
 /*-------   faq页面   ---------*/
 .faq{
@@ -723,6 +749,182 @@ _zoom: 1;
   font-size: 13px;
   font-weight: normal;
   line-height: 16px;
+}
+.text {
+  /*padding:0;*/
+  margin:0;
+  font-size: 13px;
+  font-weight: normal;
+  line-height: 20px;
+  color: #454545;
+  text-indent: 0;
+}
+.disclist {
+  padding: 0 0 0 30px;
+  font-size: 13px;
+  font-weight: normal;
+  line-height: 20px;
+  list-style-type: disc;
+
+}
+.articles .noborder{
+  font-size: 13px;
+  font-weight: normal;
+  line-height: 20px;
+  border:none;
+}
+.articles .noborder tr{
+  width:auto;
+  height:35px;
+  padding: 10px 0 0 0 ;
+  border: none;
+}
+.noborder td{
+  padding: 0 0 0 5px;
+  text-align: left;
+  border: none;
+}
+.noborder input{
+  width:300px;
+  height:25px;
+}
+.articles label{
+  margin: 0;
+  padding: 0;
+}
+.articles textarea{
+  width:300px;
+  height:80px;
+}
+.largetitle{
+  font-size:40px;
+  font-weight: normal;
+  line-height: 50px;
+  padding: 0 0 20px 0;
+}
+.mintitle{
+  margin:0;
+  padding:0;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 22px;
+}
+.insideul{
+  margin: 0;
+  padding: 0em 0 0.5em 2em;
+  font-size: 13px;
+  list-style-type: disc;
+}
+.insideul li{
+   padding: 0em 0 0.5em 0;
+}
+.insideol{
+  margin:0;
+  padding: 0em 0 0.5em 2em;
+  font-size: 13px;
+  list-style-type: decimal;
+}
+.insideol li{
+   padding: 0em 0 0.5em 0;
+}
+
+.message{
+
+}
+.msginfo{
+  font-size: 13px;
+  font-weight: bold;
+  line-height: 20px;
+  background:#EDEDF0;
+}
+.text{
+  padding:0 0 0 1em;
+  text-indent: 2em;
+  font-size: 13px;
+  font-weight: normal;
+  line-height: 20px; 
+}
+.text-no-indent{
+  padding:0 0 0 0em;
+  text-indent: 0em;
+  font-size: 13px;
+  font-weight: normal;
+  line-height: 20px; 
+}
+.browser{
+  padding: 0 20px;
+  margin: 15px auto;
+  border: 2px solid #EDEDF0;
+}
+.browserinfo{
+  margin:15px auto;
+  padding:0;
+  width:95%;
+  border:none;
+  border-bottom: 3px solid #EDEDF0;
+}
+.innerleft{
+  float:left;
+  width:45%;
+  margin:0 5% 0 0;
+  padding:15px;
+  background:#EDEDF0;
+}
+.innerright{
+  float:left;
+  width:45%;
+  /*margin: 0 0 0 5%;*/
+  background:#EDEDF0;
+}
+.whole{
+  width:95%;
+  padding:15px 20px;
+}
+.withborder{
+  border-collapse: collapse;
+  border:1px solid #E0E0F0;
+  width:100%;
+}
+.withborder tr, th, td{
+  height: 18px;
+  border:1px solid #E0E0F0;
+  text-align: center;
+}
+.withborder tr td{
+  width: 25%;
+  height: 18px;
+  padding: 0.5em 1.5em;
+  font-size: 13px;
+  font-weight: normal;
+  line-height: 16px;
+  text-align: left
+}
+.tab{
+  position: fixed;
+  margin: 10px;
+  padding: 0 0 0 3em;
+}
+.tab h3{
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 22px; 
+  cursor: pointer;
+  color: #1570A6;
+}
+.tab h3:hover{
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 22px; 
+  cursor: pointer;
+  color: #24459A;
+}
+
+.pageanchor{
+  position: relative;
+  top:-120px;
+  margin: 0;
+  padding: 0;
+  float: left;
 }
 
 /*----------------    登录页面样式     ---------------*/
@@ -824,7 +1026,7 @@ p.error-indicator{
   font-size: 15px;
 }
 
-#login-form .btn, #register-form .btn{
+#login-form .btn, #register-form .btn, .articles .btn{
   width: auto;
   height: auto;
   border: none;
@@ -833,7 +1035,7 @@ p.error-indicator{
   padding: 5px 25px;
   background: #2672ec;
 }
-#login-form .btn:hover, #register-form .bnt:hover{
+#login-form .btn:hover, #register-form .bnt:hover, .articles .btn:hover{
   background: #95b4e2;
 }
 #login-form .btn:active, #register-form .btn:active{
@@ -844,17 +1046,20 @@ p.error-indicator{
   left: 5px;
   bottom: 9%;
   color: #666;
-  font-size: 15px;
+  font-size: 13px;
   padding: 0;
   margin: 10px 0 0 0;
 }
-#login-form a, #register-form a{
-  color: #2672ec;
+.dark, .smooth{
+  color: #1570A6;
   text-decoration: none;
   font-size: 100%;
   font-weight: bold;
   margin: 0;
   padding: 0;
+}
+.dark:hover, .smooth:hover{
+  color: #24459A;
 }
 
 
