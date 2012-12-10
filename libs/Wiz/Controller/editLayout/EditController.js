@@ -11,9 +11,10 @@ define(function (require, exporst, module) {
 		_class = {
 			tagSpan: 'edit-tag-span'
 		},
+
+		
 		zTreeBase = require('../../../component/zTreeBase'),
-		remote = require('../../remote'),
-			context = require('../../context'),
+		GlobalUtil = require('../../../common/util/GlobalUtil'),
 
 		_lastGuid = null,
 		_locale = require('locale'),
@@ -79,6 +80,8 @@ define(function (require, exporst, module) {
 			};
 			setting.view.dblClickExpand = false;
 			_tagTreeRoot = initAndGetRoot(_id.TagTree, setting, tagNodes);
+			bindBodyClickHandler();
+	    initFrameBodyClickHandler();
 		}
 
 		function initAndGetRoot(containerId, setting, nodesInfo) {
@@ -305,6 +308,47 @@ define(function (require, exporst, module) {
 				timeStr = hours + ':' + minutes; 	
 			}
 			return timeStr;
+		}
+
+		// 点击iframe时，触发document.body.click事件
+		function initFrameBodyClickHandler() {
+			var fdoc = getFrameDocument(document.getElementById('baidu_editor_0'));
+			var oldFunc = fdoc.body.onclick;
+			fdoc.body.onclick = function (event) {
+				GlobalUtil.fireEvent(document.body, 'click');
+				if (oldFunc) {
+					oldFunc(event);
+				}
+			}
+		}
+		function getFrameDocument(frameObj) {
+			var fdoc = (frameObj.contentDocument) ? frameObj.contentDocument
+					: frameObj.contentWindow.document;//兼容firefox和ie
+			return fdoc;
+		}
+
+		function bindBodyClickHandler() {
+			$(document).click(function(event){
+		  	var menuList = $('.edit-tree');
+		  	var length = menuList.length;
+		  	var id = null;
+
+		  	var obj = {
+		  		'params-tags': 'category_tree',
+		  		'params-category': 'tag_tree'
+		  	}
+		  	if($(event.target).parents('.params-tags')[0]) {
+		  		id = 'params-tags';
+		  	}
+		  	if($(event.target).parents('.params-category')[0]) {
+		  		id = 'params-category';
+		  	}
+		    if(id === null){
+		    	for (var i = 0; i < length; i ++) {
+		    		$(menuList[i]).hide(500);
+		    	}
+		    }
+		  });
 		}
 
 		function initMessageHandler(messageHandler) {

@@ -971,14 +971,12 @@ div.c_loadingDot {
 	_height: 100%;
 }
 
-.edit-params>div:first-child {
-	border-bottom: 0;
-}
 
 .params-category,
 .params-tags {
 	border: 1px solid #b1b1b1;
 	padding: 3px;
+	margin: 20px 0;
 	background-color: #fff;
 }
 
@@ -1020,7 +1018,8 @@ div.c_loadingDot {
 /* 编辑页面中需要的tree控件 */
 .edit-tree {
 	height: 300px;
-	overflow: auto;
+	overflow-y: auto;
+	overflow-x: hidden;
 	margin-top: 0;
 	border-top: 1px solid #b1b1b1;
 	display: none;

@@ -209,7 +209,6 @@ define(function (require, exports, module) {
 
 	// 隐藏下拉菜单
   $(document).click(function(event){
-  	var targetId = $(event.target).attr("id");
   	var menuList = $('.wiz-menu');
   	var length = menuList.length;
   	var id = null;
