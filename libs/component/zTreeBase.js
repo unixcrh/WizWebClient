@@ -94,7 +94,6 @@ define(function (require, exports, module) {
 			childList = sortCategoryList(childList, treeNode.type);
 			treeObj.addNodes(treeNode, childList, true);
 			treeNode.bLoading = true;
-			console.log(childList);
 			return childList;
 		},
 

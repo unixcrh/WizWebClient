@@ -2,8 +2,6 @@ define(function (require, exports, module) {
 	var treeProperty = require('./treeProperty'),
 		_messageCenter = null,
 		zTree = require('ztree'),
-		remote = require('../../remote'),
-		context = require('../../context'),
 		zTreeBase = require('../../../component/zTreeBase'),
 
 		locale= require('locale'),
@@ -102,13 +100,13 @@ define(function (require, exports, module) {
  			}
  			var childList = [];
  			zTreeBase.loadingNode(treeNode);
-			//获取到当前的kb_guid
-			var kbGuid = treeNode.kb_guid ? treeNode.kb_guid : context.userInfo.kb_guid;
 			_messageCenter.getChildNodes(treeNode, function(data) {
 				childList = zTreeBase.addChildToNode(treeObj, data.list, treeNode);
-				if (treeNode.level === 0 && treeNode.type === 'category') {
+				if (treeNode.level === 0) {
 					_messageCenter.saveNodesInfos(treeNode.type, childList);
-					addDefaultNodes(treeNode, treeNode.type);
+				}
+				if (treeNode.type === 'category') {
+					addDefaultNodes(treeNode, treeNode.type);	
 				}
 			});
 		}
@@ -235,6 +233,10 @@ define(function (require, exports, module) {
 				treeObj.expandNode(nodes[1], true, true, true);
 				zTreeOnExpand(null, null, nodes[1]);
 			}
+			if (nodes.length>2) {
+				treeObj.expandNode(nodes[2], true, true, true);
+				zTreeOnExpand(null, null, nodes[2]);
+			}
 		}
 
 		// 获取当前目录
@@ -246,7 +248,6 @@ define(function (require, exports, module) {
 		function selectNode(key, value) {
 			var nodes = treeObj.getNodesByParam(key, value, null);
 
-			console.log(nodes);
 			if (nodes.length === 1) {
 				zTreeOnClick(null, null, nodes[0]);
 				treeObj.selectNode(nodes[0]);

@@ -971,6 +971,10 @@ div.c_loadingDot {
 	_height: 100%;
 }
 
+.edit-params>div:first-child {
+	border-bottom: 0;
+}
+
 .params-category,
 .params-tags {
 	border: 1px solid #b1b1b1;
@@ -996,6 +1000,23 @@ div.c_loadingDot {
 	line-height: 142%;
 	padding: 6px 6px 0;
 }
+
+#params_tag {
+	border: 0;
+	background-color: #fff;
+	cursor: pointer;
+}
+.params-tags>div:first-child {
+	height: 30px;
+	line-height: 142%;
+	padding: 6px 6px 0;
+}
+
+.edit-tag-span {
+	padding: 0 5px;
+	border: 1px solid #5c5c5c;
+	margin: 0 2px;
+}
 /* 编辑页面中需要的tree控件 */
 .edit-tree {
 	height: 300px;
@@ -1010,6 +1031,19 @@ div.c_loadingDot {
 .edit-tree li a.level0 span {
 	font-size: 100%;
 }
+
+
+.edit-tree li span.button.chk{background-image: url("../images/ztree/zTreeStandard.png");}
+.edit-tree li span.button.chk.checkbox_false_full {background-position:0 0}
+.edit-tree li span.button.chk.checkbox_false_full_focus {background-position:0 -14px}
+.edit-tree li span.button.chk.checkbox_false_part {background-position:0 -28px}
+.edit-tree li span.button.chk.checkbox_false_part_focus {background-position:0 -42px}
+.edit-tree li span.button.chk.checkbox_false_disable {background-position:0 -56px}
+.edit-tree li span.button.chk.checkbox_true_full {background-position:-14px 0}
+.edit-tree li span.button.chk.checkbox_true_full_focus {background-position:-14px -14px}
+.edit-tree li span.button.chk.checkbox_true_part {background-position:-14px -28px}
+.edit-tree li span.button.chk.checkbox_true_part_focus {background-position:-14px -42px}
+.edit-tree li span.button.chk.checkbox_true_disable {background-position:-14px -56px}
 .params-tags-wrapper input {
 	width: 344px;
 	height: 100%;
