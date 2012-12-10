@@ -86,122 +86,222 @@
 
 
                         <div class="piece">
-                           <h3 class="chapter-title"><a id="a2" class="pageanchor"></a>2. 服务器安装</h3>
-                            <p class="article-text">运行要求</p>
+                           <h3 class="chapter-title"><a id="a2" class="pageanchor"></a>2. 服务器配置</h3>
+                           <h3 class="chapter-title">2.1.&nbsp;&nbsp;&nbsp;服务器配置界面</h3>
+                            <p class="article-text">执行WizServer.exe即可出现下图界面，需管理员权限执行 </p>
+                            <img src="assets/img/img-wiz2-ent-manual-1.png"></img>
+                            <img src=""></img>
+
+                            <h3 class="chapter-title">2.2.&nbsp;&nbsp;&nbsp;服务器初始化设置</h3>
+                            <p class="article-text">服务器在使用前，必须初始化；</p>
+                            <p class="article-text">在修改主机名、端口后，也必须重新初始化；</p>
+                            <p class="article-text">在wizserver目录移动后，必须重新初始化。</p>
+                            <p class="article-text">如web访问地址为 http://myserver:8800/</p>
+                            <p class="article-text">则主机名需要填写 myserver，端口需要填写8800，若默认http://myserver访问，则端口需填写为80</p>
+                            <p class="article-text">服务器地址可以是：</p>
                             <ul class="insideul">
-                                <li>普通PC服务器  2G内存 10G以上磁盘空间</li>
-                                <li>操作系统 Windows XP/2003/7/2008</li>
-                                <li>不需要安装iis、apache、php、mysql、jdk等</li>
-                                <li>建议使用专用存储设备或软、硬RAID1</li>
+                                <li>域名 如www.sina.com</li>
+                                <li>IP地址 如 202.112.20.132</li>
+                                <li>本地机器名 localhost 或 127.0.0.1</li>
                             </ul>
-                            <p class="article-text" id="#test">绿色安装</p>
+                            <p class="article-text">点击设置按钮即可重新设置，并自动安装好服务</p>
+                            <p class="article-text" style="color:#ff0000;">注意：在无指导的情况下，请勿随意修改WizServer目录下的默认配置文件</p>
+
+
+                            <h3 class="chapter-title">2.3.&nbsp;&nbsp;&nbsp;服务安装和卸载</h3>
+                            <p class="article-text">服务器初始化后，会自动安装服务。</p>
+                            <p class="article-text">WizServer的服务为标准的Windows服务，会随着windows启动而自动启动。</p>
+                            <p class="article-text">服务名为：Wiz DB Server和Wiz App Server</p>
+                            <p class="article-text">安装完成后在windows服务管理中，可以看到以下记录</p>
+                            <img src="assets/img/img-wiz2-ent-manual-2.jpg"></img>
+                            <p class="article-text">如果安装后，日志显示区提示安装错误，需要特别处理</p>
+                            <p class="article-text">常见错误有：</p>
+                            <ul class="insideul">
+                                <li>服务端口是否被占用，默认的数据库端口为3366，默认的web端口为8800，如用户修改过端口，则需使用未被apache、iis占用的端口，并重新初始设置服务器。</li>
+                                <li>安装目录名不允许是中文，必须是英文，否则应用服务无法启动。</li>
+                                <li>在未打补丁的windows2003和xp下，如果应用服务无法以服务方式启动，请执行安装目录下 server/tomcat/win2003fix.bat 做操作系统补丁。</li>
+                            </ul>
+                            
+
+                            <h3 class="chapter-title">2.4.&nbsp;&nbsp;&nbsp;服务启动和停止</h3>
+                            <p class="article-text">当服务安装成功后，可通过WizServer界面上的“启动/停止”按钮启动或停止服务器。也可以通过Windows的服务管理控制。</p>
+                           
+
+                           <h3 class="chapter-title">2.5.&nbsp;&nbsp;&nbsp;用户数据目录</h3>
+                            <p class="article-text">默认用户数据目录在WizServer安装路径下，主要包括</p>
                             <ol class="insideol">
-                                <li>普通PC服务器  2G内存 10G以上磁盘空间</li>
-                                <li>操作系统 Windows XP/2003/7/2008</li>
-                                <li>不需要安装iis、apache、php、mysql、jdk等</li>
-                                <li>建议使用专用存储设备或软、硬RAID1</li>
+                                <li>数据库数据 安装目录\db</li>
+                                <li>用户数据 安装目录\data</li>
                             </ol>
-                            <p class="article-text">执行安装目录下WizServer.exe 即可启动和配置服务器</p>
+                            <p class="article-text">如需修改为其他目录，请在技术服务人员指导下进行。</p>
+                           
+
+                            <h3 class="chapter-title">2.6.&nbsp;&nbsp;&nbsp;服务登录</h3>
+                            <p class="article-text">根据设置的服务器地址，通过浏览器访问</p>
+                            <p class="article-text">默认为http://localhost:8800</p>
+                            <p class="article-text">正常运行将会显示下图所示网页</p>
+                            <p class="article-text">自动进入知识门户，当无组知识库时，将会显示如下界面</p>
+                            <img src="assets/img/img-wiz2-ent-manual-3.jpg"></img>
+                            <p class="article-text">点击管理，进入后台管理</p>
+                            <img src="assets/img/img-wiz2-ent-manual-4.jpg"></img>
+                            <p class="article-text">使用默认管理员帐号登录</p>
+                            <p class="article-text">默认管理员帐号为：admin 密码为：wizadmin</p>
+                            <p class="article-text">登录后，点击服务器管理，可看到如下服务器状态界面：</p>
+                             <img src="assets/img/img-wiz2-ent-manual-5.jpg"></img>
+                            
+
+                            <h3 class="chapter-title">2.7.&nbsp;&nbsp;&nbsp; 帐号设置</h3>
+                            <p class="article-text">试用版用户数限制在20人</p>
+                            <p class="article-text">点击用户管理，可查看用户列表属性，可进行用户删除、重置密码等操作</p>
+                            <img src="assets/img/img-wiz2-ent-manual-6.jpg"></img>
+
+                            
+                             <h3 class="chapter-title">2.8.&nbsp;&nbsp;&nbsp;组知识库管理</h3>
+                            <p class="article-text">Wiz2.0企业版增加了组知识库管理，允许多人维护一个组知识库，并通过知识门户主页将组中的内容分享发布出来。</p>
+                            <p class="article-text">点击管理页面中的“组知识库管理”，会列表当前的组知识库。</p>
+                            <img src="assets/img/img-wiz2-ent-manual-7.jpg"></img>
+                            <p class="article-text" style="font-weight:400;">新建和管理组知识库</p>
+                            <p class="article-text">点击“增加组知识库按钮”可以快速新建</p>
+                            <p class="article-text">组知识库简短名为英文或数字字符串，用做url中优化。</p>
+                            <img src="assets/img/img-wiz2-ent-manual-8.jpg"></img>
+                            <p class="article-text" style="font-weight:400;">权限管理</p>
+                            <p class="article-text">通过点击组知识库的权限管理链接，可以看到如下界面</p>
+                            <img src="assets/img/img-wiz2-ent-manual-9.jpg"></img>
+                            <p class="article-text">在基础版企业服务器中，将组知识库的访问权限定义为3种</p>
+                            <ol class="insideol">
+                                <li>管理员</li>
+                                <li>编辑权限</li>
+                                <li>只读权限</li>
+                            </ol>
+                            <p class="article-text">分别可操作范围如下：</p>
+                            <ol class="insideol">
+                                <li>管理员可以在Web客户端中直接访问组知识库（需从私人知识库切换到组知识库），可以增加、编辑、删除、移动组知识库中的文档，可以维护组知识库的标签，可以管理组知识库的访问权限。可以拥有客户端分享到组知识库的权限。</li>
+                                <li>编辑只能在windows客户端中，将个人知识库的内容通过分享，发布到组知识库的一个或多个标签下。</li>
+                                <li>编辑只能在windows客户端中，将个人知识库的内容通过分享，发布到组知识库的一个或多个标签下。</li>
+                            </ol>
                         </div>
 
 
                         <div class="piece">
-                           <h3 class="chapter-title"><a id="a3" class="pageanchor"></a>3. 服务器安装</h3>
-                            <p class="article-text">运行要求</p>
-                            <ul class="insideul">
-                                <li>普通PC服务器  2G内存 10G以上磁盘空间</li>
-                                <li>操作系统 Windows XP/2003/7/2008</li>
-                                <li>不需要安装iis、apache、php、mysql、jdk等</li>
-                                <li>建议使用专用存储设备或软、硬RAID1</li>
-                            </ul>
-                            <p class="article-text" id="#test">绿色安装</p>
-                            <ol class="insideol">
-                                <li>普通PC服务器  2G内存 10G以上磁盘空间</li>
-                                <li>操作系统 Windows XP/2003/7/2008</li>
-                                <li>不需要安装iis、apache、php、mysql、jdk等</li>
-                                <li>建议使用专用存储设备或软、硬RAID1</li>
-                            </ol>
-                            <p class="article-text">执行安装目录下WizServer.exe 即可启动和配置服务器</p>
+                           <h3 class="chapter-title"><a id="a3" class="pageanchor"></a>3.  在线管理知识库</h3>
+                            <p class="article-text">企业版2.0使用Web客户端管理组知识库和个人知识库，Windows客户端软件仅提供个人知识库管理，同时提供了分享到组知识库的功能。</p>
+                            <h3 class="chapter-title">3.1.&nbsp;&nbsp;&nbsp;Wiz Web客户端</h3>
+                                <p class="article-text">登录后，主界面如下：</p>
+                                <img src="assets/img/img-wiz2-ent-manual-11.jpg"></img>
+                            
+
+                                <h3 class="chapter-title">3.2.&nbsp;&nbsp;&nbsp;组知识库的切换</h3>
+                                <p class="article-text">如果存在一个或多个组知识库的管理权限，在标题栏将会出现组知识库切换栏，通过点击弹出选择菜单，可以切换管理组知识库。</p>
+                                <p class="article-text">组知识库的管理只提供Web方式管理，Windows客户端不能直接管理和同步组知识库的内容。</p>
+
+                                <h3 class="chapter-title">3.3.&nbsp;&nbsp;&nbsp; 文件夹新增删除修改</h3>
+                                <p class="article-text">在目录区，鼠标悬停后，会出现操作图标，点击后有菜单操作可以进行文件夹操作，如下图</p>
+                                <img src="assets/img/img-wiz2-ent-manual-13.png"></img>
+
+
+                                <h3 class="chapter-title">3.4.&nbsp;&nbsp;&nbsp;标签新增删除修改</h3>
+                                <p class="article-text">在标签区，鼠标悬停后，会出现操作图标，点击后有菜单操作可以进行标签操作，如下图</p>
+                                <img src="assets/img/img-wiz2-ent-manual-14.png"></img>
+                                <p class="article-text">注意，组知识库必须有标签，个人知识通过Windows客户端分享到组知识库时，必须选择标签</p>
+
+                                <h3 class="chapter-title">3.5.&nbsp;&nbsp;&nbsp;文档新增删除修改和移动</h3>
+                                <p class="article-text">通过点击“新建文档”按钮，可以在当前选择的文件夹下创建文档。</p>
+                                <p class="article-text">通过文档操作菜单，可以进行文档的重命名和删除操作。如下图</p>
+                                <img src="assets/img/img-wiz2-ent-manual-15.jpg"></img>
+                                <p class="article-text">通过拖动文件到文件夹，可以实现文档移动。</p>
+                                <p class="article-text">通过拖动文档到标签，可以实现文档打标签操作</p>
+
+                                <h3 class="chapter-title">3.6.&nbsp;&nbsp;&nbsp;操作按钮区</h3>
+                                <p class="article-text">操作按钮区，可以实现文档检索、新建修改文档，和查看附件、查看标签栏的操作</p>
+                                <img src="assets/img/img-wiz2-ent-manual-16.png"></img>
+
+                                 <h3 class="chapter-title">3.7.&nbsp;&nbsp;&nbsp;文档编辑区和附件区</h3>
+                                <p class="article-text">点击新建和编辑按钮，阅读区会变成可编辑状态，可进行富文档操作，如下图</p>
+                                <img src="assets/img/img-wiz2-ent-manual-17.jpg"></img>
+                                <p class="article-text">点击附件按钮，可显示附件操作区，通过点击“添加附件”按钮，可以上传附件。</p>
+                                <br/>
+                                <p class="article-text">在Web客户端可以对私人知识库和组知识进行快速管理。</p>
+                                <p class="article-text">为方便快速的导入文档和收藏网页操作，Wiz企业版提供了强大的Windows客户端。</p>
                         </div>
 
 
                         <div class="piece">
-                           <h3 class="chapter-title"><a id="a4" class="pageanchor"></a>4. 服务器安装</h3>
-                            <p class="article-text">运行要求</p>
-                            <ul class="insideul">
-                                <li>普通PC服务器  2G内存 10G以上磁盘空间</li>
-                                <li>操作系统 Windows XP/2003/7/2008</li>
-                                <li>不需要安装iis、apache、php、mysql、jdk等</li>
-                                <li>建议使用专用存储设备或软、硬RAID1</li>
-                            </ul>
-                            <p class="article-text" id="#test">绿色安装</p>
-                            <ol class="insideol">
-                                <li>普通PC服务器  2G内存 10G以上磁盘空间</li>
-                                <li>操作系统 Windows XP/2003/7/2008</li>
-                                <li>不需要安装iis、apache、php、mysql、jdk等</li>
-                                <li>建议使用专用存储设备或软、硬RAID1</li>
-                            </ol>
-                            <p class="article-text">执行安装目录下WizServer.exe 即可启动和配置服务器</p>
+                           <h3 class="chapter-title"><a id="a4" class="pageanchor"></a>4. Windows客户端使用</h3>
+                             <h3 class="chapter-title">4.1.&nbsp;&nbsp;&nbsp;使用专用客户端</h3>
+                                <p class="article-text">连接企业内网服务器，需使用专用的客户端。</p>
+                                <p class="article-text">请在企业服务器web上下载使用，下载地址为：</p>
+                                <p class="article-text">http://&lt;host&gt;:&lt;port&gt;/api/download/</p>
+                                <p class="article-text">默认为：http://localhost:8800/api/download/</p>
+                                <p class="article-text">点击下载即可，执行压缩包中wiz-setup-x86-oem.exe</p>
+                                <p class="article-text">安装时，请注意：wiz-setup-x86-oem.exe目录下，必须有正确的oem.ini才能安装。</p>
+                                 <img src="assets/img/img-wiz2-ent-manual-18.jpg"></img>
+                                <p class="article-text">安装完成后，使用帐号与个人版有所不同，</p>
+                                 <img src="assets/img/img-wiz2-ent-manual-20.jpg"></img>
+                                <img src="assets/img/img-wiz2-ent-manual-21.jpg"></img>
+                                <p class="article-text" >客户端的使用，请参见客户端使用手册：<a href="http://www.wiz.cn/manual/" class="dark">http://www.wiz.cn/manual/</a></p>
+
+                                 <h3 class="chapter-title">4.2.&nbsp;&nbsp;&nbsp;变更服务器地址</h3>
+                                <p class="article-text">变更服务器地址后，需重新配置服务器。</p>
+                                <p class="article-text">各客户端可重新下载安装，也可以手动修改客户端安装目录下的 oem.ini</p>
+                                <p class="article-text">修改对应的服务地址和端口即可。</p>
+                                <img src="assets/img/img-wiz2-ent-manual-22.png"></img>
+
+
+                                 <h3 class="chapter-title">4.3.&nbsp;&nbsp;&nbsp;分享到组知识库</h3>
+                                <p class="article-text">通过文档右键菜单，可以分享文档到组知识库</p>
+                                <img src="assets/img/img-wiz2-ent-manual-23.png"></img>
+                                <p class="article-text">分享选项如下图</p>
+                                <img src="assets/img/img-wiz2-ent-manual-24.jpg"></img>
+                                <p class="article-text">选择标签后，将快速分享到不同组的标签下。</p>
+                                <p class="article-text">在Web客户端上，可以管理已分享的内容</p>
+                                <img src="assets/img/img-wiz2-ent-manual-25.jpg"></img>
+                                <p class="article-text">Windows客户端快速导入的文档，为构建组知识库提供丰富的知识来源。组知识可通过知识门户发布。</p>
+                                 
                         </div>
 
 
                         <div class="piece">
-                           <h3 class="chapter-title"><a id="a5" class="pageanchor"></a>5. 服务器安装</h3>
-                            <p class="article-text">运行要求</p>
-                            <ul class="insideul">
-                                <li>普通PC服务器  2G内存 10G以上磁盘空间</li>
-                                <li>操作系统 Windows XP/2003/7/2008</li>
-                                <li>不需要安装iis、apache、php、mysql、jdk等</li>
-                                <li>建议使用专用存储设备或软、硬RAID1</li>
-                            </ul>
-                            <p class="article-text" id="#test">绿色安装</p>
-                            <ol class="insideol">
-                                <li>普通PC服务器  2G内存 10G以上磁盘空间</li>
-                                <li>操作系统 Windows XP/2003/7/2008</li>
-                                <li>不需要安装iis、apache、php、mysql、jdk等</li>
-                                <li>建议使用专用存储设备或软、硬RAID1</li>
-                            </ol>
-                            <p class="article-text">执行安装目录下WizServer.exe 即可启动和配置服务器</p>
+                           <h3 class="chapter-title"><a id="a5" class="pageanchor"></a>5. 知识门户</h3>
+                            <p class="article-text">通过访问首页，将可以看到组知识门户，</p>
+                            <img src="assets/img/img-wiz2-ent-manual-26.jpg"></img>
+                            <p class="article-text">点击后，必须是企业版用户才能登录阅读。</p>
+                            <br/>
+                            <p class="article-text">阅读分普通模式和全屏模式。</p>
+                            <p class="article-text">普通模式可评论，全屏模式可完整显示网页，如下图：</p>
+                            <img src="assets/img/img-wiz2-ent-manual-27.jpg"></img>
+                            <img src="assets/img/img-wiz2-ent-manual-28.jpg"></img>
+                            
                         </div>
 
 
                         <div class="piece">
-                           <h3 class="chapter-title"><a id="a6" class="pageanchor"></a>6. 服务器安装</h3>
-                            <p class="article-text">运行要求</p>
-                            <ul class="insideul">
-                                <li>普通PC服务器  2G内存 10G以上磁盘空间</li>
-                                <li>操作系统 Windows XP/2003/7/2008</li>
-                                <li>不需要安装iis、apache、php、mysql、jdk等</li>
-                                <li>建议使用专用存储设备或软、硬RAID1</li>
-                            </ul>
-                            <p class="article-text" id="#test">绿色安装</p>
-                            <ol class="insideol">
-                                <li>普通PC服务器  2G内存 10G以上磁盘空间</li>
-                                <li>操作系统 Windows XP/2003/7/2008</li>
-                                <li>不需要安装iis、apache、php、mysql、jdk等</li>
-                                <li>建议使用专用存储设备或软、硬RAID1</li>
-                            </ol>
-                            <p class="article-text">执行安装目录下WizServer.exe 即可启动和配置服务器</p>
+                           <h3 class="chapter-title"><a id="a6" class="pageanchor"></a>6. 服务器升级</h3>
+                            <h3 class="chapter-title">6.1.&nbsp;&nbsp;&nbsp;正式使用企业版</h3>
+                                <p class="article-text">试用用户如果觉得适合使用，可购买正式版使用授权，您将获得</p>
+                                <ul class="insideul">
+                                    <li>及时的技术支持服务</li>
+                                    <li>免费版本升级</li>
+                                    <li>Linux服务器部署服务</li>
+                                    <li>服务器性能优化</li>
+                                </ul>
+                                <p class="article-text">也可通过项目方式提供应用集成和定制服务</p>
+                                <p class="article-text">请通过电话和邮件方式与我们联系商务事宜，我们将提供正式授权文件和购买发票等。</p>
+
+                                <h3 class="chapter-title">6.2.&nbsp;&nbsp;&nbsp;升级服务器程序</h3>
+                                <p class="article-text">如需升级新版本的服务器程序，请不要直接将完整版服务器程序覆盖已使用的服务器安装目录，以免用户数据丢失。</p>
+                                <p class="article-text">请在技术人员指导下进行服务器程序升级。请做好数据备份</p>
+                                
                         </div>
 
 
                         <div class="piece">
-                           <h3 class="chapter-title"><a id="a7" class="pageanchor"></a>7. 服务器安装</h3>
-                            <p class="article-text">运行要求</p>
-                            <ul class="insideul">
-                                <li>普通PC服务器  2G内存 10G以上磁盘空间</li>
-                                <li>操作系统 Windows XP/2003/7/2008</li>
-                                <li>不需要安装iis、apache、php、mysql、jdk等</li>
-                                <li>建议使用专用存储设备或软、硬RAID1</li>
-                            </ul>
-                            <p class="article-text" id="#test">绿色安装</p>
-                            <ol class="insideol">
-                                <li>普通PC服务器  2G内存 10G以上磁盘空间</li>
-                                <li>操作系统 Windows XP/2003/7/2008</li>
-                                <li>不需要安装iis、apache、php、mysql、jdk等</li>
-                                <li>建议使用专用存储设备或软、硬RAID1</li>
-                            </ol>
-                            <p class="article-text">执行安装目录下WizServer.exe 即可启动和配置服务器</p>
+                           <h3 class="chapter-title"><a id="a7" class="pageanchor"></a>7. 服务器备份</h3>
+                            <p class="article-text">为确保用户数据安全，请定期备份数据。</p>
+                            <p class="article-text">点击WizServer主界面中的“备份”按钮，可直接将db和data目录进行打包备份，备份后的数据文件，将以zip的形式保存在backup目录下。</p>
+                            <p class="article-text">自动备份：</p>
+                            <p class="article-text">可以将server\backup.bat 加入到windows计划任务，定时每日自动备份。</p>
+                            <p class="article-text">恢复数据方法：</p>
+                            <p class="article-text">停止服务后，将备份文件中的data、db目录覆盖wizserver2目录下的db和data目录。</p>
                         </div>
 
 
@@ -229,7 +329,7 @@
                 var href = $(this).attr("href");
                 console.log(href);
                 var pos = $(href).offset().top;
-                $("html,body").animate({scrollTop: pos}, 1000); 
+                $("html,body").animate({scrollTop: pos}, 600); 
                 return false;
             });
         </script>

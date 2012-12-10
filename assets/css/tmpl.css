@@ -740,12 +740,13 @@ _zoom: 1;
 }
 .faq ol{
   display: none;
-  padding: 0 0 0 25px;
+  padding: 0 0 1.5em 2em;
 }
 .faq ol.show{
   display: block;
 }
 .faq ul ol li{
+  padding: 0.3em 0 0.3em 0em;
   font-size: 13px;
   font-weight: normal;
   line-height: 16px;
@@ -760,7 +761,7 @@ _zoom: 1;
   text-indent: 0;
 }
 .disclist {
-  padding: 0 0 0 30px;
+  padding: 0 0 1em 2em;
   font-size: 13px;
   font-weight: normal;
   line-height: 20px;
@@ -786,7 +787,7 @@ _zoom: 1;
 }
 .noborder input{
   width:300px;
-  height:25px;
+  height:22px;
 }
 .articles label{
   margin: 0;
@@ -795,6 +796,9 @@ _zoom: 1;
 .articles textarea{
   width:300px;
   height:80px;
+}
+.articles img{
+  max-width: 500px;
 }
 .largetitle{
   font-size:40px;
