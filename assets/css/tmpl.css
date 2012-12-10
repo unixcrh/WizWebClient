@@ -126,9 +126,10 @@ ul, menu, dir {
 .primaryNav {
 width: 998px;
 height:40px;
-bottom: 7px;
+bottom: 3px;
 color: #CFCFCF;
 /*display: block;*/
+
 font-weight: 600;
 height: 20px;
 left: 0px;
@@ -146,11 +147,11 @@ _zoom: 1;
   margin: 0 18px 0 0;
   height: 15px; 
   display: block;
-  font-size: 13px;
+  font-size: 12px;
 }
 
 .primaryNav a, #subNav a {
-  font-size: 13px;
+  font-size: 12px;
   color: #CFCFCF;
   cursor: pointer;
   /*a是in-line元素 转换为block后格式化其样式*/
@@ -202,6 +203,7 @@ _zoom: 1;
 /*---------------------内容样式---------------------*/
 .bd {
   /*   *position:relative;  解决IE7自动出现灰色滚动条的hack*/
+  min-height: 500px;
   padding-top: 94px;
   _padding-top: 0px;
   /*为解决IE6盒模型问题和padding双倍问题而做的hack*/
@@ -300,6 +302,15 @@ _zoom: 1;
   font-weight: 200;
   padding: 10px 0 3px 0;
   margin: 0;
+}
+.feature .hrlist li{
+  display: block;
+  float:left;
+  width: 490px;
+  padding: 0.5em 0;
+  font-size: 13px;
+  line-height: 22px;
+  list-style: none;
 }
 .smallh1{
   font-size: 24px;
@@ -628,6 +639,21 @@ _zoom: 1;
   padding: 0;
   margin: 0;
 }
+/*.articles table{
+  width: 25%;
+  border-collapse: collapse;
+  border: 1px solid #E0E0F0;
+}*/
+table tr td{
+  width:auto;
+  border-collapse: collapse;
+  height: 18px;
+  padding: 0.5em 1.5em;
+  font-size: 13px;
+  font-weight: normal;
+  line-height: 16px;
+  text-align: left
+}
 .r-sidebar{
   float: left;
   width: 241px;
@@ -661,6 +687,7 @@ _zoom: 1;
   font-size: 40px;
   font-weight: normal;
   line-height: 50px;
+  color:#454545;
 }
 
 .article-text{
@@ -682,7 +709,7 @@ _zoom: 1;
   line-height: 20px;
 }
 .r-sidebar li a{
-  color:#454545;
+  color: #1570A6;
   font-weight: bold;
 }
 .r-sidebar li a:hover{
@@ -1114,12 +1141,12 @@ p.error-indicator{
   text-align: right;
   color: #FFF;
   font-weight: bold;
-  font-size: 13px
+  font-size: 12px
 }
 #footer a{
   color: #FFF;
   font-weight: bold;
-  font-size: 13px;
+  font-size: 12px;
   padding: 0 10px;
   line-height: 15px;
 }
