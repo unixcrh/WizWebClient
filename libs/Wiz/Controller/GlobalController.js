@@ -19,6 +19,7 @@ define(function (require, exports, module) {
 
 			// 判断首次加载页面，增加首次加载时默认初始化功能
 			_bFirst = true,
+			_curDoc = null,
 
 			//负责接收下级controller的消息
 			_messageHandler = {

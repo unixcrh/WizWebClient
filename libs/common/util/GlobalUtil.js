@@ -71,7 +71,8 @@ define(function (require, exports, module){
 			var url = location.href;
 			var paraString = url.substring(url.indexOf("?") + 1, url.length).split("&");
 			var paraObj = {};
-			for ( i = 0; j = paraString[i]; i++) {
+			var i , j;
+			for (i = 0; j = paraString[i]; i++) {
 				paraObj[j.substring(0, j.indexOf("=")).toLowerCase()] = j.substring(j.indexOf("=") + 1, j.length);
 			}
 			var returnValue = paraObj[paras.toLowerCase()];
@@ -86,20 +87,20 @@ define(function (require, exports, module){
 		 * @param str
 		 * @returns {Boolean}
 		 */
-		isConSpeCharacters: function (str) {
-			var badChar = "\\/:<>*?\"&\'";
-			if ("" == str) {
-				return false;
-			}
-			var len = str.length;
-			for (var i = 0; i < len; i++) {
-				var c = str.charAt(i);
-				if (badChar.indexOf(c) > -1) {
-					return false;
-				}
-			}
-			return true;
-		},
+		// isConSpeCharacters: function (str) {
+		// 	var badChar = "\\/:<>*?\"&\'";
+		// 	if ("" == str) {
+		// 		return false;
+		// 	}
+		// 	var len = str.length;
+		// 	for (var i = 0; i < len; i++) {
+		// 		var c = str.charAt(i);
+		// 		if (badChar.indexOf(c) > -1) {
+		// 			return false;
+		// 		}
+		// 	}
+		// 	return true;
+		// },
 		// 格式化日期timestamp
 		formatDate: function (dateStr) {
 			//标准游览器，如果数组里面最后一个字符为逗号，JS引擎会自动剔除它。
