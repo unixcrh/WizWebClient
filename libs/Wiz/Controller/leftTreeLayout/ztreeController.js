@@ -109,9 +109,9 @@ define(function (require, exports, module) {
 				childList = zTreeBase.addChildToNode(treeObj, data.list, treeNode);
 				if (treeNode.level === 0) {
 					_messageCenter.saveNodesInfos(treeNode.type, childList);
-				}
-				if (treeNode.type === 'category') {
-					addDefaultNodes(treeNode, treeNode.type);	
+					if (treeNode.type === 'category') {
+						addDefaultNodes(treeNode, treeNode.type);	
+					}
 				}
 			});
 		}
