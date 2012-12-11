@@ -73,7 +73,7 @@ define(function (require, exporst, module) {
 		// 显示的时候再初始化树空间
 		function initTree() {
 			var setting = zTreeBase.getDefaultSetting(),
-					categoryNodes = _messageCenter.getNodesInfo('category');
+					categoryNodes = _messageCenter.getNodesInfo('category'),
 					tagNodes = _messageCenter.getNodesInfo('tag');
 			setting.callback = {
 				onClick : categoryTreeOnClick,
