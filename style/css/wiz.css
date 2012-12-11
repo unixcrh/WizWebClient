@@ -981,7 +981,7 @@ div.c_loadingDot {
 .params-tags {
 	border: 1px solid #b1b1b1;
 	padding: 3px;
-	margin: 20px 0;
+	margin: 10px 0 20px;
 	background-color: #fff;
 }
 
@@ -1011,18 +1011,18 @@ div.c_loadingDot {
 }
 .params-tags>div:first-child {
 	line-height: 142%;
-	padding: 6px 6px 0;
-	height: 30px;
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
+	padding: 6px;
 }
 
 .edit-tag-span {
-	padding: 0 5px;
+	margin-top: 5px;
+	padding: 1px 1px 5px;
 	border: 1px solid #5c5c5c;
 	margin: 0 2px;
-	white-space: nowrap;
+	display: inline-block;
+	border-radius: 2px;
+	height: 15px;
+	background-color: #fafafa;
 }
 /* 编辑页面中需要的tree控件 */
 .edit-tree {

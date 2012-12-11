@@ -12,7 +12,7 @@ define(function (require, exporst, module) {
 		SaveTipDiv: 'save_tip'
 	},
 		_class = {
-			tagSpan: 'edit-tag-span'
+			tagDiv: 'edit-tag-span'
 		},
 
 		zTree = require('ztree'),
@@ -161,12 +161,12 @@ define(function (require, exporst, module) {
 				removeTagHelp();
 			}
 			var name = treeNode.name;
-			var tagSpan = document.createElement('span');
-			tagSpan.innerText = name;
-			tagSpan.id = treeNode.tag_guid;
+			var tagDiv = document.createElement('div');
+			tagDiv.innerText = name;
+			tagDiv.id = treeNode.tag_guid;
 			// 设置默认的style
-			tagSpan.className = _class.tagSpan;
-			container.appendChild(tagSpan);
+			tagDiv.className = _class.tagDiv;
+			container.appendChild(tagDiv);
 
 			// 缓存
 			_tagsList.push(treeNode.tag_guid);
