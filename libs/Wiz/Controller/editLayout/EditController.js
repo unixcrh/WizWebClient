@@ -2,8 +2,10 @@ define(function (require, exporst, module) {
 	var _id = {
 		CategoryCtSpan: 'params_category',
 		CategoryTree: 'category_tree',
+		CategoryTip: 'params_category_tip',
 		TagCtSpan: 'params_tag',
 		TagTree: 'tag_tree',
+		TagTip: 'params_tag_tip',
 		EditorCt: 'wiz_edit_area',
 		TitleInput: 'title_input',
 		SaveTipDiv: 'save_tip'
@@ -15,10 +17,9 @@ define(function (require, exporst, module) {
 		zTree = require('ztree'),
 		zTreeBase = require('../../../component/zTreeBase'),
 		GlobalUtil = require('../../../common/util/GlobalUtil'),
-		_locale = require('locale'),
+		_locale = require('locale').EditPage,
 
 		_lastGuid = null,
-		_defaultLocation = _locale,
 		_editor = null,
 		_docInfo = {},
 		// 保存当前选中的标签列表
@@ -30,7 +31,9 @@ define(function (require, exporst, module) {
 
 	function EditController () {
 
+		// 初始化操作
 		initEditor();
+		localizePageMessage();
 
 		function show(categoryObj) {
 			resetAll();
@@ -40,8 +43,8 @@ define(function (require, exporst, module) {
 				_docInfo.category = categoryObj.location;
 				$('#' + _id.CategoryCtSpan).html(categoryObj.localeLocation);
 			} else {
-				_docInfo.category = '/My Notes/';
-				$('#' + _id.CategoryCtSpan).html('/我的笔记/');
+				_docInfo.category = _locale.DefaultFolderObj.location;
+				$('#' + _id.CategoryCtSpan).html(_locale.DefaultFolderObj.display);
 			}
 			if (_editor !== null) {
 				_editor.setContent('');
@@ -60,6 +63,14 @@ define(function (require, exporst, module) {
 	    _editor.render(_id.EditorCt);
 		}
 
+		// 显示本地化页面的显示文字 
+		function localizePageMessage() {
+			$('#' + _id.CategoryTip).html(_locale.FolderSpan);
+			$('#' + _id.TagTip).html(_locale.TagSpan);
+			$('#' + _id.TitleInput).attr('placeholder', _locale.DefaultTitle);
+		}
+
+		// 显示的时候再初始化树空间
 		function initTree() {
 			var setting = zTreeBase.getDefaultSetting(),
 					categoryNodes = _messageCenter.getNodesInfo('category');
@@ -162,7 +173,7 @@ define(function (require, exporst, module) {
 		}
 
 		function showTagHelp() {
-			$('#' + _id.TagCtSpan).html("点击此处添加标签");
+			$('#' + _id.TagCtSpan).html(_locale.TagHelpSpan);
 		}
 
 		function removeTagHelp() {
@@ -269,7 +280,11 @@ define(function (require, exporst, module) {
 			if (_lastGuid) {
 				documentInfo.guid = _lastGuid;
 			}
-			documentInfo.tag_guids = collectTagGuids();
+			var tags = collectTagGuids();
+			// 为空不传，如果传入的话，会造成openapi端请求错误
+			if (tags && tags.length > 0) {
+				documentInfo.tag_guids = tags;	
+			}
 			console.log(typeof documentInfo.tag_guids);
 			if (documentInfo.title === '' || documentInfo.title.length < 0) {
 				// TODO 提示
@@ -289,7 +304,7 @@ define(function (require, exporst, module) {
 
 		// 正在保存
 		function nowSaving() {
-			var savingMsg = _locale.EditPage.Saving;
+			var savingMsg = _locale.Saving;
 			$('#' + _id.SaveTipDiv).html(savingMsg);
 		}
 
@@ -298,7 +313,7 @@ define(function (require, exporst, module) {
 			if (_lastGuid === null) {
 				_lastGuid = docGuid;
 			}
-			var savedMsg = _locale.EditPage.Saved;
+			var savedMsg = _locale.Saved;
 			var curTime = getCurTime();
 			var msg = savedMsg.replace('{time}', curTime);
 			$('#' + _id.SaveTipDiv).html(msg);

@@ -46,10 +46,19 @@ define({
 		Create: '新建筆記',
 		Save: '保存',
 		SaveAndQuit: '保存並閱讀',
+		Sending: 'Sending...',
 		Cancel: '取消'
 	},
 	EditPage: {
 		Saving: '正在保存...',
-		Saved: '筆記已於 {time} 保存'
+		Saved: '筆記已於 {time} 保存',
+		FolderSpan: 'Folder: ',
+		DefaultFolderObj:  {
+			display: '/My Notes/',
+			location: '/My Notes/'
+		},
+		DefaultTitle: 'Untitled',
+		TagHelpSpan: 'Click to add tags',
+		TagSpan: 'Tag: '
 	}
 })

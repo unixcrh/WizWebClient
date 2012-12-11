@@ -46,10 +46,19 @@ define({
 		Create: 'New Note',
 		Save: 'Save',
 		SaveAndQuit: 'Save and Read',
+		Sending: 'Sending...',
 		Cancel: 'Cancel'
 	},
 	EditPage: {
 		Saving: 'Saving...',
-		Saved: 'The document has to save at {time}'
+		Saved: 'The document has to save at {time}',
+		FolderSpan: 'Folder: ',
+		DefaultFolderObj:  {
+			display: '/My Notes/',
+			location: '/My Notes/'
+		},
+		DefaultTitle: 'Untitled',
+		TagHelpSpan: 'Click to add tags',
+		TagSpan: 'Tag: '
 	}
 })

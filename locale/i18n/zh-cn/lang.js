@@ -46,10 +46,19 @@ define({
 		Create: '新建笔记',
 		Save: '保存',
 		SaveAndQuit: '保存并阅读',
+		Sending: '正在保存...',
 		Cancel: '取消'
 	},
 	EditPage: {
 		Saving: '正在保存...',
-		Saved: '笔记已于 {time} 保存'
+		Saved: '笔记已于 {time} 保存',
+		FolderSpan: '文件夹: ',
+		DefaultFolderObj:  {
+			display: '/我的笔记/',
+			location: '/My Notes/'
+		},
+		DefaultTitle: '未命名',
+		TagHelpSpan: '点击添加标签',
+		TagSpan: '标签: '
 	}
 })

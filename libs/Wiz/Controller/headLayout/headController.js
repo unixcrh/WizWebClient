@@ -47,6 +47,7 @@ define(function (require, exports, module) {
 					$('#' + _node.id.saveSpan).html(_locale.HeadMenuForDoc.Save);
 					$('#' + _node.id.cancelSpan).html(_locale.HeadMenuForDoc.Cancel);
 					$('#' + _node.id.saveAndQuitSpan).html(_locale.HeadMenuForDoc.SaveAndQuit);
+					$('#' + _node.id.sendingSpan).html(_locale.HeadMenuForDoc.Sending);
 				}
 			},
 			_event = {
