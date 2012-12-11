@@ -12,7 +12,7 @@ define(function (require, exporst, module) {
 			tagSpan: 'edit-tag-span'
 		},
 
-		
+		zTree = require('ztree'),
 		zTreeBase = require('../../../component/zTreeBase'),
 		GlobalUtil = require('../../../common/util/GlobalUtil'),
 		_locale = require('locale'),
@@ -85,7 +85,7 @@ define(function (require, exporst, module) {
 		}
 
 		function initAndGetRoot(containerId, setting, nodesInfo) {
-			var treeRoot = $.fn.zTree.init($("#" + containerId), setting, nodesInfo);
+			var treeRoot = zTree.init($("#" + containerId), setting, nodesInfo);
 			var treeElem = $("#" + containerId);
 			treeElem.hover(function () {
 				if (!treeElem.hasClass("showIcon")) {
