@@ -70,7 +70,7 @@ define(function(require, exports, module) {
 	 */
 	function mergeParams(targetParams, params) {
 		targetParams = targetParams ? targetParams : {};
-		for (key in params) {
+		for (var key in params) {
 			if (!targetParams[key]) {
 				targetParams[key] = params[key];
 			}
