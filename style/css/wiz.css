@@ -1005,15 +1005,19 @@ div.c_loadingDot {
 	cursor: pointer;
 }
 .params-tags>div:first-child {
-	height: 30px;
 	line-height: 142%;
 	padding: 6px 6px 0;
+	height: 30px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
 .edit-tag-span {
 	padding: 0 5px;
 	border: 1px solid #5c5c5c;
 	margin: 0 2px;
+	white-space: nowrap;
 }
 /* 编辑页面中需要的tree控件 */
 .edit-tree {
