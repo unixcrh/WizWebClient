@@ -18,6 +18,16 @@
                 // alert(document.getElementsByName("login-ctn")[0].style.height);
                 // alert(document.getElementsByName("login-ctn")[0].innerHTML);
                 document.getElementById('login_name').focus();
+                var reg = document.getElementById("register-form");
+                var login = document.getElementById("login-form");
+                reg.style.display = "none";
+                login.style.display = "block";
+
+                document.getElementById("to-register").onclick=function(){
+                    reg.display = "block";
+                    login.display = "none";
+                };
+
             }
         </script>
 
@@ -32,6 +42,7 @@
                         <p>添加安全信息可以帮助您保护笔记</p>
                     </div>
                 </div>
+
                 <div id="login-form">
                     <h1>登录</h1>
                     <form name="" id="" method="post">
@@ -44,9 +55,12 @@
                         <input type="checkbox" name="" id="login_keeppassword" class="chkbox"><span>保持登录状态</span></input>
                         <input type="submit" name="" value="&nbsp;&nbsp;登录&nbsp;&nbsp;" class="btn" id="loginkeycode"></input>
                     </form>
-                    <p>还没有为知账户？&nbsp;</p><a href="" id="to-register" class="dark">立即注册</a>
+                    <p>还没有为知账户？&nbsp;</p>
+                    <a href="" id="to-register" class="dark">立即注册</a>
                 </div>
+
                 <br clear="all" />
+
                 <div id="register-form">
                     <h1>注册</h1>
                     <form name="" id="" method="post">
@@ -66,6 +80,7 @@
                     <p>已经有为知账户？&nbsp;</p><a href="" id="to-login" class="dark">登录</a>
                 </div>
             </div>
+
             <div id="login-footer">
                 <span>©2012&nbsp;Wiz&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="">条款</a>&nbsp;&nbsp;<a href="">隐私和&nbsp;Cookie</a></span>
                 <span style="float:right"><a href="">帮助中心</a>&nbsp;&nbsp;<a href="">反馈</a><span>

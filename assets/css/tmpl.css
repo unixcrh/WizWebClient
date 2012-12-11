@@ -957,6 +957,12 @@ table tr td{
   padding: 0;
   float: left;
 }
+.limitwidth td{
+  max-width: 700px;
+  *max-width: 700px;
+  _max-width:700px;
+  line-height: 22px;
+}
 
 /*----------------    登录页面样式     ---------------*/
 
@@ -1014,7 +1020,7 @@ p.error-indicator{
   display:none;
 }*/
 #register-form {
-  display: none;
+  /*display: none;*/
   padding: 6% 8% 0 0;
 }
 #login-form h1, #register-form h1{

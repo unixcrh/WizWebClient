@@ -1,0 +1,111 @@
+﻿<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+        <link rel="stylesheet" href="assets/css/clear.css">
+        <link rel="stylesheet" href="assets/css/tmpl.css">
+        <!-- <script src="assets/script/jquery.js" /> -->
+        <!-- <link rel="stylesheet" href="assets/css/media-queries.css"> -->
+
+        <title>为知笔记 常见问题解答</title>
+        <!--[if lt IE 9]> <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script> 
+		<![endif]-->
+        
+
+    </head>
+    <body>
+        <!-- 页面顶部 -->
+        <div id="headerCtn">
+            <div id="header">
+                <span id="logo">
+                    <a href="#">
+                        <img src="assets/img/logo.png" alt="wiz note" class='logo-img'>
+                    </a>
+                    <!-- 搜索框 -->
+                    <!-- <div id="search">
+                        <input type="text" name="searchText"></input>
+                        <button value=""></button>
+                    </div> -->
+                </span>
+                
+                <!-- 导航栏 -->
+                <div></div>
+                <ul class="primaryNav">
+                    <li><a href="/">了解为知</a></li>
+                    <li><a href="/download">下载</a></li>
+                    <li><a href="/enterprise">企业方案</a></li>
+                    <li><a class="currentPage" href="/support">博客</a></li>
+                    <li><a href="/joinus">加入我们</a></li>
+                    <li style="float:right; margin:0 4px 0 0;"><a href="/login">登录</a> / <a href="/register">注册</a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- 二级菜单导航栏 -->
+        <!-- <div id="subNavCtn">
+            <ul id="subNav">
+                <li><a class="currentPage" href="/">博客</a></li>
+                <li><a href="/download">微博</a></li>
+                <li><a href="/enterprise">常见问题FAQ</a></li>
+                <li><a href="/support">使用手册</a></li>
+            </ul>
+        </div> -->
+        <!-- 页面内容 -->
+        <div class="bd">
+            <!-- 页面概述 -->
+            <div class="wraper">
+                <div class="blog">
+                    <div class="piece">
+                        <h2 class="article-title">Wiz同步功能详细解释</h2>
+                        <p class="article-text">
+&nbsp;</p>
+						<p class="article-text">
+经常有用户问，Wiz的同步时什么方向？是否可以选择同步方向。下面做一下解释。</p> <p class="article-text">
+
+Wiz的同步，是增量式的，不是普通文件同步那种设置同步方向，然后全部进行比较再同步。Wiz同步，可以理解为同步的是您进行的操作。
+ </p> <p class="article-text">
+假如您有两台电脑（更多的电脑类似），家里一台电脑，单位一台电脑。
+ </p> <p class="article-text">
+ </p> <p class="article-text">
+1、首先，您在家里安装了Wiz，并且收集/新建了一些文档，然后注册了Wiz账号，进行同步。此时的操作，就是把家里电脑上面的资料，同步到服务器上面。
+ </p> <p class="article-text">
+2、然后，您在单位也安装了Wiz，并且也收集/新建了一些文档，此时想要和家里的资料进行同步，则直接使用同步功能，输入您在家里注册的Wiz帐户（用户名/密码）。此时，将会把服务器上面的资料同步下来，然后把单位上面的资料同步到服务器，此时单位和服务器上面的资料，是一样的，都是单位和家里的资料的总和。
+ </p> <p class="article-text">
+您可以在单位继续进行资料的收集整理等操作，此后同步，都会把您在单位的操作，同步到服务器上面，保持服务器和单位上面的完全一致。
+ </p> <p class="article-text">
+3、接下来，您又回到家里，进行同步，则会把服务器上面新增的内容（单位）同步下来，此时，家里，单位和服务器上面的内容完全一致。如果您在家里同步前，进行了增加，修改的操作，同样这些操作，也会反映到服务器上面，也就是把您在家里新增/修改的资料，同步到服务器上面。这样，服务器和家里的内容，保持一致。
+ </p> <p class="article-text">
+4、您再次回到单位，进行同步，此时则单位/家里/服务器完全一致，然后您可以在单位进行操作，保持单位和服务器数据一致。
+ </p> <p class="article-text">
+5、…
+ </p> <p class="article-text">
+即使再多的电脑进行同步，同步原理也和上面的类似。
+ </p> <p class="article-text">
+ </p> <p class="article-text"><h3 class="chapter-title">删除</h3>
+ </p> <p class="article-text">
+如果您在任意一台电脑删除了一个文档，假如该文档还没有被同步到服务器，则没有影响。
+如果该文档已经被同步到服务器，则服务器上面的文档被删除。同时您在其它电脑上面同步的时候，其它电脑上面相应的文档，也会被删除。
+ </p> <p class="article-text">
+ </p> <p class="article-text"><h3 class="chapter-title">冲突</h3>
+</p> <p class="article-text">
+在两台或者更多电脑上面，和服务器同步前，都修改了同一文档，就会产生冲突。
+此时如果先在家里同步，则使用家里的文档覆盖服务器的文档。然后再在单位同步的时候，会使用服务器文档（家里修改的版本）的覆盖本地（单位）的文档，本地（单位）的文档，则会在回收站保留一个副本。
+ </p> <p class="article-text">
+也就是说，哪一个数据源先进行同步，则最终就保留哪一个数据源的结果。其它数据源的内容，会在回收站内保留一个副本。
+ </p> 
+<p class="article-text"><br></p> 
+<p class="article-text"><br></p> 
+<p class="article-text"><br></p>
+<p class="article-text"><br></p>
+                        
+        <!-- 页脚 公司相关信息 -->
+       <div id="footer">
+            <!-- 装饰 -->
+            <div class="innerFooter">
+                <!-- <a href="www.wiz.cn"><img src="assets/img/logo.png" class="wiz"></img></a> -->
+                <span id="info">  <a href="">联系我们</a>  <a href="">论坛</a>  京ICP备11038801号 © 2001-2012 Wiz</span>
+                <br clear="all"/>
+            </div>
+        </div>
+    </body>
+</html>

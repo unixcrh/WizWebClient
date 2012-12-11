@@ -1,4 +1,4 @@
-<!DOCTYPE HTML>
+﻿<!DOCTYPE HTML>
 <html>
     <head>
         <meta charset="utf-8">
@@ -9,7 +9,8 @@
         <!-- <link rel="stylesheet" href="assets/css/media-queries.css"> -->
 
         <title>为知笔记 常见问题解答</title>
-        <!--[if lt IE 9]> <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script> <![endif]-->
+        <!--[if lt IE 9]> <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script> 
+		<![endif]-->
         
 
     </head>
@@ -55,63 +56,15 @@
             <div class="wraper">
                 <div class="blog">
                     <div class="piece">
+                        <h2 class="article-title">卡巴斯基和Nod32网络监视软件<br/>造成Wiz同步失败的问题</h2>
+                        <p class="article-text">同步时如果碰到以下出错信息</p>
 
-                        <h2 class="article-title"></h2>
+                        <p class="article-text">Unknown content-type while calling xml-rpc: text/html HTTP/1.1 400 Bad Request Date: Tue, 12 Jul 2011 05:46:45 GMT Server: Apache Content-Length: 292 Connection: close Content-Type: text/html; charset=iso-8859-1 &lt;!DOCTYPE HTML PUBLIC “-//IETF//DTD HTML 2.0//EN”&gt; &lt;html&gt;&lt;head&gt; &lt;title&gt;400 Bad Request&lt;/title&gt; &lt;/head&gt;&lt;body&gt; &lt;h1&gt;Bad Request&lt;/h1&gt; &lt;p&gt;Your browser sent a request that this server could not understand.&lt;br /&gt; Request header field is missing ‘:’ separator.&lt;br /&gt; &lt;pre&gt; &lt;/pre&gt; &lt;/p&gt; &lt;/body&gt;&lt;/html&gt; Failed to process post data result! HTTP/1.1 400 Bad Request Date: Tue, 12 Jul 2011 05:46:45 GMT Server: Apache Content-Length: 292 Connection: close Content-Type: text/html; charset=iso-8859-1 &lt;!DOCTYPE HTML PUBLIC “-//IETF//DTD HTML 2.0//EN”&gt; &lt;html&gt;&lt;head&gt; &lt;title&gt;400 Bad Request&lt;/title&gt; &lt;/head&gt;&lt;body&gt; &lt;h1&gt;Bad Request&lt;/h1&gt; &lt;p&gt;Your browser sent a request that this server could not understand.&lt;br /&gt; Request header field is missing ‘:’ separator.&lt;br /&gt; &lt;pre&gt; &lt;/pre&gt; &lt;/p&gt; &lt;/body&gt;&lt;/html&gt;</p>
 
-                        <p class="article-text"></p>
-                        <img src="assets/img/WizNote.jpg" alt=""></img>
-
-                        <h3 class="chapter-title"></h3>
-
-                        
-
-                        <p class="article-text"></p>
-
-                        <!-- 表格样式要是自己搞不定的话明天我再帮你弄 -->
-                        <table>
-                            <!-- 有几行就写几个tr标签 -->
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td>有几列就几个td</td>
-                            </tr>
-                            <tr>
-                                <td>有几列就几个td</td>
-                                <td>有几列就几个td</td>
-                                <td>有几列就几个td</td>
-                                <td>有几列就几个td</td>
-                                <td>有几列就几个td</td>
-                                <td>有几列就几个td</td>
-                            </tr>
-                            <tr>
-                                <td>有几列就几个td</td>
-                                <td>有几列就几个td</td>
-                                <td>有几列就几个td</td>
-                                <td>有几列就几个td</td>
-                                <td>有几列就几个td</td>
-                                <td>有几列就几个td</td>
-                            </tr>
-                        </table>
-                        <br/>
-                        <ul class="insideul">
-                            <li>没有序号的列表</li>
-                            <li>有几项就写几个li标签</li>
-                            <li></li>
-                            <li></li>
-                        </ul>
-                        <br/>
-                        <ol class="insideol">
-                            <li>有序号的列表</li>
-                            <li>有几项就写几个li标签</li>
-                            <li></li>
-                            <li></li>
-                        </ol>
+                        <p class="article-text">原因可能是因为：卡巴斯基网络安全套件或nod32网络安全将wiz上传下载命令修改过，导致出错，可以将Wiz网络同步加到白名单中。</p>
+                        <br/><br/>
                     </div>
                 </div>
-                
             </div>
         </div>
         <!-- 页脚 公司相关信息 -->
