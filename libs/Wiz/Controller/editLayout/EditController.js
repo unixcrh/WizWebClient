@@ -15,9 +15,9 @@ define(function (require, exporst, module) {
 		
 		zTreeBase = require('../../../component/zTreeBase'),
 		GlobalUtil = require('../../../common/util/GlobalUtil'),
+		_locale = require('locale'),
 
 		_lastGuid = null,
-		_locale = require('locale'),
 		_defaultLocation = _locale,
 		_editor = null,
 		_docInfo = {},

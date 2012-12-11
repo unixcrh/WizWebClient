@@ -24,7 +24,11 @@ define(function (require, exports, module) {
 
 
 		function zTreeBeforeRename(treeId, treeNode, newName) {
-
+			// 如果为空，不做任何操作，直接删除节点
+			if (newName === '') {
+				treeObj.removeNode(treeNode, false);
+				return;
+			}
 			if(zTreeBase.checkNewName(newName) === false) {
 				return;
 			}
@@ -253,7 +257,6 @@ define(function (require, exports, module) {
 				treeObj.selectNode(nodes[0]);
 			}
 		}
-
 
 		this.init = init;
 		this.getCurrentCategory = getCurrentCategory;
