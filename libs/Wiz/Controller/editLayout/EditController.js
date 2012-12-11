@@ -229,9 +229,16 @@ define(function (require, exporst, module) {
  				return;
  			}
  			zTreeBase.loadingNode(treeNode);
+ 			console.log(treeNode);
 			//获取到当前的kb_guid
 			_messageCenter.getChildNodes(treeNode, function(data) {
-				zTreeBase.addChildToNode(_categoryTreeRoot, data.list, treeNode);
+				var treeRoot = null
+				if (treeNode.type === 'category') {
+					treeRoot = _categoryTreeRoot;
+				} else if (treeNode.type === 'tag') {
+					treeRoot = _tagTreeRoot;
+				}
+				zTreeBase.addChildToNode(treeRoot, data.list, treeNode);
 			});
 		}
 
