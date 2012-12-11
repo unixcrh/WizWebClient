@@ -57,34 +57,12 @@
                 <div class="blog">
                     <div class="piece">
                         <h2 class="article-title">通过Gappproxy代理使用Wiz无法同步的问题</h2>
-
-
-                        <p class="article-text">    <div id="main">
+                        <p class="article-text">使用Gappproxy的用户，在同步时会出现以下错误：</p>
+                        <p class="article-text" style="font-size:12px; color:#999;">2010年10月22日 9:40:13 (8537201): ret_code != 200 (post data)!<br/>2010年10月22日 9:40:13 (8537217):包MD5校验错误!<br/>2010年10月22日 9:40:14 (8538855): ret_code != 200 (post data)!<br/>2010年10月22日 9:40:15 (8538870): 录超时,或在其它终端登录,请重新登录!</p>
+                        <p class="article-text">出现数据提交时服务器校验数据错误，</p>
+                        <p class="article-text">经分析，<br/>由于gappproxy使用google服务做代理的技巧，可能是google服务器做了限制，限制了post包的尺寸，将用户post数据截断<br/>导致wiz服务器接收到的数据不完整。导致md5校验错误。</p>
+                        <p class="article-text">因此使用时，尽量避免使用这类代理</p>
     
-		<div id="container">
-			
-						
-			<div id="content">
-		
-    	        
-
-					<div class="entry-content">
-<div id=WizHtmlContentId>&nbsp;<p>使用Gappproxy的用户，在同步时会出现以下错误：</div>
-<div>&nbsp;</div>
-<div><span style="FONT-FAMILY: Segoe UI; COLOR: #000000">2010年10月22日 9:40:13 (8537201): ret_code != 200 (post data)! </span></div>
-<p><span id="more-2139"></span>
-<div><span style="FONT-FAMILY: Segoe UI; COLOR: #000000">2010年10月22日 9:40:13 (8537217): <font color=#ff0000>包MD5校验错误!</font></span></div>
-<div><span style="FONT-FAMILY: Segoe UI; COLOR: #000000">2010年10月22日 9:40:14 (8538855): ret_code != 200 (post data)! </span></div>
-<div><span style="FONT-FAMILY: Segoe UI; COLOR: #000000">2010年10月22日 9:40:15 (8538870): 登录超时,或在其它终端登录,请重新登录!</span></div>
-<div><span style="FONT-FAMILY: Segoe UI; COLOR: #000000"></span>&nbsp;</div>
-<div><span style="FONT-FAMILY: Segoe UI; COLOR: #000000">出现数据提交时服务器校验数据错误。</span></div>
-<div><span style="FONT-FAMILY: Segoe UI; COLOR: #000000"></span>&nbsp;</div>
-<div><span style="FONT-FAMILY: Segoe UI; COLOR: #000000">经分析，</span></div>
-<div><span style="FONT-FAMILY: Segoe UI; COLOR: #000000">由于gappproxy使用google服务做代理的技巧，可能是google服务器做了限制，限制了post包的尺寸，将用户post数据截断，</span></div>
-<div><span style="FONT-FAMILY: Segoe UI; COLOR: #000000">导致wiz服务器接收到的数据不完整，导致md5校验错误。</span></div>
-<div><span style="FONT-FAMILY: Segoe UI; COLOR: #000000"></span>&nbsp;</div>
-<div><span style="FONT-FAMILY: Segoe UI; COLOR: #000000">因此使用时，尽量避免使用这类代理</span><!--WizHtmlContent-->。</div></p><br><br>
-
                     </div>
                 </div>
                 

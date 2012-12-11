@@ -1094,6 +1094,7 @@ p.error-indicator{
   font-weight: bold;
   margin: 0;
   padding: 0;
+  cursor:pointer;
 }
 .dark:hover, .smooth:hover{
   color: #24459A;

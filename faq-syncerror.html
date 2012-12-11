@@ -5,6 +5,7 @@
         <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
         <link rel="stylesheet" href="assets/css/clear.css">
         <link rel="stylesheet" href="assets/css/tmpl.css">
+        <script src="assets/script/jquery.js"></script>
         <!-- <script src="assets/script/jquery.js" /> -->
         <!-- <link rel="stylesheet" href="assets/css/media-queries.css"> -->
 
@@ -56,89 +57,66 @@
             <div class="wraper">
                 <div class="blog">
                     <div class="piece">
-                        <h2 class="article-title">卡巴斯基和Nod32网络监视软件造成Wiz同</h2>
-						<h2 class="article-title">步失败的问题</h2>
+                         <h2 class="article-title">常见同步错误原因</h2>
+                        <p class="article-text">利用Wiz同步的时候，有的时候会遇到一些错误导致无法同步，在这里分情况列出来并给出解决方法。</p>
+                        <p class="article-text">Wiz同步出错的时候，会在同步信息窗口里面输出错误信息，如下图：</p>
+                        <img src="assets/img/img-syncerror-1.png" alt=""></img>
+                        <p class="article-text">一般来说，红色文字前几行，是最根本的错误原因。下面就根据前几行红色文字的不同情况，来列出解决方法。</p>
+                        <ul class="insideul">
+                            <li><a href="#a1" class="smooth">GetLastError()=12007</a></li>
+                            <li><a href="#2" class="smooth">GetLastError()=12002</a></li>
+                            <li><a href="#a3" class="smooth">InternetWriteFile failed! GetLastError()=12030</a></li>
+                            <li><a href="#a4" class="smooth">xxx.ziw does not exists! Failed to load document data!</a></li>
+                            <li><a href="#a5" class="smooth">客户端版本太低</a></li>
+                            <li><a href="#a6" class="smooth">Failed to call xml rpc: 390, 文档GUID已经存在于其他知识库!</a></li>
+                            <li><a href="#a7" class="smooth">上传文件限制在10485760字节以下,当前文件大小是12222158字节</a></li>
+                            <li><a href="#a8" class="smooth">月流量已用完! 限制为 XXM!</a></li>
+                            <li><a href="#a9" class="smooth">其他错误</a></li>
+                        </ul>
+                        <h3 class="chapter-title"><a id="a1" class="pageanchor">&nbsp;</a>GetLastError()=12007</h3>
 
-                      <div id="main">
-    
-		<div id="container">
-			
-						
-			<div id="content">
+                        <p class="article-text">这种一般是因为您的电脑没有联网，或者防火墙配置不允许Wiz联网。请检查您的电脑网络配置，确认可以正常连接网络。</p>
+                        <h3 class="chapter-title"><a id="a2" class="pageanchor">&nbsp;</a>GetLastError()=12002</h3>
 
-			
-					<div class="entry-content">
-<div id=WizHtmlContentId>
-<div>&nbsp;<p>利用Wiz同步的时候，有的时候会遇到一些错误导致无法同步，在这里分情况列出来并给出解决方法。</div>
-<div>&nbsp;</div>
-<div>Wiz同步出错的时候，会在同步信息窗口里面输出错误信息，如下图：</div>
-<div>&nbsp;</div>
-<div></div>
-<div></div>
-<div><img src="http://www.wiz.cn/wp-content/uploads/2011/01/wpid-0a755a3f68d416b4eabfa3d26e843471_114594471.png"></div>
-<div>&nbsp;</div>
-<div>一般来说，红色文字前几行，是最根本的错误原因。下面就根据前几行红色文字的不同情况，来列出解决方法。</div>
-<ul>
-<li><a href="#GetLastError()=12007"><font color="#2672EC">GetLastError()=12007</font></a><font color="#2672EC">
-</font>
-<li><a href="#GetLastError()=12002"><font color="#2672EC">GetLastError()=12002</font></a><font color="#2672EC">
-</font>
-<li><a href="#InternetWriteFile failed! GetLastError()=12030">
-<font color="#2672EC">InternetWriteFile failed! GetLastError()=12030</font></a><font color="#2672EC">
-</font>
-<li><a href="#xxx.ziw does not exists! Failed to load document data!">
-<font color="#2672EC">xxx.ziw does not exists! Failed to load document data!
-</font> </a>
-<li><a href="#客户端版本太低"><font color="#2672EC">客户端版本太低</font></a><font color="#2672EC">
-</font>
-<li><a href="#Failed to call xml rpc: 390, 文档GUID已经存在于其他知识库!">
-<font color="#2672EC">Failed to call xml rpc: 390, 文档GUID已经存在于其他知识库!</font></a><font color="#2672EC">
-</font>
-<li><a href="#上传文件限制在10485760字节以下,当前文件大小是12222158字节"><font color="#2672EC">上传文件限制在10485760字节以下,当前文件大小是12222158字节</font></a><font color="#2672EC">
-</font>
-<li><a href="#月流量已用完! 限制为 XXM!"><font color="#2672EC">月流量已用完! 限制为 XXM!</font></a><font color="#2672EC">
-</font>
-<li><a href="#其他错误"><font color="#2672EC">其他错误</font></a></li>
-</ul>
-<h2><a name=GetLastError()=12007><font color="#2672EC">GetLastError()=12007</font></a></h2>
-<div>这种一般是因为您的电脑没有联网，或者防火墙配置不允许Wiz联网。请检查您的电脑网络配置，确认可以正常连接网络。</div>
-<h2><a name=GetLastError()=12002><font color="#2672EC">GetLastError()=12002</font></a></h2>
-<div>用户使用迅雷、电驴等p2p工具时，占用网络资源太多，导致同步速度慢，超时后出现12002错误，可以先关掉迅雷、电驴试试，建议使用限速工具合理分配网络资源。</div>
-<div>&nbsp;</div>
-<div>也可能是因为网络速度比较慢引起的，例如您在香港/台湾等地进行同步，可能会有这个问题。</div>
-<h2><a name="InternetWriteFile failed! GetLastError()=12030">
-<font color="#2672EC">InternetWriteFile failed! GetLastError()=12030</font></a></h2>
-<div>通常情况是无法连接到服务器，可能是因为服务器维护等其它原因造成的，请等待一段时间之后重试，一般就可以了。</div>
-<div>&nbsp;</div>
-<h2><a name="xxx.ziw does not exists! Failed to load document data!">
-<font color="#2672EC">xxx.ziw&nbsp;does not exists! Failed to load document data!</font></a></h2>
-<div>通常是因为您直接在资源管理器内删除了ziw文件，而不是在Wiz里面删除文档。请您到WizExplorer里面找到相应的文档记录，然后删除，就可以进行同步了。</div>
-<div>也可以在WizExplorer里面，在文件夹列表内单击鼠标右键，选择“更新数据库索引”，如下图：</div>
-<div></div>
-<div></div>
-<div><img src="http://www.wiz.cn/wp-content/uploads/2011/01/wpid-0a755a3f68d416b4eabfa3d26e843471_114844631.png"></div>
-<div>&nbsp;</div>
-<div>更新您的数据库索引，等到更新完毕后，重新同步就可以了。</div>
-<div>&nbsp;</div>
-<h2><a name=客户端版本太低><font color="#2672EC">客户端版本太低</font></a></h2>
-<div>请到<a href="http://wiz.cn/download.html" target=_blank><font color=#800080>http://wiz.cn/download.html</font></a>下载一个最新版本的Wiz，升级后就可以正常同步了。</div>
-<div>&nbsp;</div>
-<h2><a name="Failed to call xml rpc: 390, 文档GUID已经存在于其他知识库!">
-<font color="#2672EC">Failed to call xml rpc: 390, 文档GUID已经</font>存在于其他知识库!</a></h2>
-<div>可能的原因是您曾经用某一个帐户同步过数据，然后又用通过某些方式，更改了这个数据库的帐户，重新同步，就会出现这个问题。</div>
-<div>请使用您最开始使用的帐户，或者把相应的文档删除。</div>
-<div>&nbsp;</div>
-<h2><a name=上传文件限制在10485760字节以下,当前文件大小是12222158字节><font color="#2672EC">上传文件限制在xxx字节以下,当前文件</font>大小是xxx字节</a></h2>
-<div>免费用户最大单个文件限制在10M，VIP用户是25M。如果您的单个附件或者文档大小超出了这个限制，则无法正常上传。对于文档，一般不会超出限制（10M的文档已经太大了，您可以分拆成几个文档，或者把这个文档移动到不进行同步的目录中）。如果是附件，可以用压缩软件分卷压缩。</div>
-<div>&nbsp;</div>
-<h2><a name="月流量已用完! 限制为 XXM!"><font color="#2672EC">月流量已用完! 限制为 XXM!</font></a></h2>
-<div>目前免费用户月流量88M，VIP用户500M（上传流量，下载流量没有限制）。如果上传流量用完了，您就不能再继续上传您的文档。如果是免费用户，就升级到VIP（目前免费升级）。</div>
-<div>&nbsp;</div>
-<h2><a name=其他错误><font color="#2672EC">其他错误</font></a></h2>
-<p>请直接联系客服或者发送邮件：<a href="mailto:support@wizbrother.com">support@wizbrother.com</a></p>
-<p><!--WizHtmlContent--></p>
-<p><!--WizHtmlContentEnd--></div><br><br>
-<br>
+                        <p class="article-text">用户使用迅雷、电驴等p2p工具时，占用网络资源太多，导致同步速度慢，超时后出现12002错误，可以先关掉迅雷、电驴试试，建议使用限速工具合理分配网络资源。<br/>
+                        也可能是因为网络速度比较慢引起的，例如您在香港/台湾等地进行同步，可能会有这个问题。</p>
+                        <h3 class="chapter-title"><a id="a3" class="pageanchor">&nbsp;</a>InternetWriteFile failed! GetLastError()=12030</h3>
+
+                        <p class="article-text">通常情况是无法连接到服务器，可能是因为服务器维护等其它原因造成的，请等待一段时间之后重试，一般就可以了。</p>
+                        <h3 class="chapter-title"><a id="a4" class="pageanchor">&nbsp;</a>xxx.ziw does not exists! Failed to load document data!</h3>
+
+                        <p class="article-text">通常是因为您直接在资源管理器内删除了ziw文件，而不是在Wiz里面删除文档。请您到WizExplorer里面找到相应的文档记录，然后删除，就可以进行同步了。<br/>也可以在WizExplorer里面，在文件夹列表内单击鼠标右键，选择“更新数据库索引”，如下图：</p>
+                        <img src="assets/img/img-syncerror-2.png" alt=""></img>
+
+                        <p class="article-text">更新您的数据库索引，等到更新完毕后，重新同步就可以了。</p>
+                        <h3 class="chapter-title"><a id="a5" class="pageanchor">&nbsp;</a>客户端版本太低</h3>
+
+                        <p class="article-text">请到<a href="http://wiz.cn/download.html" class="dark">http://wiz.cn/download.html</a>下载一个最新版本的Wiz，升级后就可以正常同步了。</p>
+                        <h3 class="chapter-title"><a id="a6" class="pageanchor">&nbsp;</a>Failed to call xml rpc: 390, 文档GUID已经存在于其他知识库!</h3>
+
+                        <p class="article-text">可能的原因是您曾经用某一个帐户同步过数据，然后又用通过某些方式，更改了这个数据库的帐户，重新同步，就会出现这个问题。<br/>请使用您最开始使用的帐户，或者把相应的文档删除。</p>
+                        <h3 class="chapter-title"><a id="a7" class="pageanchor">&nbsp;</a>上传文件限制在xxx字节以下,当前文件大小是xxx字节</h3>
+                        <p class="article-text">免费用户最大单个文件限制在10M，VIP用户是25M。如果您的单个附件或者文档大小超出了这个限制，则无法正常上传。对于文档，一般不会超出限制（10M的文档已经太大了，您可以分拆成几个文档，或者把这个文档移动到不进行同步的目录中）。如果是附件，可以用压缩软件分卷压缩。</p>
+                        <h3 class="chapter-title"><a id="a8" class="pageanchor">&nbsp;</a>月流量已用完! 限制为 XXM!</h3>
+                        <p class="article-text">目前免费用户月流量88M，VIP用户500M（上传流量，下载流量没有限制）。如果上传流量用完了，您就不能再继续上传您的文档。如果是免费用户，就升级到VIP（目前免费升级）。</p>
+                        <h3 class="chapter-title"><a id="a9" class="pageanchor">&nbsp;</a>其他错误</h3>
+                        <p class="article-text">请直接联系客服或者发送邮件：<a href="mailto:support@wizbrother.com" class="dark">support@wizbrother.com</a></p>
+
+                        <script type="text/javascript">
+                            $(".smooth").click(function(){
+                                var href = $(this).attr("href");
+                                console.log(href);
+                                var pos = $(href).offset().top;
+                                $("html,body").animate({scrollTop: pos}, 600); 
+                                return false;
+                            });
+                        </script>
+
+                    </div>
+                </div>
+                
+            </div>
+        </div>
         <!-- 页脚 公司相关信息 -->
        <div id="footer">
             <!-- 装饰 -->

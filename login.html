@@ -12,7 +12,7 @@
         <title>为知笔记 网页版 登录</title>
         <!--[if lt IE 9]> <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script> <![endif]-->
         <script>
-            window.onload=function() {
+            window.onload=function(){
                 var dHeight=screen.availHeight;
                 document.getElementById("login").style.height=(dHeight*0.8).toString()+"px";
                 // alert(document.getElementsByName("login-ctn")[0].style.height);
@@ -20,12 +20,29 @@
                 document.getElementById('login_name').focus();
                 var reg = document.getElementById("register-form");
                 var login = document.getElementById("login-form");
-                reg.style.display = "none";
-                login.style.display = "block";
+
+                function regTest(tdata){
+                    var exp= new RegExp("reg$");
+                    return (exp.test(tdata));
+                }
+                
+                if( regTest(location.search) === true){
+                    reg.style.display = "block";
+                    login.style.display = "none";
+                }
+                else{
+                    reg.style.display = "none";
+                    login.style.display = "block";
+                }
 
                 document.getElementById("to-register").onclick=function(){
-                    reg.display = "block";
-                    login.display = "none";
+                    reg.style.display = "block";
+                    login.style.display = "none";
+
+                };
+                document.getElementById("to-login").onclick=function(){
+                    reg.style.display = "none";
+                    login.style.display = "block";
                 };
 
             }
@@ -56,10 +73,9 @@
                         <input type="submit" name="" value="&nbsp;&nbsp;登录&nbsp;&nbsp;" class="btn" id="loginkeycode"></input>
                     </form>
                     <p>还没有为知账户？&nbsp;</p>
-                    <a href="" id="to-register" class="dark">立即注册</a>
+                    <p id="to-register" class="dark">立即注册</p>
                 </div>
 
-                <br clear="all" />
 
                 <div id="register-form">
                     <h1>注册</h1>
@@ -77,8 +93,10 @@
                         
                         <input type="submit" name="" value="&nbsp;&nbsp;注册&nbsp;&nbsp;" class="btn" id="loginkeycode"></input>
                     </form>
-                    <p>已经有为知账户？&nbsp;</p><a href="" id="to-login" class="dark">登录</a>
+                    <p>已经有为知账户？&nbsp;</p>
+                    <p id="to-login" class="dark">登录</p>
                 </div>
+                <br clear="all" />
             </div>
 
             <div id="login-footer">
