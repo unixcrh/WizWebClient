@@ -1,4 +1,5 @@
 define(function (require, exports) {
+	'use strict';
 	var cookie = require('cookie');
 	var api = require('Wiz/constant').api;
 

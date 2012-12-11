@@ -1,4 +1,5 @@
 define(function (require, exporst, module) {
+	'use strict';
 	var _id = {
 		CategoryCtSpan: 'params_category',
 		CategoryTree: 'category_tree',

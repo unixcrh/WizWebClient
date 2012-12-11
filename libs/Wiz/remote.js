@@ -1,4 +1,5 @@
 define(function(require, exports, module) {
+	'use strict';
 	var context = require('./context'),
 			constant = require('./constant'),
 			loadCtrl = require('../component/loading'),

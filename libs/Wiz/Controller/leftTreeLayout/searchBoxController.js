@@ -1,4 +1,5 @@
 define(function (require, exports, module) {
+	'use strict';
 	var messageCenter = null;					
 
 	var searchInput = $('#s_box_input');

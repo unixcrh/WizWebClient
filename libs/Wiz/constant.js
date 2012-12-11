@@ -2,6 +2,7 @@
  * 常量
  */
 define(function (require, exports, module) {
+	'use strict';
 	var BASE_URL = '';
 	var API_BASE = BASE_URL + '/api';
 	var CATEGORY_BASE = API_BASE + '/category';

@@ -69,6 +69,11 @@ input[type="checkbox"], body:not(.IE_M9) input[type="radio"] {
 .button-group .no-display{
 	display: none;
 }
+
+.no-display {
+	display: none;
+}
+
 .no-display a {
 	visibility: hidden;
 }

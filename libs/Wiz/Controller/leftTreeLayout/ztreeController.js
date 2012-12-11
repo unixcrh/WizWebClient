@@ -1,4 +1,5 @@
 define(function (require, exports, module) {
+	'use strict';
 	var treeProperty = require('./treeProperty'),
 		_messageCenter = null,
 		zTree = require('ztree'),

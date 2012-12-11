@@ -1,4 +1,5 @@
 define(function (require, exports, module) {
+	'use strict';
 	var loadingElemId = 'loading',
 			loadingElem = $('#' + loadingElemId),
 			showDelay = 0;

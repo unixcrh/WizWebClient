@@ -1,4 +1,5 @@
 define(function (require, exports, module) {
+	'use strict';
 
 	var FrameCtrl = require('./FrameController'),
 			_readFrameId = 'wiz_doc_iframe',

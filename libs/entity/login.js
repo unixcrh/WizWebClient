@@ -1,5 +1,6 @@
 
 define(function(require, exports) {
+	'use strict';
 
 	var cookie = require('cookie');
 	var GlobalUtil = require('common/util/GlobalUtil');

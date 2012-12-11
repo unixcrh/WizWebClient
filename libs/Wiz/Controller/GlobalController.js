@@ -3,6 +3,7 @@
  */
 
 define(function (require, exports, module) {
+	'use strict';
 	var GlobalUtil = require('../../common/util/GlobalUtil'),
 			context = require('../context'),
 			constant = require('../constant'),
