@@ -19,7 +19,9 @@ define(function (require, exports, module) {
 			var fdoc = getFrameDocument();
 			var oldFunc = fdoc.body.onclick;
 			fdoc.body.onclick = function (event) {
-				GlobalUtil.fireEvent(document.body, 'click');
+				// jQuery注册的事件，必须用jQuery触发，否则ie下会出问题
+				$(document).trigger('click');
+				// GlobalUtil.fireEvent(document.body, 'click');
 				if (oldFunc) {
 					oldFunc(event);
 				}
@@ -37,7 +39,6 @@ define(function (require, exports, module) {
 		 * @return {[type]}        [description]
 		 */
 		function resizeFrameContainer(iframe){
-			console.log('iframe resize');
 	    if (iframe) {
 				var fdoc = getFrameDocument(),
 						fDocElem = fdoc.documentElement,

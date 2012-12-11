@@ -52,7 +52,6 @@ define(function (require, exporst, module) {
 			_lastGuid = null;
 			$('#' + _id.SaveTipDiv).html('');
 			$('#' + _id.TitleInput).val('');
-			console.log(_categoryTreeRoot);
 			if (_categoryTreeRoot === null) {
 				initCateSpanHandler();
 			}
@@ -177,14 +176,12 @@ define(function (require, exporst, module) {
 		}
 
 		function removeTagHelp() {
-			console.log('removeTagHelp');
 			$('#' + _id.TagCtSpan).html("");
 		}
 
 		function bTagAdded(tagGuid) {
 			var bAdded = false,
 					tagElem = document.getElementById(tagGuid);
-			console.log(tagElem);
 			if (tagElem ) {
 				bAdded = true;
 			}
@@ -240,7 +237,6 @@ define(function (require, exporst, module) {
  				return;
  			}
  			zTreeBase.loadingNode(treeNode);
- 			console.log(treeNode);
 			//获取到当前的kb_guid
 			_messageCenter.getChildNodes(treeNode, function(data) {
 				var treeRoot = null
@@ -262,7 +258,6 @@ define(function (require, exporst, module) {
 				$("#" + _id.CategoryTree).toggle(500);
 			};
 			document.getElementById('params_tag').onclick = function() {
-				console.log('params_tag click');
 				// 点击目录信息时再加载左侧树 
 				if (_tagTreeRoot === null) {
 					initTree();	
@@ -285,7 +280,6 @@ define(function (require, exporst, module) {
 			if (tags && tags.length > 0) {
 				documentInfo.tag_guids = tags;	
 			}
-			console.log(typeof documentInfo.tag_guids);
 			if (documentInfo.title === '' || documentInfo.title.length < 0) {
 				// TODO 提示
 				return null;
@@ -337,7 +331,9 @@ define(function (require, exporst, module) {
 			var fdoc = getFrameDocument(document.getElementById('baidu_editor_0'));
 			var oldFunc = fdoc.body.onclick;
 			fdoc.body.onclick = function (event) {
-				GlobalUtil.fireEvent(document.body, 'click');
+				// jQuery注册的事件，必须用jQuery触发，否则ie下会出问题
+				$(document).trigger('click');
+				// GlobalUtil.fireEvent(document.body, 'click');
 				if (oldFunc) {
 					oldFunc(event);
 				}

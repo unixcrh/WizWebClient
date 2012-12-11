@@ -114,7 +114,8 @@ define(function(require, exports, module) {
 		createCategory: function (kbGuid, name, callback, callError) {
 			var requestParams = getRequestParams();
 			requestParams.kbGuid = kbGuid;
-			sendRequest(constant.api.CATEGORY_CREATE, requestParams, callback, callError, name);
+			requestParams.new_name = name
+			sendRequest(constant.api.CATEGORY_CREATE, requestParams, callback, callError);
 		},
 
 		/* 获取所有标签列表 */

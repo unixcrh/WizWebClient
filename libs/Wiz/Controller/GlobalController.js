@@ -29,7 +29,6 @@ define(function (require, exports, module) {
 						var errorMsg = 'GlobalController.requestDocList() Error: ' + error;
 						if (console) {
 							console.error(errorMsg);
-							console.log(error);
 						} else {
 							alert(errorMsg);
 						}
@@ -98,8 +97,6 @@ define(function (require, exports, module) {
 					return context[key];
 				},
 				saveNodesInfos: function(key, list) {
-					console.log(key);
-					console.log(list);
 					context[key] = list;
 				},
 				getChildNodes: function(treeNode, callback) {
@@ -141,7 +138,6 @@ define(function (require, exports, module) {
 						if (bQuit) {
 							headCtrl.showReadBtnGroup();
 							_messageHandler.switchEditMode();
-							console.log(docInfo);
 							treeCtrl.selectNode('location', docInfo.category);
 						}
 					} else {
