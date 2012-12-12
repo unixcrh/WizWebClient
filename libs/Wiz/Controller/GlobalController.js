@@ -20,6 +20,8 @@ define(function (require, exports, module) {
 			// 判断首次加载页面，增加首次加载时默认初始化功能
 			_bFirst = true,
 			_curDoc = null,
+			// 缓存标签信息的对象key为tag_guid，value为name
+			_tagsMap = {},
 
 			//负责接收下级controller的消息
 			_messageHandler = {
@@ -73,7 +75,7 @@ define(function (require, exports, module) {
 						$('#resize_container').addClass('hidden');
 						$('#edit_page').show();
 						$('#edit_page').removeClass('hidden');
-						editPageCtrl.show(docInfo);
+						editPageCtrl.show(docInfo, bNew);
 					} else {
 						$('#edit_page').hide();
 						$('#edit_page').addClass('hidden');
@@ -124,6 +126,14 @@ define(function (require, exports, module) {
 					} else if ('group' === treeNode.type) {
 						remote.getGroupKbList(callback);
 					}
+				},
+				getTagName: function (tagGuid) {
+					// 如果当前的map中没有该tagGuid，则直接显示该标签的guid
+					var tagName = tagGuid;
+					if (_tagsMap[tagGuid]) {
+						tagName = _tagsMap[tagGuid];
+					}
+					return tagName;
 				}
 			},
 			// 负责向各控制器发送消息
@@ -140,7 +150,8 @@ define(function (require, exports, module) {
 				showDoc: function (data) {
 					if (data.code === 200) {
 						//成功获取内容后，开始加载右侧内容
-						docViewCtrl.viewDoc(_curDoc);
+						_curDoc.url = docViewCtrl.viewDoc(_curDoc);
+						headCtrl.showReadBtnGroup();
 					} else {
 						console.error('Get Document Body Error!');
 						console.error(data);
@@ -150,7 +161,7 @@ define(function (require, exports, module) {
 					if (data.code == '200') {
 						editPageCtrl.saveCallback(data.document_guid);
 						if (bQuit) {
-							headCtrl.showReadBtnGroup();
+							headCtrl.showCreateBtnGroup();
 							_messageHandler.switchEditMode();
 							treeCtrl.selectNode('location', docInfo.category);
 						}
@@ -185,6 +196,8 @@ define(function (require, exports, module) {
 				context.userInfo = data.user_info;
 				//首先加载为私人库
 				context.kbGuid = data.user_info.kb_guid;
+				// 初始化标签列表，方便查看文档时，显示标签名称
+				initTagsMap();
 				//顶部功能初始化
 				headCtrl.init(data.user_info, _messageHandler);
 				//
@@ -215,6 +228,18 @@ define(function (require, exports, module) {
 	}
 
 	
+	function initTagsMap() {
+		remote.getAllTag(context.kbGuid, function (data) {
+			if (data.code == '200') {
+				// 缓存当前的tagList信息
+				var length = data.list.length;
+				for (var i=0; i<length; i++) {
+					var tag = data.list[i];
+					_tagsMap[tag.tag_guid] = tag.tag_name;
+				}
+			}
+		});
+	}
 
 
 	// 隐藏下拉菜单

@@ -11,6 +11,8 @@ define(function (require, exports, module) {
 				id: {
 					createSpan: 'create_note',
 					createBtn: 'create_doc_ct',
+					editSpan: 'edit_doc',
+					editBtn: 'edit_doc_ct',
 					saveSpan: 'save',
 					saveBtn: 'save_ct',
 					cancelSpan: 'cancel',
@@ -44,6 +46,7 @@ define(function (require, exports, module) {
 				// 本地化相应的操作列表
 				localizeOperateList: function() {
 					$('#' + _node.id.createSpan).html(_locale.HeadMenuForDoc.Create);
+					$('#' + _node.id.editSpan).html(_locale.HeadMenuForDoc.Edit);
 					$('#' + _node.id.saveSpan).html(_locale.HeadMenuForDoc.Save);
 					$('#' + _node.id.cancelSpan).html(_locale.HeadMenuForDoc.Cancel);
 					$('#' + _node.id.saveAndQuitSpan).html(_locale.HeadMenuForDoc.SaveAndQuit);
@@ -62,21 +65,31 @@ define(function (require, exports, module) {
 					// 每个都需要先显示，然后再注册事件
 					var createBtn = $('#' + _node.id.createBtn);
 					createBtn.removeClass('hidden');
+					// 注册新建按钮事件
 					createBtn.bind('click', function(){
 						_messageCenter.switchEditMode(true, true);
+						_docEditCtrl.active();
+					});
+					var editBtn = $('#' + _node.id.editBtn);
+					// 注册编辑按钮事件
+					editBtn.bind('click', function() {
+						_messageCenter.switchEditMode(true, false);
 						_docEditCtrl.active();
 					});
 
 					var cancelBtn = $('#' + _node.id.cancelBtn);
 					var saveBtn = $('#' + _node.id.saveBtn);
 					var saveAndQuitBtn = $('#' + _node.id.saveAndQuitBtn);
+					// 注册取消按钮事件
 					cancelBtn.bind('click', function(){
 						_messageCenter.switchEditMode(false);
 						_docReadCtrl.active();
 					});
+					// 注册保存按钮事件
 					saveBtn.bind('click', function() {
 						_messageCenter.saveDocument(false);
 					});
+					// 注册保存并阅读事件
 					saveAndQuitBtn.bind('click', function() {
 						_messageCenter.saveDocument(true);
 					});
@@ -121,7 +134,7 @@ define(function (require, exports, module) {
 					_stateMachine = new StateMachine();
 					_createOnlyCtrl = new StateControl([_node.id.createBtn]);
 					// 选中文档列表中文档后，显示的操作
-					_docReadCtrl = new StateControl([_node.id.createBtn]);
+					_docReadCtrl = new StateControl([_node.id.createBtn, _node.id.editBtn]);
 					// 编辑、新建文档时，显示的操作
 					_docEditCtrl = new StateControl([_node.id.saveBtn, _node.id.saveAndQuitBtn, _node.id.cancelBtn]);
 					_sendingCtrl = new StateControl([_node.id.sendingCt]);
@@ -221,6 +234,9 @@ define(function (require, exports, module) {
 	function showReadBtnGroup() {
 		_docReadCtrl.active();
 	}
+	function showCreateBtnGroup() {
+		_createOnlyCtrl.active();
+	}
 
 	function init(userInfo, messageCenter) {
 		_messageCenter = messageCenter;
@@ -233,6 +249,7 @@ define(function (require, exports, module) {
 		init: init,
 		showSendingGroup: showSendingGroup,
 		showEditBtnGroup: showEditBtnGroup,
-		showReadBtnGroup: showReadBtnGroup
+		showReadBtnGroup: showReadBtnGroup,
+		showCreateBtnGroup: showCreateBtnGroup
 	}
 });

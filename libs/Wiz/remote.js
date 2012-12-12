@@ -174,7 +174,7 @@ define(function(require, exports, module) {
 			var requestParams = getRequestParams();
 			requestParams = mergeParams(requestParams, docInfo);
 			requestParams.temp = true;
-			requestParams.kbGuid = kbGuid;
+			requestParams.kb_guid = kbGuid;
 			sendRequest(constant.api.DOCUMENT_POST_DATA, requestParams, callback, callError, null, true);
 		},
 

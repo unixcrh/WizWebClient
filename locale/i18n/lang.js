@@ -47,7 +47,8 @@ define({
 		Save: 'Save',
 		SaveAndQuit: 'Save and Read',
 		Sending: 'Sending...',
-		Cancel: 'Cancel'
+		Cancel: 'Cancel',
+		Edit: 'Edit'
 	},
 	EditPage: {
 		Saving: 'Saving...',

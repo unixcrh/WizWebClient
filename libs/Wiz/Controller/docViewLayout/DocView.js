@@ -21,7 +21,8 @@ define(function (require, exports, module) {
 			// 显示内容
 			// readFrameCtrl.setHTML(doc.document_body);
 			var url = '/unzip/' + doc.kb_guid + '/' + doc.document_guid + '.' + doc.version +  '/index.html';
-			readFrameCtrl.setUrl(url)
+			readFrameCtrl.setUrl(url);
+			return url;
 		}
 
 		return {

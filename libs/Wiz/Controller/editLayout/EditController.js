@@ -35,25 +35,31 @@ define(function (require, exporst, module) {
 		initEditor();
 		localizePageMessage();
 
-		function show(docInfo) {
+		function show(docInfo, bNew) {
+			console.log(docInfo);
 			resetAll();
 			_docInfo = docInfo;
-			// TODO动态加载编辑器的script
-			if (docInfo && typeof docInfo.category === 'string' && docInfo.category.length > 0) {
-				$('#' + _id.CategoryCtSpan).html(docInfo.category);
+			// 设置目录信息，这里目录需要特殊处理，因为新建的文档也需要有目录信息   2012-12-12 lsl
+			if (_docInfo && typeof _docInfo.category === 'string' && _docInfo.category.length > 0) {
+				$('#' + _id.CategoryCtSpan).html(_docInfo.category);
 			} else {
+				// 如果文档模型中没有category则加载默认category
 				_docInfo.category = _locale.DefaultFolderObj.location;
 				$('#' + _id.CategoryCtSpan).html(_locale.DefaultFolderObj.display);
 			}
-			if (_editor !== null) {
-				_editor.setContent('');
+			if (!bNew) {
+				showDoc(docInfo);	
 			}
-			$('#' + _id.SaveTipDiv).html('');
-			$('#' + _id.TitleInput).val('');
+			// TODO动态加载编辑器的script
 			if (_categoryTreeRoot === null) {
 				initCateSpanHandler();
 			}
 		};
+
+		// 根据文档信息显示
+		function showDoc(docInfo) {
+			$('#' + _id.TitleInput).val(_docInfo.document_title);	
+		}
 
 		function initEditor() {
 	    _editor = new UE.ui.Editor();
@@ -193,6 +199,12 @@ define(function (require, exporst, module) {
 			showTagHelp();
 			unSelectAllTagNodes();
 			hideTreeContainer();
+			// 清空标题
+			$('#' + _id.TitleInput).val('');
+			// 清空保存信息
+			$('#' + _id.SaveTipDiv).html('');
+			// 清空文档内容显示
+			_editor.setContent('');		
 		}
 
 		// 切换到编辑页面时，首先清除上次的选择
