@@ -1,0 +1,181 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+        <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" />
+        <link rel="stylesheet" href="assets/css/clear.css">
+        <link rel="stylesheet" href="assets/css/tmpl.css">
+        <script src="assets/script/jquery.js" ></script>
+        <!-- <link rel="stylesheet" href="assets/css/media-queries.css"> -->
+
+        <title>为知笔记 浏览器插件安装</title>
+        <!--[if lt IE 9]> <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script> <![endif]-->
+        <script>
+        $(document).ready(function(){
+            // alert("why no response");
+            console.log('12r3raf');
+            $(".whole").css("display","none");
+            $(".browserinfo").click(function() {
+                $(this).siblings(".whole").toggle(300);
+            });
+            
+        });
+    </script>
+    </head>
+    <body>
+        <!-- 页面顶部 -->
+        <div id="headerCtn">
+            <div id="header">
+                <span id="logo">
+                    <a href="#">
+                        <img src="assets/img/logo.png" alt="wiz note" class='logo-img'>
+                    </a>
+                    <!-- 搜索框 -->
+                    <!-- <div id="search">
+                        <input type="text" name="searchText"></input>
+                        <button value=""></button>
+                    </div> -->
+                </span>
+                
+                <!-- 导航栏 -->
+                <div></div>
+                <ul class="primaryNav">
+                    <li><a href="/">了解为知</a></li>
+                    <li><a href="/download">下载</a></li>
+                    <li><a href="/enterprise">企业方案</a></li>
+                    <li><a class="currentPage" href="/support">博客</a></li>
+                    <li><a href="/joinus">加入我们</a></li>
+                    <li style="float:right; margin:0 4px 0 0;"><a href="/login">登录</a> / <a href="/register">注册</a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- 二级菜单导航栏 -->
+        <!-- <div id="subNavCtn">
+            <ul id="subNav">
+                <li><a class="currentPage" href="/">博客</a></li>
+                <li><a href="/download">微博</a></li>
+                <li><a href="/enterprise">常见问题FAQ</a></li>
+                <li><a href="/support">使用手册</a></li>
+            </ul>
+        </div> -->
+        <!-- 页面内容 -->
+        <div class="bd">
+            <!-- 页面概述 -->
+            <div class="wraper">
+                <div class="browser">
+                    <h3 class="largeh3">通用安装方法</h3>
+                    <div class="browserinfo">
+                        <img src=""></img>
+                        <h3 class="mintitle" style="cursor: pointer;">通过客户端进行安装</h3>
+                    </div>
+                     <div class="whole">
+                        <p class="article-text">你可以直接在电脑客户端里点击“菜单”→ ”工具”→ “选项”→“浏览器插件”，你将看到如下界面。找到你当前使用的浏览器，并点击“启用”，然后按照提示操作，便能够安装你说需要的浏览器插件。当你安装好插件后，在你需要保存的网页上，邮件点击“保存到为知笔记”，按照提示，就可以轻松保存你想要的内容了。</p>
+                        <img src="/static/assets/img/img-installplugin-1.png" alt="文件-工具-选项"></img>
+                        <img src="debug.wiz.cn/static/assets/img/img-installplugin-2.png" alt="“浏览器插件”选项卡"></img>
+                    </div>
+                </div>
+
+                
+                <div class="browser">
+                    <h3 class="largeh3">通过浏览器安装</h3>
+                    <div class="browserinfo">
+                        <img src=""></img>
+                        <p class="article-text">如果以上列表中没有你所使用的浏览器，或者由于GFW防火墙的问题而导致一些浏览器插件按照以上方法无法成功安装，这时就需要用户通过浏览器进行在线安装，或自行下载插件然后手动进行安装。</p>
+                        <h3 class="mintitle" style="cursor: pointer;">Chrome浏览器</h3>
+
+                    </div>
+                    <div class="whole">
+                        <h3 class="mintitle">方法1 通过应用商店安装</h3>
+                        <p class="article-text">chrome浏览器在线安装地址：<a href="https://chrome.google.com/webstore/search-extensions/wiznote?hl=zh-CN " class="dark">点击这里转到插件下载地址</a></p>
+                        <h3 class="mintitle">注意：</h3>
+                        <p class="article-text">如果网速比较慢，可能需要搜索 Wiz 或者 为知，才可以找到为知笔记网页剪辑器。</p>
+                        <p class="article-text">如果没有登录Google账号，需要先使用Chrome登录Google账号才可以安装Chrome应用。</p>
+                        <br/>
+                        <h3 class="mintitle">方法2 手动安装</h3>
+                        
+                        <p class="article-text">1. 下载剪辑器压缩包:<a href="https://chrome.google.com/webstore/search-extensions/wiznote?hl=zh-CN " class="dark">下载</a></p>
+                        <p class="article-text">2. 解压缩文件到非中文目录下，例：D:\WizClipper\webclipper</p>
+                        <p class="article-text">3. 在浏览器中打开chrome://extensions/</p>
+                        <p class="article-text">4. 选中页面右上方的“开发者模式”</p>
+                        <p class="article-text">5. 点击“载入正在开发的扩展程序“， 找到上面解压的目录后，点击确定即可</p>
+                        <p class="article-text">注意：加载完扩展之后，已经打开的页面需要手动刷新一下才可以使用</p>
+
+                        <br/>
+                        <h3 class="mintitle">使用</h3>
+                        
+                        <img src="debug.wiz.cn/static/assets/img/img-chrome-use-1.png"></img>
+                        <p class="article-text">点击此按钮，输入为知笔记账号和密码，即可进入剪辑界面。若无为知账号，可以“创建为知笔记账号”。</p>
+                        <p class="article-text">进入后可以看到这样个界面</p>
+                        <img src="debug.wiz.cn/static/assets/img/img-chrome-use-2.png"></img>
+
+                        <p class="article-text">标题：默认为网页标题，可以自己修改<br/>文件夹：默认为“我的笔记”，可以展开修改<br/>评论：可以添加评论<br/>下拉框：保存到本地，保存到云端（服务器）无需安装客户端即可保存到自己的为知空间中<br/>保存整页处下拉菜单：有多种保存方式，如保存整页、保存文章、保存选择部分，保存URL等，保存到本地的时候还有更多保存方式（将会弹出保存对话框）<br/></p>
+                        <h3 class="chapter-title">注意：</h3>
+                        <p class="article-text">如果需要使用保存到本地功能，您必须安装最新版本的客户端：<br/>最新版本客户端下载地址： <a href="http://pan.baidu.com/share/link?shareid=56903&uk=839142433" class="dark">http://pan.baidu.com/share/link?shareid=56903&uk=839142433</a></p>
+                        <img src="debug.wiz.cn/static/assets/img/img-chrome-use-3.png"></img>
+
+                        <h3 class="chapter-title">特性：</h3>
+                        <ol class="insideol">
+                            <li>无需安装客户端即可使用，在线保存，直接保存到云端。安装客户端之后，也可以直接保存到本地。</li>
+                            <li>支持剪辑模式的选择</li>
+                            <li>支持windows、mac、linux</li>
+                            <li>支持选择文件夹</li>
+                            <li>支持对文章添加评论</li>
+                            <li>支持文章内容的智能定位预览</li>
+                        </ol>
+                        <h3 class="chapter-title">直接保存到本地</h3>
+                        <p class="article-text">在网页里面点击右键，在菜单中选择 选择 为知笔记网页剪辑器 -> 更多，就会出现保存网页对话框，可以选择更多地保存功能（保存到本地）</p>
+                        <img src="debug.wiz.cn/static/assets/img/img-chrome-use-4.png"></img>
+                    </div>
+                </div>
+                <div class="browser">
+                    <div class="browserinfo">
+                        <img src=""></img>
+                        <h3 class="mintitle" style="cursor: pointer;">Opera浏览器</h3>
+                    </div>
+                    <div class="whole">
+                        <h3 class="mintitle">Wiz提供Opera网页发送到Wiz的接口</h3>
+                        <p class="article-text">支持Opera版本</p>
+                        <ol class="insideol">
+                            <li>Opera 9.x / Opera 10.x</li>
+                            <li>紫电版Opera10</li>
+                        </ol>
+                        <h3 class="mintitle">1、安装</h3>
+                        <p class="article-text">Wiz安装时，会在Opera菜单上增加启动方式。如果增加失败或新装Opera，请执行菜单中的“Opera配置工具“按以下界面设置</p>
+                        <img src="debug.wiz.cn/static/assets/img/img-opera-1.png"></img>
+                        <p class="article-text">选择Opera安装目录，点击安装</p>
+                        <img src="debug.wiz.cn/static/assets/img/img-opera-2.png"></img>
+                        <p class="article-text" style="background:#FF0;">在Win7下会安装失败，请使用管理员身份运行“Opera配置工具”</p>
+                        <img src="debug.wiz.cn/static/assets/img/img-opera-3.png"></img>
+                        <br/>
+                        <h3 class="mintitle">2、使用</h3>
+                        <p class="article-text">使用时，在网页右键，选择保存到Wiz</p>
+                        <img src="debug.wiz.cn/static/assets/img/img-opera-4.jpg"></img>
+                        <h3 class="chapter-title">3、特殊版本Opera的手工设置</h3>
+                        <p class="article-text">对于一些特殊版本的Opera，需要自己手工增加菜单项</p>
+                        <p class="article-text">标准版Opera10菜单位置：程序目录\ui\standard_menu.ini<br/>在[Document Popup Menu]里增加：<br/>Item, "保存到WizKnowledge"=Execute program, "C:\Windows\system32\rundll32.exe", "C:\PROGRA~1\WIZBRO~1\WIZKNO~1\WIZKMC~1.DLL, WizKMURLDownloadToDocument /ShowProgress=1 /URL=%u /CacheFile=%s"</p>
+                        <br/>
+                        <p class="article-text">紫电版Opera10 菜单位置：程序目录\profile\menu\Menu.ini<br/>在[Document Popup Menu]里增加：<br/>Item, "保存到WizKnowledge"=Execute program, "C:\Windows\system32\rundll32.exe", "C:\PROGRA~1\WIZBRO~1\WIZKNO~1\WIZKMC~1.DLL, WizKMURLDownloadToDocument /ShowProgress=1 /URL=%u /CacheFile=%s"</p>
+                        <br/>
+                        <p class="article-text">白菜版OperaEz菜单位置：corals_lite_menu.ini 增加：<br/>Item, "保存到WizKnowledge"=Execute program, "C:\Windows\system32\rundll32.exe", "C:\PROGRA~1\WIZBRO~1\WIZKNO~1\WIZKMC~1.DLL, WizKMURLDownloadToDocument /ShowProgress=1 /URL=%u /CacheFile=%s"</p>
+                        <br/>
+                        <h3 class="chapter-title">4、注意</h3>
+                        <p class="article-text">
+使用Opera10时，请使用10.52及以上版本。10.50和10.51版本opera在右键“保存到Wiz”时无法调用程序</p>
+                    </div>
+                    
+                </div>
+
+            </div>
+        </div>
+        <!-- 页脚 公司相关信息 -->
+       <div id="footer">
+            <!-- 装饰 -->
+            <div class="innerFooter">
+                <!-- <a href="www.wiz.cn"><img src="assets/img/logo.png" class="wiz"></img></a> -->
+                <span id="info">  <a href="http://debug.wiz.cn/contact">联系我们</a>  <a href="http://bbs.wiz.cn">论坛</a>  京ICP备11038801号 © 2001-2012 Wiz</span>
+                <br clear="all"/>
+            </div>
+        </div>
+    </body>
+</html>
