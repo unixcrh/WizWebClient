@@ -63,7 +63,7 @@ define(function (require, exports, module) {
 					var createBtn = $('#' + _node.id.createBtn);
 					createBtn.removeClass('hidden');
 					createBtn.bind('click', function(){
-						_messageCenter.switchEditMode(true);
+						_messageCenter.switchEditMode(true, true);
 						_docEditCtrl.active();
 					});
 

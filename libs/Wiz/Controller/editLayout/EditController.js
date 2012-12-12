@@ -20,7 +20,6 @@ define(function (require, exporst, module) {
 		GlobalUtil = require('../../../common/util/GlobalUtil'),
 		_locale = require('locale').EditPage,
 
-		_lastGuid = null,
 		_editor = null,
 		_docInfo = {},
 		// 保存当前选中的标签列表
@@ -36,13 +35,12 @@ define(function (require, exporst, module) {
 		initEditor();
 		localizePageMessage();
 
-		function show(categoryObj) {
+		function show(docInfo) {
 			resetAll();
-
+			_docInfo = docInfo;
 			// TODO动态加载编辑器的script
-			if (typeof categoryObj.location === 'string' && typeof categoryObj.localeLocation === 'string'&& categoryObj.location.length > 2) {
-				_docInfo.category = categoryObj.location;
-				$('#' + _id.CategoryCtSpan).html(categoryObj.localeLocation);
+			if (docInfo && typeof docInfo.category === 'string' && docInfo.category.length > 0) {
+				$('#' + _id.CategoryCtSpan).html(docInfo.category);
 			} else {
 				_docInfo.category = _locale.DefaultFolderObj.location;
 				$('#' + _id.CategoryCtSpan).html(_locale.DefaultFolderObj.display);
@@ -50,7 +48,6 @@ define(function (require, exporst, module) {
 			if (_editor !== null) {
 				_editor.setContent('');
 			}
-			_lastGuid = null;
 			$('#' + _id.SaveTipDiv).html('');
 			$('#' + _id.TitleInput).val('');
 			if (_categoryTreeRoot === null) {
@@ -193,7 +190,6 @@ define(function (require, exporst, module) {
 		function resetAll() {
 			_tagsList = [];
 			_docInfo = {};
-			_lastGuid = null;
 			showTagHelp();
 			unSelectAllTagNodes();
 			hideTreeContainer();
@@ -273,9 +269,7 @@ define(function (require, exporst, module) {
 			documentInfo.body = _editor.getAllHtml();
 			documentInfo.category = _docInfo.category;
 			documentInfo.title = $('#' + _id.TitleInput).val();
-			if (_lastGuid) {
-				documentInfo.guid = _lastGuid;
-			}
+			documentInfo.guid = _docInfo.document_guid;
 			var tags = collectTagGuids();
 			// 为空不传，如果传入的话，会造成openapi端请求错误
 			if (tags && tags.length > 0) {
@@ -305,9 +299,6 @@ define(function (require, exporst, module) {
 
 		// 单击保存按钮后，回调方法
 		function saveCallback(docGuid) {
-			if (_lastGuid === null) {
-				_lastGuid = docGuid;
-			}
 			var savedMsg = _locale.Saved;
 			var curTime = getCurTime();
 			var msg = savedMsg.replace('{time}', curTime);

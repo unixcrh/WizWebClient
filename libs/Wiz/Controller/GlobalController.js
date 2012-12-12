@@ -55,13 +55,25 @@ define(function (require, exports, module) {
 				},
 				// 阅读和编辑页面切换
 				// TODO  category应该直接传入一个document对象模型
-				switchEditMode: function (bEditMode) {
+				switchEditMode: function (bEditMode, bNew) {
+					var docInfo = _curDoc;
+					// 新建文档，非编辑
+					if (bNew === true) {
+						var documentGuid = GlobalUtil.genGuid();
+						
+						docInfo = {document_guid: documentGuid, category: treeCtrl.getCurrentCategory};
+						remote.createTempDocument(context.kbGuid, docInfo, function(data) {
+							if (data.code != '200') {
+								console.error('GlobalController.switchEditMode() request createTempDocument Error: ' + error);
+							}
+						});
+					}
 					if (bEditMode) {
 						$('#resize_container').hide();
 						$('#resize_container').addClass('hidden');
 						$('#edit_page').show();
 						$('#edit_page').removeClass('hidden');
-						editPageCtrl.show(treeCtrl.getCurrentCategory());
+						editPageCtrl.show(docInfo);
 					} else {
 						$('#edit_page').hide();
 						$('#edit_page').addClass('hidden');

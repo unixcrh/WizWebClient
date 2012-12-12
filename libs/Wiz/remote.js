@@ -169,6 +169,15 @@ define(function(require, exports, module) {
 			sendRequest(constant.api.DOCUMENT_POST_DATA, requestParams, callback, callError, null, bQuit);
 		},
 
+		// web特殊处理部分
+		createTempDocument: function (kbGuid, docInfo, callback, callError) {
+			var requestParams = getRequestParams();
+			requestParams = mergeParams(requestParams, docInfo);
+			requestParams.temp = true;
+			requestParams.kbGuid = kbGuid;
+			sendRequest(constant.api.DOCUMENT_POST_DATA, requestParams, callback, callError, null, true);
+		},
+
 		/* 保持登陆状态 */
 		refreshToken: function (callback, callError) {
 			var requestParams = getRequestParams();
