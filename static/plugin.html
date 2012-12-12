@@ -14,8 +14,9 @@
         <script>
         $(document).ready(function(){
             // alert("why no response");
-            console.log('12r3raf');
+            // console.log('12r3raf');
             $(".whole").css("display","none");
+            $(".whole")[0].style.display="block";
             $(".browserinfo").click(function() {
                 $(this).siblings(".whole").toggle(300);
             });
@@ -71,8 +72,10 @@
                     </div>
                      <div class="whole">
                         <p class="article-text">你可以直接在电脑客户端里点击“菜单”→ ”工具”→ “选项”→“浏览器插件”，你将看到如下界面。找到你当前使用的浏览器，并点击“启用”，然后按照提示操作，便能够安装你说需要的浏览器插件。当你安装好插件后，在你需要保存的网页上，邮件点击“保存到为知笔记”，按照提示，就可以轻松保存你想要的内容了。</p>
-                        <img src="/static/assets/img/img-installplugin-1.png" alt="文件-工具-选项"></img>
-                        <img src="debug.wiz.cn/static/assets/img/img-installplugin-2.png" alt="“浏览器插件”选项卡"></img>
+                        <img src="assets/img/installplugin-1.png" alt="文件-工具-选项"></img>
+                        <br/>
+                        <br/>
+                        <img src="assets/img/installplugin-2.png" alt="“浏览器插件”选项卡"></img>
                     </div>
                 </div>
 
@@ -82,6 +85,8 @@
                     <div class="browserinfo">
                         <img src=""></img>
                         <p class="article-text">如果以上列表中没有你所使用的浏览器，或者由于GFW防火墙的问题而导致一些浏览器插件按照以上方法无法成功安装，这时就需要用户通过浏览器进行在线安装，或自行下载插件然后手动进行安装。</p>
+                        <p class="article-text">猎豹浏览器基于Chrome内核，可以通过下方的手动安装方式安装网页剪辑器</p>
+
                         <h3 class="mintitle" style="cursor: pointer;">Chrome浏览器</h3>
 
                     </div>
@@ -104,15 +109,15 @@
                         <br/>
                         <h3 class="mintitle">使用</h3>
                         
-                        <img src="debug.wiz.cn/static/assets/img/img-chrome-use-1.png"></img>
+                        <img src="assets/img/chrome-use-1.png"></img>
                         <p class="article-text">点击此按钮，输入为知笔记账号和密码，即可进入剪辑界面。若无为知账号，可以“创建为知笔记账号”。</p>
                         <p class="article-text">进入后可以看到这样个界面</p>
-                        <img src="debug.wiz.cn/static/assets/img/img-chrome-use-2.png"></img>
+                        <img src="debug.wiz.cn/static/assets/img/chrome-use-2.png"></img>
 
                         <p class="article-text">标题：默认为网页标题，可以自己修改<br/>文件夹：默认为“我的笔记”，可以展开修改<br/>评论：可以添加评论<br/>下拉框：保存到本地，保存到云端（服务器）无需安装客户端即可保存到自己的为知空间中<br/>保存整页处下拉菜单：有多种保存方式，如保存整页、保存文章、保存选择部分，保存URL等，保存到本地的时候还有更多保存方式（将会弹出保存对话框）<br/></p>
                         <h3 class="chapter-title">注意：</h3>
                         <p class="article-text">如果需要使用保存到本地功能，您必须安装最新版本的客户端：<br/>最新版本客户端下载地址： <a href="http://pan.baidu.com/share/link?shareid=56903&uk=839142433" class="dark">http://pan.baidu.com/share/link?shareid=56903&uk=839142433</a></p>
-                        <img src="debug.wiz.cn/static/assets/img/img-chrome-use-3.png"></img>
+                        <img src="debug.wiz.cn/static/assets/img/chrome-use-3.png"></img>
 
                         <h3 class="chapter-title">特性：</h3>
                         <ol class="insideol">
@@ -125,7 +130,7 @@
                         </ol>
                         <h3 class="chapter-title">直接保存到本地</h3>
                         <p class="article-text">在网页里面点击右键，在菜单中选择 选择 为知笔记网页剪辑器 -> 更多，就会出现保存网页对话框，可以选择更多地保存功能（保存到本地）</p>
-                        <img src="debug.wiz.cn/static/assets/img/img-chrome-use-4.png"></img>
+                        <img src="debug.wiz.cn/static/assets/img/chrome-use-4.png"></img>
                     </div>
                 </div>
                 <div class="browser">
@@ -142,15 +147,15 @@
                         </ol>
                         <h3 class="mintitle">1、安装</h3>
                         <p class="article-text">Wiz安装时，会在Opera菜单上增加启动方式。如果增加失败或新装Opera，请执行菜单中的“Opera配置工具“按以下界面设置</p>
-                        <img src="debug.wiz.cn/static/assets/img/img-opera-1.png"></img>
+                        <img src="debug.wiz.cn/static/assets/img/opera-1.png"></img>
                         <p class="article-text">选择Opera安装目录，点击安装</p>
-                        <img src="debug.wiz.cn/static/assets/img/img-opera-2.png"></img>
+                        <img src="debug.wiz.cn/static/assets/img/opera-2.png"></img>
                         <p class="article-text" style="background:#FF0;">在Win7下会安装失败，请使用管理员身份运行“Opera配置工具”</p>
-                        <img src="debug.wiz.cn/static/assets/img/img-opera-3.png"></img>
+                        <img src="debug.wiz.cn/static/assets/img/opera-3.png"></img>
                         <br/>
                         <h3 class="mintitle">2、使用</h3>
                         <p class="article-text">使用时，在网页右键，选择保存到Wiz</p>
-                        <img src="debug.wiz.cn/static/assets/img/img-opera-4.jpg"></img>
+                        <img src="debug.wiz.cn/static/assets/img/opera-4.jpg"></img>
                         <h3 class="chapter-title">3、特殊版本Opera的手工设置</h3>
                         <p class="article-text">对于一些特殊版本的Opera，需要自己手工增加菜单项</p>
                         <p class="article-text">标准版Opera10菜单位置：程序目录\ui\standard_menu.ini<br/>在[Document Popup Menu]里增加：<br/>Item, "保存到WizKnowledge"=Execute program, "C:\Windows\system32\rundll32.exe", "C:\PROGRA~1\WIZBRO~1\WIZKNO~1\WIZKMC~1.DLL, WizKMURLDownloadToDocument /ShowProgress=1 /URL=%u /CacheFile=%s"</p>

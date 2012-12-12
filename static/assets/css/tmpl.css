@@ -465,7 +465,6 @@ _zoom: 1;
 }
 .topicPic ul.iterm-mobile li a{
   position:absolute;
-  bottom:;
 }
 
 /*------  关于我们“介绍”组件样式  -----*/
@@ -1048,7 +1047,7 @@ p.error-indicator{
   padding: 0 8px;
   width: 300px;
   *width: 250px;
-  width: 250px\9;
+  /*width: 250px\9;*/
   height: 30px;
   *height:24px;
   border: 1px solid #aaa;
@@ -1062,6 +1061,7 @@ p.error-indicator{
   vertical-align: text-bottom;
   margin-bottom: 2px;
   margin-bottom: -2px\9;
+  border: none;
 }
 #login-form span, #register-form span{
   font-size: 15px;
