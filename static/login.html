@@ -20,6 +20,7 @@
                 document.getElementById('login_name').focus();
                 var reg = document.getElementById("register-form");
                 var login = document.getElementById("login-form");
+                var imgTag = document.getElementsByTagName('img');
 
                 function regTest(tdata){
                     var exp= new RegExp("reg$");
@@ -29,6 +30,7 @@
                 if( regTest(location.search) === true){
                     reg.style.display = "block";
                     login.style.display = "none";
+                    imgTag[0].src ="assets/img/WizNote-registe.jpg";
                 }
                 else{
                     reg.style.display = "none";
@@ -38,11 +40,14 @@
                 document.getElementById("to-register").onclick=function(){
                     reg.style.display = "block";
                     login.style.display = "none";
+                    imgTag[0].src ="assets/img/WizNote-registe.jpg";
 
                 };
                 document.getElementById("to-login").onclick=function(){
                     reg.style.display = "none";
                     login.style.display = "block";
+                    imgTag[0].src ="assets/img/WizNote-login.jpg";
+
                 };
 
             }

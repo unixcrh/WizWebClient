@@ -503,8 +503,8 @@ _zoom: 1;
 }
 .location img {
   float: left;
-  width: 484px;
-  height: 519px;
+  /*width: 484px;*/
+  /*height: 519px;*/
   margin: 0 20px 0 0;
 }
 .location h1 {
