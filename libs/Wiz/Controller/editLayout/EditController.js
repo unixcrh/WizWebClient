@@ -277,19 +277,19 @@ define(function (require, exporst, module) {
 
 		// 获取当前新建或编辑的文档信息及内容
 		function getDocumentInfo() {
+			if ($('#' + _id.TitleInput).val() === '' || $('#' + _id.TitleInput).val().length < 0) {
+				// TODO 提示
+				return null;
+			}
 			var documentInfo ={};
-			documentInfo.body = _editor.getAllHtml();
-			documentInfo.category = _docInfo.category;
-			documentInfo.title = $('#' + _id.TitleInput).val();
-			documentInfo.guid = _docInfo.document_guid;
+			documentInfo.document_body = _editor.getAllHtml();
+			documentInfo.document_category = _docInfo.category;
+			documentInfo.document_title = $('#' + _id.TitleInput).val();
+			documentInfo.document_guid = _docInfo.document_guid;
 			var tags = collectTagGuids();
 			// 为空不传，如果传入的话，会造成openapi端请求错误
 			if (tags && tags.length > 0) {
-				documentInfo.tag_guids = tags;	
-			}
-			if (documentInfo.title === '' || documentInfo.title.length < 0) {
-				// TODO 提示
-				return null;
+				documentInfo.document_tag_guids = tags;	
 			}
 			return documentInfo;
 		}

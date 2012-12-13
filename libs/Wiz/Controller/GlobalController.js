@@ -163,7 +163,7 @@ define(function (require, exports, module) {
 						if (bQuit) {
 							headCtrl.showCreateBtnGroup();
 							_messageHandler.switchEditMode();
-							treeCtrl.selectNode('location', docInfo.category);
+							treeCtrl.selectNode('location', docInfo.document_category);
 						}
 					} else {
 						// TODO错误处理
