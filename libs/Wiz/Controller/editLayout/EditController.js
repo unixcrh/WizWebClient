@@ -59,6 +59,7 @@ define(function (require, exporst, module) {
 		// 根据文档信息显示
 		function showDoc(docInfo) {
 			$('#' + _id.TitleInput).val(_docInfo.document_title);	
+			_editor.setContent(docInfo.document_body);
 		}
 
 		function initEditor() {
@@ -282,6 +283,9 @@ define(function (require, exporst, module) {
 				return null;
 			}
 			var documentInfo ={};
+			console.log(_docInfo.document_body === _editor.getAllHtml());
+			console.log(_docInfo.document_body);
+			console.log(_editor.getAllHtml());
 			documentInfo.document_body = _editor.getAllHtml();
 			documentInfo.document_category = _docInfo.category;
 			documentInfo.document_title = $('#' + _id.TitleInput).val();

@@ -25,8 +25,14 @@ define(function (require, exports, module) {
 			return url;
 		}
 
+		function getCurDocHtml() {
+			var docHtml = readFrameCtrl.getHTML();
+			return docHtml;
+		}
+
 		return {
-			viewDoc: viewDoc
+			viewDoc: viewDoc,
+			getCurDocHtml: getCurDocHtml
 		}
 	}
 

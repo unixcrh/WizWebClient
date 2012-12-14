@@ -58,6 +58,8 @@ define(function (require, exports, module) {
 				// 阅读和编辑页面切换
 				// TODO  category应该直接传入一个document对象模型
 				switchEditMode: function (bEditMode, bNew) {
+					// 先加载文档内容
+					_curDoc.document_body = docViewCtrl.getCurDocHtml();
 					var docInfo = _curDoc;
 					// 新建文档，非编辑
 					if (bNew === true) {
@@ -66,7 +68,7 @@ define(function (require, exports, module) {
 						docInfo = {document_guid: documentGuid, category: treeCtrl.getCurrentCategory};
 						remote.createTempDocument(context.kbGuid, docInfo, function(data) {
 							if (data.code != '200') {
-								console.error('GlobalController.switchEditMode() request createTempDocument Error: ' + error);
+								console.error('GlobalController.switchEditMode() request createTempDocument Error: ' + data.return_msg);
 							}
 						});
 					}

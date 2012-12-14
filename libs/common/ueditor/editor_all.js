@@ -15390,7 +15390,7 @@ baidu.editor.ui = {};
         'strikethrough', 'subscript', 'superscript', 'source', 'indent', 'outdent',
         'blockquote', 'pasteplain', 'pagebreak',
         'selectall', 'print', 'preview', 'horizontal', 'removeformat', 'time', 'date', 'unlink',
-        'insertparagraphbeforetable', 'insertrow', 'insertcol', 'mergeright', 'mergedown', 'deleterow',
+        'insertparagraphbeforetable', 'insertrow', 'insertcol', 'mergeright',' mergedown', 'deleterow',
         'deletecol', 'splittorows', 'splittocols', 'splittocells', 'mergecells', 'deletetable', 'switchtoolbar'];
 
     for ( var i = 0, ci; ci = btnCmds[i++]; ) {

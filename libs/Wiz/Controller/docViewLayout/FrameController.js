@@ -56,10 +56,10 @@ define(function (require, exports, module) {
 		function setURL(url) {
 			_frameObj.src = url;
 		}
-
+		// 获取完整的html
 		function getHTML() {
 			var fdoc = getFrameDocument();
-			return fdoc.body.innerHTML;
+			return fdoc.documentElement.outerHTML;
 		}
 
 		return {
