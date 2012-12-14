@@ -14,7 +14,7 @@ define(function (require, exports, module) {
 	var remote = {
 		CLIENT_TYPE: 'web2.0',
 		API_VERSION: 3,
-		KEEP_ALIVE_TIME_MS:  8 * 60 * 1000														//保持自动登陆时间间隔
+		KEEP_ALIVE_TIME_MS:  1 * 60 * 1000														//保持自动登陆时间间隔
 	};
 
 	var url = {
@@ -128,14 +128,21 @@ define(function (require, exports, module) {
 	  	action: 'get',
 	  	async: true
 	  },	
-	  // 新建、编辑文档先调用旧的接口
-	  DOCUMENT_POST_DATA: {
+	  // 该接口只在openapi内创建一个临时的缓存目录
+	  // 只有当用户真正点击保存后，才会把相关信息上传到服务器端
+	  DOCUMENT_CREATE_DATA: {
 	  	url: DOCUMENT_BASE + '/data',
 	  	action: 'post',
 	  	async: true
 	  },
+	  // 编辑文档
+	  DOCUMENT_UPDATE_DATA: {
+	  	url: DOCUMENT_BASE + '/data',
+	  	action: 'put',
+	  	async: true
+	  },
 	  DOCUMENT_RENAME: {
-	  	url: DOCUMENT_BASE + '/rename',
+	  	url: DOCUMENT_BASE + '/name',
 	  	action: 'put',
 	  	async: true
 	  },

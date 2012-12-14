@@ -162,12 +162,15 @@ define(function(require, exports, module) {
 			requestParams = mergeParams(requestParams, docInfo);
 			requestParams.kbGuid = kbGuid;
 			requestParams.kb_guid = kbGuid;
+			requestParams.document_tag_guids = 'f1035e72-bf9a-4281-86f1-6bdd71d04536';
 			if (bPostDocLock === true) {
 				return;
 			}
+
+			requestParams.url = 'http://www.wiz.cn';
 			// 防止多次提交
 			bPostDocLock = true;
-			sendRequest(constant.api.DOCUMENT_POST_DATA, requestParams, callback, callError, null, bQuit);
+			sendRequest(constant.api.DOCUMENT_UPDATE_DATA, requestParams, callback, callError, null, bQuit);
 		},
 
 		// web特殊处理部分
@@ -176,7 +179,7 @@ define(function(require, exports, module) {
 			requestParams = mergeParams(requestParams, docInfo);
 			requestParams.temp = true;
 			requestParams.kb_guid = kbGuid;
-			// sendRequest(constant.api.DOCUMENT_POST_DATA, requestParams, callback, callError, null, true);
+			sendRequest(constant.api.DOCUMENT_CREATE_DATA, requestParams, callback, callError, null, true);
 		},
 
 		/* 保持登陆状态 */
