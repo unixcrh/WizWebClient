@@ -58,8 +58,27 @@ define(function (require, exporst, module) {
 
 		// 根据文档信息显示
 		function showDoc(docInfo) {
+			// 文档标题
 			$('#' + _id.TitleInput).val(_docInfo.document_title);	
+			// 设置文档内容
 			_editor.setContent(docInfo.document_body);
+			// 设置并选择标签列表
+			showAndSaveTags(docInfo.document_tag_guids);
+		}
+
+		// 根据标签guid列表，显示名称
+		function showAndSaveTags(tagGuids) {
+			if (!tagGuids) {
+				return [];
+			}
+			var nameList = [];
+			var guidsList = tagGuids.split('*');
+			var length = guidsList.length;
+			for (var index = 0; index < length; index ++) {
+				nameList.push(_messageCenter.getTagName(guidsList[index]));
+				addAndShowTags({'tag_guid': guidsList[index], 'name': _messageCenter.getTagName(guidsList[index])});
+				_tagsList.push(guidsList[index]);
+			}
 		}
 
 		function initEditor() {
