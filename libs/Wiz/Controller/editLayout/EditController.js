@@ -1,5 +1,6 @@
 define(function (require, exporst, module) {
 	'use strict';
+	// 页面中元素对应的id值
 	var _id = {
 		CategoryCtSpan: 'params_category',
 		CategoryTree: 'category_tree',
@@ -9,7 +10,8 @@ define(function (require, exporst, module) {
 		TagTip: 'params_tag_tip',
 		EditorCt: 'wiz_edit_area',
 		TitleInput: 'title_input',
-		SaveTipDiv: 'save_tip'
+		SaveTipDiv: 'save_tip',
+		FrameBase: 'wiz_frame_base'
 	},
 		_class = {
 			tagDiv: 'edit-tag-span'
@@ -20,14 +22,19 @@ define(function (require, exporst, module) {
 		GlobalUtil = require('../../../common/util/GlobalUtil'),
 		_locale = require('locale').EditPage,
 
+		// 编辑器实例
 		_editor = null,
+		// 缓存当前编辑的文档信息
 		_docInfo = {},
 		// 保存当前选中的标签列表
 		_tagsList = [],
-
+		// 
 		_messageCenter = null,
+		// 
 		_categoryTreeRoot = null,
-		_tagTreeRoot = null;
+		_tagTreeRoot = null,
+		_baseElem = null,
+		_frameDocument = null;
 
 	function EditController () {
 
@@ -37,6 +44,7 @@ define(function (require, exporst, module) {
 
 		function show(docInfo, bNew) {
 			console.log(docInfo);
+			initFrameBaseElem();
 			resetAll();
 			_docInfo = docInfo;
 			// 设置目录信息，这里目录需要特殊处理，因为新建的文档也需要有目录信息   2012-12-12 lsl
@@ -60,10 +68,33 @@ define(function (require, exporst, module) {
 		function showDoc(docInfo) {
 			// 文档标题
 			$('#' + _id.TitleInput).val(_docInfo.document_title);	
-			// 设置文档内容
+			// 设置文档内容			
+			// 必须设置iframe内的base，否则图像会无法显示
+			_baseElem.href = 'http://localhost' + docInfo.url;
 			_editor.setContent(docInfo.document_body);
 			// 设置并选择标签列表
 			showAndSaveTags(docInfo.document_tag_guids);
+		}
+
+		// 为解决编辑器内图片地址为相对路径的问题
+		// 设置页面的base标签，在保存的时候，应当去除掉
+		// lsl ---2012-12-17
+		function initFrameBaseElem() {
+			if (_baseElem === null) {
+		    _baseElem = document.createElement('base');
+		    _baseElem.id = _id.FrameBase;
+	    	_frameDocument = _editor.iframe.contentDocument || _editor.iframe.contentWindow.document;
+		    _frameDocument.head.appendChild(_baseElem);	
+			}
+		}
+
+		function removeFrameBase() {
+			if (_baseElem !== null) {
+				// var frameBaseElem = _frameDocument.getElementById(_id.FrameBase);
+				// frameBaseElem.remove();
+				_baseElem.remove();
+				_baseElem = null;
+			}
 		}
 
 		// 根据标签guid列表，显示名称
@@ -301,10 +332,9 @@ define(function (require, exporst, module) {
 				// TODO 提示
 				return null;
 			}
+			removeFrameBase();
+
 			var documentInfo ={};
-			console.log(_docInfo.document_body === _editor.getAllHtml());
-			console.log(_docInfo.document_body);
-			console.log(_editor.getAllHtml());
 			documentInfo.document_body = _editor.getAllHtml();
 			documentInfo.document_category = _docInfo.category;
 			documentInfo.document_title = $('#' + _id.TitleInput).val();
