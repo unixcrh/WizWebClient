@@ -2,7 +2,6 @@
 html, body {
   margin: 0;
   font-family: 'Microsoft YaHei', Simsun;
-  /*font-family: 'Microsoft YaHei UI', 'Microsoft YaHei', SimSun, 'Segoe UI', Tahoma, Helvetica, sans-serif;*/
   color: #000;
   font-size: 100%;
   _text-align: center;
@@ -237,7 +236,7 @@ _zoom: 1;
 }
 .slogan h1{
   font-size: 66px;
-  font-weight: 500;
+  font-weight: 400;
   margin: 0 0 0 -2px;
   /*color:#454545;*/
   line-height: 80px;
@@ -255,8 +254,9 @@ _zoom: 1;
   /*letter-spacing: 1px;*/
 }
 .btn{
+  /*display: block;*/
   border: none;
-  margin: 32px 0 0 4px;
+  /*margin: 50px 0 0 4px;*/
   padding: 4px 13px 6px 13px;
   background: #0CF;
   color: #FFF;
@@ -312,6 +312,12 @@ _zoom: 1;
   line-height: 22px;
   list-style: none;
 }
+.largeh2{
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 40px;
+  color: #454545;
+}
 .smallh1{
   font-size: 24px;
   font-weight: 200;
@@ -328,6 +334,18 @@ _zoom: 1;
   line-height: 22px;
   font-weight: 200;
 
+}
+.hoverinfo{
+  display: none;
+  position: absolute;
+  top: -20px;
+  left: 250px;
+  padding: 2px 3px;
+  /*margin: -50px 0 0 400px;*/
+  border: 2px solid rgba(69,69,69,.3);
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  opacity: 0.5;
 }
 .winintro p{
   font-size: 13px;
@@ -437,7 +455,8 @@ _zoom: 1;
 .topicPic h3{
   font-size: 19px;
   line-height: 25px;
-  color: #1570A6;
+  /*color: #1570A6;*/
+  color:#454545;
   margin:0;
 }
 .topicPic a{
@@ -882,20 +901,21 @@ table tr td{
   line-height: 20px; 
 }
 .browser{
-  padding: 0 20px;
-  margin: 15px auto;
-  border: 2px solid #EDEDF0;
-
+  width:998px;
+  padding: 10px 20px;
+  margin: -20px auto;
+  outline: 3px solid #EDEDF0;
+  *border: 3px solid #EDEDF0;
 }
 .broswer .mintitle{
   cursor: pointer;
 }
 .browserinfo{
-  margin:15px auto;
+  position: relative;
+  margin:0 auto;
   padding:0;
   width:95%;
   border:none;
-  border-bottom: 3px solid #EDEDF0;
 }
 .innerleft{
   float:left;
@@ -935,8 +955,7 @@ table tr td{
 }
 .tab{
   position: fixed;
-  margin: 10px;
-  padding: 0 0 0 3em;
+  width: 241px;
 }
 .tab h3{
   font-size: 16px;
@@ -1012,7 +1031,7 @@ p.error-indicator{
   font-weight: normal;
 } 
 #login-form, #register-form{
-  /*display:none;*/
+  display:none;
   position: relative;
   float: right;
   height: 80%;
@@ -1164,7 +1183,3 @@ p.error-indicator{
 #footer a:hover{
   color: #8E8E8E;
 }
-
-
-
-

@@ -1,6 +1,7 @@
 <!DOCTYPE HTML>
 <html>
     <head>
+
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" />
 
@@ -12,6 +13,8 @@
         <title>为知笔记 网页版 登录</title>
         <!--[if lt IE 9]> <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script> <![endif]-->
         <script>
+            // document.getElementById("register-form").style.display = 'none';
+
             window.onload=function(){
                 var dHeight=screen.availHeight;
                 document.getElementById("login").style.height=(dHeight*0.8).toString()+"px";
@@ -35,18 +38,19 @@
                 else{
                     reg.style.display = "none";
                     login.style.display = "block";
+                    imgTag[0].src ="assets/img/WizNote-login.jpg";
                 }
 
                 document.getElementById("to-register").onclick=function(){
                     reg.style.display = "block";
                     login.style.display = "none";
-                    imgTag[0].src ="assets/img/WizNote-registe.jpg";
+                    imgTag[0].src = "assets/img/WizNote-registe.jpg";
 
                 };
                 document.getElementById("to-login").onclick=function(){
                     reg.style.display = "none";
                     login.style.display = "block";
-                    imgTag[0].src ="assets/img/WizNote-login.jpg";
+                    imgTag[0].src = "assets/img/WizNote-login.jpg";
 
                 };
 
@@ -58,7 +62,7 @@
         <div class="wraper" name="login-ctn">
             <div id="login">
                 <div class="ads">
-                    <img src="assets/img/WizNote-login.jpg"></img>
+                    <img src=""></img>
                     <div class="login-intro">
                         <h1>您的帐户</h1>
                         <p>添加安全信息可以帮助您保护笔记</p>
