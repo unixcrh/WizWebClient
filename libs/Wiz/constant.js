@@ -88,7 +88,8 @@ define(function (require, exports, module) {
 	  },
 	  TAG_GET_ROOT: {
 	  	url: TAG_BASE + '/root',
-	  	action: 'get	  	async: true',
+	  	action: 'get',
+	  	async: true
 
 	  },
 	  TAG_GET_CHILD: {
