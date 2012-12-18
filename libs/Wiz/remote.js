@@ -162,7 +162,6 @@ define(function(require, exports, module) {
 			requestParams = mergeParams(requestParams, docInfo);
 			requestParams.kbGuid = kbGuid;
 			requestParams.kb_guid = kbGuid;
-			requestParams.document_tag_guids = 'f1035e72-bf9a-4281-86f1-6bdd71d04536';
 			if (bPostDocLock === true) {
 				return;
 			}
