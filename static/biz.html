@@ -8,7 +8,11 @@
         <!-- <link rel="stylesheet" href="assets/css/media-queries.css"> -->
 
         <title>为知笔记 企业方案</title>
-        <!--[if lt IE 9]> <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script> <![endif]-->
+        <!--[if lte IE 6]>
+            <style type="text/css">
+                img, div, input { behavior: url("assets/css/iepngfix.htc"); }
+            </style>
+        <![endif]-->
         
 
     </head>
@@ -28,6 +32,7 @@
                 </span>
                 
                 <!-- 导航栏 -->
+                <div></div>
                 <ul class="primaryNav">
                     <li><a href="/">了解为知</a></li>
                     <li><a href="/download">下载</a></li>

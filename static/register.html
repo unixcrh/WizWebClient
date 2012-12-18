@@ -29,42 +29,47 @@
         <div class="wraper" name="login-ctn">
             <div id="login">
                 <div class="ads">
-                    <img src="assets/img/WizNote-login.jpg"></img>
+                    <img src="assets/img/WizNote-registe.jpg"></img>
                     <div class="login-intro">
                         <h1>您的帐户</h1>
                         <p>添加安全信息可以帮助您保护笔记</p>
                     </div>
                 </div>
-
-                <div id="login-form">
-                    <h1>登录</h1>
+                <div id="register-form">
+                    <h1>注册</h1>
                     <form name="" id="" method="post">
-                        <p class="error-indicator" id="tip_error_login"></p>
+                        <p class="error-indicator"></p>
                         <table class="formctn">
                             <tr>
-                                <td><label>用户名:</label></td>
-                                <td><input type="text" name="" placeholder="someone@example.com" id="login_name"></input></td>
+                                <td><label>邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱:</label></td>
+                                <td><input type="text" name="" placeholder="邮箱* 如:someone@example.com" id="login_name"></input><p class="error-indicator"></p></td>
                             </tr>
                             <tr>
-                                <td><label>密&nbsp;&nbsp;&nbsp;码:</label></td>
-                                <td><input type="password" name="" placeholder="密码" id="login_password"></input></td>
+                                <td><label>密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码:</label></td>
+                                <td><input type="password" name="" placeholder="密码*" id="login_password"></input></td>
+                            </tr>
+                            <tr>
+                                <td><label>确认密码:</label></td>
+                                <td><input type="password" name="" placeholder="确认密码*" id="  "></input></td>
+                            </tr>
+                            <tr>
+                                <td><label>邀&nbsp;请&nbsp;码&nbsp;:</label></td>
+                                <td><input type="text" name="" placeholder="邀请码" id="login_name"></input></td>
                             </tr>
                         </table>
-                        <p class="error-indicator"></p>
-                        <input type="checkbox" name="" id="login_keeppassword" class="chkbox"><span>保持登录状态</span></input><br/>
-                        <input type="submit" name="" value="&nbsp;&nbsp;登录&nbsp;&nbsp;" class="btn" id="loginkeycode"></input>
+                        
+                        <input type="submit" name="" value="&nbsp;&nbsp;注册&nbsp;&nbsp;" class="btn" id="loginkeycode"></input>
                         <br clear="both">
                     </form>
-                    <p>还没有为知账户？&nbsp;</p>
-                    <a href="/register" id="to-register" class="dark">立即注册</a>
+                    <p>已经有为知账户？&nbsp;</p>
+                    <a id="to-login" href="/login" class="dark">登录</a>
                 </div>
-                <br clear="both">
+                <br clear="all" />
             </div>
 
             <div id="login-footer">
                 <span>©2012&nbsp;Wiz&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="">条款</a>&nbsp;&nbsp;<a href="">隐私和&nbsp;Cookie</a></span>
                 <span style="float:right"><a href="">帮助中心</a>&nbsp;&nbsp;<a href="">反馈</a><span>
-
             </div>
         </div>
         <script type="text/javascript" src="libs/common/seaJs/sea-debug.js" data-main="./libs/entity/loginEntry"></script>

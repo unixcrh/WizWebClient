@@ -47,7 +47,7 @@ ul, menu, dir {
   width: 100%;
 	position: fixed;
   /**position:absolute;*/
-  background-color: #1a1a1a;
+  background-color: #FFFFFF;
 	height: auto;
   z-index: 9999; 
 }
@@ -129,7 +129,7 @@ bottom: 3px;
 color: #CFCFCF;
 /*display: block;*/
 
-font-weight: 600;
+font-weight: 200;
 height: 20px;
 left: 0px;
 margin: 0;
@@ -146,12 +146,12 @@ _zoom: 1;
   margin: 0 18px 0 0;
   height: 15px; 
   display: block;
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .primaryNav a, #subNav a {
-  font-size: 12px;
-  color: #CFCFCF;
+  font-size: 14px;
+  color: #000000;
   cursor: pointer;
   /*a是in-line元素 转换为block后格式化其样式*/
   letter-spacing: 1px;
@@ -160,10 +160,10 @@ _zoom: 1;
 }
 
 .primaryNav a.currentPage {
-  color: #0CF;
+  color: #00AEFF;
 }
 .primaryNav a:hover, .primaryNav a.currentPage:hover, #subNav a:hover{
-  color:#FFF;
+  color: #00AEFF;
 }
 #subNavCtn {
   position: fixed;
@@ -1031,44 +1031,53 @@ p.error-indicator{
   font-weight: normal;
 } 
 #login-form, #register-form{
-  display:none;
-  position: relative;
-  float: right;
+  /*display: none;*/
+  /*position: relative;*/
+  float: left;
+  /*width: 400px;*/
   height: 80%;
-  padding: 10% 8% 0 0;
-  /*outline:1px solid #000;*/
+  padding: 10% 0 0 30px;
 }
 /*#login-form{
   display:none;
 }*/
-#register-form {
-  /*display: none;*/
-  padding: 6% 8% 0 0;
-}
+
 #login-form h1, #register-form h1{
   font-weight: normal;
   font-size: 37px;
   margin-bottom: 37px;
   color: #888;
 }
+.formctn{
+  border: none;
+}
+table.formctn tr td{
+  border: none;
+  padding:15px 0 0 3px;
+  margin: 0 0 10px 0;
+}
 
 #login-form label, #register-form label{
   display: none;
+  /*float: right;*/
   margin: 0;
   padding: 0;
+  text-align: right;
   *display: inline;
   display: inline\9;
 }
 #login-form input, #register-form input{
-  display: block;
-  /**display:inline;*/
-  margin: 0 0 20px 0;
-  padding: 0 8px;
+  float: left;
+  margin: 0;
+  padding: 0;
   width: 300px;
   *width: 250px;
+  width: 250px\9;
+  font-size: 18px;
   /*width: 250px\9;*/
   height: 30px;
-  *height:24px;
+  *height:22px;
+  height:22px\9;
   border: 1px solid #aaa;
 }
 #login-form .chkbox{
@@ -1078,11 +1087,11 @@ p.error-indicator{
   *zoom= 1;
   /*font-size: 13px;*/
   vertical-align: text-bottom;
-  margin-bottom: 2px;
-  margin-bottom: -2px\9;
+  margin: 5px 0 0 5px;
   border: none;
 }
 #login-form span, #register-form span{
+  /*padding: 10px 0 0 0;*/
   font-size: 15px;
 }
 
@@ -1117,13 +1126,15 @@ p.error-indicator{
   font-weight: bold;
   margin: 0;
   padding: 0;
-  cursor:pointer;
+  cursor: pointer;
 }
 .dark:hover, .smooth:hover{
   color: #24459A;
 }
 
-
+#to-register, #to-login{
+  display: inline;
+}
 #login-footer{
   /*height:9%;*/
   margin: 30px auto 0 auto;

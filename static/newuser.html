@@ -11,34 +11,48 @@
         <!-- <link rel="stylesheet" href="assets/css/media-queries.css"> -->
 
         <title>欢迎使用为知笔记</title>
-        <!--[if lt IE 9]> <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script> <![endif]-->
+        <!--[if lte IE 6]>
+			<style type="text/css">
+				img, div, input { behavior: url("assets/css/iepngfix.htc"); }
+			</style>
+		<![endif]-->
        <script>
         $(document).ready(function(){
             // alert("why no response");
             $(".question").click(function() {
-                $(this).siblings().toggle(300);
+                $(this).siblings().toggle(3000);
                 var $answers = $("ol");
                 var len = $answers.length;
-                console.log(len);
+                // console.log($(".switcher").html());
                 for(var i = 0; i < len; i++ )
                 {
-                    if($answers[i].style.display != "block")
-                    {
-                        return false;
+                    if($(".switcher").text() == "显示全部"){
+                        if($answers[i].style.display != "block"){
+                            return false;
+                        }
+                        $(".switcher").text("隐藏全部");
                     }
+                    else{
+                        if($answers[i].style.display != "none"){
+                            return false;
+                        }
+                        $(".switcher").text("显示全部");
+                    }   
+                    
                 }
-                $(".switcher").text("隐藏全部");
+                
             });
+
             $(".switcher").click(function() {
                 console.log($(this).text());
                 if( $(this).text() == "显示全部" ) {
 
                     $("ol").show(300);
-                    $(this).html("隐藏全部");
+                    $(this).text("隐藏全部");
                 }
                 else{
                     $("ol").hide(300);
-                    $(this).html("显示全部");
+                    $(this).text("显示全部");
                 }
                 // $("ol").show(300).end();
                 // $(this).html("隐藏全部");
