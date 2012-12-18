@@ -62,6 +62,7 @@ define(function (require, exports, module) {
 					_curDoc.document_body = docViewCtrl.getCurDocHtml();
 					var docInfo = _curDoc;
 					// 新建文档，非编辑
+					console.log(bNew);
 					if (bNew === true) {
 						var documentGuid = GlobalUtil.genGuid();
 						
@@ -103,6 +104,7 @@ define(function (require, exports, module) {
 					if (bQuit) {
 						headCtrl.showSendingGroup();
 					}
+					console.log(docInfo);
 					remote.postDocument(context.kbGuid, docInfo, function callback(data) {
 						_messageDistribute.saveDocumentCallback(data, bQuit, docInfo);
 					}, function callError(error) {

@@ -165,8 +165,6 @@ define(function(require, exports, module) {
 			if (bPostDocLock === true) {
 				return;
 			}
-
-			requestParams.url = 'http://www.wiz.cn';
 			// 防止多次提交
 			bPostDocLock = true;
 			sendRequest(constant.api.DOCUMENT_UPDATE_DATA, requestParams, callback, callError, null, bQuit);
