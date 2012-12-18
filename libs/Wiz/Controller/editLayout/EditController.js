@@ -44,8 +44,8 @@ define(function (require, exporst, module) {
 
 		function show(docInfo, bNew) {
 			console.log(docInfo);
-			initFrameBaseElem();
 			resetAll();
+			initFrameBaseElem();
 			_docInfo = docInfo;
 			// 设置目录信息，这里目录需要特殊处理，因为新建的文档也需要有目录信息   2012-12-12 lsl
 			if (_docInfo && typeof _docInfo.category === 'string' && _docInfo.category.length > 0) {

@@ -14,7 +14,7 @@ define(function (require, exports, module) {
 	var remote = {
 		CLIENT_TYPE: 'web2.0',
 		API_VERSION: 3,
-		KEEP_ALIVE_TIME_MS:  1 * 60 * 1000														//保持自动登陆时间间隔
+		KEEP_ALIVE_TIME_MS:  8 * 60 * 1000														//保持自动登陆时间间隔
 	};
 
 	var url = {
