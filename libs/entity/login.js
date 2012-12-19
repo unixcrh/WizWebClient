@@ -178,6 +178,11 @@ define(function(require, exports) {
 
 	// 注册
 	function Register(){
+		if (event.preventDefault) {
+			event.preventDefault();	
+		} else {
+			event.returnValue = false;
+		}
 		$("#tip_error_register").hide();
 		
 		var rtn_error1 = register_name();

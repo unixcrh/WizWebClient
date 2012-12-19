@@ -53,7 +53,7 @@ define(function (require, exporst, module) {
 				$('#' + _id.CategoryCtSpan).html(_docInfo.displayLocation);
 			} else {
 				// 如果文档模型中没有category则加载默认category
-				_docInfo.category = _locale.DefaultFolderObj.location;
+				_docInfo.document_location = _locale.DefaultFolderObj.location;
 				$('#' + _id.CategoryCtSpan).html(_locale.DefaultFolderObj.display);
 			}
 			if (!bNew) {

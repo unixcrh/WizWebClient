@@ -64,7 +64,9 @@ define(function (require, exports, module) {
 				// TODO  category应该直接传入一个document对象模型
 				switchEditMode: function (bEditMode, bNew) {
 					// 先加载文档内容
-					_curDoc.document_body = docViewCtrl.getCurDocHtml();
+					if (!bNew && _curDoc) {
+						_curDoc.document_body = docViewCtrl.getCurDocHtml();
+					}
 					var docInfo = _curDoc;
 					// 新建文档，非编辑
 					console.log(bNew);
