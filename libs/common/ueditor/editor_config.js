@@ -85,7 +85,7 @@
 
         //工具栏上的所有的功能按钮和下拉框，可以在new编辑器的实例时选择自己需要的从新定义
         ,toolbars:[
-            ['source', '|', 'undo', 'redo', '|', 'insertImage',
+            ['source', '|', 'undo', 'redo', '|',
                 'bold', 'italic', 'underline', 'strikethrough', '|', 'forecolor', 'backcolor', 'insertorderedlist', 'insertunorderedlist', '|',
                 'justifyleft', 'justifycenter', 'justifyright', 'justifyjustify', '|',
                 'link', 'unlink', '|', 'highlightcode', 

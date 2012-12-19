@@ -47,9 +47,10 @@ define(function (require, exporst, module) {
 			resetAll();
 			// initFrameBaseElem();
 			_docInfo = docInfo;
+			console.log(_docInfo);
 			// 设置目录信息，这里目录需要特殊处理，因为新建的文档也需要有目录信息   2012-12-12 lsl
-			if (_docInfo && typeof _docInfo.category === 'string' && _docInfo.category.length > 0) {
-				$('#' + _id.CategoryCtSpan).html(_docInfo.category);
+			if (_docInfo.document_location) {
+				$('#' + _id.CategoryCtSpan).html(_docInfo.displayLocation);
 			} else {
 				// 如果文档模型中没有category则加载默认category
 				_docInfo.category = _locale.DefaultFolderObj.location;
@@ -283,10 +284,22 @@ define(function (require, exporst, module) {
 			}
 		}
 
+		/**
+		 * 编辑页面目录树点击事件触发方法	
+		 * @param  {[type]} event    [description]
+		 * @param  {[type]} treeId   [description]
+		 * @param  {[type]} treeNode [description]
+		 * @return {[type]}          [description]
+		 */
 		function categoryTreeOnClick(event, treeId, treeNode) {
+			changeDocLocation(treeNode);
+		}
+
+		// 更改文档的目录信息，并更新显示
+		function changeDocLocation(treeNode) {
 			var nodeLocation = treeNode.location,
 				displayLocation = treeNode.displayLocation;
-			_docInfo.category = nodeLocation;
+			_docInfo.document_location = nodeLocation;
 			$('#' + _id.CategoryCtSpan).html(displayLocation);
 			$("#" + _id.CategoryTree).hide(500);
 		}
@@ -336,7 +349,7 @@ define(function (require, exporst, module) {
 
 			var documentInfo ={};
 			documentInfo.document_body = _editor.getAllHtml();
-			documentInfo.document_category = _docInfo.category;
+			documentInfo.document_category = _docInfo.document_location;
 			documentInfo.document_title = $('#' + _id.TitleInput).val();
 			documentInfo.document_guid = _docInfo.document_guid;
 			var tags = collectTagGuids();
@@ -370,6 +383,11 @@ define(function (require, exporst, module) {
 			$('#' + _id.SaveTipDiv).html(msg);
 		}
 
+		/**
+		 * 获取当前时间，只显示hour:minutes
+		 * 数字小于10补零
+		 * @return {[type]} [description]
+		 */
 		function getCurTime() {
 			var curDate = new Date();
 			var hours = curDate.getHours();
@@ -396,12 +414,23 @@ define(function (require, exporst, module) {
 				}
 			}
 		}
+
+		/**
+		 * 获取iframe的document对象
+		 * @param  {[type]} frameObj [description]
+		 * @return {[type]}          [description]
+		 */
 		function getFrameDocument(frameObj) {
 			var fdoc = (frameObj.contentDocument) ? frameObj.contentDocument
 					: frameObj.contentWindow.document;//兼容firefox和ie
 			return fdoc;
 		}
 
+		/**
+		 * 绑定页面被点击时候的事件
+		 * 用来监听是否隐藏左侧树
+		 * @return {[type]} [description]
+		 */
 		function bindBodyClickHandler() {
 			$(document).click(function(event){
 		  	var menuList = $('.edit-tree');

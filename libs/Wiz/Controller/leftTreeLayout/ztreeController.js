@@ -8,7 +8,7 @@ define(function (require, exports, module) {
 		locale= require('locale'),
 		specialLocation = locale.DefaultCategory,
 
-		_curCategory = {}
+		_curCategory = '';
 
 	function ZtreeController() {
 		
@@ -155,8 +155,8 @@ define(function (require, exports, module) {
 				return;
 			}
 			if (treeNode.type === 'category') {
-				_curCategory.location = treeNode.location;
-				_curCategory.localeLocation = zTreeBase.changeSpecilaLocation(treeNode.location);
+				_curCategory = treeNode.location;
+				// _curCategory.localeLocation = zTreeBase.changeSpecilaLocation(treeNode.location);
 			}
 			if (treeNode.level === 0) {
 				if (treeNode.type === 'keyword') {
@@ -262,6 +262,7 @@ define(function (require, exports, module) {
 		this.init = init;
 		this.getCurrentCategory = getCurrentCategory;
 		this.selectNode = selectNode;
+		this.changeSpecilaLocation = changeSpecilaLocation;
 	}
 	var controller = new ZtreeController();
 

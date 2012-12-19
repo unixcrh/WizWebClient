@@ -23,6 +23,7 @@ define(function (require, exports, module) {
 
 			// 判断首次加载页面，增加首次加载时默认初始化功能
 			_bFirst = true,
+			// 保存当前阅读的文档
 			_curDoc = null,
 			// 缓存标签信息的对象key为tag_guid，value为name
 			_tagsMap = {},
@@ -68,19 +69,26 @@ define(function (require, exports, module) {
 					// 新建文档，非编辑
 					console.log(bNew);
 					if (bNew === true) {
-						var documentGuid = GlobalUtil.genGuid();
-						
-						docInfo = {document_guid: documentGuid, category: treeCtrl.getCurrentCategory};
-						_curDoc = docInfo;
-						remote.createTempDocument(context.kbGuid, docInfo, function(data) {
-							if (data.code != '200') {
-								console.error('GlobalController.switchEditMode() request createTempDocument Error: ' + data.return_msg);
-							}
-						});
+						// 新文档，把docInfo清空
+						docInfo = {};
+						var documentGuid = '';//GlobalUtil.genGuid();
+						// 暂时屏蔽 lsl 2012-12-19
+						// docInfo.document_guid = documentGuid;
+						docInfo.document_location = treeCtrl.getCurrentCategory();
+						// _curDoc = docInfo;
+						console.log(docInfo);
+						// lsl 2012-12-19
+						// 开放上传图片时，打开该部分请求，暂时屏蔽
+						// remote.createTempDocument(context.kbGuid, docInfo, function(data) {
+						// 	if (data.code != '200') {
+						// 		console.error('GlobalController.switchEditMode() request createTempDocument Error: ' + data.return_msg);
+						// 	}
+						// });
 					}
+					window.Wiz.curDoc = docInfo;
 					// 最后设置全局变量的值 lsl-2012-12-19
-					window.Wiz.curDoc = _curDoc;
 					if (bEditMode) {
+						docInfo.displayLocation = treeCtrl.changeSpecilaLocation(docInfo.document_location);
 						$('#resize_container').hide();
 						$('#resize_container').addClass('hidden');
 						$('#edit_page').show();
@@ -101,6 +109,8 @@ define(function (require, exports, module) {
 				 * @return {[type]}            [description]
 				 */
 				saveDocument: function (bQuit) {
+					// 必须从编辑页面获取文档的具体信息
+					// 不能使用_curDoc  lsl 2012-12-19
 					var docInfo = editPageCtrl.getDocumentInfo();
 					// 取到的docInfo为null，则说明校验失败
 					if (docInfo === null) {
