@@ -28,6 +28,21 @@ define(function (require, exports, module) {
 			}
 		}
 
+		function completeImgSrc(contentDocument) {
+			try {
+				var imgList = contentDocument.getElementsByTagName('img');
+				if (!imgList || imgList.length < 1) {
+					return ;
+				}
+				for (var index = 0, length = imgList.length; index < length; index++) {
+					imgList[index].src = imgList[index].src;
+				}
+			} catch (err) {
+				console.log('Preview.completeImgSrc() Error: ' + err);
+			}
+		}
+
+
 		function getFrameDocument() {
 			var fdoc = (_frameObj.contentDocument) ? _frameObj.contentDocument
 					: _frameObj.contentWindow.document;//兼容firefox和ie
@@ -59,6 +74,8 @@ define(function (require, exports, module) {
 		// 获取完整的html
 		function getHTML() {
 			var fdoc = getFrameDocument();
+			// 获取页面内容之前，先把img补全，否则加载到编辑页面中会无法显示
+			completeImgSrc(fdoc);
 			return fdoc.documentElement.outerHTML;
 		}
 

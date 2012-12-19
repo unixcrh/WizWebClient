@@ -4,6 +4,10 @@
 
 define(function (require, exports, module) {
 	'use strict';
+
+	// 暴露给全局变量window，方便其他第三方组件的调用
+	window.Wiz = window.Wiz || {};
+
 	var GlobalUtil = require('../../common/util/GlobalUtil'),
 			context = require('../context'),
 			constant = require('../constant'),
@@ -67,12 +71,15 @@ define(function (require, exports, module) {
 						var documentGuid = GlobalUtil.genGuid();
 						
 						docInfo = {document_guid: documentGuid, category: treeCtrl.getCurrentCategory};
+						_curDoc = docInfo;
 						remote.createTempDocument(context.kbGuid, docInfo, function(data) {
 							if (data.code != '200') {
 								console.error('GlobalController.switchEditMode() request createTempDocument Error: ' + data.return_msg);
 							}
 						});
 					}
+					// 最后设置全局变量的值 lsl-2012-12-19
+					window.Wiz.curDoc = _curDoc;
 					if (bEditMode) {
 						$('#resize_container').hide();
 						$('#resize_container').addClass('hidden');
@@ -204,6 +211,9 @@ define(function (require, exports, module) {
 				initTagsMap();
 				//顶部功能初始化
 				headCtrl.init(data.user_info, _messageHandler);
+
+				window.Wiz.token = context.token;
+				window.Wiz.kbGuid = context.kbGuid;
 				//
 				//搜索栏初始化
 				searchBoxCtrl.init(_messageHandler);

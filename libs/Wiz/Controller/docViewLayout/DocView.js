@@ -20,7 +20,8 @@ define(function (require, exports, module) {
 			titleElem.innerText = doc.document_title;
 			// 显示内容
 			// readFrameCtrl.setHTML(doc.document_body);
-			var url = '/unzip/' + doc.kb_guid + '/' + doc.document_guid + '.' + doc.version +  '/index.html';
+			var path = 'http://localhost/unzip/' + doc.kb_guid + '/' + doc.document_guid + '.' + doc.version;
+			var url = path +  '/index.html';
 			readFrameCtrl.setUrl(url);
 			return url;
 		}
@@ -29,6 +30,7 @@ define(function (require, exports, module) {
 			var docHtml = readFrameCtrl.getHTML();
 			return docHtml;
 		}
+
 
 		return {
 			viewDoc: viewDoc,

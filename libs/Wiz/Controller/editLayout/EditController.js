@@ -45,7 +45,7 @@ define(function (require, exporst, module) {
 		function show(docInfo, bNew) {
 			console.log(docInfo);
 			resetAll();
-			initFrameBaseElem();
+			// initFrameBaseElem();
 			_docInfo = docInfo;
 			// 设置目录信息，这里目录需要特殊处理，因为新建的文档也需要有目录信息   2012-12-12 lsl
 			if (_docInfo && typeof _docInfo.category === 'string' && _docInfo.category.length > 0) {
@@ -70,7 +70,7 @@ define(function (require, exporst, module) {
 			$('#' + _id.TitleInput).val(_docInfo.document_title);	
 			// 设置文档内容			
 			// 必须设置iframe内的base，否则图像会无法显示
-			_baseElem.href = 'http://localhost' + docInfo.url;
+			// _baseElem.href = 'http://localhost' + docInfo.url;
 			_editor.setContent(docInfo.document_body);
 			// 设置并选择标签列表
 			showAndSaveTags(docInfo.document_tag_guids);
@@ -332,7 +332,7 @@ define(function (require, exporst, module) {
 				// TODO 提示
 				return null;
 			}
-			removeFrameBase();
+			// removeFrameBase();
 
 			var documentInfo ={};
 			documentInfo.document_body = _editor.getAllHtml();
