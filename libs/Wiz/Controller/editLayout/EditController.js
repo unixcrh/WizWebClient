@@ -43,12 +43,28 @@ define(function (require, exporst, module) {
 		localizePageMessage();
 
 		function show(docInfo, bNew) {
-			console.log(docInfo);
 			resetAll();
-			// initFrameBaseElem();
 			_docInfo = docInfo;
-			console.log(_docInfo);
 			// 设置目录信息，这里目录需要特殊处理，因为新建的文档也需要有目录信息   2012-12-12 lsl
+			// 目录信息必须要显示，所以在判断外
+			showCategory();
+			if (!bNew) {
+				showDoc(docInfo);	
+			}
+			// TODO 顺序不能变，需要一个单独的开关来控制初始化函数
+			// lsl 2012-12-20
+			// TODO动态加载编辑器的script
+			if (_categoryTreeRoot === null) {
+				// 注册监听事件
+				initParamsSpanHandler();
+				// 初始化树控件
+				initTree();
+			}
+			// 选择相应的标签
+    	selectCurTags();
+		};
+
+		function showCategory() {
 			if (_docInfo.document_location) {
 				$('#' + _id.CategoryCtSpan).html(_docInfo.displayLocation);
 			} else {
@@ -56,46 +72,16 @@ define(function (require, exporst, module) {
 				_docInfo.document_location = _locale.DefaultFolderObj.location;
 				$('#' + _id.CategoryCtSpan).html(_locale.DefaultFolderObj.display);
 			}
-			if (!bNew) {
-				showDoc(docInfo);	
-			}
-			// TODO动态加载编辑器的script
-			if (_categoryTreeRoot === null) {
-				initCateSpanHandler();
-			}
-		};
+		}
 
 		// 根据文档信息显示
 		function showDoc(docInfo) {
 			// 文档标题
 			$('#' + _id.TitleInput).val(_docInfo.document_title);	
 			// 设置文档内容			
-			// 必须设置iframe内的base，否则图像会无法显示
-			// _baseElem.href = 'http://localhost' + docInfo.url;
 			_editor.setContent(docInfo.document_body);
 			// 设置并选择标签列表
 			showAndSaveTags(docInfo.document_tag_guids);
-		}
-
-		// 为解决编辑器内图片地址为相对路径的问题
-		// 设置页面的base标签，在保存的时候，应当去除掉
-		// lsl ---2012-12-17
-		function initFrameBaseElem() {
-			if (_baseElem === null) {
-		    _baseElem = document.createElement('base');
-		    _baseElem.id = _id.FrameBase;
-	    	_frameDocument = _editor.iframe.contentDocument || _editor.iframe.contentWindow.document;
-		    _frameDocument.head.appendChild(_baseElem);	
-			}
-		}
-
-		function removeFrameBase() {
-			if (_baseElem !== null) {
-				// var frameBaseElem = _frameDocument.getElementById(_id.FrameBase);
-				// frameBaseElem.remove();
-				_baseElem.remove();
-				_baseElem = null;
-			}
 		}
 
 		// 根据标签guid列表，显示名称
@@ -127,6 +113,10 @@ define(function (require, exporst, module) {
 
 		// 显示的时候再初始化树空间
 		function initTree() {
+			if (_categoryTreeRoot || _tagTreeRoot) {
+				// 存在，则表示已经初始化过 
+				return;
+			}
 			var setting = zTreeBase.getDefaultSetting(),
 					categoryNodes = _messageCenter.getNodesInfo('category'),
 					tagNodes = _messageCenter.getNodesInfo('tag');
@@ -150,6 +140,7 @@ define(function (require, exporst, module) {
 	    initFrameBodyClickHandler();
 		}
 
+		// 初始化树控件，并且获取treeRoot的对象
 		function initAndGetRoot(containerId, setting, nodesInfo) {
 			var treeRoot = zTree.init($("#" + containerId), setting, nodesInfo);
 			var treeElem = $("#" + containerId);
@@ -164,8 +155,8 @@ define(function (require, exporst, module) {
 		}
 
 
+		// 暂时未使用。以后增加树控件修改或新增时，需要该方法
 		function zTreeBeforeRename(treeId, treeNode, newName) {
-
 			if(zTreeBase.checkNewName(newName) === false) {
 				return;
 			}
@@ -197,8 +188,8 @@ define(function (require, exporst, module) {
 			}
 		}
 
+		// 标签选中或者取消时的注册事件
 		function tagTreeOnCheck(event, treeId, treeNode) {
-
 			if (treeNode.checked === true) {
 				addAndShowTags(treeNode);	
 			} else {
@@ -227,14 +218,17 @@ define(function (require, exporst, module) {
 			_tagsList.push(treeNode.tag_guid);
 		}
 
+		// 显示标签的帮助信息--一般在标签列表为空的时候，显示在标签区域
 		function showTagHelp() {
 			$('#' + _id.TagCtSpan).html(_locale.TagHelpSpan);
 		}
 
+		// 当选中标签时，需要隐藏标签的帮助信息
 		function removeTagHelp() {
 			$('#' + _id.TagCtSpan).html("");
 		}
 
+		// 判断标签是否已经增加
 		function bTagAdded(tagGuid) {
 			var bAdded = false,
 					tagElem = document.getElementById(tagGuid);
@@ -244,7 +238,7 @@ define(function (require, exporst, module) {
 			return bAdded;
 		}
 
-		// 切换到编辑页面，重置页面
+		// 编辑页面重置所有
 		function resetAll() {
 			_tagsList = [];
 			_docInfo = {};
@@ -312,17 +306,41 @@ define(function (require, exporst, module) {
  			zTreeBase.loadingNode(treeNode);
 			//获取到当前的kb_guid
 			_messageCenter.getChildNodes(treeNode, function(data) {
-				var treeRoot = null
+				var treeRoot = null;
 				if (treeNode.type === 'category') {
 					treeRoot = _categoryTreeRoot;
 				} else if (treeNode.type === 'tag') {
 					treeRoot = _tagTreeRoot;
 				}
-				zTreeBase.addChildToNode(treeRoot, data.list, treeNode);
+				var childList = zTreeBase.addChildToNode(treeRoot, data.list, treeNode);
+				// TODO 增加后，应该根据当前文档已有的tag_guid来选中结点
+				selectCurTags(treeNode.children);
 			});
 		}
 
-		function initCateSpanHandler() {
+		// 
+		function selectCurTags(nodeList) {
+			if (_tagsList.length < 1) {
+				return;
+			}
+			if (!nodeList) {
+				var nodeList = _tagTreeRoot.getNodes();
+			}
+			var length = nodeList.length
+				, index = 0
+				,	node = null;
+			for (; index < length; index ++) {
+				if (_tagsList.lastIndexOf(nodeList[index].tag_guid) > 0) {
+					_tagTreeRoot.checkNode(nodeList[index], true, true);
+				}
+			}
+		}
+
+		/**
+		 * 注册标签和目录信息span的事件
+		 * @return {[type]} [description]
+		 */
+		function initParamsSpanHandler() {
 			document.getElementById('params_category').onclick = function() {
 				// 点击目录信息时再加载左侧树 
 				if (_categoryTreeRoot === null) {
@@ -345,7 +363,6 @@ define(function (require, exporst, module) {
 				// TODO 提示
 				return null;
 			}
-			// removeFrameBase();
 
 			var documentInfo ={};
 			documentInfo.document_body = _editor.getAllHtml();
@@ -455,10 +472,12 @@ define(function (require, exporst, module) {
 		  });
 		}
 
+		// 初始化消息中心，负责和主控制器交互消息
 		function initMessageHandler(messageHandler) {
 			_messageCenter = messageHandler;
 		}
 
+		// 公开的接口
 		return {
 			show: show,
 			getDocumentInfo: getDocumentInfo,
@@ -466,7 +485,7 @@ define(function (require, exporst, module) {
 			saveCallback: saveCallback,
 			initMessageHandler: initMessageHandler
 		}
-	 }
+	}
 
 	module.exports = new EditController();
 });
