@@ -2,19 +2,24 @@ define(function (require, exporst, module) {
 	'use strict';
 	// 页面中元素对应的id值
 	var _id = {
-		CategoryCtSpan: 'params_category',
-		CategoryTree: 'category_tree',
-		CategoryTip: 'params_category_tip',
-		TagCtSpan: 'params_tag',
-		TagTree: 'tag_tree',
-		TagTip: 'params_tag_tip',
-		EditorCt: 'wiz_edit_area',
-		TitleInput: 'title_input',
-		SaveTipDiv: 'save_tip',
-		FrameBase: 'wiz_frame_base'
+		categoryCtSpan: 'params_category',
+		categoryTree: 'category_tree',
+		categoryTip: 'params_category_tip',
+		tagCtSpan: 'params_tag',
+		tagTree: 'tag_tree',
+		tagTip: 'params_tag_tip',
+		editorCt: 'wiz_edit_area',
+		titleInput: 'title_input',
+		saveTipDiv: 'save_tip',
+		FrameBase: 'wiz_frame_base',
+		editorFrame: 'baidu_editor_0'
 	},
 		_class = {
 			tagDiv: 'edit-tag-span'
+		},
+
+		keyCode = {
+			S: 83
 		},
 
 		zTree = require('ztree'),
@@ -66,18 +71,18 @@ define(function (require, exporst, module) {
 
 		function showCategory() {
 			if (_docInfo.document_location) {
-				$('#' + _id.CategoryCtSpan).html(_docInfo.displayLocation);
+				$('#' + _id.categoryCtSpan).html(_docInfo.displayLocation);
 			} else {
 				// 如果文档模型中没有category则加载默认category
 				_docInfo.document_location = _locale.DefaultFolderObj.location;
-				$('#' + _id.CategoryCtSpan).html(_locale.DefaultFolderObj.display);
+				$('#' + _id.categoryCtSpan).html(_locale.DefaultFolderObj.display);
 			}
 		}
 
 		// 根据文档信息显示
 		function showDoc(docInfo) {
 			// 文档标题
-			$('#' + _id.TitleInput).val(_docInfo.document_title);	
+			$('#' + _id.titleInput).val(_docInfo.document_title);	
 			// 设置文档内容			
 			_editor.setContent(docInfo.document_body);
 			// 设置并选择标签列表
@@ -101,14 +106,49 @@ define(function (require, exporst, module) {
 
 		function initEditor() {
 	    _editor = new UE.ui.Editor();
-	    _editor.render(_id.EditorCt);
+	    _editor.render(_id.editorCt);
+	    _editor.addListener("ready",function(){
+	    	editorKeyDownhandler();
+			})
 		}
+
+		/**
+		 * 注册文本输入区域的keydown事件
+		 * 调用Ctrl+s保存功能
+		 * @return {[type]} [description]
+		 */
+		function editorKeyDownhandler() {
+			var editorDoc = getFrameDocument(document.getElementById(_id.editorFrame));
+
+      editorDoc.onkeydown = function(event) {
+      	event = event || window.event;
+      	// cmd + s || ctrl + s
+      	if (event.keyCode === keyCode.S && (event.ctrlKey || event.metaKey)) {
+      	 preventDefaultEvent(event);
+      	 _messageCenter.saveDocument(false);
+      	}
+      };
+		}
+
+		/**
+		 * TODO 提取到eventHelper中
+		 * 阻止默认事件
+		 * @param  {[type]} event [description]
+		 * @return {[type]}       [description]
+		 */
+    function preventDefaultEvent(event) {
+    	if ( event.preventDefault) {
+    	 event.preventDefault();
+    	} else {
+    	 event.returnValue = false;
+    	}
+    }
 
 		// 显示本地化页面的显示文字 
 		function localizePageMessage() {
-			$('#' + _id.CategoryTip).html(_locale.FolderSpan);
-			$('#' + _id.TagTip).html(_locale.TagSpan);
-			$('#' + _id.TitleInput).attr('placeholder', _locale.DefaultTitle);
+			$('#' + _id.categoryTip).html(_locale.FolderSpan);
+			$('#' + _id.tagTip).html(_locale.TagSpan);
+			$('#' + _id.titleInput).attr('placeholder', _locale.DefaultTitle);
 		}
 
 		// 显示的时候再初始化树空间
@@ -125,7 +165,7 @@ define(function (require, exporst, module) {
 				onExpand: zTreeOnExpand,
 				beforeRename: zTreeBeforeRename
 			};
-			_categoryTreeRoot =  initAndGetRoot(_id.CategoryTree, setting, categoryNodes);
+			_categoryTreeRoot =  initAndGetRoot(_id.categoryTree, setting, categoryNodes);
 			// 标签的回调方法和目录不一样，单独写
 			setting.callback.onClick = tagTreeOnClick;
 			setting.callback.onCheck = tagTreeOnCheck;
@@ -135,8 +175,9 @@ define(function (require, exporst, module) {
 				chkboxType: { "Y" : "", "N" : "" }
 			};
 			setting.view.dblClickExpand = false;
-			_tagTreeRoot = initAndGetRoot(_id.TagTree, setting, tagNodes);
+			_tagTreeRoot = initAndGetRoot(_id.tagTree, setting, tagNodes);
 			bindBodyClickHandler();
+			// 注册事件是和tree控件相关联的，所以必须放在初始化tree控件后执行
 	    initFrameBodyClickHandler();
 		}
 
@@ -202,7 +243,7 @@ define(function (require, exporst, module) {
 			if (bTagAdded(treeNode.tag_guid)) {
 				return;
 			}
-			var container = document.getElementById(_id.TagCtSpan);
+			var container = document.getElementById(_id.tagCtSpan);
 			if (!_tagsList || _tagsList.length < 1) { 
 				removeTagHelp();
 			}
@@ -220,12 +261,12 @@ define(function (require, exporst, module) {
 
 		// 显示标签的帮助信息--一般在标签列表为空的时候，显示在标签区域
 		function showTagHelp() {
-			$('#' + _id.TagCtSpan).html(_locale.TagHelpSpan);
+			$('#' + _id.tagCtSpan).html(_locale.TagHelpSpan);
 		}
 
 		// 当选中标签时，需要隐藏标签的帮助信息
 		function removeTagHelp() {
-			$('#' + _id.TagCtSpan).html("");
+			$('#' + _id.tagCtSpan).html("");
 		}
 
 		// 判断标签是否已经增加
@@ -246,9 +287,9 @@ define(function (require, exporst, module) {
 			unSelectAllTagNodes();
 			hideTreeContainer();
 			// 清空标题
-			$('#' + _id.TitleInput).val('');
+			$('#' + _id.titleInput).val('');
 			// 清空保存信息
-			$('#' + _id.SaveTipDiv).html('');
+			$('#' + _id.saveTipDiv).html('');
 			// 清空文档内容显示
 			_editor.setContent('');		
 		}
@@ -261,8 +302,8 @@ define(function (require, exporst, module) {
 		}
 		// 切换到编辑页面时，要隐藏之前展开的树节点
 		function hideTreeContainer() {
-			$('#' + _id.CategoryTree).hide();
-			$('#' + _id.TagTree).hide();
+			$('#' + _id.categoryTree).hide();
+			$('#' + _id.tagTree).hide();
 		}
 
 		// 取消选择时，删除显示
@@ -294,8 +335,8 @@ define(function (require, exporst, module) {
 			var nodeLocation = treeNode.location,
 				displayLocation = treeNode.displayLocation;
 			_docInfo.document_location = nodeLocation;
-			$('#' + _id.CategoryCtSpan).html(displayLocation);
-			$("#" + _id.CategoryTree).hide(500);
+			$('#' + _id.categoryCtSpan).html(displayLocation);
+			$("#" + _id.categoryTree).hide(500);
 		}
 
 		function zTreeOnExpand(event, treeId, treeNode) {
@@ -346,20 +387,20 @@ define(function (require, exporst, module) {
 				if (_categoryTreeRoot === null) {
 					initTree();	
 				}
-				$("#" + _id.CategoryTree).toggle(500);
+				$("#" + _id.categoryTree).toggle(500);
 			};
 			document.getElementById('params_tag').onclick = function() {
 				// 点击目录信息时再加载左侧树 
 				if (_tagTreeRoot === null) {
 					initTree();	
 				}
-				$("#" + _id.TagTree).toggle(500);
+				$("#" + _id.tagTree).toggle(500);
 			};
 		}
 
 		// 获取当前新建或编辑的文档信息及内容
 		function getDocumentInfo() {
-			if ($('#' + _id.TitleInput).val() === '' || $('#' + _id.TitleInput).val().length < 0) {
+			if ($('#' + _id.titleInput).val() === '' || $('#' + _id.titleInput).val().length < 0) {
 				// TODO 提示
 				return null;
 			}
@@ -367,7 +408,7 @@ define(function (require, exporst, module) {
 			var documentInfo ={};
 			documentInfo.document_body = _editor.getAllHtml();
 			documentInfo.document_category = _docInfo.document_location;
-			documentInfo.document_title = $('#' + _id.TitleInput).val();
+			documentInfo.document_title = $('#' + _id.titleInput).val();
 			documentInfo.document_guid = _docInfo.document_guid;
 			var tags = collectTagGuids();
 			// 为空不传，如果传入的话，会造成openapi端请求错误
@@ -389,7 +430,7 @@ define(function (require, exporst, module) {
 		// 正在保存
 		function nowSaving() {
 			var savingMsg = _locale.Saving;
-			$('#' + _id.SaveTipDiv).html(savingMsg);
+			$('#' + _id.saveTipDiv).html(savingMsg);
 		}
 
 		// 单击保存按钮后，回调方法
@@ -397,7 +438,7 @@ define(function (require, exporst, module) {
 			var savedMsg = _locale.Saved;
 			var curTime = getCurTime();
 			var msg = savedMsg.replace('{time}', curTime);
-			$('#' + _id.SaveTipDiv).html(msg);
+			$('#' + _id.saveTipDiv).html(msg);
 		}
 
 		/**
@@ -420,7 +461,7 @@ define(function (require, exporst, module) {
 
 		// 点击iframe时，触发document.body.click事件
 		function initFrameBodyClickHandler() {
-			var fdoc = getFrameDocument(document.getElementById('baidu_editor_0'));
+			var fdoc = getFrameDocument(document.getElementById(_id.editorFrame));
 			var oldFunc = fdoc.body.onclick;
 			fdoc.body.onclick = function (event) {
 				// jQuery注册的事件，必须用jQuery触发，否则ie下会出问题

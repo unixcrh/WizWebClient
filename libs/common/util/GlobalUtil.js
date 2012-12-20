@@ -82,25 +82,16 @@ define(function (require, exports, module){
 				return returnValue;
 			}
 		},
-		/**
-		 * 是否包含特殊字符
-		 * @param str
-		 * @returns {Boolean}
-		 */
-		// isConSpeCharacters: function (str) {
-		// 	var badChar = "\\/:<>*?\"&\'";
-		// 	if ("" == str) {
-		// 		return false;
-		// 	}
-		// 	var len = str.length;
-		// 	for (var i = 0; i < len; i++) {
-		// 		var c = str.charAt(i);
-		// 		if (badChar.indexOf(c) > -1) {
-		// 			return false;
-		// 		}
-		// 	}
-		// 	return true;
-		// },
+		// 判断系统信息
+		isWinPlatform: function() {
+			var platform = window.navigator.platform,
+				isMac = (platform.toLowerCase().indexOf('mac') === 0),//(platform === "Mac68K") || (platform === "MacPPC") || (platform === "Macintosh");
+				isLinux = (platform.toLowerCase().indexOf('linux') === 0);
+			if (isMac || isLinux) {
+				return false;
+			}
+			return true;
+		},
 		// 格式化日期timestamp
 		formatDate: function (dateStr) {
 			//标准游览器，如果数组里面最后一个字符为逗号，JS引擎会自动剔除它。
