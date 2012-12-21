@@ -23,7 +23,6 @@
                 $(this).siblings().toggle(300);
                 var $answers = $("ol");
                 var len = $answers.length;
-                // console.log($(".switcher").html());
                 for(var i = 0; i < len; i++ )
                 {
                     if($(".switcher").text() == "显示全部"){
@@ -44,7 +43,6 @@
             });
 
             $(".switcher").click(function() {
-                console.log($(this).text());
                 if( $(this).text() == "显示全部" ) {
 
                     $("ol").show(300);

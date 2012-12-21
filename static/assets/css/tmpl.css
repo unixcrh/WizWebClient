@@ -315,17 +315,24 @@ _zoom: 1;
   line-height: 22px;
   text-decoration: none;
 }
+.btn-w{
+  padding: 4px 13px 6px 13px;
+  background: #FFF;
+  /*color: #FFF;*/
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 22px;
+  text-decoration: none;
+}
 .btn:hover{
   background: #24459A;
   color: #FFF;
 }
-.l-slogan a, .l-slogan a{
-  font-size: 16px;
-  font-weight: 600;
-  line-height: 22px;
-  text-decoration: none; 
-  color: #FFF;
+.btn-w:hover{
+  background: #0072c5;
+  /*color: #FFF;*/
 }
+
 
 /*------  首页“功能特性”组件样式  -----*/
 .feature, .topicPic, .enterprise, .tuts, .blog, .faq, .support, .browser, .winintro {
@@ -461,7 +468,7 @@ _zoom: 1;
   text-decoration: none;
   vertical-align: baseline;
   margin: 8px 0 0 0;
-  color: #1570A6;
+  color: #FFF;
 }
 .topic ul li a:hover, .topicPic a:hover{
   color: #24459A;
