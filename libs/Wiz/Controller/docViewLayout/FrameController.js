@@ -12,9 +12,17 @@ define(function (require, exports, module) {
 		initHandler();
 
 		function initHandler() {
-			_frameObj.onload = function () {
-				resizeFrameContainer(_frameObj);
-			};
+			if (_frameObj.attachEvent) {
+				// ie下0级DOM onload有一些版本不支持，必须要使用attachEvent
+				// lsl 2012-12-21
+				_frameObj.attachEvent('onload', function() {
+					resizeFrameContainer(_frameObj);
+				});
+			} else {
+				_frameObj.onload = function () {
+					resizeFrameContainer(_frameObj);
+				};
+			}
 		}
 
 		// 点击iframe时，触发document.body.click事件
@@ -41,7 +49,7 @@ define(function (require, exports, module) {
 					imgList[index].src = imgList[index].src;
 				}
 			} catch (err) {
-				console.log('Preview.completeImgSrc() Error: ' + err);
+				console && console.error('Preview.completeImgSrc() Error: ' + err);
 			}
 		}
 

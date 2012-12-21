@@ -125,7 +125,6 @@ define(function (require, exporst, module) {
       	event = event || editFrameElem.contentWindow.event;
       	// cmd + s || ctrl + s
       	if ((event.charCode || event.keyCode) === keyCode.S && (event.ctrlKey || event.metaKey)) {
-      		console.log('press ctrl + s');
       	 	preventDefaultEvent(event);
       	 _messageCenter.saveDocument(false);
       	}

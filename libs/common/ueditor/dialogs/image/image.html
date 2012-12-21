@@ -97,9 +97,7 @@
             return;
         }  
         // 组织需要的参数，暂时只能通过这种方法来获取lsl  ---2012-12-19
-        console.log(Wiz.curDoc);
         var extParams = '{"token":"' +  Wiz.token + '", "kb_guid":"' + Wiz.kbGuid + '", "document_guid": "' + Wiz.curDoc.document_guid  + '", "version": "' + Wiz.curDoc.version + '"}';
-        console.log(extParams);
         editor.setOpt({
             imageFieldName:"upfile",
             compressSide:0,
@@ -146,8 +144,6 @@
                 // 单个文件上传完成的回调
                 uploadCompleteCallback: function(data){
                     try{
-                        console.log('uploadCompleteCallback');
-                        console.log(data);
                         var info = eval("(" + data.info + ")");
                         info && imageUrls.push(info);
                         selectedImageCount--;
@@ -156,8 +152,6 @@
                 },
                 // 单个文件上传失败的回调,
                 uploadErrorCallback: function (data){
-                    console.log('uploadErrorCallback');
-                    console.log(data);
                     if(!data.info){
                         alert(lang.netError)
                     }

@@ -69,7 +69,6 @@ define(function (require, exports, module) {
 					}
 					var docInfo = _curDoc;
 					// 新建文档，非编辑
-					console.log(bNew);
 					if (bNew === true) {
 						// 新文档，把docInfo清空
 						docInfo = {};
@@ -78,7 +77,6 @@ define(function (require, exports, module) {
 						// docInfo.document_guid = documentGuid;
 						docInfo.document_location = treeCtrl.getCurrentCategory();
 						// _curDoc = docInfo;
-						console.log(docInfo);
 						// lsl 2012-12-19
 						// 开放上传图片时，打开该部分请求，暂时屏蔽
 						// remote.createTempDocument(context.kbGuid, docInfo, function(data) {
@@ -123,7 +121,6 @@ define(function (require, exports, module) {
 					if (bQuit) {
 						headCtrl.showSendingGroup();
 					}
-					console.log(docInfo);
 					remote.postDocument(context.kbGuid, docInfo, function callback(data) {
 						_messageDistribute.saveDocumentCallback(data, bQuit, docInfo);
 					}, function callError(error) {
