@@ -22,10 +22,9 @@ define(function (require, exporst, module) {
 			S: 83
 		},
 
-		zTree = require('ztree'),
-		zTreeBase = require('../../../component/zTreeBase'),
-		GlobalUtil = require('../../../common/util/GlobalUtil'),
-		_locale = require('locale').EditPage,
+		zTreeBase = require('/libs/component/zTreeBase'),
+		GlobalUtil = require('/libs/common/util/GlobalUtil'),
+		_locale = require('/locale/main').EditPage,
 
 		// 编辑器实例
 		_editor = null,
@@ -118,13 +117,14 @@ define(function (require, exporst, module) {
 		 * @return {[type]} [description]
 		 */
 		function editorKeyDownhandler() {
-			var editorDoc = getFrameDocument(document.getElementById(_id.editorFrame));
+			var editFrameElem = document.getElementById(_id.editorFrame),
+					editorDoc = getFrameDocument(editFrameElem);
 
       editorDoc.onkeydown = function(event) {
-      	event = event || window.event;
+      	event = event || editFrameElem.contentWindow.event;
       	// cmd + s || ctrl + s
-      	if (event.keyCode === keyCode.S && (event.ctrlKey || event.metaKey)) {
-      	 preventDefaultEvent(event);
+      	if ((event.charCode || event.keyCode) === keyCode.S && (event.ctrlKey || event.metaKey)) {
+      	 	preventDefaultEvent(event);
       	 _messageCenter.saveDocument(false);
       	}
       };
@@ -183,7 +183,7 @@ define(function (require, exporst, module) {
 
 		// 初始化树控件，并且获取treeRoot的对象
 		function initAndGetRoot(containerId, setting, nodesInfo) {
-			var treeRoot = zTree.init($("#" + containerId), setting, nodesInfo);
+			var treeRoot = $.fn.zTree.init($("#" + containerId), setting, nodesInfo);
 			var treeElem = $("#" + containerId);
 			treeElem.hover(function () {
 				if (!treeElem.hasClass("showIcon")) {
@@ -371,7 +371,7 @@ define(function (require, exporst, module) {
 				, index = 0
 				,	node = null;
 			for (; index < length; index ++) {
-				if (_tagsList.lastIndexOf(nodeList[index].tag_guid) > 0) {
+				if ((GlobalUtil.lastIndexOfArray(_tagsList, nodeList[index].tag_guid)) > 0) {
 					_tagTreeRoot.checkNode(nodeList[index], true, true);
 				}
 			}

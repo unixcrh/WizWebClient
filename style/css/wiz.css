@@ -413,6 +413,7 @@ input[type="checkbox"], body:not(.IE_M9) input[type="radio"] {
 .loading-fallback{
 	background-image:url(../images/flyingdots.gif);
 	background-size:100% 4px;
+	background-repeat: no-repeat;
 	height: 4px;
 }
 .sending-fallback {
@@ -463,7 +464,6 @@ input[type="checkbox"], body:not(.IE_M9) input[type="radio"] {
 	top: 0;
 	bottom: 0;
 	height: 40px;
-	_float: right;
 }
 .logo-split {
 	border-left: 1px solid #f0f0f0;
@@ -575,9 +575,6 @@ input[type="checkbox"], body:not(.IE_M9) input[type="radio"] {
 .edit-page-wrapper {
 	position:absolute;
 	top: 40px;
-	_height: 100%;
-	_width: 100%;
-	_top: 42px;
 	bottom: 0;
 	right: 0;
 	left: 0;
@@ -1100,3 +1097,20 @@ div.c_loadingDot {
 }
 /* edit-content */
 /* edit page */
+
+
+
+/* ie6 hack */ 
+.main-container,
+.below-container,
+.edit-page-wrapper {
+	_position: relative;
+	_height: 100%;
+	_width: 100%;
+}
+.header-right {
+	_float: right;
+}
+.edit-tag-span  {
+	*display: inline; /* for ie67*/
+}

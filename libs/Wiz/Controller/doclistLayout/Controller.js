@@ -24,7 +24,7 @@ define(function (require, exports, module) {
 			docList: []
 		},
 		_containerObj = $('#' + _node.containerId),
-		_locale = require('locale');
+		_locale = require('/locale/main');
 
 		function bindSortHandler() { 
 			var sortMenuElem = $('#' + _node.sortMenuId),

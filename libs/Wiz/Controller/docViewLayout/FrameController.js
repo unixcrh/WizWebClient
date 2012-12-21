@@ -1,6 +1,9 @@
 define(function (require, exports, module) {
 	'use strict';
 	var GlobalUtil = require('../../../common/util/GlobalUtil');
+	var _id = {
+		readFrameCt: 'read_frame_ct'
+	};
 	var FrameController = function (id) {
 
 		var _frameObj = document.getElementById(id);
@@ -9,9 +12,17 @@ define(function (require, exports, module) {
 		initHandler();
 
 		function initHandler() {
-			_frameObj.onload = function () {
-				resizeFrameContainer(_frameObj);
-			};
+			if (_frameObj.attachEvent) {
+				// ie下0级DOM onload有一些版本不支持，必须要使用attachEvent
+				// lsl 2012-12-21
+				_frameObj.attachEvent('onload', function() {
+					resizeFrameContainer(_frameObj);
+				});
+			} else {
+				_frameObj.onload = function () {
+					resizeFrameContainer(_frameObj);
+				};
+			}
 		}
 
 		// 点击iframe时，触发document.body.click事件
@@ -38,7 +49,7 @@ define(function (require, exports, module) {
 					imgList[index].src = imgList[index].src;
 				}
 			} catch (err) {
-				console.log('Preview.completeImgSrc() Error: ' + err);
+				console && console.error('Preview.completeImgSrc() Error: ' + err);
 			}
 		}
 
@@ -57,12 +68,16 @@ define(function (require, exports, module) {
 	    if (iframe) {
 				var fdoc = getFrameDocument(),
 						fDocElem = fdoc.documentElement,
-	    			parentStyle = iframe.parentElement.style;
-	      if (fdoc && fDocElem.scrollHeight && fDocElem.scrollWidth) {
+	    			parentStyle = $('#' + _id.readFrameCt),
+	    			// 获取frame中页面的最大scroll值，兼容低版本ie  lsl-2012-12-21
+	    			scrollHeight = Math.max(fDocElem.scrollHeight, fdoc.body.scrollHeight),
+	    			scrollWidth = Math.max(fDocElem.scrollWidth, fdoc.body.scrollWidth);
+	      if (fdoc && scrollHeight && scrollWidth) {
 	      	//首先清空
-	      	parentStyle.height = parentStyle.width = '';
-	        parentStyle.height = fDocElem.scrollHeight + 20 + 'px'; 
-	        parentStyle.width = fDocElem.scrollWidth + 20 + 'px';
+	      	var readFrameStyle = document.getElementById(_id.readFrameCt).style;
+	 				readFrameStyle.height = readFrameStyle.width = '';
+	      	parentStyle.height(scrollHeight + 20 + 'px');
+	      	parentStyle.width(scrollWidth + 20 + 'px');
 	      }
 	    }
 			initFrameBodyClickHandler();

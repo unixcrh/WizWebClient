@@ -309,5 +309,4 @@
         //      indentValue : '2em'             //行首缩进的大小
         //  }
     };
-        console.log(window.UEDITOR_HOME_URL);
 })();

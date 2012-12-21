@@ -3521,7 +3521,6 @@ var fillCharReg = new RegExp( domUtils.fillChar, 'g' );
             type:"text/javascript",
             defer:"defer"
         }, function () {
-            console.log(UE.plugins);
             //初始化插件
             for ( var pi in UE.plugins ) {
                 UE.plugins[pi].call( me )
@@ -4055,8 +4054,6 @@ var fillCharReg = new RegExp( domUtils.fillChar, 'g' );
                     cmd, cmdFn;
             cmd = this.commands[cmdName] || UE.commands[cmdName];
             if ('switchtoolbar' === cmdName) {
-                console.log(UE.commands[cmdName]);
-                console.log(UE.commands);
             }
             cmdFn = cmd && cmd[fnName];
             //没有querycommandstate或者没有command的都默认返回0
@@ -6966,7 +6963,6 @@ UE.plugins['undo'] = function() {
                 var tmpNode = ci;
                 while(tmpNode = tmpNode.previousSibling){
                     if(tmpNode.nodeType == 3){
-//                        console.log(index)
                         index += tmpNode.nodeValue.replace(fillCharReg,'').length;
                     }else{
                         break;
@@ -7477,10 +7473,6 @@ UE.plugins['switchtoolbar'] = function() {
     var me = this;
     UE.commands['switchtoolbar'] = {
         execCommand : function(){
-            console.log('switchtoolbar========================');
-            console.log(me);
-            console.log(this);
-            console.log(this.ui);
             alert("Hello,UE developer!");
         }
     };

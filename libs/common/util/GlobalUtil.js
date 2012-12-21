@@ -149,7 +149,25 @@ define(function (require, exports, module){
 	      return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
 	    }
       return (S4() + S4() + "-" + S4() + "-" + S4() + "-" + S4() + "-" + S4() + S4() + S4());
-    } 
+    },
+    // 数组的lastIndexOf方法，兼容低版本ecmaScript
+    lastIndexOfArray: function (array, item) {
+    	if( Array.prototype.lastIndexOf) {
+    		Array.prototype.lastIndexOf.call(array, item);
+    	} else {
+			  var n = array.length,
+			  	i = n-1;
+			  if (i < 0) {
+					i = Math.max(0, n + i);
+				}
+			  for (; i >= 0; i--){
+			    if (i in array && array[i] === item) {
+			    	return i;	
+			    }
+			  }
+			  return -1;
+    	}
+    }
 	};
 
 	module.exports = GlobalUtil;
