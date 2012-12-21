@@ -118,13 +118,15 @@ define(function (require, exporst, module) {
 		 * @return {[type]} [description]
 		 */
 		function editorKeyDownhandler() {
-			var editorDoc = getFrameDocument(document.getElementById(_id.editorFrame));
+			var editFrameElem = document.getElementById(_id.editorFrame),
+					editorDoc = getFrameDocument(editFrameElem);
 
       editorDoc.onkeydown = function(event) {
-      	event = event || window.event;
+      	event = event || editFrameElem.contentWindow.event;
       	// cmd + s || ctrl + s
-      	if (event.keyCode === keyCode.S && (event.ctrlKey || event.metaKey)) {
-      	 preventDefaultEvent(event);
+      	if ((event.charCode || event.keyCode) === keyCode.S && (event.ctrlKey || event.metaKey)) {
+      		console.log('press ctrl + s');
+      	 	preventDefaultEvent(event);
       	 _messageCenter.saveDocument(false);
       	}
       };
@@ -371,7 +373,7 @@ define(function (require, exporst, module) {
 				, index = 0
 				,	node = null;
 			for (; index < length; index ++) {
-				if (_tagsList.lastIndexOf(nodeList[index].tag_guid) > 0) {
+				if ((GlobalUtil.lastIndexOfArray(_tagsList, nodeList[index].tag_guid)) > 0) {
 					_tagTreeRoot.checkNode(nodeList[index], true, true);
 				}
 			}

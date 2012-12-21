@@ -1,6 +1,9 @@
 define(function (require, exports, module) {
 	'use strict';
 	var GlobalUtil = require('../../../common/util/GlobalUtil');
+	var _id = {
+		readFrameCt: 'read_frame_ct'
+	};
 	var FrameController = function (id) {
 
 		var _frameObj = document.getElementById(id);
@@ -57,7 +60,7 @@ define(function (require, exports, module) {
 	    if (iframe) {
 				var fdoc = getFrameDocument(),
 						fDocElem = fdoc.documentElement,
-	    			parentStyle = iframe.parentElement.style;
+	    			parentStyle = document.getElementById(_id.readFrameCt).style;
 	      if (fdoc && fDocElem.scrollHeight && fDocElem.scrollWidth) {
 	      	//首先清空
 	      	parentStyle.height = parentStyle.width = '';
