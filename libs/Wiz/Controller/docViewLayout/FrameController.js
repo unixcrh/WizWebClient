@@ -60,12 +60,16 @@ define(function (require, exports, module) {
 	    if (iframe) {
 				var fdoc = getFrameDocument(),
 						fDocElem = fdoc.documentElement,
-	    			parentStyle = document.getElementById(_id.readFrameCt).style;
-	      if (fdoc && fDocElem.scrollHeight && fDocElem.scrollWidth) {
+	    			parentStyle = $('#' + _id.readFrameCt),
+	    			// 获取frame中页面的最大scroll值，兼容低版本ie  lsl-2012-12-21
+	    			scrollHeight = Math.max(fDocElem.scrollHeight, fdoc.body.scrollHeight),
+	    			scrollWidth = Math.max(fDocElem.scrollWidth, fdoc.body.scrollWidth);
+	      if (fdoc && scrollHeight && scrollWidth) {
 	      	//首先清空
-	      	parentStyle.height = parentStyle.width = '';
-	        parentStyle.height = fDocElem.scrollHeight + 20 + 'px'; 
-	        parentStyle.width = fDocElem.scrollWidth + 20 + 'px';
+	      	parentStyle.height('');
+	      	parentStyle.width('');
+	      	parentStyle.height(scrollHeight + 20 + 'px');
+	      	parentStyle.width(scrollWidth + 20 + 'px');
 	      }
 	    }
 			initFrameBodyClickHandler();
