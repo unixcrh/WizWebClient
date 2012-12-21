@@ -74,8 +74,8 @@ define(function (require, exports, module) {
 	    			scrollWidth = Math.max(fDocElem.scrollWidth, fdoc.body.scrollWidth);
 	      if (fdoc && scrollHeight && scrollWidth) {
 	      	//首先清空
-	      	parentStyle.height('');
-	      	parentStyle.width('');
+	      	var readFrameStyle = document.getElementById(_id.readFrameCt).style;
+	 				readFrameStyle.height = readFrameStyle.width = '';
 	      	parentStyle.height(scrollHeight + 20 + 'px');
 	      	parentStyle.width(scrollWidth + 20 + 'px');
 	      }
