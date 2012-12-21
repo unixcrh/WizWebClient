@@ -243,7 +243,7 @@ define(function (require, exports, module) {
 
 	function initSplitter() {
 		//初始化Splitter
-		var Splitter = require('component/Splitter');
+		var Splitter = require('../../component/Splitter');
 		var leftSplitter = new Splitter();
 		var rightSplitter = new Splitter();
 		leftSplitter.init({left: 'leftTree_container', right: 'content_container', 'splitter': 'left_splitter'});

@@ -22,10 +22,9 @@ define(function (require, exporst, module) {
 			S: 83
 		},
 
-		zTree = require('ztree'),
-		zTreeBase = require('../../../component/zTreeBase'),
-		GlobalUtil = require('../../../common/util/GlobalUtil'),
-		_locale = require('locale').EditPage,
+		zTreeBase = require('/libs/component/zTreeBase'),
+		GlobalUtil = require('/libs/common/util/GlobalUtil'),
+		_locale = require('/locale/main').EditPage,
 
 		// 编辑器实例
 		_editor = null,
@@ -184,7 +183,7 @@ define(function (require, exporst, module) {
 
 		// 初始化树控件，并且获取treeRoot的对象
 		function initAndGetRoot(containerId, setting, nodesInfo) {
-			var treeRoot = zTree.init($("#" + containerId), setting, nodesInfo);
+			var treeRoot = $.fn.zTree.init($("#" + containerId), setting, nodesInfo);
 			var treeElem = $("#" + containerId);
 			treeElem.hover(function () {
 				if (!treeElem.hasClass("showIcon")) {

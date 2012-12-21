@@ -2,8 +2,8 @@ define(function (require, exports, module) {
 	'use strict';
 
 	var _messageCenter = null,
-			constant = require('Wiz/constant'),
-			_locale = require('locale'),
+			constant = require('../../constant'),
+			_locale = require('../../../../locale/main'),
 			_node = {
 				userInfoId: 'user_info',
 				userNameId: 'user_name',
@@ -37,6 +37,7 @@ define(function (require, exports, module) {
 					nameSelector.html(userInfo.user.displayname);
 				},
 				initFillContent: function() {
+					console.log(_locale);
 					var signOutValue = _locale.UserSetting.singOut,
 							signOutElem = $('#user_menu li a span');
 					signOutElem.html(signOutValue);

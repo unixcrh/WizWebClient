@@ -2,10 +2,9 @@ define(function (require, exports, module) {
 	'use strict';
 	var treeProperty = require('./treeProperty'),
 		_messageCenter = null,
-		zTree = require('ztree'),
-		zTreeBase = require('../../../component/zTreeBase'),
+		zTreeBase = require('/libs/component/zTreeBase'),
 
-		locale= require('locale'),
+		locale= require('/locale/main'),
 		specialLocation = locale.DefaultCategory,
 
 		_curCategory = '';
@@ -180,7 +179,7 @@ define(function (require, exports, module) {
 		}
 
 		function initTree(id) {
-			treeObj =zTree.init($('#' + id), setting, zNodesObj);
+			treeObj = $.fn.zTree.init($('#' + id), setting, zNodesObj);
 			var treeElem = $('#' + id);
 			treeElem.hover(function () {
 				if (!treeElem.hasClass("showIcon")) {

@@ -1,7 +1,7 @@
 define(function (require, exports, module) {
 	'use strict';
 
-	var locale= require('locale'),
+	var locale= require('/locale/main'),
 			specialLocation = locale.DefaultCategory;
 
 	
