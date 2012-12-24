@@ -84,6 +84,8 @@ define(function (require, exports, module) {
 					// 注册取消按钮事件
 					cancelBtn.bind('click', function(){
 						_messageCenter.switchEditMode(false);
+						// 退出并刷新当前的文档列表
+						_messageCenter.refreshCurDocList();
 						_docReadCtrl.active();
 					});
 					// 注册保存按钮事件

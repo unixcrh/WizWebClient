@@ -27,6 +27,8 @@ define(function (require, exports, module) {
 			_curDoc = null,
 			// 缓存标签信息的对象key为tag_guid，value为name
 			_tagsMap = {},
+			// 缓存当前的查询条件
+			_requestCmdParams = {},
 
 			//负责接收下级controller的消息
 			_messageHandler = {
@@ -42,6 +44,7 @@ define(function (require, exports, module) {
 							alert(errorMsg);
 						}
 					};
+					_requestCmdParams.docList = params;
 					remote.getDocumentList(context.kbGuid, params, _messageDistribute.showDocList, callError);
 				},
 				// 加载文档内容
@@ -134,6 +137,14 @@ define(function (require, exports, module) {
 				},
 				getNodesInfo: function(key) {
 					return context[key];
+				},
+				/**
+				 * 刷新当前的文档列表，_requestCmdParams缓存
+				 * 主要用于保存后，点取消
+				 * @return {[type]} [description]
+				 */
+				refreshCurDocList: function() {
+					remote.getDocumentList(context.kbGuid, _requestCmdParams.docList, _messageDistribute.showDocList);
 				},
 				saveNodesInfos: function(key, list) {
 					context[key] = list;
