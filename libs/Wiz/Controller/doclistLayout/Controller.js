@@ -80,7 +80,7 @@ define(function (require, exports, module) {
 	}
 
 	function initHandler() {
-		if (!_containerObj) {
+		if (!_containerObj && console) {
 			console.error('DocList Controller Error: _containerObj not found.')
 			return;
 		}
@@ -127,6 +127,9 @@ define(function (require, exports, module) {
 	
 
 	function sortDocList(docList, cmd, bDes) {
+		if (!docList || docList.length < 1)  {
+			return;
+		}
 		docList.sort(function(a, b) {
 			try {
 				if (bDes === 'false') {

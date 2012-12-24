@@ -66,6 +66,9 @@ define(function (require, exports, module) {
 		 */
 		function resizeFrameContainer(iframe){
 	    if (iframe) {
+	    	// 首先要清空容器的尺寸，否则会造成叠加
+      	var readFrameStyle = document.getElementById(_id.readFrameCt).style;
+ 				readFrameStyle.height = readFrameStyle.width = '';
 				var fdoc = getFrameDocument(),
 						fDocElem = fdoc.documentElement,
 	    			parentStyle = $('#' + _id.readFrameCt),
@@ -74,8 +77,6 @@ define(function (require, exports, module) {
 	    			scrollWidth = Math.max(fDocElem.scrollWidth, fdoc.body.scrollWidth);
 	      if (fdoc && scrollHeight && scrollWidth) {
 	      	//首先清空
-	      	var readFrameStyle = document.getElementById(_id.readFrameCt).style;
-	 				readFrameStyle.height = readFrameStyle.width = '';
 	      	parentStyle.height(scrollHeight + 20 + 'px');
 	      	parentStyle.width(scrollWidth + 20 + 'px');
 	      }
@@ -94,9 +95,19 @@ define(function (require, exports, module) {
 			return fdoc.documentElement.outerHTML;
 		}
 
+		function setHTML(htmlStr) {
+			var fdoc = getFrameDocument();
+			if (htmlStr) {
+				fdoc.open("text/html", "replace");
+				fdoc.write(htmlStr);
+				fdoc.close();
+			}
+		}
+
 		return {
 			setUrl: setURL,
-			getHTML: getHTML
+			getHTML: getHTML,
+			setHTML: setHTML
 		}
 	}
 

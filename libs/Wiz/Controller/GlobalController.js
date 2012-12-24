@@ -48,6 +48,9 @@ define(function (require, exports, module) {
 				requestDocumentBody: function (doc) {
 					// 记录当前显示的文档信息
 					_curDoc = doc;
+					// 切换文档时，首先显示加载中页面，并隐藏编辑按钮
+					docViewCtrl.showLoading();
+					headCtrl.showCreateBtnGroup();
 					var callError = function (error) {
 						console.error(error);
 					}
@@ -162,6 +165,10 @@ define(function (require, exports, module) {
 					// 首次加载，默认选择文档第一项
 					if (data.code == '200') {
 						listCtrl.show(data.list, _bFirst);
+						// 新用户
+						if (data.list.length < 1) {
+							docViewCtrl.showWelcomePage();
+						}
 					} else {
 						// TODO 错误处理
 					}
@@ -173,8 +180,14 @@ define(function (require, exports, module) {
 						_curDoc.url = docViewCtrl.viewDoc(_curDoc);
 						headCtrl.showReadBtnGroup();
 					} else {
-						console.error('Get Document Body Error!');
-						console.error(data);
+						// 加密文档的特殊处理
+						if (data.code === 500 && _curDoc.document_protect > 0) {
+							docViewCtrl.viewDoc(_curDoc);
+							headCtrl.showCreateBtnGroup();
+						}
+						if (console) {
+							console.error(data);	
+						}
 					}
 				},
 				saveDocumentCallback: function(data, bQuit, docInfo) {

@@ -2,11 +2,17 @@ define(function (require, exports, module) {
 	'use strict';
 
 	var FrameCtrl = require('./FrameController'),
+			_locale = require('/locale/main'),
 			_readFrameId = 'wiz_doc_iframe',
 			_curDoc = null,
 			// 保存jQuery选择器关键字
 			_selector = {
 				title: 'doc_params_title'
+			},
+			_helpPage = {
+				loading: _locale.HelpPage.loading,
+				protected: _locale.HelpPage.protected,
+				welcome: _locale.HelpPage.welcome	
 			},
 			titleElem = document.getElementById(_selector.title);
 
@@ -14,10 +20,19 @@ define(function (require, exports, module) {
 		//初始化
 		var readFrameCtrl = new FrameCtrl(_readFrameId);
 
+		// 帮助页面的初始化，主要是内容的显示
+		function initHelpPage() {
+
+		}
+
 		function viewDoc(doc) {
 			_curDoc = doc;
 			//显示标题
 			titleElem.innerText = doc.document_title;
+			if (doc.document_protect > 0) {
+				showProtectedpage();
+				return;
+			}
 			// 显示内容
 			// readFrameCtrl.setHTML(doc.document_body);
 			var path = 'http://' + document.domain + '/unzip/' + doc.kb_guid + '/' + doc.document_guid + '.' + doc.version;
@@ -31,10 +46,31 @@ define(function (require, exports, module) {
 			return docHtml;
 		}
 
+		// 显示帮主页面
+		function showHelpPage(type) {
+			var bodyHtml = _helpPage[type];
+			readFrameCtrl.setHTML(bodyHtml);
+		}
+
+		function showLoading() {
+			showHelpPage('loading');
+		}
+
+		function showProtectedpage() {
+			showHelpPage('protected');
+		}
+
+		function showWelcomePage() {
+			showHelpPage('welcome');
+		}
+
 
 		return {
 			viewDoc: viewDoc,
-			getCurDocHtml: getCurDocHtml
+			getCurDocHtml: getCurDocHtml,
+			showLoading: showLoading,
+			showProtectedpage: showProtectedpage,
+			showWelcomePage: showWelcomePage
 		}
 	}
 

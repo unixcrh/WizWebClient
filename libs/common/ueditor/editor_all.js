@@ -3498,7 +3498,7 @@ var fillCharReg = new RegExp( domUtils.fillChar, 'g' );
             isShow:true,
             initialContent:'',
             autoClearinitialContent:false,
-            iframeCssUrl:me.options.UEDITOR_HOME_URL + '/themes/default/iframe.css',
+            // iframeCssUrl:me.options.UEDITOR_HOME_URL + '/themes/default/iframe.css',
             textarea:'editorValue',
             focus:false,
             minFrameHeight:320,
