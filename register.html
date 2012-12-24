@@ -8,23 +8,22 @@
         <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
         <link rel="stylesheet" href="assets/css/clear.css">
         <link rel="stylesheet" href="assets/css/tmpl.css">
+        <script src="libs/common/jquery/jquery-1.7.2.min.js"></script>
+        <script src="libs/common/jquery/jquery.placeholder.min.js"></script>
         <!-- <link rel="stylesheet" href="assets/css/media-queries.css"> -->
 
-        <title>为知笔记 网页版 登录</title>
+        <title>为知笔记 网页版 注册</title>
         <!--[if lte IE 6]>
             <style type="text/css">
                 img, div, input { behavior: url("assets/css/iepngfix.htc"); }
             </style>
         <![endif]-->
         <script>
-            // document.getElementById("register-form").style.display = 'none';
-
-            window.onload=function(){
-                var dHeight=screen.availHeight;
-                document.getElementById("login").style.height=(dHeight*0.8).toString()+"px";
-            };
+            $(document).ready(function() {
+                $('input, textarea').placeholder();
+                $('#register_name').focus();
+            });
         </script>
-
     </head>
     <body>
         <div class="wraper" name="login-ctn">
@@ -42,28 +41,29 @@
                         <p class="error-indicator"></p>
                         <table class="formctn">
                             <tr>
-                                <td><label>邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱:</label></td>
-                                <td><input type="text" name="" placeholder="邮箱* 如:someone@example.com" id="register_name"></input><p class="error-indicator"></p></td>
+                                
+                                <td><input type="text" name="" placeholder="邮箱* 如:someone@example.com" id="register_name"><p class="error-indicator"></p></td>
                             </tr>
                             <tr>
-                                <td><label>密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码:</label></td>
-                                <td><input type="password" name="" placeholder="密码*" id="register_password1"></input></td>
+                                
+                                <td><input type="password" name="" placeholder="密码*" id="register_password1"></td>
                             </tr>
                             <tr>
-                                <td><label>确认密码:</label></td>
-                                <td><input type="password" name="" placeholder="确认密码*" id="register_password2"></input></td>
+                                
+                                <td><input type="password" name="" placeholder="确认密码*" id="register_password2"></td>
                             </tr>
                             <tr>
-                                <td><label>邀&nbsp;请&nbsp;码&nbsp;:</label></td>
-                                <td><input type="text" name="" placeholder="邀请码" id="login_name"></input></td>
+                                
+                                <td><input type="text" name="" placeholder="邀请码" id="login_name"></td>
                             </tr>
                         </table>
                         
                         <input type="submit" name="" value="&nbsp;&nbsp;注册&nbsp;&nbsp;" class="btn" id="register_submit"></input>
                         <br clear="both">
                     </form>
-                    <p>已经有为知账户？&nbsp;</p>
-                    <a id="to-login" href="/login" class="dark">登录</a>
+                    <br/>
+                    <p class="f14-b">已经有为知账户？&nbsp;<a id="to-login" href="/login" class="dark">登录</a></p>
+                    
                 </div>
                 <br clear="all" />
             </div>

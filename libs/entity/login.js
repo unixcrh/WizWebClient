@@ -9,7 +9,7 @@ define(function(require, exports) {
 				
 	var arr_ = new Array();
 	$(document).ready(function() {
-		$("#login_name").select();
+		// $("#login_name").select();
 		/* 验证注册账号事件 */
 		$("#register_name").live("blur",function(){
 			register_name();
