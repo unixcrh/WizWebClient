@@ -218,14 +218,19 @@ define(function (require, exports, module) {
 			_curDoc = null;
 
 
+	
+
 	//整个页面的初始化
 	function init() {
-		var token = GlobalUtil.getUrlParam('t');
-		if (!token || typeof token !== 'string') {
-			document.location.replace(constant.url.LOGIN);
-		} else {
-			context.token = token;
-			context.debug = GlobalUtil.getUrlParam('debug');
+		// 获取url中的token
+		// var token = GlobalUtil.getUrlParam('t');
+		// if (!token || typeof token !== 'string') {
+		// 	document.location.replace(constant.url.LOGIN);
+		// } else {
+			context.token = $.cookie('token');
+			context.debug = $.cookie('debug_model');
+			// $.cookie('token', token);
+			// $.cookie('debug_model', context.debug);
 
 			//必须先获取到用户信息
 			remote.getUserInfo(function (data) {
@@ -262,7 +267,7 @@ define(function (require, exports, module) {
 			}, function (err) {
 				//错误处理
 			});
-		}
+		// }
 	}
 
 	function initSplitter() {
