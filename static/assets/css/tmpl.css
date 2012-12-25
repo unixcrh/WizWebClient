@@ -146,7 +146,7 @@ color: #CFCFCF;
 font-weight: 200;
 height: 20px;
 left: 0px;
-margin: 0;
+margin: 0 auto;
 position: absolute;
 top:auto;
 padding: 0px 4px 0 4px;
@@ -1129,7 +1129,7 @@ table.formctn tr td{
 #login-form input, #register-form input{
   float: left;
   margin: 0;
-  padding: 0;
+  padding: 0 4px;
   width: 300px;
   font-size: 18px;
   height: 30px;
