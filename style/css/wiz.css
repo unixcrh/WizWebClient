@@ -654,6 +654,34 @@ input[type="checkbox"], body:not(.IE_M9) input[type="radio"] {
 	bottom: 0;
 	right: 0;
 }
+
+/*------------------信息提示区域--------------------*/
+.notification-container {
+	position: absolute;
+	left: 0;
+	right: 0;
+	height: 40px;
+}
+.notification {
+	height: 34px;
+	margin: 3px 10px;
+	background-color: #f0f0f0;
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-o-border-radius: 3px;
+	-ms-border-radius: 3px;
+}
+.notification-inner {
+	padding: 5px;
+}
+.notification-inner span {
+	overflow: hidden;
+	word-wrap: nowrap;
+	text-overflow: ellipsis;
+	font-size: 100%;
+}
+/*------------------信息提示区域--------------------*/
 /*---------------------------右侧文档列表和文档内容-----------------------*/
 
 .content-right{
@@ -678,7 +706,13 @@ input[type="checkbox"], body:not(.IE_M9) input[type="radio"] {
 	cursor: col-resize;
 	z-index: 5;
 }
-
+#content_right_wrapper {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+}
 
 /*-----------------------------文档列表-------------------------------*/
 #left_splitter {

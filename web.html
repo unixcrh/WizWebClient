@@ -127,7 +127,7 @@
 					<li>
 						<a href="#" class="wiz-button hidden" id="create_doc_ct">
 							<span>
-								<img src="https://secure.wlxrs.com/$live.controls.images/is/invis.gif" alt="" class="new-doc-icon" />
+								<img src="style/images/invis.gif" alt="" class="new-doc-icon" />
 							</span>
 							<span id="create_note" class="button-value">
 							</span>
@@ -189,97 +189,113 @@
 				<div id="left_splitter" class="splitter"></div>
 				<!-- 右侧列表和内容区域 -->
 				<div id="content_container" class="content-right">
-					<div id="doc_list_containner_wrapper">
-						<div id="sort_filter_container" class="sort-filter-contanier">
-							<span>
-								<!-- 排序过滤 -->
-								<div class="sort-split"></div>
-								<!-- TODO国际化、封装成jQuery插件方式，业余时间做 -->
-								<div class="sort-filter-wrapper">
-									<div class="menu-ct">
-										<a href="#" id="sort_menu">
-											<span></span>
-											<img src="style/images/clear.gif" alt="" class="drop-down-small">
-										</a>
-										<ul id="sort_list" class="wiz-menu">
-											<li>
-												<a href="#" class="wiz-menu-item" cmd="dt_created" bDes="true" tabindex="1" style="zoom: 0;">
-													<img src="style/images/clear.gif" class="" alt="">
-													<span></span>
-												</a>
-											</li>
-											<li>
-												<a href="#" class="wiz-menu-item" cmd="dt_created" bDes="false" tabindex="1" style="zoom: 0;">
-													<img src="style/images/clear.gif" class="" alt="">
-													<span></span>
-												</a>
-											</li>
-											<li>
-												<a href="#" class="wiz-menu-item" cmd="dt_modified" bDes="true" tabindex="1" style="zoom: 0;">
-													<img src="style/images/clear.gif" class="sort-item-selected" alt="">
-													<span></span>
-												</a>
-											</li>
-											<li>
-												<a href="#" class="wiz-menu-item" cmd="dt_modified" bDes="false" tabindex="1" style="zoom: 0;">
-													<img src="style/images/clear.gif" class="" alt="">
-													<span></span>
-												</a>
-											</li>
-											<li>
-												<a href="#" class="wiz-menu-item" cmd="document_title" bDes="true" tabindex="1" style="zoom: 0;">
-													<img src="style/images/clear.gif" class="" alt="">
-													<span></span>
-												</a>
-											</li>
-											<li>
-												<a href="#" class="wiz-menu-item" cmd="document_title" bDes="false" tabindex="1" style="zoom: 0;">
-													<img src="style/images/clear.gif" class="" alt="">
-													<span></span>
-												</a>
-											</li>
-										</ul>
-									</div>
-								</span>
-							</div>
+					<!-- notification -->
+					<div id="notification_container" class="notification-container no-display" >
 
+						<div class="notification">
+					    <div class="notification-inner" >
+				        <img src="style/images/clear.gif" class="" id="notification_img"/>
+				        <span id="notification_msg"> </span>
+					    </div>
 						</div>
-						<div id="doc_list_containner" class="doc-list">
-							<!-- 文档列表 -->
-						</div>
-						<div class="pagination-containner" ></div>
+
 					</div>
-					<div id="content_splitter" class="splitter"></div>
-					<div class="doc-detail-ct" id="doc_read_area">
-						<div id="doc_params" class="d-params">
-							<div class="params-title bottom-line">
-								<h2 id="doc_params_title"></h2>
-							</div>
-							<!-- 显示文档目录和出处链接信息 -->
-							<div class="d-brief-info bottom-line no-display">
-								<!-- <span>
-									<span class="d-category-info">
-										<img src="" alt="">
-										<div id="params_category"></div>
+					<!-- notification -->
+					<!-- content_right_wrapper -->
+					<div id="content_right_wrapper">
+						<div id="doc_list_containner_wrapper">
+							<div id="sort_filter_container" class="sort-filter-contanier">
+								<span>
+									<!-- 排序过滤 -->
+									<div class="sort-split"></div>
+									<!-- TODO国际化、封装成jQuery插件方式，业余时间做 -->
+									<div class="sort-filter-wrapper">
+										<div class="menu-ct">
+											<a href="#" id="sort_menu">
+												<span></span>
+												<img src="style/images/clear.gif" alt="" class="drop-down-small">
+											</a>
+											<ul id="sort_list" class="wiz-menu">
+												<li>
+													<a href="#" class="wiz-menu-item" cmd="dt_created" bDes="true" tabindex="1" style="zoom: 0;">
+														<img src="style/images/clear.gif" class="" alt="">
+														<span></span>
+													</a>
+												</li>
+												<li>
+													<a href="#" class="wiz-menu-item" cmd="dt_created" bDes="false" tabindex="1" style="zoom: 0;">
+														<img src="style/images/clear.gif" class="" alt="">
+														<span></span>
+													</a>
+												</li>
+												<li>
+													<a href="#" class="wiz-menu-item" cmd="dt_modified" bDes="true" tabindex="1" style="zoom: 0;">
+														<img src="style/images/clear.gif" class="sort-item-selected" alt="">
+														<span></span>
+													</a>
+												</li>
+												<li>
+													<a href="#" class="wiz-menu-item" cmd="dt_modified" bDes="false" tabindex="1" style="zoom: 0;">
+														<img src="style/images/clear.gif" class="" alt="">
+														<span></span>
+													</a>
+												</li>
+												<li>
+													<a href="#" class="wiz-menu-item" cmd="document_title" bDes="true" tabindex="1" style="zoom: 0;">
+														<img src="style/images/clear.gif" class="" alt="">
+														<span></span>
+													</a>
+												</li>
+												<li>
+													<a href="#" class="wiz-menu-item" cmd="document_title" bDes="false" tabindex="1" style="zoom: 0;">
+														<img src="style/images/clear.gif" class="" alt="">
+														<span></span>
+													</a>
+												</li>
+											</ul>
+										</div>
 									</span>
-									<span class="d-url-info">
-										<img src="" alt="">
-										<div id="params_url"></div>
-									</span>
-								</span> -->
-								<div class="show-more">
-									<a href="#" id="showMoreHref"></a>
 								</div>
-							</div>	<!--d-brief-info-->
 
-							<!-- 显示文档相信信息 -->
-							<div class="d_detail_ct"></div>
+							</div>
+							<div id="doc_list_containner" class="doc-list">
+								<!-- 文档列表 -->
+							</div>
+							<div class="pagination-containner" ></div>
+						</div>
+						<div id="content_splitter" class="splitter"></div>
+						<div class="doc-detail-ct" id="doc_read_area">
+							<div id="doc_params" class="d-params">
+								<div class="params-title bottom-line">
+									<h2 id="doc_params_title"></h2>
+								</div>
+								<!-- 显示文档目录和出处链接信息 -->
+								<div class="d-brief-info bottom-line no-display">
+									<!-- <span>
+										<span class="d-category-info">
+											<img src="" alt="">
+											<div id="params_category"></div>
+										</span>
+										<span class="d-url-info">
+											<img src="" alt="">
+											<div id="params_url"></div>
+										</span>
+									</span> -->
+									<div class="show-more">
+										<a href="#" id="showMoreHref"></a>
+									</div>
+								</div>	<!--d-brief-info-->
 
-						</div> <!-- d-params-->
-						<div class="frame-ct" id="read_frame_ct">
-							<iframe src="blank.html" scrolling='no' frameborder="0" id="wiz_doc_iframe"></iframe>
+								<!-- 显示文档相信信息 -->
+								<div class="d_detail_ct"></div>
+
+							</div> <!-- d-params-->
+							<div class="frame-ct" id="read_frame_ct">
+								<iframe src="blank.html" scrolling='no' frameborder="0" id="wiz_doc_iframe"></iframe>
+							</div>
 						</div>
 					</div>
+					<!-- content_right_wrapper -->
 				</div>
 				<!-- 右侧列表和内容区域 -->
 

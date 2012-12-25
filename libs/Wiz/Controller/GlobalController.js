@@ -30,6 +30,7 @@ define(function (require, exports, module) {
 			// 缓存当前的查询条件
 			_requestCmdParams = {},
 
+			notification = new Notification(document.getElementById('content_right_wrapper')),
 			//负责接收下级controller的消息
 			_messageHandler = {
 				showSetting: function( url) {
@@ -38,17 +39,8 @@ define(function (require, exports, module) {
 				// 显示文档列表
 				requestDocList: function (params) {
 					// 清空当前文档列表
-					
-					var callError = function (error) {
-						var errorMsg = 'GlobalController.requestDocList() Error: ' + error;
-						if (console) {
-							console.error(errorMsg);
-						} else {
-							alert(errorMsg);
-						}
-					};
 					_requestCmdParams.docList = params;
-					remote.getDocumentList(context.kbGuid, params, _messageDistribute.showDocList, callError);
+					remote.getDocumentList(context.kbGuid, params, _messageDistribute.showDocList, handlerJqueryAjaxError);
 				},
 				// 加载文档内容
 				requestDocumentBody: function (doc) {
@@ -57,16 +49,19 @@ define(function (require, exports, module) {
 					// 切换文档时，首先显示加载中页面，并隐藏编辑按钮
 					docViewCtrl.showLoading();
 					headCtrl.showCreateBtnGroup();
-					var callError = function (error) {
-						console.error(error);
-					}
-					remote.getDocumentBody(context.kbGuid, doc.document_guid, doc.version, _messageDistribute.showDoc, callError);
+					remote.getDocumentBody(context.kbGuid, doc.document_guid, doc.version, _messageDistribute.showDoc, handlerJqueryAjaxError);
 				},
 				// 所有请求创建的处理
 				// 需要callback函数，自动处理相应的节点
 				requestCreateItem: function(name, type, callback) {
 					if (type === 'category') {
-						remote.createCategory(context.kbGuid, name, callback);	
+						remote.createCategory(context.kbGuid, name, function(data) {
+							if (data.code == 200) {
+								callback(data);
+							} else {
+								notification.callError(data.message);
+							}
+						}, handlerJqueryAjaxError);	
 					}
 				},
 				// 阅读和编辑页面切换
@@ -90,9 +85,10 @@ define(function (require, exports, module) {
 						// 开放上传图片时，打开该部分请求，暂时屏蔽
 						// remote.createTempDocument(context.kbGuid, docInfo, function(data) {
 						// 	if (data.code != '200') {
+							// notification.showError(data.message);
 						// 		console.error('GlobalController.switchEditMode() request createTempDocument Error: ' + data.return_msg);
 						// 	}
-						// });
+						// }, handlerJqueryAjaxError);
 					}
 					window.Wiz.curDoc = docInfo;
 					// 最后设置全局变量的值 lsl-2012-12-19
@@ -147,21 +143,28 @@ define(function (require, exports, module) {
 				 * @return {[type]} [description]
 				 */
 				refreshCurDocList: function() {
-					remote.getDocumentList(context.kbGuid, _requestCmdParams.docList, _messageDistribute.showDocList);
+					remote.getDocumentList(context.kbGuid, _requestCmdParams.docList, _messageDistribute.showDocList, handlerJqueryAjaxError);
 				},
 				saveNodesInfos: function(key, list) {
 					context[key] = list;
 				},
 				getChildNodes: function(treeNode, callback) {
+					var innerCallback = function(data) {
+						if (data.code == 200) {
+							callback(data);
+						} else {
+							notification.callError(data.message);
+						}
+					};
 					if ('category' === treeNode.type) {
-						remote.getChildCategory(context.kbGuid, treeNode.location, callback);
+						remote.getChildCategory(context.kbGuid, treeNode.location, innerCallback, handlerJqueryAjaxError);
 					} else if ('tag' === treeNode.type) {
 						//获取父标签的GUID，如果没有，则设为''
 						var parentTagGuid = treeNode.tag_guid ? treeNode.tag_guid : '';
-						remote.getChildTag(context.kbGuid, parentTagGuid, callback);
+						remote.getChildTag(context.kbGuid, parentTagGuid, innerCallback, handlerJqueryAjaxError);
 
 					} else if ('group' === treeNode.type) {
-						remote.getGroupKbList(callback);
+						remote.getGroupKbList(innerCallback, handlerJqueryAjaxError);
 					}
 				},
 				getTagName: function (tagGuid) {
@@ -185,6 +188,7 @@ define(function (require, exports, module) {
 						}
 					} else {
 						// TODO 错误处理
+						notification.showError(data.message);
 					}
 					// _bFirst = false;
 				},
@@ -198,9 +202,8 @@ define(function (require, exports, module) {
 						if (data.code === 500 && _curDoc.document_protect > 0) {
 							docViewCtrl.viewDoc(_curDoc);
 							headCtrl.showCreateBtnGroup();
-						}
-						if (console) {
-							console.error(data);	
+						} else {
+							notification.showError(data.message);
 						}
 					}
 				},
@@ -214,6 +217,7 @@ define(function (require, exports, module) {
 						}
 					} else {
 						// TODO错误处理
+						notification.showError(data.message);
 					}
 				}
 			}
@@ -267,6 +271,7 @@ define(function (require, exports, module) {
 
 					//初始化滚动条
 				initSplitter();
+				initBodyClickHandler();
 			}, function (err) {
 				//错误处理
 			});
@@ -296,29 +301,81 @@ define(function (require, exports, module) {
 		});
 	}
 
+	/**
+	 * 所有调用ajax请求的错误回调处理
+	 * @param  {[type]} jqXHR  [description]
+	 * @param  {[type]} status [description]
+	 * @param  {[type]} error  [description]
+	 * @return {[type]}        [description]
+	 */
+	function handlerJqueryAjaxError(jqXHR, status, error) {
+		if (notification === null) {
+			notification = new Notification(document.getElementById('content_right_wrapper'));
+		}
+		var errorMsg = '';
+		if (error && typeof error === 'string') {
+			errorMsg = error;
+		} else if ( jqXHR && typeof jqXHR === 'string') {
+			errorMsg = jqXHR;
+		} else {
+			errorMsg = 'unknown ajax error';
+		}
+		notification.showError(error);
+	}
 
-	// 隐藏下拉菜单
-  $(document).click(function(event){
-  	var menuList = $('.wiz-menu');
-  	var length = menuList.length;
-  	var id = null;
 
-  	var obj = {
-  		'sort_menu': 'sort_list',
-  		'user_info': 'user_menu'
-  	}
-  	if($(event.target).parents('#sort_menu')[0]) {
-  		id = 'sort_menu';
-  	}
-  	if($(event.target).parents('#user_info')[0]) {
-  		id = 'user_info';
-  	}
-  	for (var i=0; i<length; i ++) {
-	    if(obj[id] != $(menuList[i])[0].id){
-	    	$(menuList[i]).css('visibility', 'hidden');
-	    }
-  	}
-  });
+	function initBodyClickHandler() {
+		// 隐藏下拉菜单
+	  $(document).click(function(event){
+	  	var menuList = $('.wiz-menu');
+	  	var length = menuList.length;
+	  	var id = null;
+
+	  	var obj = {
+	  		'sort_menu': 'sort_list',
+	  		'user_info': 'user_menu'
+	  	}
+	  	if($(event.target).parents('#sort_menu')[0]) {
+	  		id = 'sort_menu';
+	  	}
+	  	if($(event.target).parents('#user_info')[0]) {
+	  		id = 'user_info';
+	  	}
+	  	for (var i=0; i<length; i ++) {
+		    if(obj[id] != $(menuList[i])[0].id){
+		    	$(menuList[i]).css('visibility', 'hidden');
+		    }
+	  	}
+	  });
+	}
+
+	function Notification(belowContainer) {
+		this._container = document.getElementById('notification_container');
+		this._imgElem = document.getElementById('notification_img');
+		this._msgElem = document.getElementById('notification_msg');
+		this._belowContainer = belowContainer;
+	}
+
+	Notification.prototype.showError = function(msg) {
+		this._msgElem.innerText = msg;
+		this.show();
+	};
+	Notification.prototype.showAlert = function(msg) {
+		this._msgElem.innerText = msg;
+		this.show();
+		// 显示alert信息,只显示5秒
+		setTimeout(function() {
+			this.hide();
+		}, 5000);
+	};
+	Notification.prototype.show = function() {
+		this._container.style.display = 'block';
+		this._belowContainer.style.top = '40px';
+	};
+	Notification.prototype.hide = function() {
+		this._container.style.display = 'none';
+		this._belowContainer.style.top = '0px';
+	};
 
 	return {
 		init: init

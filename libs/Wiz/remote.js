@@ -30,7 +30,7 @@ define(function(require, exports, module) {
 			bPostDocLock = false;
 			callback(data);
 		},
-			_callError = function (error) {
+			_callError = function (jqXHR, status, error) {
 				if (bShowLoading !== true) {
 					loadCtrl.hide();
 				}
@@ -93,28 +93,28 @@ define(function(require, exports, module) {
 		/* 获取所有目录列表 */
 		getAllCategory: function (kbGuid, callback, callError) {
 			var requestParams = getRequestParams();
-			requestParams.kbGuid = kbGuid;
+			requestParams.kb_guid = kbGuid;
 			sendRequest(constant.api.CATEGORY_GET_ALL, requestParams, callback, callError);
 		},
 
 		/* 获取根节点目录列表 */
 		getRootCategory: function (kbGuid, callback, callError) {
 			var requestParams = getRequestParams();
-			requestParams.kbGuid = kbGuid;
+			requestParams.kb_guid = kbGuid;
 			sendRequest(constant.api.CATEGORY_GET_ROOT, requestParams, callback, callError);
 		},
 
 		/* 获取子节点目录列表 */
 		getChildCategory: function (kbGuid, parentValue, callback, callError) {
 			var requestParams = getRequestParams();
-			requestParams.kbGuid = kbGuid;
-			requestParams.parentValue = parentValue;
+			requestParams.kb_guid = kbGuid;
+			requestParams.parent_value = parentValue;
 			sendRequest(constant.api.CATEGORY_GET_CHILD, requestParams, callback, callError);
 		},
 		/* 新建目录 */
 		createCategory: function (kbGuid, name, callback, callError) {
 			var requestParams = getRequestParams();
-			requestParams.kbGuid = kbGuid;
+			requestParams.kb_guid = kbGuid;
 			requestParams.new_name = name
 			sendRequest(constant.api.CATEGORY_CREATE, requestParams, callback, callError);
 		},
@@ -122,22 +122,22 @@ define(function(require, exports, module) {
 		/* 获取所有标签列表 */
 		getAllTag: function (kbGuid, callback, callError) {
 			var requestParams = getRequestParams();
-			requestParams.kbGuid = kbGuid;
+			requestParams.kb_guid = kbGuid;
 			sendRequest(constant.api.TAG_GET_ALL, requestParams, callback, callError);
 		},
 
 		/* 获取根节点标签列表 */
 		getRootTag: function (kbGuid, callback, callError) {
 			var requestParams = getRequestParams();
-			requestParams.kbGuid = kbGuid;
+			requestParams.kb_guid = kbGuid;
 			sendRequest(constant.api.TAG_GET_ROOT, requestParams, callback, callError);
 		},
 
 		/* 获取子节点标签列表 */
 		getChildTag: function (kbGuid, parentValue, callback, callError) {
 			var requestParams = getRequestParams();
-			requestParams.kbGuid = kbGuid;
-			requestParams.parentValue = parentValue;
+			requestParams.kb_guid = kbGuid;
+			requestParams.parent_value = parentValue;
 			sendRequest(constant.api.TAG_GET_CHILD, requestParams, callback, callError);
 		},
 
@@ -145,14 +145,14 @@ define(function(require, exports, module) {
 		getDocumentList: function (kbGuid, params, callback, callError) {
 			var requestParams = getRequestParams();
 			requestParams = mergeParams(requestParams, params);
-			requestParams.kbGuid = kbGuid;
+			requestParams.kb_guid = kbGuid;
 			sendRequest(constant.api.DOCUMENT_GET_LIST, requestParams, callback, callError);
 		},
 		getDocumentBody: function (kbGuid, docGuid, version, callback, callError) {
 			var requestParams = getRequestParams();
-			requestParams.kbGuid = kbGuid;
-			requestParams.docGuid = docGuid;
-			requestParams.actionCmd = 'body';
+			requestParams.kb_guid = kbGuid;
+			requestParams.document_guid = docGuid;
+			requestParams.action_cmd = 'body';
 			requestParams.version = version;
 			sendRequest(constant.api.DOCUMENT_GET_INFO, requestParams, callback, callError);
 		},
@@ -160,7 +160,7 @@ define(function(require, exports, module) {
 		postDocument: function (kbGuid, docInfo , callback, callError, bQuit) {
 			var requestParams = getRequestParams();
 			requestParams = mergeParams(requestParams, docInfo);
-			requestParams.kbGuid = kbGuid;
+			requestParams.kb_guid = kbGuid;
 			requestParams.kb_guid = kbGuid;
 			if (bPostDocLock === true) {
 				return;
