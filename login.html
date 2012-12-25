@@ -9,8 +9,10 @@
         <link rel="stylesheet" href="assets/css/clear.css">
         <link rel="stylesheet" href="assets/css/tmpl.css">
         <script src="libs/common/jquery/jquery-1.7.2.min.js"></script>
+        <script type="text/javascript" src="./libs/common/jquery/jquery.cookie.js"></script>
         <script src="libs/common/jquery/jquery.placeholder.js"></script>
-        <!-- <link rel="stylesheet" href="assets/css/media-queries.css"> -->
+        <script type="text/javascript" src="libs/common/seaJs/sea-debug.js" data-main="./libs/entity/loginEntry"></script>
+        <!--  <link rel="stylesheet" href="assets/css/media-queries.css"> -->
 
         <title>为知笔记 网页版 登录</title>
         <!--[if lte IE 6]>
@@ -19,9 +21,15 @@
             </style>
         <![endif]-->
         <script>
-        
             $(document).ready(function() {
-                // $('body').css('display',"block");
+                if ($.cookie('loginCookie') && $.cookie('passwordCookie')) {
+                    console.log('has cookie');
+                    document.body.style.display = 'none';
+                } else {
+                    console.log('no cookie');
+                    document.body.style.display = '';
+                }
+                    // $('body').css('display',"block");
                 var dHeight=screen.availHeight;
                 $('#login').css( 'height',(dHeight*0.8).toString()+"px" );
                 $('input[placeholder], textarea[placeholder]').placeholder();
@@ -82,6 +90,5 @@
 
             </div>
         </div>
-        <script type="text/javascript" src="libs/common/seaJs/sea-debug.js" data-main="./libs/entity/loginEntry"></script>
     </body>
 </html>

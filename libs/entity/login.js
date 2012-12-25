@@ -1,11 +1,10 @@
 define(function(require, exports) {
-
+	'use strict';
 	var cookie = require('cookie');
 	var GlobalUtil = require('common/util/GlobalUtil');
 	var api = require('Wiz/constant').api;
 	var debugModel = GlobalUtil.getUrlParam('debug');
 
-	var arr_ = new Array();
 	$(document).ready(function() {
 		$("#login_name").select();
 		/* 验证注册账号事件 */
@@ -24,7 +23,7 @@ define(function(require, exports) {
 		$("#register_password2").live("blur",function(){
 			register_password2();
 		});
-
+		console.log(document.cookies);
 		// 往文本框添加保存的cookie值
 		$("#login_name").val(cookie("loginCookie"));
 		$("#login_password").val(cookie("passwordCookie"));
@@ -140,10 +139,9 @@ define(function(require, exports) {
 		if(status=="success"){
 			var loginCookie = $('#login_name').val();
 			var passwordCookie = $('#login_password').val();
-			// var keepCookie = data.keepCookie;
+			var keepCookie = $('#login_keeppassword').attr('checked');
 			// var defCookieMaxAge = data.defCookieMaxAge;
-
-			if($('#login_keeppassword').attr('checked') == "checked"){
+			if(keepCookie === "checked"){
 				// 设置cookie
 				cookie("loginCookie",loginCookie,{ expires: 14 });
 				//TODO password应该要保存为md5格式
@@ -159,7 +157,7 @@ define(function(require, exports) {
 
 			if(data.code==200){
 				var url = api.WEB_URL + '?t=' + data.token + '&debug=' + debugModel;
-				window.location.replace(url);
+				// window.location.replace(url);
 			} else if (data.code == 1108) {
 				$('#tip_error_login').html('登陆尝试次数过多，请稍后重试').fadeIn();
 			}	else {
