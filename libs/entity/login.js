@@ -157,7 +157,7 @@ define(function(require, exports) {
 
 			if(data.code==200){
 				var url = api.WEB_URL + '?t=' + data.token + '&debug=' + debugModel;
-				// window.location.replace(url);
+				window.location.replace(url);
 			} else if (data.code == 1108) {
 				$('#tip_error_login').html('登陆尝试次数过多，请稍后重试').fadeIn();
 			}	else {
