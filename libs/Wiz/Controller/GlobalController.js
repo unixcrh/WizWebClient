@@ -40,6 +40,7 @@ define(["../../common/util/GlobalUtil","../context","../constant","../remote",".
 				requestDocList: function (params) {
 					// 清空当前文档列表
 					_requestCmdParams.docList = params;
+					notification.hide();
 					remote.getDocumentList(context.kbGuid, params, _messageDistribute.showDocList, handlerJqueryAjaxError);
 				},
 				// 加载文档内容
@@ -49,11 +50,13 @@ define(["../../common/util/GlobalUtil","../context","../constant","../remote",".
 					// 切换文档时，首先显示加载中页面，并隐藏编辑按钮
 					docViewCtrl.showLoading();
 					headCtrl.showCreateBtnGroup();
+					notification.hide();
 					remote.getDocumentBody(context.kbGuid, doc.document_guid, doc.version, _messageDistribute.showDoc, handlerJqueryAjaxError);
 				},
 				// 所有请求创建的处理
 				// 需要callback函数，自动处理相应的节点
 				requestCreateItem: function(name, type, callback) {
+					notification.hide();
 					if (type === 'category') {
 						remote.createCategory(context.kbGuid, name, function(data) {
 							if (data.code == 200) {
@@ -67,6 +70,7 @@ define(["../../common/util/GlobalUtil","../context","../constant","../remote",".
 				// 阅读和编辑页面切换
 				// TODO  category应该直接传入一个document对象模型
 				switchEditMode: function (bEditMode, bNew) {
+					notification.hide();
 					// 先加载文档内容
 					if (!bNew && _curDoc) {
 						_curDoc.document_body = docViewCtrl.getCurDocHtml();
@@ -114,6 +118,7 @@ define(["../../common/util/GlobalUtil","../context","../constant","../remote",".
 				 * @return {[type]}            [description]
 				 */
 				saveDocument: function (bQuit) {
+					notification.hide();
 					// 必须从编辑页面获取文档的具体信息
 					// 不能使用_curDoc  lsl 2012-12-19
 					var docInfo = editPageCtrl.getDocumentInfo();
@@ -143,12 +148,14 @@ define(["../../common/util/GlobalUtil","../context","../constant","../remote",".
 				 * @return {[type]} [description]
 				 */
 				refreshCurDocList: function() {
+					notification.hide();
 					remote.getDocumentList(context.kbGuid, _requestCmdParams.docList, _messageDistribute.showDocList, handlerJqueryAjaxError);
 				},
 				saveNodesInfos: function(key, list) {
 					context[key] = list;
 				},
 				getChildNodes: function(treeNode, callback) {
+					notification.hide();
 					var innerCallback = function(data) {
 						if (data.code == 200) {
 							callback(data);
