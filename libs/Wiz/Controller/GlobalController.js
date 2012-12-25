@@ -2,7 +2,7 @@
  * 全局的控制器，转发请求到相应的独立控制器中
  */
 
-define(function (require, exports, module) {
+define(["../../common/util/GlobalUtil","../context","../constant","../remote","./leftTreeLayout/ztreeController","./leftTreeLayout/searchBoxController","./doclistLayout/Controller","./headLayout/groupEntryController","./headLayout/headController","./docViewLayout/DocView","./editLayout/EditController","../../component/Splitter"], function (require, exports, module) {
 	'use strict';
 
 	// 暴露给全局变量window，方便其他第三方组件的调用

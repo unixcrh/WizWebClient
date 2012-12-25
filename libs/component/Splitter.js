@@ -1,5 +1,5 @@
 //横向分割栏
-define(function(require, exports, module){
+define(["./opacity"], function(require, exports, module){
   'use strict';
   var opacity = require('./opacity');
 

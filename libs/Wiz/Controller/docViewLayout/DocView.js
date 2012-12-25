@@ -1,4 +1,4 @@
-define(function (require, exports, module) {
+define(["./FrameController"], function (require, exports, module) {
 	'use strict';
 
 	var FrameCtrl = require('./FrameController'),

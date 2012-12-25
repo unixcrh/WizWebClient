@@ -1,4 +1,4 @@
-define(function(require, exports, module) {
+define(["./context","./constant","../component/loading"], function(require, exports, module) {
 	'use strict';
 	var context = require('./context'),
 			constant = require('./constant'),

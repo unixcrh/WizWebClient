@@ -1,4 +1,4 @@
-define(function (require, exports, module) {
+define(["../../../common/util/GlobalUtil"], function (require, exports, module) {
 	'use strict';
 	var GlobalUtil = require('../../../common/util/GlobalUtil');
 	var _id = {

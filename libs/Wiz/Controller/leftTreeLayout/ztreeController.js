@@ -1,4 +1,4 @@
-define(function (require, exports, module) {
+define(["./treeProperty","/libs/component/zTreeBase","/locale/main"], function (require, exports, module) {
 	'use strict';
 	var treeProperty = require('./treeProperty'),
 		_messageCenter = null,

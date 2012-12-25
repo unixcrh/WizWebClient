@@ -1,4 +1,4 @@
-define(function (require, exports, module) {
+define(["/locale/main"], function (require, exports, module) {
 	'use strict';
 	var _messageCenter = null,
 		_node = {

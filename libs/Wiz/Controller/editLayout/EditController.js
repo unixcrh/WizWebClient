@@ -1,4 +1,4 @@
-define(function (require, exporst, module) {
+define(["/libs/component/zTreeBase","/libs/common/util/GlobalUtil","/locale/main"], function (require, exporst, module) {
 	'use strict';
 	// 页面中元素对应的id值
 	var _id = {
