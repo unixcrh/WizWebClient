@@ -28,7 +28,13 @@ define({
 	},
 	// 显示用户设置相关
 	UserSetting: {
-		'singOut': 'Sing out'
+		account_setting: 'Account Information',// 个人设置
+		// change_password: 'http://service.wiz.cn/wizkm/html/profile_zh_CN.html',// 账号信息
+		change_password: 'Change Password',// 修改密码
+		usage: 'Usage', // mykbs
+		vip: 'Upgrade to Vip',// 支付
+		invite: 'Invite Friends...',// 邀请
+		logoff: 'Sing out'
 	},
 	// 文档列表排序国际化资源
 	DocSortArea: {

@@ -32,6 +32,9 @@ define(function (require, exports, module) {
 
 			//负责接收下级controller的消息
 			_messageHandler = {
+				showSetting: function( url) {
+					window.open(url + '?t=' + context.token);
+				},
 				// 显示文档列表
 				requestDocList: function (params) {
 					// 清空当前文档列表

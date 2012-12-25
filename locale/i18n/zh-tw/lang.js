@@ -28,7 +28,12 @@ define({
 	},
 	// 显示用户设置相关
 	UserSetting: {
-		'singOut': '註銷'
+		account_setting: '帳號設置',
+		change_password: '修改密碼',
+		vip: '升級到VIP',
+		usage: '使用量',
+		invite: '邀請好友',
+		logoff: '注銷'
 	},
 	// 文档列表排序国际化资源
 	DocSortArea: {

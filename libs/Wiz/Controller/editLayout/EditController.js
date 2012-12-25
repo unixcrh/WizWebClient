@@ -99,7 +99,7 @@ define(function (require, exporst, module) {
 			for (var index = 0; index < length; index ++) {
 				nameList.push(_messageCenter.getTagName(guidsList[index]));
 				addAndShowTags({'tag_guid': guidsList[index], 'name': _messageCenter.getTagName(guidsList[index])});
-				_tagsList.push(guidsList[index]);
+				// _tagsList.push(guidsList[index]);
 			}
 		}
 
@@ -240,6 +240,7 @@ define(function (require, exporst, module) {
 
 		// 将当前treeNode加入到tagList中，并显示
 		function addAndShowTags(treeNode) {
+			// 防止重复加入
 			if (bTagAdded(treeNode.tag_guid)) {
 				return;
 			}
@@ -254,7 +255,6 @@ define(function (require, exporst, module) {
 			// 设置默认的style
 			tagDiv.className = _class.tagDiv;
 			container.appendChild(tagDiv);
-
 			// 缓存
 			_tagsList.push(treeNode.tag_guid);
 		}
@@ -364,6 +364,7 @@ define(function (require, exporst, module) {
 			if (_tagsList.length < 1) {
 				return;
 			}
+			console.log(_tagsList);
 			if (!nodeList) {
 				var nodeList = _tagTreeRoot.getNodes();
 			}

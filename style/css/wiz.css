@@ -314,7 +314,10 @@ input[type="checkbox"], body:not(.IE_M9) input[type="radio"] {
 	left: 0;
 	text-align: left;
 }
-
+.menu-separator {
+	margin: 2px 5px;
+	border-top: 1px solid #666;
+}
 
 /*--------------------------wiz插件----------------------------------*/
 
@@ -567,7 +570,9 @@ input[type="checkbox"], body:not(.IE_M9) input[type="radio"] {
 	height: 20px;
 	width: 20px;
 }
-
+#user_menu .wiz-menu-item {
+	padding: 0 15px 2px;
+}
 
 
 /*--------------------------------------------------------*/

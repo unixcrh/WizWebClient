@@ -153,7 +153,7 @@ define(function (require, exports, module){
     // 数组的lastIndexOf方法，兼容低版本ecmaScript
     lastIndexOfArray: function (array, item) {
     	if( Array.prototype.lastIndexOf) {
-    		Array.prototype.lastIndexOf.call(array, item);
+    		return Array.prototype.lastIndexOf.call(array, item);
     	} else {
 			  var n = array.length,
 			  	i = n-1;

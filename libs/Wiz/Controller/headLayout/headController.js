@@ -37,12 +37,19 @@ define(function (require, exports, module) {
 					nameSelector.html(userInfo.user.displayname);
 				},
 				initFillContent: function() {
-					console.log(_locale);
-					var signOutValue = _locale.UserSetting.singOut,
-							signOutElem = $('#user_menu li a span');
-					signOutElem.html(signOutValue);
 					// 已经成功登陆后再开始加载
+					_view.localizeMenuList();
 					_view.localizeOperateList();
+				},
+				localizeMenuList: function() {
+					var itemList = $('#user_menu li a'),
+							length = itemList.length,
+							item = null;
+					for (var i=0; i<length; i++) {
+						item = itemList[i];
+						item.children[0].innerText = _locale.UserSetting[item.id]
+					}
+					// signOutElem.html(signOutValue);
 				},
 				// 本地化相应的操作列表
 				localizeOperateList: function() {
@@ -118,15 +125,25 @@ define(function (require, exports, module) {
 					var cmdLinkList = userMenuListElem.children('li').children('a'),
 							listLength = cmdLinkList.length;
 					for(var index=0; index < listLength; index ++) {
-						var cmdLink = cmdLinkList[index];
+						var cmdLink = cmdLinkList[index],
+								id = cmdLink.id;
 						cmdLink.onclick = function (event) {
 							event = event || window.event;
-							event.preventDefault();
-							// event.returnValue = false;
-
-							var return_url = constant.url.LOGIN; //自身url
-							var encode_return_url = encodeURIComponent(return_url);
-							window.location.href = constant.url.LOGOFF + encode_return_url;
+							if (event.preventDefault) {
+								event.preventDefault();
+							} else {
+								event.returnValue = false;
+							}
+							var url = constant.url.user[this.id]; //自身url
+							// 退出登录特殊处理
+							if (this.id === 'logoff') {
+								var return_url = window.location.origin;
+								var encode_return_url = encodeURIComponent(return_url);
+								window.location.href = url;
+							} else {
+								// TODO open dialog
+								_messageCenter.showSetting(url);
+							}
 							
 							// ie6下无反应
 						}

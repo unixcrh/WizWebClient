@@ -19,7 +19,15 @@ define(function (require, exports, module) {
 
 	var url = {
 		LOGIN : 'http://debug.wiz.cn/login',
-		LOGOFF: 'http://service.wiz.cn/wizkm/a/logout?url='
+		user: {
+			account_setting: 'http://service.wiz.cn/wizkm/html/user_zh_CN.html',// 个人设置
+			// change_password: 'http://service.wiz.cn/wizkm/html/profile_zh_CN.html',// 账号信息
+			change_password: 'http://service.wiz.cn/wizkm/html/change_password_zh_CN.html',// 修改密码
+			usage: 'http://service.wiz.cn/wizkm/html/profile_zh_CN.html?tab=viewusage', // mykbs
+			vip: 'http://service.wiz.cn/wizkm/html/pay_zh_CN.html',// 支付
+			invite: 'http://service.wiz.cn/wizkm/html/invite_zh_CN.html',// 邀请
+			logoff: 'http://service.wiz.cn/wizkm/a/logout?url='
+		}
 	};
 
 	//每个API对象属性如下:
