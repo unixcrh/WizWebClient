@@ -47,6 +47,8 @@ define(["../../common/util/GlobalUtil","../context","../constant","../remote",".
 				requestDocumentBody: function (doc) {
 					// 记录当前显示的文档信息
 					_curDoc = doc;
+					// 首先要显示标题
+					docViewCtrl.showTitle(doc.document_title);
 					// 切换文档时，首先显示加载中页面，并隐藏编辑按钮
 					docViewCtrl.showLoading();
 					headCtrl.showCreateBtnGroup();

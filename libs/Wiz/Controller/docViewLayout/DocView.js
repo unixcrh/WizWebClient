@@ -65,13 +65,18 @@ define(["./FrameController"], function (require, exports, module) {
 			showHelpPage('welcome');
 		}
 
+		function showTitle(title) {
+			titleJqElem.html(title);
+		}
+
 
 		return {
 			viewDoc: viewDoc,
 			getCurDocHtml: getCurDocHtml,
 			showLoading: showLoading,
 			showProtectedpage: showProtectedpage,
-			showWelcomePage: showWelcomePage
+			showWelcomePage: showWelcomePage,
+			showTitle: showTitle
 		}
 	}
 
