@@ -14,6 +14,7 @@ html, body {
 }
 
 body {
+  min-width: 998px;
   *overflow: hidden;
   _overflow: scroll;
 }
@@ -135,7 +136,7 @@ ul, menu, dir {
   height: 24px;
   background: url("../img/css-sprite.png") no-repeat top left;
   background-position: 0 0;
-  background-size: 1000%;
+  /*background-size: 1000%;*/
 }
 #search button:hover{
   background-position: 0 -27px;
@@ -170,7 +171,7 @@ _zoom: 1;
 
 .primaryNav a, #subNav a {
   font-size: 14px;
-  color: #000000;
+  color: #000;
   cursor: pointer;
   /*a是in-line元素 转换为block后格式化其样式*/
   letter-spacing: 1px;
@@ -227,7 +228,7 @@ _zoom: 1;
   /*为解决IE6盒模型问题和padding双倍问题而做的hack*/
   padding-bottom: 30px;
   background: #f2f2f2;
-  outline: 5px solid #000;
+  /*outline: 5px solid #000;*/
 }
 /*---- 包裹体  用于实现全屏幕宽度的纯色区域 ----*/
 .wraper-sh{
@@ -235,7 +236,6 @@ _zoom: 1;
   width: 100%;
   height: auto;
   padding:0;
-  /*outline:1px solid #000;*/
 
   -webkit-box-shadow: inset 0 5px 8px -6px #888;
   -moz-box-shadow: inset 0 5px 8px -6px #888;
@@ -246,7 +246,6 @@ _zoom: 1;
   width: 100%;
   height: auto;
   padding:0;
-  /*outline:1px solid #000;*/
 }
 /*--- 不同页面专用容器  960px 居中显示   ---*/
 /*------  首页“展示”组件样式  -----*/
@@ -258,7 +257,6 @@ _zoom: 1;
   /*color:#454545;*/
   color: #FFF;
   text-align: left;
-  /*outline:1px solid #000;*/
 }
 .l-slogan{
   float: left;
@@ -1228,12 +1226,11 @@ table.formctn tr td{
   width: 998px;
   margin: 0 auto;
   padding: 0 4px;
-  /*outline: 1px solid #FFF;*/
 }
-.innerFooter img{
+/*.innerFooter img{
   float: right;
   margin: 32px 0 0 0;
-}
+}*/
 #footer span{ 
   display: block;
   float: right;
