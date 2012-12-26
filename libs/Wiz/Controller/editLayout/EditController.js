@@ -250,7 +250,7 @@ define(["/libs/component/zTreeBase","/libs/common/util/GlobalUtil","/locale/main
 			}
 			var name = treeNode.name;
 			var tagDiv = document.createElement('div');
-			tagDiv.innerText = name;
+			tagDiv.innerHTML = name;
 			tagDiv.id = treeNode.tag_guid;
 			// 设置默认的style
 			tagDiv.className = _class.tagDiv;

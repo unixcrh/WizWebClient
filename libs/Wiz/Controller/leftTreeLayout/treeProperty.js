@@ -1,4 +1,4 @@
-define(["./treeProperty","/libs/component/zTreeBase","/locale/main"], function (require, exports, module) {
+define(["/locale/main"], function (require, exports, module) {
 	'use strict';
 	var DefaultNode = require('/locale/main').DefaultNode;
 

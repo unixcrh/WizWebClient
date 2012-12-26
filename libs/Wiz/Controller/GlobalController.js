@@ -364,11 +364,11 @@ define(["../../common/util/GlobalUtil","../context","../constant","../remote",".
 	}
 
 	Notification.prototype.showError = function(msg) {
-		this._msgElem.innerText = msg;
+		this._msgElem.innerHTML = msg;
 		this.show();
 	};
 	Notification.prototype.showAlert = function(msg) {
-		this._msgElem.innerText = msg;
+		this._msgElem.innerHTML = msg;
 		this.show();
 		// 显示alert信息,只显示5秒
 		setTimeout(function() {

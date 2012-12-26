@@ -14,7 +14,7 @@ define(["./FrameController"], function (require, exports, module) {
 				protected: _locale.HelpPage.protected,
 				welcome: _locale.HelpPage.welcome	
 			},
-			titleElem = document.getElementById(_selector.title);
+			titleJqElem = $( '#' + _selector.title);
 
 	function DocView() {
 		//初始化
@@ -28,7 +28,8 @@ define(["./FrameController"], function (require, exports, module) {
 		function viewDoc(doc) {
 			_curDoc = doc;
 			//显示标题
-			titleElem.innerText = doc.document_title;
+			// lsl 2012-12-26 firefox中不能使用innerText
+			titleJqElem.html(doc.document_title);
 			if (doc.document_protect > 0) {
 				showProtectedpage();
 				return;

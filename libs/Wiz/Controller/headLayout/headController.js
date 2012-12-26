@@ -47,7 +47,7 @@ define(["../../constant","../../../../locale/main"], function (require, exports,
 							item = null;
 					for (var i=0; i<length; i++) {
 						item = itemList[i];
-						item.children[0].innerText = _locale.UserSetting[item.id]
+						$(item.children[0]).html(_locale.UserSetting[item.id]);
 					}
 					// signOutElem.html(signOutValue);
 				},
@@ -111,8 +111,11 @@ define(["../../constant","../../../../locale/main"], function (require, exports,
 					userInfoElem.click(function (event) {
 						event = event || window.event;
 						// 阻止默认行为
-						event.preventDefault();
-						event.returnValue = false;
+						if (event.preventDefault) {
+							event.preventDefault();	
+						} else {
+							event.returnValue = false;	
+						}
 						var visible = userMenuListElem.css('visibility');
 						if (visible === 'visible') {
 							userMenuListElem.css('visibility', 'hidden');
@@ -137,9 +140,12 @@ define(["../../constant","../../../../locale/main"], function (require, exports,
 							var url = constant.url.user[this.id]; //自身url
 							// 退出登录特殊处理
 							if (this.id === 'logoff') {
-								var return_url = window.location.origin;
-								var encode_return_url = encodeURIComponent(return_url);
-								window.location.href = url;
+								// 获取注销后跳转的url
+								var returnUrl = constant.url.LOGIN;
+								var encodeReturnUrl = encodeURIComponent(returnUrl);
+								// 清除cookie中的密码
+								$.cookie('passwordCookie', null);
+								window.location.href = url + encodeReturnUrl;
 							} else {
 								// TODO open dialog
 								_messageCenter.showSetting(url);
@@ -152,6 +158,7 @@ define(["../../constant","../../../../locale/main"], function (require, exports,
 				// 初始化状态机
 				initStateControll: function() {
 					_stateMachine = new StateMachine();
+					// TODO createOnlyCtrl 和 docReadCtrl 有冲突，优化 lsl: 2012-12-26
 					_createOnlyCtrl = new StateControl([_node.id.createBtn]);
 					// 选中文档列表中文档后，显示的操作
 					_docReadCtrl = new StateControl([_node.id.createBtn, _node.id.editBtn]);

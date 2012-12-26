@@ -3,13 +3,13 @@
  */
 define(function (require, exports, module) {
 	'use strict';
-	var BASE_URL = '';
-	var API_BASE = BASE_URL + '/api';
-	var CATEGORY_BASE = API_BASE + '/category';
-	var TAG_BASE = API_BASE + '/tag';
-	var DOCUMENT_BASE = API_BASE + '/document';
-	var ATTACHMENT_BASE =API_BASE + '/attachment';
-	var LOGIN_URL = BASE_URL + '/login';
+	var BASE_URL = '',
+			API_BASE = BASE_URL + '/api',
+			CATEGORY_BASE = API_BASE + '/category',
+			TAG_BASE = API_BASE + '/tag',
+			DOCUMENT_BASE = API_BASE + '/document',
+			ATTACHMENT_BASE =API_BASE + '/attachment',
+			LOGIN_URL = BASE_URL + '/login';
 
 	var remote = {
 		CLIENT_TYPE: 'web2.0',
@@ -18,14 +18,13 @@ define(function (require, exports, module) {
 	};
 
 	var url = {
-		LOGIN : 'http://debug.wiz.cn/login',
+		LOGIN : 'http://localhost/login',
 		user: {
-			account_setting: 'http://service.wiz.cn/wizkm/html/user_zh_CN.html',// 个人设置
-			// change_password: 'http://service.wiz.cn/wizkm/html/profile_zh_CN.html',// 账号信息
-			change_password: 'http://service.wiz.cn/wizkm/html/change_password_zh_CN.html',// 修改密码
-			usage: 'http://service.wiz.cn/wizkm/html/profile_zh_CN.html?tab=viewusage', // mykbs
-			vip: 'http://service.wiz.cn/wizkm/html/pay_zh_CN.html',// 支付
-			invite: 'http://service.wiz.cn/wizkm/html/invite_zh_CN.html',// 邀请
+			account_setting: 'http://service.wiz.cn/wizkm/html/user_zh_CN.html',
+			change_password: 'http://service.wiz.cn/wizkm/html/change_password_zh_CN.html',
+			usage: 'http://service.wiz.cn/wizkm/html/profile_zh_CN.html?tab=viewusage',
+			vip: 'http://service.wiz.cn/wizkm/html/pay_zh_CN.html',
+			invite: 'http://service.wiz.cn/wizkm/html/invite_zh_CN.html',
 			logoff: 'http://service.wiz.cn/wizkm/a/logout?url='
 		}
 	};
