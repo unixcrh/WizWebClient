@@ -34,7 +34,7 @@ define(["../../common/util/GlobalUtil","../context","../constant","../remote",".
 			//负责接收下级controller的消息
 			_messageHandler = {
 				showSetting: function( url) {
-					window.open(url + '?t=' + context.token);
+					window.open(url + '?token=' + context.token);
 				},
 				// 显示文档列表
 				requestDocList: function (params) {
