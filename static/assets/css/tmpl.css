@@ -914,6 +914,13 @@ table tr td{
   line-height: 50px;
   padding: 0 0 20px 0;
 }
+.midtitle{
+  font-size:40px;
+  font-weight: normal;
+  line-height: 50px;
+  padding: 0 0 20px 0;
+  text-align: center;
+}
 .mintitle{
   margin:0;
   padding:0;
