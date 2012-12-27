@@ -18,7 +18,7 @@ define(function (require, exports, module) {
 	};
 
 	var url = {
-		LOGIN : 'http://localhost/login',
+		LOGIN : 'http://debug.wiz.cn/login',
 		user: {
 			account_setting: 'http://service.wiz.cn/wizkm/html/user_zh_CN.html',
 			change_password: 'http://service.wiz.cn/wizkm/html/change_password_zh_CN.html',

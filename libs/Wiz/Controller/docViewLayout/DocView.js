@@ -35,11 +35,13 @@ define(["./FrameController"], function (require, exports, module) {
 				return;
 			}
 			// 显示内容
-			// readFrameCtrl.setHTML(doc.document_body);
-			var path = 'http://' + document.domain + '/unzip/' + doc.kb_guid + '/' + doc.document_guid + '.' + doc.version;
-			var url = path +  '/index.html';
-			readFrameCtrl.setUrl(url);
-			return url;
+			// lsl 2012-12-27 由于编码问题，不能直接显示index.html
+			// 需要读取出body的内容并显示
+			readFrameCtrl.setHTML(doc.document_body);
+			// var path = 'http://' + document.domain + '/unzip/' + doc.kb_guid + '/' + doc.document_guid + '.' + doc.version;
+			// var url = path +  '/index.html';
+			// readFrameCtrl.setUrl(url);
+			// return url;
 		}
 
 		function getCurDocHtml() {

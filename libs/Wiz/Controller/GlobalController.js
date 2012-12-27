@@ -202,8 +202,10 @@ define(["../../common/util/GlobalUtil","../context","../constant","../remote",".
 					// _bFirst = false;
 				},
 				showDoc: function (data) {
+					console.log(data);
 					if (data.code === 200) {
 						//成功获取内容后，开始加载右侧内容
+						_curDoc.document_body = data.body;
 						_curDoc.url = docViewCtrl.viewDoc(_curDoc);
 						headCtrl.showReadBtnGroup();
 					} else {
