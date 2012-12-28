@@ -1,0 +1,47 @@
+/* CSS Document */
+
+.required_font {
+	color: #FF0000;
+    font-size: 1em;
+    margin-right: 5px;
+}
+
+/* footer */
+.footer {
+	background: none repeat scroll 0 0 transparent;
+	border: 0 none;
+	margin: 5px auto 10px;
+	padding: 0;
+	text-align: center;
+	width: 736px;
+}
+
+.footer-entry {
+	color: #ABABAB;
+	font-family: helvetica, arial, sans-serif;
+	font-size: 12px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: normal;
+	text-align: center;
+	text-overflow: clip;
+}
+
+
+.nav {
+	list-style: none outside none;
+	margin-bottom: -1px;
+	margin-left: 0;
+}
+.well {
+    background-color: #F5F5F5;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 4px 4px 4px 4px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05) inset;
+    margin-bottom: 12px;
+    min-height: 28px;
+    padding: 7px;
+    margin-top: 7px;
+}
+
+.input_width{ width:190px; }
