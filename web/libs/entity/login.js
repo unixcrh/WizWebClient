@@ -199,7 +199,7 @@ define(function(require, exports) {
 		 }
 	}
 	// TODO增加判断
-	if (document.location.pathname === '/login' || document.location.pathname === '/login.html') {
+	if (document.location.pathname === '/login' || document.location.pathname === '/login') {
 		autoLogin();
 	}
 	
