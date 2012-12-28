@@ -23,7 +23,6 @@ define(function(require, exports) {
 		$("#register_password2").live("blur",function(){
 			register_password2();
 		});
-		console.log(document.cookies);
 		// 往文本框添加保存的cookie值
 		$("#login_name").val(cookie("loginCookie"));
 		$("#login_password").val(cookie("passwordCookie"));
@@ -200,7 +199,7 @@ define(function(require, exports) {
 		 }
 	}
 	// TODO增加判断
-	if (document.location.pathname === '/login') {
+	if (document.location.pathname === '/login' || document.location.pathname === '/login.html') {
 		autoLogin();
 	}
 	

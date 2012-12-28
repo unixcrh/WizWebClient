@@ -364,7 +364,7 @@ define(["/libs/component/zTreeBase","/libs/common/util/GlobalUtil","/locale/main
 			if (_tagsList.length < 1) {
 				return;
 			}
-			console.log(_tagsList);
+			console && console.log(_tagsList);
 			if (!nodeList) {
 				var nodeList = _tagTreeRoot.getNodes();
 			}

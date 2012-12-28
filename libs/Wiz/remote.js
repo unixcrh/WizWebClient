@@ -13,7 +13,7 @@ define(["./context","./constant","../component/loading"], function(require, expo
 			loadCtrl.show();	
 		}
 		if (!apiObj || !apiObj.url || !apiObj.action) {
-			console.error('remote.sendRequest apiObj: ' + apiObj.url + '-' + apiObj.action + ' Error');
+			console && console.error('remote.sendRequest apiObj: ' + apiObj.url + '-' + apiObj.action + ' Error');
 			if (bShowLoading !== true) {
 				loadCtrl.hide();
 			}

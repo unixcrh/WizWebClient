@@ -192,7 +192,7 @@ define(["/locale/main"], function (require, exports, module) {
 				$('#' + firstNodeId).trigger('click');
 			} catch (error) {
 				// 无需对此处理
-				console.error('Doclist Controller selectFirstNode Error:' + error);
+				console && console.error('Doclist Controller selectFirstNode Error:' + error);
 			}
 		}
 

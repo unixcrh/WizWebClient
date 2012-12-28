@@ -135,7 +135,7 @@ define(["./treeProperty","/libs/component/zTreeBase","/locale/main"], function (
 			} else if (type === 'tag') {
 				newNode = treeProperty.createTagNodes;
 			} else {
-				console.error('addDefaultNodes Error: type can not be none');
+				console && console.error('addDefaultNodes Error: type can not be none');
 				return;
 			}
 			treeObj.addNodes(treeNode, newNode, true);

@@ -23,10 +23,8 @@
         <script>
             $(document).ready(function() {
                 if ($.cookie('loginCookie') && $.cookie('passwordCookie')) {
-                    console.log('has cookie');
                     document.body.style.display = 'none';
                 } else {
-                    console.log('no cookie');
                     document.body.style.display = '';
                 }
                     // $('body').css('display',"block");
