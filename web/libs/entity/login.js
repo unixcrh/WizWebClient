@@ -211,7 +211,9 @@ define(function(require, exports) {
 	// 注册页面自动填充邀请码
 	function autoFillInviteCode() {
 		var inviteCode = cookie('iCode');
-		$('#invite_code').val(inviteCode);
+		if (inviteCode && inviteCode.length > 0)  {
+			$('#invite_code').val(inviteCode).show();
+		}
 	}
 
 

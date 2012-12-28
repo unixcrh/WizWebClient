@@ -22,7 +22,7 @@ function checkOs() {
 function fitSys() {
 	var osType = checkOs();
 	var downloadLink = [];
-	downloadLink[0] = "http://download.wiz.cn/download?product=wiznote&client=windows-x32";
+	downloadLink[0] = "http://download.wiz.cn/download?product=wiznote&client=windows-x86";
 	downloadLink[1] = "http://download.wiz.cn/download?product=wiznote&client=windows-x64";
 	downloadLink[2] = "http://download.wiz.cn/download?product=wiznote&client=macos";
 	downloadLink[3] = "http://download.wiz.cn/download?product=wiznote&client=linux-x86";
