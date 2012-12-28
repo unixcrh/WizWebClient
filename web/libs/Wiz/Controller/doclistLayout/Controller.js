@@ -158,7 +158,7 @@ define(["/web/locale/main"], function (require, exports, module) {
 			}
 
 		  var docList = $('#' + _containerId);  
-		  if(docs.length == 0){
+		  if(!docs || docs.length == 0){
 		    return ;
 		  }
 

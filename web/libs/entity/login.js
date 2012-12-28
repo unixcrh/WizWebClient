@@ -27,6 +27,9 @@ define(function(require, exports) {
 		$("#login_name").val(cookie("loginCookie"));
 		$("#login_password").val(cookie("passwordCookie"));
 		$("#login_keeppassword").val(cookie("keepCookie"));
+		if (document.location.pathname === '/register') {
+			autoFillInviteCode();
+		}
 	});
 
 
@@ -44,7 +47,6 @@ define(function(require, exports) {
 			$("#register_name_error").html("");
 			return true;
 		}
-
 	}
 	/*判断密码*/
 	function register_password1(){
@@ -86,15 +88,16 @@ define(function(require, exports) {
 			$('#loginkeycode').submit();
 		}
 	});
-
-	/* 登陆按钮 */
-	function login(event){
+	function preventDefault(event) {
 		if (event.preventDefault) {
 			event.preventDefault();	
 		} else {
 			event.returnValue = false;
 		}
-
+	}
+	/* 登陆按钮 */
+	function login(event){
+		preventDefault(event);
 		$("#tip_error_login").hide();
 
 		var user_id = $("#login_name").val();
@@ -155,7 +158,8 @@ define(function(require, exports) {
 
 
 			if(data.code==200){
-				var url = api.WEB_URL + '?t=' + data.token + '&debug=' + debugModel;
+				var url = 'http://service.wiz.cn/web/?t=' + data.token;
+				// var url = api.WEB_URL + '?t=' + data.token + '&debug=' + debugModel;
 				window.location.replace(url);
 			} else if (data.code == 1108) {
 				$('#tip_error_login').html('登陆尝试次数过多，请稍后重试').fadeIn();
@@ -187,7 +191,8 @@ define(function(require, exports) {
 				$('#loginkeycode').attr('disabled', 'disabled');
 				$.post(api.LOGIN, params, function (data, status){
 					if(data.code==200){
-						var url = api.WEB_URL + '?t=' + data.token + '&debug=' + debugModel;
+						var url = 'http://service.wiz.cn/web/?t=' + data.token;
+						// var url = api.WEB_URL + '?t=' + data.token + '&debug=' + debugModel;
 						window.location.replace(url);
 					} 
 					else if (data.code == 1108) {
@@ -201,15 +206,20 @@ define(function(require, exports) {
 	// TODO增加判断
 	if (document.location.pathname === '/login' || document.location.pathname === '/login') {
 		autoLogin();
-	}
+	} 
 	
-
+	// 注册页面自动填充邀请码
+	function autoFillInviteCode() {
+		var inviteCode = cookie('iCode');
+		$('#invite_code').val(inviteCode);
+	}
 
 
 
 
 	// 注册
-	function Register(){
+	function Register(event){
+		preventDefault(event);
 		$("#tip_error_register").hide();
 
 		var rtn_error1 = register_name();
@@ -228,7 +238,7 @@ define(function(require, exports) {
 					invite_code : str_invite_code
 			};
 			$.post(api.REGISTER, params, function(data,status){
-				callBackRegister(data,status);
+				callBackRegister(data,status,params);
 			});
 
 		}else{
@@ -239,13 +249,19 @@ define(function(require, exports) {
 	}
 
 	// 注册回调函数
-	function callBackRegister(data, status){
+	function callBackRegister(data, status, params){
 		$("#tip_error_register").hide();
 
 		if(status=="success"){
 			if(data.code != 501){
 				if(data.code != "900"){
-					callBackRegister_verify(data);
+					// 自动登陆
+					cookie("loginCookie",params.user_id);
+					cookie("passwordCookie",params.password);
+
+					autoLogin();
+					console.log('register success');
+					// callBackRegister_verify(data);
 					//TODO 跳转到中间页面
 				}
 			}else{
