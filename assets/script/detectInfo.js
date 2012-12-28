@@ -5,12 +5,13 @@ function checkOs() {
 	unix = (navigator.userAgent.indexOf("X11",0) != -1)?1:0;
  
 	if (win32) {
-		if( navigator.userAgent.indexOf("64",0) != -1){
-			os_type = "win64";
-		}
-		else{
-			os_type = "win32";
-		}
+		// if( navigator.userAgent.indexOf("64",0) != -1){
+		// 	os_type = "win64";
+		// }
+		// else{
+		// 	os_type = "win32";
+		// }
+		os_type = "win32";
 	}
 	else if (mac) os_type = "osx";
 	else if (linux) os_type = "lunix";
@@ -21,10 +22,10 @@ function checkOs() {
 function fitSys() {
 	var osType = checkOs();
 	var downloadLink = [];
-	downloadLink[0] = "download.wiz.cn/download?product=wiznote&client=windows-x64";
-	downloadLink[1] = "download.wiz.cn/download?product=wiznote&client=windows-x64";
-	downloadLink[2] = "download.wiz.cn/download?product=wiznote&client=macos";
-	downloadLink[3] = "download.wiz.cn/download?product=wiznote&client=linux-x86";
+	downloadLink[0] = "http://download.wiz.cn/download?product=wiznote&client=windows-x32";
+	downloadLink[1] = "http://download.wiz.cn/download?product=wiznote&client=windows-x64";
+	downloadLink[2] = "http://download.wiz.cn/download?product=wiznote&client=macos";
+	downloadLink[3] = "http://download.wiz.cn/download?product=wiznote&client=linux-x86";
 
 
 	var downloadBtn = document.getElementById("fordl")
@@ -32,13 +33,13 @@ function fitSys() {
 	switch(osType)
 	{
 		case "win32":
-			downloadBtn.innerHTML = "下载为知笔记 Windows 32位版";
+			downloadBtn.innerHTML = "下载为知笔记 Windows版";
 			downloadBtn.href = downloadLink[0];
 			break;
-		case "win64":
-			downloadBtn.innerHTML = "下载为知笔记 Windows 64位版";
-			downloadBtn.href = downloadLink[1];
-			break;
+		// case "win64":
+		// 	downloadBtn.innerHTML = "下载为知笔记 Windows 64位版";
+		// 	downloadBtn.href = downloadLink[1];
+		// 	break;
 
 		case "osx":
 			downloadBtn.innerHTML = "下载为知笔记 Mac OS X版";
