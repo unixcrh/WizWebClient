@@ -21,10 +21,10 @@ function checkOs() {
 function fitSys() {
 	var osType = checkOs();
 	var downloadLink = [];
-	downloadLink[0] = "http://www.wiz.cn/down/?p=wiz&m=x86.ct&ts=20111206";
-	downloadLink[1] = "http://www.wiz.cn/down/?p=wiz&m=x64&ts=20111028";
-	downloadLink[2] = "http://www.wiz.cn/down/?p=wiznote&m=mac";
-	downloadLink[3] = "/wiznote-linux";
+	downloadLink[0] = "download.wiz.cn/download?product=wiznote&client=windows-x64";
+	downloadLink[1] = "download.wiz.cn/download?product=wiznote&client=windows-x64";
+	downloadLink[2] = "download.wiz.cn/download?product=wiznote&client=macos";
+	downloadLink[3] = "download.wiz.cn/download?product=wiznote&client=linux-x86";
 
 
 	var downloadBtn = document.getElementById("fordl")
@@ -32,7 +32,7 @@ function fitSys() {
 	switch(osType)
 	{
 		case "win32":
-			downloadBtn.innerHTML = "下载为知笔记 Windows X86版";
+			downloadBtn.innerHTML = "下载为知笔记 Windows 32位版";
 			downloadBtn.href = downloadLink[0];
 			break;
 		case "win64":

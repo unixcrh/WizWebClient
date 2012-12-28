@@ -1,85 +1,161 @@
 <!DOCTYPE HTML>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
-        <link rel="stylesheet" href="assets/css/clear.css">
-        <link rel="stylesheet" href="assets/css/tmpl.css">
-        <!-- <link rel="stylesheet" href="assets/css/media-queries.css"> -->
+	<head>
+		<meta charset="utf-8">
+		<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+		<link rel="stylesheet" href="assets/css/clear.css">
+		<link rel="stylesheet" href="assets/css/tmpl.css">
+		<!-- <link rel="stylesheet" href="assets/css/media-queries.css"> -->
+		
 
-        <title>为知 不仅仅是笔记</title>
-
-        <!--[if lte IE 6]>
+		<title>为知笔记</title>
+		<!--[if lte IE 6]>
 			<style type="text/css">
 				img, div, input { behavior: url("assets/css/iepngfix.htc"); }
 			</style>
 		<![endif]-->
+		<script>
+			window.onload = function(){
+				fitSys();
+			}
+		</script>
+		
+	</head>
+	<body>
+		<!-- 页面顶部 -->
+		<div id="headerCtn">
+			<div id="header">
+				<span id="logo">
+					<a href="/">
+						<img src="assets/img/logo.png" class='logo-img'>
+					</a>
+					<ul class="nav-v">
+						<li><a href="http://bbs.wiz.cn">论坛</a></li>
+						<li><a href="http://www.wiz.cn/blog">博客</a></li>
+					</ul>
+					<!-- 搜索框 -->
+					<!-- <div id="search">
+						<input type="text" name="searchText"></input>
+						<button value=""></button>
+					</div> -->
+				</span>
+				
+				<!-- 导航栏 -->
+				<div></div>
+				<ul class="primaryNav">
+					<li><a class="currentPage" href="index.html">了解为知</a></li>
+					<li><a href="download.html">下载</a></li>
+					<li><a href="biz.html">企业方案</a></li>
+					<li><a href="support.html">支持</a></li>
+					<li><a href="joinus.html">加入我们</a></li>
+					<li style="float:right; margin:0;"><a href="/login.html">登录</a> / <a href="/register.html">注册</a></li>
+				</ul>
+			</div>
+		</div>
+		<!-- 二级菜单导航栏 -->
+		<!-- <div id="subNavCtn">
+			<ul id="subNav">
+				<li><a class="currentPage" href="/">博客</a></li>
+				<li><a href="/download">微博</a></li>
+				<li><a href="/enterprise">常见问题FAQ</a></li>
+				<li><a href="/support">使用手册</a></li>
+			</ul>
+		</div> -->
 
-    </head>
-    <body>
-        <!-- 页面顶部 -->
-        <div id="headerCtn">
-            <div id="header">
-                <span id="logo">
-                    <a href="/">
-                        <img src="assets/img/logo.png" alt="wiz note" class='logo-img'>
-                    </a>
-                    <!-- 搜索框 -->
-                    <!-- <div id="search">
-                        <input type="text" name="searchText"></input>
-                        <button value=""></button>
-                    </div> -->
-                </span>
-                
-                <!-- 导航栏 -->
-                <div></div>
-                <ul class="primaryNav">
-                    <li><a href="index.html">了解为知</a></li>
-                    <li><a class="currentPage" href="download.html">下载</a></li>
-                    <li><a href="biz.html">企业方案</a></li>
-                    <li><a href="support.html">支持</a></li>
-                    <li><a href="joinus.html">加入我们</a></li>
-                    <li style="float:right; margin:0;"><a href="/login">登录</a> / <a href="/register">注册</a></li>
-                </ul>
-            </div>
-        </div>
-        <!-- 页面内容 -->
-        <div class="bd">
-            <!-- 页面概述 -->
-            <div class="wraper">
-                <div class="support">
-                    <div class="articles">
-                        <h1 class="midtitle" >为知笔记IOS版下载</h1>
-                        <p><a href="https://itunes.apple.com/cn/app/id507384718" class="dark">去App Store下载</a></p>
-                        <p><a href="download.wiz.cn/download?product=wiznote&client=iphone"class="dark">直接下载</a></p>
-                        <h3>遵循苹果设计规范的界面，快捷的操作，强大的功能，带给用户全新的笔记体验。</h3>
-                        <img src="assets/img/wiz-iphone-whole.png">
-                        <h3>一，新建与编辑：提供包括文字、拍照、录音等多种新建方式，而且你还可以直接编辑已有笔记，全面的满足你的记录需要。</h3>
-                        <img src="assets/img/wiz-iphone-new.png">
-                        <h3>二，多级目录与标签，更加精细化的管理你的笔记。</h3>
-                        <img src="assets/img/wiz-iphone-org.png">
-                        <h3>三，简洁的阅读界面，让你专心的沉浸于内容里，而不被其他多余的信息所打扰。</h3>
-                        <img src="assets/img/wiz-iphone-read.png">
-                        <h3>四，强大的搜索功能，让你轻松的找到所需要的内容。</h3>
-                        <img src="assets/img/wiz-iphone-search.png">
-                    </div>
-                    <div class="r-sidebar">
-                        <h3></h3>
-                    </div>
-                    <br clear="both" />
-                </div>
-           
-                
-            </div>
-        </div>
-        <!-- 页脚 公司相关信息 -->
-        <div id="footer">
-            <!-- 装饰 -->
-            <div class="innerFooter">
-                <!-- <a href="www.wiz.cn"><img src="assets/img/logo.png" class="wiz"></img></a> -->
-                <span id="info">  <a href="contact.html">联系我们</a> <a href="policies.html" class="dark">隐私条款</a> <a href="http://bbs.wiz.cn">论坛</a>  京ICP备11038801号 © 2001-2012 Wiz</span>
-                <br clear="all"/>
-            </div>
-        </div>
-    </body>
+		<!-- 页面内容 -->
+		<div class="bd" style="padding-bottom:0;">
+			<!-- 主要结构： wrapper：宽度为100%的容器，可按需定义全屏宽度的背景色 -->
+			<!-- 以及padding等其他属性 -->
+			<!-- presentation、feature等容器是宽度为1006、居中的容器，放置内容。可在标签内定义字体颜色（与wraper-sh容器背景色对比） -->
+
+
+			<!--  产品展示组件class="presentation" -->
+			<!--  分为左右两区块-->
+			<div class="wraper-sh">
+				<div class="presentation">
+					<div class="l-sloganphone" >
+						<h1 class="f64-b">IOS客户端下载</h1>
+						<h3 class="f14-b">遵循苹果设计规范的界面，快捷的操作，强大的功能，带给用户全新的笔记体验。</h3>
+						<br/>
+						<p><a href="https://itunes.apple.com/cn/app/id507384718" class="btn" id="fordl">去App Store下载</a></p>
+						<a href="download.wiz.cn/download?product=wiznote&client=iphone-phone" class="btn" id="fordl">直接下载</a>
+					</div>
+					<div class="r-display" >
+						<img src="assets/img/wiz-iphone-whole.png"></img>
+					</div>
+					<br clear="all"/>
+				</div>
+			</div>
+			<div class="wraper-sh" >
+				<div class="presentation">
+					<div class="r-sloganphone" style="padding:80px 0 20px 0;">
+						<h1 class="f64-b">新建与编辑</h1>
+						<h3 class="f14-b">提供包括文字、拍照、录音等多种新建方式，而且你还可以直接编辑已有笔记，全面的满足你的记录需要。</h3>
+						<br/>
+						<a href="indexmorecloud.html" class="btn">了解更多</a>
+					</div>
+					<div class="l-display" >
+						<img src="assets/img/wiz-iphone-new.png" ></img>
+					</div>
+					<br clear="all"/>
+				</div>
+					
+			</div>
+			<div class="wraper-sh">
+				<div class="presentation">
+					<div class="l-sloganphone">
+						<h1 class="f64-b">多级目录与标签</h1>
+						<h3 class="f14-b">更加精细化地管理你的笔记。</h3>
+						<br/>
+						<a href="indexmoremuch.html" class="btn">了解更多</a>
+					</div>
+					<div class="r-display" >
+						<img src="assets/img/wiz-iphone-org.png"></img>
+					</div>
+					<br clear="all"/>
+				</div>
+					
+			</div>
+			<div class="wraper-sh">
+				<div class="presentation">
+					<div class="r-sloganphone">
+						<h1 class="f64-b">简洁的阅读界面</h1>
+						<h3 class="f14-b">让你专心地沉浸于内容里，而不被其他多余的信息所打扰。</h3>
+						<br/>
+						<a href="indexmoreorg.html" class="btn">了解更多</a>
+					</div>
+					<div class="l-display" >
+						<img src="assets/img/wiz-iphone-read.png"></img>
+					</div>
+					<br clear="all"/>
+				</div>
+			</div>
+			<div class="wraper-sh">
+				<div class="presentation">
+					<div class="l-sloganphone">
+						<h1 class="f64-b">强大的搜索功能</h1>
+						<h3 class="f14-b">让你轻松的找到所需要的内容。</h3>
+						<br/>
+						<a href="indexmoregroup.html" class="btn">了解更多</a>
+					</div>
+					<div class="r-display" >
+						<img src="assets/img/wiz-iphone-search.png"></img>
+					</div>
+					<br clear="all"/>
+				</div>
+			</div>
+
+			</div>
+		</div>
+		<!-- 页脚 公司相关信息 -->
+
+		<div id="footer">
+			<!-- 装饰 -->
+			<div class="innerFooter">
+				<!-- <a href="www.wiz.cn"><img src="assets/img/logo.png" class="wiz"></img></a> -->
+				<span id="info">  <a href="contact.html">联系我们</a> <a href="policies.html" class="dark">隐私条款</a> <a href="http://bbs.wiz.cn">论坛</a>  京ICP备11038801号 © 2001-2012 Wiz</span>
+				<br clear="all"/>
+			</div>
+		</div>
+	</body>
 </html>

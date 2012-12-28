@@ -1,105 +1,161 @@
 <!DOCTYPE HTML>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
-        <link rel="stylesheet" href="assets/css/clear.css">
-        <link rel="stylesheet" href="assets/css/tmpl.css">
-        <!-- <script src="assets/script/jquery.js" /> -->
-        <!-- <link rel="stylesheet" href="assets/css/media-queries.css"> -->
+	<head>
+		<meta charset="utf-8">
+		<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+		<link rel="stylesheet" href="assets/css/clear.css">
+		<link rel="stylesheet" href="assets/css/tmpl.css">
+		<!-- <link rel="stylesheet" href="assets/css/media-queries.css"> -->
+		
 
-        <title>为知笔记 下载Android群组版</title>
-        <!--[if lte IE 6]>
+		<title>为知笔记</title>
+		<!--[if lte IE 6]>
 			<style type="text/css">
 				img, div, input { behavior: url("assets/css/iepngfix.htc"); }
 			</style>
 		<![endif]-->
-        
+		<script>
+			window.onload = function(){
+				fitSys();
+			}
+		</script>
+		
+	</head>
+	<body>
+		<!-- 页面顶部 -->
+		<div id="headerCtn">
+			<div id="header">
+				<span id="logo">
+					<a href="/">
+						<img src="assets/img/logo.png" class='logo-img'>
+					</a>
+					<ul class="nav-v">
+						<li><a href="http://bbs.wiz.cn">论坛</a></li>
+						<li><a href="http://www.wiz.cn/blog">博客</a></li>
+					</ul>
+					<!-- 搜索框 -->
+					<!-- <div id="search">
+						<input type="text" name="searchText"></input>
+						<button value=""></button>
+					</div> -->
+				</span>
+				
+				<!-- 导航栏 -->
+				<div></div>
+				<ul class="primaryNav">
+					<li><a class="currentPage" href="index.html">了解为知</a></li>
+					<li><a href="download.html">下载</a></li>
+					<li><a href="biz.html">企业方案</a></li>
+					<li><a href="support.html">支持</a></li>
+					<li><a href="joinus.html">加入我们</a></li>
+					<li style="float:right; margin:0;"><a href="/login.html">登录</a> / <a href="/register.html">注册</a></li>
+				</ul>
+			</div>
+		</div>
+		<!-- 二级菜单导航栏 -->
+		<!-- <div id="subNavCtn">
+			<ul id="subNav">
+				<li><a class="currentPage" href="/">博客</a></li>
+				<li><a href="/download">微博</a></li>
+				<li><a href="/enterprise">常见问题FAQ</a></li>
+				<li><a href="/support">使用手册</a></li>
+			</ul>
+		</div> -->
 
-    </head>
-    <body>
-        <!-- 页面顶部 -->
-        <div id="headerCtn">
-            <div id="header">
-                <span id="logo">
-                    <a href="/">
-                        <img src="assets/img/logo.png" alt="wiz note" class='logo-img'>
-                    </a>
-                    <ul class="nav-v">
-                        <li><a href="http://bbs.wiz.cn">论坛</a></li>
-                        <li><a href="http://www.wiz.cn/blog">博客</a></li>
-                    </ul>
-                    <!-- 搜索框 -->
-                    <!-- <div id="search">
-                        <input type="text" name="searchText"></input>
-                        <button value=""></button>
-                    </div> -->
-                </span>
-                
-                <!-- 导航栏 -->
-                <div></div>
-                <ul class="primaryNav">
-                    <li><a href="/">了解为知</a></li>
-                    <li><a class="currentPage" href="/download">下载</a></li>
-                    <li><a href="/enterprise">企业方案</a></li>
-                    <li><a href="/support">支持</a></li>
-                    <li><a href="/joinus">加入我们</a></li>
-                    <li style="float:right; margin:0;"><a href="/login">登录</a> / <a href="/register">注册</a></li>
-                </ul>
-            </div>
-        </div>
-        <!-- 二级菜单导航栏 -->
-        <!-- <div id="subNavCtn">
-            <ul id="subNav">
-                <li><a class="currentPage" href="/">博客</a></li>
-                <li><a href="/download">微博</a></li>
-                <li><a href="/enterprise">常见问题FAQ</a></li>
-                <li><a href="/support">使用手册</a></li>
-            </ul>
-        </div> -->
-        <!-- 页面内容 -->
-        <div class="bd">
-            <!-- 页面概述 -->
-            <div class="wraper">
-                <div class="blog">
-                    <div class="articles">
-                        <div class="piece">
-                            <h1 class="midtitle" >为知笔记Android群组版下载</h1>
-                            <p><a href="" class="dark">去Googly Play下载</a></p>
-                            <p><a href=""class="dark">直接下载</a></p>
-                            <h3>清晰的界面，流畅的滑动操作，云端同步、异步阅读……这一切，为用户带来了全新的群组协作体验。打造团队、企业自己的内部知识库，从这里开始。</h3>
-                            <img src="assets/img/wiz-android-group-whole.png">
-                            <h3>一，新建：快捷的新建功能，可使用户随时记下想法、思路与灵感等信息，分享给团队成员，提高协作效率。</h3>
-                            <img src="assets/img/wiz-android-group-new.png">
-                            <h3>二，多级目录：根据协作的需求，可有体系的、方便的管理团队成员分享的笔记资料，打造团队成员自己的知识库。</h3>
-                            <img src="assets/img/wiz-android-group-org.png">
-                            <h3>三，阅读：可随时随地查看团队成员分享的笔记内容，打造移动版新体验，从此不再局限于办公室。</h3>
-                            <img src="assets/img/wiz-android-group-read.png">
-                            <h3>四，全文检索：随时查询自己想要的内容，外事不决问谷歌，内事不决问wiz。</h3>
-                            <img src="assets/img/wiz-android-group-search.png">
-                            <!-- <img src="assets/img/img-wiznote-linux-1.jpg"></img> -->
-                            
-                            
-                        </div>
-                    </div>
-                    <div class="r-sidebar">  
-                            <h3 >适用于iOS系统的版本</h3>
-                            <h3>下载地址及安装教程</h3>
-                        
-                    </div>
-                    <br clear="both"/>
-                </div>
-                
-            </div>
-        </div>
-        <!-- 页脚 公司相关信息 -->
-       <div id="footer">
-            <!-- 装饰 -->
-            <div class="innerFooter">
-                <!-- <a href="www.wiz.cn"><img src="assets/img/logo.png" class="wiz"></img></a> -->
-                <span id="info">  <a href="/contact">联系我们</a> <a href="/policies" class="dark">隐私条款</a> <a href="http://bbs.wiz.cn">论坛</a>  京ICP备11038801号 © 2001-2012 Wiz</span>
-                <br clear="all"/>
-            </div>
-        </div>
-    </body>
+		<!-- 页面内容 -->
+		<div class="bd" style="padding-bottom:0;">
+			<!-- 主要结构： wrapper：宽度为100%的容器，可按需定义全屏宽度的背景色 -->
+			<!-- 以及padding等其他属性 -->
+			<!-- presentation、feature等容器是宽度为1006、居中的容器，放置内容。可在标签内定义字体颜色（与wraper-sh容器背景色对比） -->
+
+
+			<!--  产品展示组件class="presentation" -->
+			<!--  分为左右两区块-->
+			<div class="wraper-sh">
+				<div class="presentation">
+					<div class="l-sloganphone" >
+						<h1 class="f64-b">Android群组版客户端下载</h1>
+						<h3 class="f14-b">清晰的界面，流畅的滑动操作，云端同步、异步阅读……这一切，为用户带来了全新的群组协作体验。打造团队、企业自己的内部知识库，从这里开始。</h3>
+						<br/>
+						<p><a href="https://play.google.com/store/apps/details?id=cn.wiz.note" class="btn" id="fordl">去Googly Play下载</a></p>
+						<a href="download.wiz.cn/download?product=wiznote&client=android-group" class="btn" id="fordl">直接下载</a>
+					</div>
+					<div class="r-display" >
+						<img src="assets/img/wiz-android-group-whole.png"></img>
+					</div>
+					<br clear="all"/>
+				</div>
+			</div>
+			<div class="wraper-sh" >
+				<div class="presentation">
+					<div class="r-sloganphone" style="padding:80px 0 20px 0;">
+						<h1 class="f64-b">新建</h1>
+						<h3 class="f14-b">快捷的新建功能，可使用户随时记下想法、思路与灵感等信息，分享给团队成员，提高协作效率。</h3>
+						<br/>
+						<a href="indexmorecloud.html" class="btn">了解更多</a>
+					</div>
+					<div class="l-display" >
+						<img src="assets/img/wiz-android-group-new.png" ></img>
+					</div>
+					<br clear="all"/>
+				</div>
+					
+			</div>
+			<div class="wraper-sh">
+				<div class="presentation">
+					<div class="l-sloganphone">
+						<h1 class="f64-b">多级目录</h1>
+						<h3 class="f14-b">根据协作的需求，可有体系的、方便的管理团队成员分享的笔记资料，打造团队成员自己的知识库。</h3>
+						<br/>
+						<a href="indexmoremuch.html" class="btn">了解更多</a>
+					</div>
+					<div class="r-display" >
+						<img src="assets/img/wiz-android-group-org.png"></img>
+					</div>
+					<br clear="all"/>
+				</div>
+					
+			</div>
+			<div class="wraper-sh">
+				<div class="presentation">
+					<div class="r-sloganphone">
+						<h1 class="f64-b">阅读</h1>
+						<h3 class="f14-b">可随时随地查看团队成员分享的笔记内容，打造移动版新体验，从此阅读不再局限于办公室。</h3>
+						<br/>
+						<a href="indexmoreorg.html" class="btn">了解更多</a>
+					</div>
+					<div class="l-display" >
+						<img src="assets/img/wiz-android-group-read.png"></img>
+					</div>
+					<br clear="all"/>
+				</div>
+			</div>
+			<div class="wraper-sh">
+				<div class="presentation">
+					<div class="l-sloganphone">
+						<h1 class="f64-b">全文检索</h1>
+						<h3 class="f14-b">随时查询自己想要的内容，外事不决问谷歌，内事不决问wiz。</h3>
+						<br/>
+						<a href="indexmoregroup.html" class="btn">了解更多</a>
+					</div>
+					<div class="r-display" >
+						<img src="assets/img/wiz-android-group-search.png"></img>
+					</div>
+					<br clear="all"/>
+				</div>
+			</div>
+
+			</div>
+		</div>
+		<!-- 页脚 公司相关信息 -->
+
+		<div id="footer">
+			<!-- 装饰 -->
+			<div class="innerFooter">
+				<!-- <a href="www.wiz.cn"><img src="assets/img/logo.png" class="wiz"></img></a> -->
+				<span id="info">  <a href="contact.html">联系我们</a> <a href="policies.html" class="dark">隐私条款</a> <a href="http://bbs.wiz.cn">论坛</a>  京ICP备11038801号 © 2001-2012 Wiz</span>
+				<br clear="all"/>
+			</div>
+		</div>
+	</body>
 </html>

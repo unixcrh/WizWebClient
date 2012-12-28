@@ -265,9 +265,24 @@ _zoom: 1;
   margin: 0 4px 0 0;
   padding: 60px 0;
 }
+.l-sloganphone{
+  float: left;
+  width: 580px;
+  height: auto;
+  margin: 0 4px 0 0;
+  padding: 60px 0;
+}
 .r-slogan{
   float: right;
   width: 400px;
+  height: auto;
+  margin: 0;
+  padding: 60px 0;
+  /*text-align: right;*/
+}
+.r-sloganphone{
+  float: right;
+  width: 540px;
   height: auto;
   margin: 0;
   padding: 60px 0;
