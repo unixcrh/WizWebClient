@@ -1,8 +1,8 @@
-define(["./FrameController"], function (require, exports, module) {
+define(["./FrameController", "/web/locale/main"], function (require, exports, module) {
 	'use strict';
 
 	var FrameCtrl = require('./FrameController'),
-			_locale = require('/locale/main'),
+			_locale = require('/web/locale/main'),
 			_readFrameId = 'wiz_doc_iframe',
 			_curDoc = null,
 			// 保存jQuery选择器关键字

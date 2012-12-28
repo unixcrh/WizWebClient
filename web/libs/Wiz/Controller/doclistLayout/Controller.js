@@ -1,4 +1,4 @@
-define(["/locale/main"], function (require, exports, module) {
+define(["/web/locale/main"], function (require, exports, module) {
 	'use strict';
 	var _messageCenter = null,
 		_node = {
@@ -24,7 +24,7 @@ define(["/locale/main"], function (require, exports, module) {
 			docList: []
 		},
 		_containerObj = $('#' + _node.containerId),
-		_locale = require('/locale/main');
+		_locale = require('/web/locale/main');
 
 		function bindSortHandler() { 
 			var sortMenuElem = $('#' + _node.sortMenuId),

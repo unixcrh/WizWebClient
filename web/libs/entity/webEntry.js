@@ -13,4 +13,4 @@ seajs.config({
 
 	locale: 'zh-cn'																						//默认语言包
 });
-seajs.use(['seajs/plugins/plugin-i18n', './libs/entity/web-main']);//'./libs/entity/web-main');
+seajs.use(['seajs/plugins/plugin-i18n', '/web/libs/entity/web-main']);//'./libs/entity/web-main');

@@ -1,6 +1,6 @@
-define(["/locale/main"], function (require, exports, module) {
+define(["/web/locale/main"], function (require, exports, module) {
 	'use strict';
-	var DefaultNode = require('/locale/main').DefaultNode;
+	var DefaultNode = require('/web/locale/main').DefaultNode;
 
 	var initTreeObj = {
 		initNodes: [{

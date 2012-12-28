@@ -1,4 +1,4 @@
-define(["/libs/component/zTreeBase","/libs/common/util/GlobalUtil","/locale/main"], function (require, exporst, module) {
+define(["/web/libs/component/zTreeBase","/web/libs/common/util/GlobalUtil","/web/locale/main"], function (require, exporst, module) {
 	'use strict';
 	// 页面中元素对应的id值
 	var _id = {
@@ -22,9 +22,9 @@ define(["/libs/component/zTreeBase","/libs/common/util/GlobalUtil","/locale/main
 			S: 83
 		},
 
-		zTreeBase = require('/libs/component/zTreeBase'),
-		GlobalUtil = require('/libs/common/util/GlobalUtil'),
-		_locale = require('/locale/main').EditPage,
+		zTreeBase = require('/web/libs/component/zTreeBase'),
+		GlobalUtil = require('/web/libs/common/util/GlobalUtil'),
+		_locale = require('/web/locale/main').EditPage,
 
 		// 编辑器实例
 		_editor = null,

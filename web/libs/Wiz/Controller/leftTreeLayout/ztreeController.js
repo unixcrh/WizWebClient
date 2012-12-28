@@ -1,10 +1,10 @@
-define(["./treeProperty","/libs/component/zTreeBase","/locale/main"], function (require, exports, module) {
+define(["./treeProperty","/web/libs/component/zTreeBase","/web/locale/main"], function (require, exports, module) {
 	'use strict';
 	var treeProperty = require('./treeProperty'),
 		_messageCenter = null,
-		zTreeBase = require('/libs/component/zTreeBase'),
+		zTreeBase = require('/web/libs/component/zTreeBase'),
 
-		locale= require('/locale/main'),
+		locale= require('/web/locale/main'),
 		specialLocation = locale.DefaultCategory,
 
 		_curCategory = '';
