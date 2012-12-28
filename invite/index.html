@@ -1,10 +1,33 @@
+<!DOCTYPE HTML>
 <html>
 	<head>
-		<title></title>
+		<meta charset="utf-8">
+		<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+		<link rel="stylesheet" href="assets/css/clear.css">
+		<link rel="stylesheet" href="assets/css/tmpl.css">
+		<script src="../web/libs/common/jquery/jquery-1.7.2.min.js"></script>
+        <script type="text/javascript" src="../web/libs/common/jquery/jquery.cookie.js"></script>
+		<!-- <link rel="stylesheet" href="assets/css/media-queries.css"> -->
+		<script src="assets/script/detectInfo.js"></script>
+
+		<title>为知笔记</title>
+		<!--[if lte IE 6]>
+			<style type="text/css">
+				img, div, input { behavior: url("assets/css/iepngfix.htc"); }
+			</style>
+		<![endif]-->
+		<script>
+			var code = document.location.search;
+			var host = document.location.host;
+			console.log(host);
+			code = code.slice(3,code.length)
+			// console.log(code);
+			jQuery.cookie("iCode",code,{ expires: 1 });
+			document.location.href = 'http://'+host;
+		</script>
+		
 	</head>
 	<body>
-		<dir>
-			<p></p>
-		</dir>
+		
 	</body>
 </html>
