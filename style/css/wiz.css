@@ -833,6 +833,7 @@ input[type="checkbox"], body:not(.IE_M9) input[type="radio"] {
 	overflow: scroll;
 	_width: 70%;
 	_height: 100%;
+	z-index: 0;
 }
 
 .params-title {
@@ -860,6 +861,7 @@ input[type="checkbox"], body:not(.IE_M9) input[type="radio"] {
 	left: 20px;
 	right: 20px;
 	*top: 48px;
+	*z-index: 0;
 }
 
 .frame-ct iframe {
@@ -1147,8 +1149,24 @@ div.c_loadingDot {
 	_height: 100%;
 	_width: 100%;
 }
+.below-container {
+	_top: 0;
+}
 .header-right {
+	*z-index: 9999;
 	_float: right;
+	_display:inline;
+	_overflow: hidden;
+}
+.header-left,
+.header-md {
+	_float: left;
+	_display:inline;
+	_overflow: hidden;
+}
+
+.hd-ct {
+	_display: inline;
 }
 .edit-tag-span  {
 	*display: inline; /* for ie67*/
