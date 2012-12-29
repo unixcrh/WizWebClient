@@ -5,7 +5,10 @@
         <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
         <link rel="stylesheet" href="assets/css/clear.css">
         <link rel="stylesheet" href="assets/css/tmpl.css">
-        <!-- <link rel="stylesheet" href="assets/css/media-queries.css"> -->
+        <!-- <link rel="stylesheet" href="assets/css/media-queries.css"> -->        
+        <script src="assets/script/jquery.js"></script>
+        <script src="web/libs/common/jquery/jquery.cookie.js"></script>
+        <script src="assets/script/feedback.js"></script>
 
         <title>为知笔记 用户反馈</title>
 
@@ -17,6 +20,10 @@
 
     </head>
     <body>
+        <div id="forLoading">
+            <h2 class="f32-w"></h2>
+            <p class="f14-w"></p>
+        </div>
         <!-- 页面顶部 -->
         <div id="headerCtn">
             <div id="header">
@@ -53,41 +60,39 @@
                 <div class="support">
                     <div class="articles">
                         <h1 class="largetitle">问题反馈</h1>
-                        <form action="" name="">
+                        <!-- <form action="" name="" id="feedForm"> -->
                             <table class="noborder">
                                 <tr>
                                     <td><label>用户名:</label></td>
-                                    <td><input type="text" name=""></input>*</td>
+                                    <td><input type="text" name="" id="#feedUser"></input>*</td>
                                 </tr>
                                 <tr>
                                     <td><label>邮&nbsp;&nbsp;&nbsp;箱:</label></td>
-                                    <td><input type="text" name=""></input></td>
+                                    <td><input type="text" name="" id="feedEmail" ></input><label>*</label></td>
                                 </tr>
                                 <tr>
                                     <td><label>内&nbsp;&nbsp;&nbsp;容:</label></td>
-                                    <td><textarea>[Wiz反馈]
---------------------
-</textarea><label>*</label></td>
+                                    <td><textarea id="feedContent" placeholder="Wiz反馈"></textarea><label>*</label></td>
                                 </tr>
                                 <tr>
                                     <td></td>
                                     <td>提交前请按Ctrl+C保存反馈内容，以免程序出错而丢失！ 反馈内容不能少于5个字符！</td>
                                 </tr>
-                                <tr>
+                                <!-- <tr>
                                     <td><label>悄悄话:</label></td>
                                     <td><input type="checkbox" checked="checked" style="width:22px; position:relative; top:5px;"></input><label>&nbsp;当选中时，此反馈只有管理员可见</label></td>
-                                </tr>
+                                </tr> -->
                                 
-                                <tr>
+                                <!-- <tr>
                                     <td><label>验证码:</label></td>
                                     <td><input type="text" name=""></td>
-                                </tr>
+                                </tr> -->
                                 <tr>
                                     <td></td>
-                                    <td><input type="submit" value="确定" name="" class="btn"></td>
+                                    <td><a class="btn" id="feedBtn">确定</a></td>
                                 </tr>
                             </table>
-                        </form>
+                        <!-- </form> -->
 
                         <div class="message">
                             <h3 class="msginfo">管理员 于2012年12月21日回复</h3>

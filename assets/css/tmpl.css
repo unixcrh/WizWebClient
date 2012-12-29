@@ -41,6 +41,19 @@ ul, menu, dir {
   -webkit-padding-start: 0;
 }
 
+#forLoading{
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  padding: 20% 0 0 0;
+  text-align: center;
+  background: rgba(0,0,0,0.7);
+  z-index: 1200;
+}
+
+
 /*-------------顶部样式---------------*/
 
 #headerCtn {
@@ -54,6 +67,7 @@ ul, menu, dir {
   -webkit-box-shadow:0 5px 15px -6px #888;
   -moz-box-shadow: 0 5px 15px -6px #888;
   box-shadow: 0 5px 15px -6px #888;
+  z-index: 900;
 }
 
 #header {
@@ -321,6 +335,13 @@ _zoom: 1;
   color: #000;
   vertical-align: baseline;
 }
+.f32-w{
+  font-size: 32px;
+  font-weight: normal;
+  line-height: 22px;
+  color: #FFF;
+  padding: 0 4px;
+}
 .f14-w{
   font-size: 14px;
   font-weight: normal;
@@ -343,6 +364,7 @@ _zoom: 1;
   font-weight: 600;
   line-height: 22px;
   text-decoration: none;
+  cursor: pointer;
 }
 .btn-w{
   padding: 4px 13px 6px 13px;

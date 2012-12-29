@@ -26,7 +26,7 @@ function fitSys() {
 	downloadLink[1] = "http://download.wiz.cn/download?product=wiznote&client=windows-x64";
 	downloadLink[2] = "http://download.wiz.cn/download?product=wiznote&client=macos";
 	downloadLink[3] = "http://download.wiz.cn/download?product=wiznote&client=linux-x86";
-
+	downloadLink[4] = "http://www.wiz.cn/download.html";
 
 	var downloadBtn = document.getElementById("fordl")
 
@@ -49,6 +49,9 @@ function fitSys() {
 			downloadBtn.innerHTML = "下载为知笔记 Linux版";
 			downloadBtn.href = downloadLink[3];
 			break;
+		default:
+			downloadBtn.innerHTML = "进入下载页面";
+			downloadBtn.href = downloadLink[4];
 	}
 	// alert( navigator.userAgent );
 
