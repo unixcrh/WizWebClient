@@ -19,7 +19,6 @@ $(document).ready(function() {
 
 					$.post( requestUrl, requestParam, function(data, status){
 						if( status == 'success'){
-							console.log("success!!");
 							$('#forLoading').css('display','block');
 							$('#forLoading > h2')[0].innerText = '您的反馈已经发出，我们会尽快恢复。谢谢您的支持！';
 							$('#forLoading > p')[0].innerText = '我们将您的用户信息保存1个小时，您可以继续写下您的意见和建议';
@@ -28,7 +27,6 @@ $(document).ready(function() {
 							$('#feedContent').attr('value', $.cookie('content'));
 							$('#forLoading').css('displasy','block');
 							$('#forLoading > h2')[0].innerText='Ooops~  出错了···  ';
-							console.log($('#forLoading > h2').text());
 							$('#forLoading > p').text = ('不过您的反馈已经被保存，请在页面刷新后再试 ');
 						}
 						setTimeout(function(){
@@ -39,11 +37,11 @@ $(document).ready(function() {
 					
 				}else{
 					alert("反馈内容不足5个字符！");
-					// return false;
+					return;
 				}	
 			}else{
 				alert("Email格式不正确！");
-				// return false;
+				return;
 			}
 			
 		});
