@@ -17,14 +17,32 @@
 			</style>
 		<![endif]-->
 		<script>
-			var code = document.location.search;
-			var host = document.location.host;
-			console && console.log(host);
-			code = code.slice(3,code.length)
+			function getUrlParam (paras) {
+				var url = location.href;
+				var paraString = url.substring(url.indexOf("?") + 1, url.length).split("&");
+				var paraObj = {};
+				var i , j;
+				for (i = 0; j = paraString[i]; i++) {
+					paraObj[j.substring(0, j.indexOf("=")).toLowerCase()] = j.substring(j.indexOf("=") + 1, j.length);
+				}
+				var returnValue = paraObj[paras.toLowerCase()];
+				if ( typeof (returnValue) == "undefined") {
+					return "";
+				} else {
+					return returnValue;
+				}
+			}
+			var inviteCode = getUrlParam('i'),
+					host = document.location.host,
+					email = getUrlParam('email');
 			// console.log(code);
 			// 必须要增加path，否则设置的cookie只在当前的path下有效
 			// lsl 2012-12-28
-			jQuery.cookie("iCode",code,{ expires: 1, path: '/'});
+			$.cookie("iCode",inviteCode,{ expires: 1, path: '/'});
+			// 不能直接获取search来截取，需要判断参数
+			if (email && email.length > 0) {
+				$.cookie('singin_email', email, {expires: 1, path: '/'});
+			}
 			document.location.href = 'http://'+host;
 		</script>
 		

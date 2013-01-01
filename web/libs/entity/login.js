@@ -29,6 +29,7 @@ define(function(require, exports) {
 		$("#login_name").val(cookie("loginCookie"));
 		$("#login_password").val(cookie("passwordCookie"));
 		$("#login_keeppassword").val(cookie("keepCookie"));
+		$('#register_name').val(cookie('singin_email'));
 		if (document.location.pathname === '/register') {
 			autoFillInviteCode();
 		}
