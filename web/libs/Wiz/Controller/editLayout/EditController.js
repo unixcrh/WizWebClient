@@ -405,12 +405,13 @@ define(["/web/libs/component/zTreeBase","/web/libs/common/util/GlobalUtil","/web
 				// TODO 提示
 				return null;
 			}
-
+			console.log(_docInfo);
 			var documentInfo ={};
 			documentInfo.document_body = _editor.getAllHtml();
 			documentInfo.document_category = _docInfo.document_location;
 			documentInfo.document_title = $('#' + _id.titleInput).val();
 			documentInfo.document_guid = _docInfo.document_guid;
+			documentInfo.version = _docInfo.version;
 			var tags = collectTagGuids();
 			// 为空不传，如果传入的话，会造成openapi端请求错误
 			if (tags && tags.length > 0) {

@@ -1,9 +1,11 @@
 define(function(require, exports) {
 	'use strict';
-	var cookie = require('cookie');
-	var GlobalUtil = require('common/util/GlobalUtil');
-	var api = require('Wiz/constant').api;
-	var debugModel = GlobalUtil.getUrlParam('debug');
+	var cookie = require('cookie'),
+			GlobalUtil = require('common/util/GlobalUtil'),
+			api = require('Wiz/constant').api,
+			debugModel = GlobalUtil.getUrlParam('debug'),
+	// 		redirectUrl = 'http://service.wiz.cn/web/?t=';
+			redirectUrl = 'http://localhost/web?t=';	
 
 	$(document).ready(function() {
 		$("#login_name").select();
@@ -158,7 +160,7 @@ define(function(require, exports) {
 
 
 			if(data.code==200){
-				var url = 'http://service.wiz.cn/web/?t=' + data.token;
+				var url = redirectUrl + data.token;
 				// var url = api.WEB_URL + '?t=' + data.token + '&debug=' + debugModel;
 				window.location.replace(url);
 			} else if (data.code == 1108) {
@@ -191,7 +193,7 @@ define(function(require, exports) {
 				$('#loginkeycode').attr('disabled', 'disabled');
 				$.post(api.LOGIN, params, function (data, status){
 					if(data.code==200){
-						var url = 'http://service.wiz.cn/web/?t=' + data.token;
+						var url = redirectUrl + data.token;
 						// var url = api.WEB_URL + '?t=' + data.token + '&debug=' + debugModel;
 						window.location.replace(url);
 					} 
