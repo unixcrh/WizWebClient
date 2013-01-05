@@ -289,7 +289,7 @@ define(["/web/libs/component/zTreeBase","/web/libs/common/util/GlobalUtil","/web
 			// 清空标题
 			$('#' + _id.titleInput).val('');
 			// 清空保存信息
-			$('#' + _id.saveTipDiv).html('');
+			$('#' + _id.saveTipDiv).removeClass('error-msg').html('');
 			// 清空文档内容显示
 			_editor.setContent('');		
 		}
@@ -432,7 +432,7 @@ define(["/web/libs/component/zTreeBase","/web/libs/common/util/GlobalUtil","/web
 		// 正在保存
 		function nowSaving() {
 			var savingMsg = _locale.Saving;
-			$('#' + _id.saveTipDiv).html(savingMsg);
+			$('#' + _id.saveTipDiv).removeClass('error-msg').html(savingMsg);
 		}
 
 		// 单击保存按钮后，回调方法
@@ -440,7 +440,7 @@ define(["/web/libs/component/zTreeBase","/web/libs/common/util/GlobalUtil","/web
 			var savedMsg = _locale.Saved;
 			var curTime = getCurTime();
 			var msg = savedMsg.replace('{time}', curTime);
-			$('#' + _id.saveTipDiv).html(msg);
+			$('#' + _id.saveTipDiv).removeClass('error-msg').html(msg);
 		}
 
 		/**
@@ -520,9 +520,14 @@ define(["/web/libs/component/zTreeBase","/web/libs/common/util/GlobalUtil","/web
 			_messageCenter = messageHandler;
 		}
 
+		function showError(msg) {
+			$('#' + _id.saveTipDiv).html(msg).addClass('error-msg');
+		}
+
 		// 公开的接口
 		return {
 			show: show,
+			showError: showError,
 			getDocumentInfo: getDocumentInfo,
 			nowSaving: nowSaving,
 			saveCallback: saveCallback,

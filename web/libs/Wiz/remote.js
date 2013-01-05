@@ -20,7 +20,7 @@ define(["./context","./constant","../component/loading"], function(require, expo
 			return;
 		}
 		if (!callError) {
-			callError = alert;
+			callError = function(){};
 		}
 		// 统一在发送请求这一层处理，不用每个地方都处理
 		var _callSuccess = function (data) {

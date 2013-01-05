@@ -82,19 +82,19 @@ define(["../../common/util/GlobalUtil","../context","../constant","../remote",".
 					if (bNew === true) {
 						// 新文档，把docInfo清空
 						docInfo = {};
-						var documentGuid = '';//GlobalUtil.genGuid();
+						var documentGuid = GlobalUtil.genGuid();
 						// 暂时屏蔽 lsl 2012-12-19
-						// docInfo.document_guid = documentGuid;
+						docInfo.document_guid = documentGuid;
 						docInfo.document_location = treeCtrl.getCurrentCategory();
-						// _curDoc = docInfo;
+						_curDoc = docInfo;
 						// lsl 2012-12-19
 						// 开放上传图片时，打开该部分请求，暂时屏蔽
-						// remote.createTempDocument(context.kbGuid, docInfo, function(data) {
-						// 	if (data.code != '200') {
-							// notification.showError(data.message);
-						// 		console.error('GlobalController.switchEditMode() request createTempDocument Error: ' + data.return_msg);
-						// 	}
-						// }, handlerJqueryAjaxError);
+						remote.createTempDocument(context.kbGuid, docInfo, function(data) {
+							if (data.code != '200') {
+							notification.showError(data.message);
+								console.error('GlobalController.switchEditMode() request createTempDocument Error: ' + data.return_msg);
+							}
+						}, handlerJqueryAjaxError);
 					}
 					window.Wiz.curDoc = docInfo;
 					// 最后设置全局变量的值 lsl-2012-12-19
@@ -151,6 +151,7 @@ define(["../../common/util/GlobalUtil","../context","../constant","../remote",".
 				 */
 				refreshCurDocList: function() {
 					notification.hide();
+					headCtrl.showCreateBtnGroup();
 					remote.getDocumentList(context.kbGuid, _requestCmdParams.docList, _messageDistribute.showDocList, handlerJqueryAjaxError);
 				},
 				saveNodesInfos: function(key, list) {
@@ -192,14 +193,14 @@ define(["../../common/util/GlobalUtil","../context","../constant","../remote",".
 					if (data.code == '200') {
 						listCtrl.show(data.list, _bFirst);
 						// 新用户
-						if (data.list.length < 1) {
+						if (data.list.length < 1 && _bFirst === true) {
 							docViewCtrl.showWelcomePage();
 						}
 					} else {
 						// TODO 错误处理
 						notification.showError(data.message);
 					}
-					// _bFirst = false;
+					_bFirst = false;
 				},
 				showDoc: function (data) {
 					if (data.code === 200) {
@@ -227,7 +228,8 @@ define(["../../common/util/GlobalUtil","../context","../constant","../remote",".
 						}
 					} else {
 						// TODO错误处理
-						notification.showError(data.message);
+						editPageCtrl.showError(data.message);
+						headCtrl.showEditBtnGroup();
 					}
 				}
 			}

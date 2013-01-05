@@ -78,6 +78,10 @@ input[type="checkbox"], body:not(.IE_M9) input[type="radio"] {
 	visibility: hidden;
 }
 
+.edit-title .error-msg {
+	color: red;
+}
+
 /*------------------webkit专有属性------------------------*/
 ::-webkit-scrollbar {
 	width: 17px;
@@ -1112,7 +1116,7 @@ div.c_loadingDot {
 	padding: 0 0 10px 5px;
 	border-bottom: 1px solid #ccc;
 }
-.edit-title .save-area {
+.save-area {
 	position: absolute;
 	width: 150px;
 	font-size: 86%;

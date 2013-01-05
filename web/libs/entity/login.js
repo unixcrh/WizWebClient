@@ -4,7 +4,7 @@ define(function(require, exports) {
 			GlobalUtil = require('common/util/GlobalUtil'),
 			api = require('Wiz/constant').api,
 			debugModel = GlobalUtil.getUrlParam('debug'),
-	// 		redirectUrl = 'http://service.wiz.cn/web/?t=';
+			// redirectUrl = 'http://service.wiz.cn/web/?t=';
 			redirectUrl = 'http://localhost/web?t=';	
 
 	$(document).ready(function() {
