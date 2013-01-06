@@ -1,7 +1,7 @@
 define(["/web/locale/main"], function (require, exports, module) {
 	'use strict';
-	var DefaultNode = require('/web/locale/main').DefaultNode;
-
+	var locale = require('/web/locale/main'),
+			DefaultNode = locale.DefaultNode;
 	var initTreeObj = {
 		initNodes: [{
 				name: DefaultNode.recent,							//显示名称
@@ -33,7 +33,20 @@ define(["/web/locale/main"], function (require, exports, module) {
 			name: DefaultNode.createTag,
 			cmd: 'create',
 			type: 'tag'
-		}
+		},
+		defaultCategoryNodes: [{
+			name: locale.DefaultCategory['My Notes'],
+			type: 'category',
+			childType: 'category',
+			location: 'My Notes',
+			isParent: false
+		}, {
+			name: locale.DefaultCategory['My Drafts'],
+			type: 'category',
+			childType: 'category',
+			location: '/My Drafts/',
+			isParent: false
+		}]
 	};
 
 	module.exports = initTreeObj;

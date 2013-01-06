@@ -105,12 +105,18 @@ define(["./treeProperty","/web/libs/component/zTreeBase","/web/locale/main"], fu
  			var childList = [];
  			zTreeBase.loadingNode(treeNode);
 			_messageCenter.getChildNodes(treeNode, function(data) {
-				childList = zTreeBase.addChildToNode(treeObj, data.list, treeNode);
+				if (data.list.length > 0) {
+					childList = zTreeBase.addChildToNode(treeObj, data.list, treeNode);	
+				}
 				if (treeNode.level === 0) {
-					_messageCenter.saveNodesInfos(treeNode.type, childList);
 					if (treeNode.type === 'category') {
+						if (data.list.length < 1) {
+							// 新用户添加默认目录
+							// childList = zTreeBase.addChildToNode(treeObj, treeProperty.defaultCategoryNodes, treeNode);
+						}
 						addDefaultNodes(treeNode, treeNode.type);	
 					}
+					_messageCenter.saveNodesInfos(treeNode.type, childList);
 				}
 			});
 		}

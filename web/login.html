@@ -10,7 +10,7 @@
         <link rel="stylesheet" href="assets/css/tmpl.css">
         <script src="web/libs/common/jquery/jquery-1.7.2.min.js"></script>
         <script type="text/javascript" src="web/libs/common/jquery/jquery.cookie.js"></script>
-        <script src="web/libs/common/jquery/jquery.placeholder.js"></script>
+        <script type="text/javascript" src="web/libs/common/jquery/jquery.placeholder.js"></script>
         <script type="text/javascript" src="/web/libs/common/seaJs/sea-debug.js" data-main="/web/libs/entity/loginEntry"></script>
         <!--  <link rel="stylesheet" href="assets/css/media-queries.css"> -->
 
@@ -56,7 +56,7 @@
                         <table class="formctn">
                             <tr>
                                 
-                                <td><input type="text" name="" placeholder="someone@example.com" id="login_name"></td>
+                                <td><input type="text" name="user_id" placeholder="someone@example.com" id="login_name"></td>
                             </tr>
                             <tr>
                                 
@@ -67,12 +67,13 @@
                             </tr>
                         </table>
                         <p class="error-indicator"></p>
-                        <input type="checkbox" name="" id="login_keeppassword" class="chkbox"><span class="f14-b">保持登录状态</span></input>
+                        <input type="checkbox" name="isKeep_password" id="login_keeppassword" class="chkbox"><span class="f14-b">保持登录状态</span></input>
                         <br/><br/>
-                        <input type="submit" name="" value="&nbsp;&nbsp;登录&nbsp;&nbsp;" class="btn" id="loginkeycode"></input>
+                        <input type="submit" name="" value="&nbsp;&nbsp;登录&nbsp;&nbsp;" class="btn" id="loginkeycode" onclick="return false;"></input>
                         <br clear="both">
                     </form>
                     <br/>
+                    <p class="f14-b"><a href="http://service.wiz.cn/wizkm/a/login" class="dark">使用旧版本(群组版)</a></p>
                     <p class="f14-b"><a href="http://service.wiz.cn/wizkm/k/reset_password_request" class="dark">无法登陆账户？</a></p>
                     <br/>
                     <p class="f14-b">还没有为知账户？&nbsp;<a href="/register" id="to-register" class="dark">立即注册</a></p>

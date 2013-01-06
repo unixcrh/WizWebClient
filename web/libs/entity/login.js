@@ -4,8 +4,8 @@ define(function(require, exports) {
 			GlobalUtil = require('common/util/GlobalUtil'),
 			api = require('Wiz/constant').api,
 			debugModel = GlobalUtil.getUrlParam('debug'),
-			// redirectUrl = 'http://service.wiz.cn/web/?t=';
-			redirectUrl = 'http://localhost/web?t=';	
+			redirectUrl = 'http://service.wiz.cn/web/?t=';
+			// redirectUrl = 'http://localhost/web?t=';	
 
 	$(document).ready(function() {
 		$("#login_name").select();
@@ -118,10 +118,10 @@ define(function(require, exports) {
 				}
 
 				var params = { 
-					user_id : user_id, 
-					password : password,
-					isKeep_password : keep_password,
-					debug: debugModel
+					'user_id' : user_id, 
+					'password' : password,
+					'isKeep_password' : keep_password,
+					'debug': debugModel
 				};
 				// 调用一下ajax
 				$('#loginkeycode').attr('disabled', 'disabled');
@@ -161,8 +161,8 @@ define(function(require, exports) {
 
 
 			if(data.code==200){
-				var url = redirectUrl + data.token;
-				// var url = api.WEB_URL + '?t=' + data.token + '&debug=' + debugModel;
+				// var url = redirectUrl + data.token;
+				var url = api.WEB_URL + '?t=' + data.token + '&debug=' + debugModel;
 				window.location.replace(url);
 			} else if (data.code == 1108) {
 				$('#tip_error_login').html('登陆尝试次数过多，请稍后重试').fadeIn();
@@ -194,8 +194,8 @@ define(function(require, exports) {
 				$('#loginkeycode').attr('disabled', 'disabled');
 				$.post(api.LOGIN, params, function (data, status){
 					if(data.code==200){
-						var url = redirectUrl + data.token;
-						// var url = api.WEB_URL + '?t=' + data.token + '&debug=' + debugModel;
+						// var url = redirectUrl + data.token;
+						var url = api.WEB_URL + '?t=' + data.token + '&debug=' + debugModel;
 						window.location.replace(url);
 					} 
 					else if (data.code == 1108) {
@@ -265,7 +265,6 @@ define(function(require, exports) {
 					cookie("passwordCookie", params.password);
 
 					autoLogin();
-					console.log('register success');
 					// callBackRegister_verify(data);
 					//TODO 跳转到中间页面
 				}

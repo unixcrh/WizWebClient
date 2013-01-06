@@ -353,7 +353,10 @@ define(["/web/libs/component/zTreeBase","/web/libs/common/util/GlobalUtil","/web
 				} else if (treeNode.type === 'tag') {
 					treeRoot = _tagTreeRoot;
 				}
-				var childList = zTreeBase.addChildToNode(treeRoot, data.list, treeNode);
+
+				if (data.list.length > 0) {
+					var childList = zTreeBase.addChildToNode(treeRoot, data.list, treeNode);	
+				}
 				// TODO 增加后，应该根据当前文档已有的tag_guid来选中结点
 				selectCurTags(treeNode.children);
 			});
@@ -405,7 +408,6 @@ define(["/web/libs/component/zTreeBase","/web/libs/common/util/GlobalUtil","/web
 				// TODO 提示
 				return null;
 			}
-			console.log(_docInfo);
 			var documentInfo ={};
 			documentInfo.document_body = _editor.getAllHtml();
 			documentInfo.document_category = _docInfo.document_location;
@@ -437,6 +439,9 @@ define(["/web/libs/component/zTreeBase","/web/libs/common/util/GlobalUtil","/web
 
 		// 单击保存按钮后，回调方法
 		function saveCallback(docGuid) {
+			if (docGuid) {
+				// _docInfo.document_guid = docGuid;
+			}
 			var savedMsg = _locale.Saved;
 			var curTime = getCurTime();
 			var msg = savedMsg.replace('{time}', curTime);
