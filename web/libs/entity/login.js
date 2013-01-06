@@ -26,8 +26,8 @@ define(function(require, exports) {
 			register_password2();
 		});
 		// 往文本框添加保存的cookie值
-		$("#login_name").val(cookie("loginCookie"));
-		$("#login_password").val(cookie("passwordCookie"));
+		$("#login_name").val(cookie("un"));
+		$("#login_password").val(cookie("up"));
 		$("#login_keeppassword").val(cookie("keepCookie"));
 		$('#register_name').val(cookie('singin_email'));
 		if (document.location.pathname === '/register') {
@@ -148,14 +148,14 @@ define(function(require, exports) {
 			// var defCookieMaxAge = data.defCookieMaxAge;
 			if(keepCookie === "checked"){
 				// 设置cookie
-				cookie("loginCookie", loginCookie, { expires: 14 });
+				cookie("un", loginCookie, { expires: 14 });
 				//TODO password应该要保存为md5格式
-				cookie("passwordCookie", passwordCookie, { expires: 14});
+				cookie("up", passwordCookie, { expires: 14});
 				cookie("keepCookie", keepCookie, { expires: 14 });
 
 			}else{
-				cookie("loginCookie", loginCookie);
-				cookie("passwordCookie", passwordCookie);
+				cookie("un", loginCookie);
+				cookie("up", passwordCookie);
 				cookie("keepCookie", keepCookie);
 			}
 
@@ -261,8 +261,8 @@ define(function(require, exports) {
 			if(data.code != 501){
 				if(data.code != "900"){
 					// 自动登陆
-					cookie("loginCookie", params.user_id);
-					cookie("passwordCookie", params.password);
+					cookie("un", params.user_id);
+					cookie("up", params.password);
 
 					autoLogin();
 					// callBackRegister_verify(data);
@@ -285,8 +285,8 @@ define(function(require, exports) {
 	function callBackRegister_verify(data){
 		var errorMsg = '';
 		if(data.code == "200"){
-			cookie("loginCookie", $("#register_name").val());//, { domain: '127.0.0.1', secure: true });
-			cookie("passwordCookie", $("#register_password1").val());//, { domain: '127.0.0.1', secure: true});
+			cookie("un", $("#register_name").val());//, { domain: '127.0.0.1', secure: true });
+			cookie("up", $("#register_password1").val());//, { domain: '127.0.0.1', secure: true});
 			window.location.href = api.REGISTER_SUCCESS_URL;
 	  } else if(data.code == "500"){
 		  errorMsg = "注册失败";
