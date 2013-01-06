@@ -96,9 +96,6 @@ define(["../../common/util/GlobalUtil","../context","../constant","../remote",".
 						// 暂时屏蔽 lsl 2012-12-19
 						docInfo.document_guid = documentGuid;
 						docInfo.document_location = treeCtrl.getCurrentCategory();
-						_curDoc = docInfo;
-						// lsl 2012-12-19
-						// 开放上传图片时，打开该部分请求，暂时屏蔽
 						remote.createTempDocument(context.kbGuid, docInfo, function(data) {
 							if (data.code != '200') {
 							notification.showError(data.message);
@@ -201,7 +198,7 @@ define(["../../common/util/GlobalUtil","../context","../constant","../remote",".
 				showDocList: function (data) {
 					// 首次加载，默认选择文档第一项
 					if (data.code == '200') {
-						listCtrl.show(data.list, _bFirst);
+						listCtrl.show(data.list, true);
 						// 新用户
 						if (data.list.length < 1 && _bFirst === true) {
 							docViewCtrl.showWelcomePage();

@@ -164,7 +164,7 @@ define(function(require, exports) {
 				// var url = redirectUrl + data.token;
 				var url = api.WEB_URL + '?t=' + data.token + '&debug=' + debugModel;
 				window.location.replace(url);
-			} else if (data.code == 1108) {
+			} else if (data.code == 488) {
 				$('#tip_error_login').html('登陆尝试次数过多，请稍后重试').fadeIn();
 			}	else {
 				$("#tip_error_login").html("用户名或密码不正确,请重新输入").fadeIn();
@@ -292,7 +292,7 @@ define(function(require, exports) {
 		  errorMsg = "注册失败";
 	  } else if(data.code == "399"){
 		  errorMsg = "用户已存在，请直接登录或找回密码";
-	  } else if (data.code == 1109) {
+	  } else if (data.code == 489) {
 	  	errorMsg = '注册次数过多，请稍后重试';
 	  }
 	  $('#tip_error_register').html(errorMsg).fadeIn();
