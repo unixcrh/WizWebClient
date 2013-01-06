@@ -145,15 +145,15 @@ define(function(require, exports) {
 			// var defCookieMaxAge = data.defCookieMaxAge;
 			if(keepCookie === "checked"){
 				// 设置cookie
-				cookie("loginCookie",loginCookie,{ expires: 14 });
+				cookie("loginCookie", loginCookie, { expires: 14 });
 				//TODO password应该要保存为md5格式
-				cookie("passwordCookie",passwordCookie,{ expires: 14});
-				cookie("keepCookie",keepCookie,{ expires: 14 });
+				cookie("passwordCookie", passwordCookie, { expires: 14});
+				cookie("keepCookie", keepCookie, { expires: 14 });
 
 			}else{
-				cookie("loginCookie",null,{ expires: 0 });
-				cookie("passwordCookie",null,{ expires: 0});
-				cookie("keepCookie",null,{ expires: 0 });
+				cookie("loginCookie", loginCookie);
+				cookie("passwordCookie", passwordCookie);
+				cookie("keepCookie", keepCookie);
 			}
 
 
@@ -258,8 +258,8 @@ define(function(require, exports) {
 			if(data.code != 501){
 				if(data.code != "900"){
 					// 自动登陆
-					cookie("loginCookie",params.user_id);
-					cookie("passwordCookie",params.password);
+					cookie("loginCookie", params.user_id);
+					cookie("passwordCookie", params.password);
 
 					autoLogin();
 					console.log('register success');
