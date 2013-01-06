@@ -1,13 +1,13 @@
 define(function(require, exports) {
 	'use strict';
-	var cookie = require('cookie'),
-			GlobalUtil = require('common/util/GlobalUtil'),
+	var GlobalUtil = require('common/util/GlobalUtil'),
 			api = require('Wiz/constant').api,
 			debugModel = GlobalUtil.getUrlParam('debug'),
 			redirectUrl = 'http://service.wiz.cn/web/?t=';
 			// redirectUrl = 'http://localhost/web?t=';	
 
 	$(document).ready(function() {
+		console.log('document.ready');
 		$("#login_name").select();
 		/* 验证注册账号事件 */
 		$("#register_name").live("blur",function(){
@@ -26,10 +26,10 @@ define(function(require, exports) {
 			register_password2();
 		});
 		// 往文本框添加保存的cookie值
-		$("#login_name").val(cookie("un"));
-		$("#login_password").val(cookie("up"));
-		$("#login_keeppassword").val(cookie("keepCookie"));
-		$('#register_name').val(cookie('singin_email'));
+		$("#login_name").val($.cookie("un"));
+		$("#login_password").val($.cookie("up"));
+		$("#login_keeppassword").val($.cookie("keepCookie"));
+		$('#register_name').val($.cookie('singin_email'));
 		if (document.location.pathname === '/register') {
 			autoFillInviteCode();
 		}
@@ -148,15 +148,15 @@ define(function(require, exports) {
 			// var defCookieMaxAge = data.defCookieMaxAge;
 			if(keepCookie === "checked"){
 				// 设置cookie
-				cookie("un", loginCookie, { expires: 14 });
+				$.cookie("un", loginCookie, { expires: 14 });
 				//TODO password应该要保存为md5格式
-				cookie("up", passwordCookie, { expires: 14});
-				cookie("keepCookie", keepCookie, { expires: 14 });
+				$.cookie("up", passwordCookie, { expires: 14});
+				$.cookie("keepCookie", keepCookie, { expires: 14 });
 
 			}else{
-				cookie("un", loginCookie);
-				cookie("up", passwordCookie);
-				cookie("keepCookie", keepCookie);
+				$.cookie("un", loginCookie);
+				$.cookie("up", passwordCookie);
+				$.cookie("keepCookie", keepCookie);
 			}
 
 
@@ -183,10 +183,10 @@ define(function(require, exports) {
 	// 读取cookie   post  获取token  跳转
 	function autoLogin() {
 		// console.log(cookie('loginCookie'));
-		 if ( $.cookie('loginCookie') != null && $.cookie('passwordCookie') != null ) {
+		 if ( $.cookie('un') != null && $.cookie('up') != null ) {
 		 	var params = { 
-					user_id : cookie('loginCookie'), 
-					password : cookie('passwordCookie'),
+					user_id : $.cookie('un'), 
+					password : $.cookie('up'),
 					// isKeep_password : keep_password,
 					debug: debugModel
 				};
@@ -213,7 +213,7 @@ define(function(require, exports) {
 	
 	// 注册页面自动填充邀请码
 	function autoFillInviteCode() {
-		var inviteCode = cookie('iCode');
+		var inviteCode = $.cookie('iCode');
 		if (inviteCode && inviteCode.length > 0)  {
 			$('#invite_code').val(inviteCode).show();
 		}
@@ -261,8 +261,8 @@ define(function(require, exports) {
 			if(data.code != 501){
 				if(data.code != "900"){
 					// 自动登陆
-					cookie("un", params.user_id);
-					cookie("up", params.password);
+					$.cookie("un", params.user_id);
+					$.cookie("up", params.password);
 
 					autoLogin();
 					// callBackRegister_verify(data);
@@ -285,8 +285,8 @@ define(function(require, exports) {
 	function callBackRegister_verify(data){
 		var errorMsg = '';
 		if(data.code == "200"){
-			cookie("un", $("#register_name").val());//, { domain: '127.0.0.1', secure: true });
-			cookie("up", $("#register_password1").val());//, { domain: '127.0.0.1', secure: true});
+			$.cookie("un", $("#register_name").val());//, { domain: '127.0.0.1', secure: true });
+			$.cookie("up", $("#register_password1").val());//, { domain: '127.0.0.1', secure: true});
 			window.location.href = api.REGISTER_SUCCESS_URL;
 	  } else if(data.code == "500"){
 		  errorMsg = "注册失败";

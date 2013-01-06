@@ -29,9 +29,15 @@
                 }
                     // $('body').css('display',"block");
                 var dHeight=screen.availHeight;
-                $('#login').css( 'height',(dHeight*0.8).toString()+"px" );
-                $('input[placeholder], textarea[placeholder]').placeholder();
-                $('input, textarea').placeholder();
+                try {
+                    $('#login').css( 'height',(dHeight*0.8).toString()+"px" );
+                    $('input[placeholder], textarea[placeholder]').placeholder();
+                    $('input, textarea').placeholder();
+                } catch (error) {
+                    if (console) {
+                        console.log('placeholder error: ' + error);
+                    }
+                }
 
                 // $('#login_name').focus();
             });
