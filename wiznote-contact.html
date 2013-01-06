@@ -14,6 +14,7 @@
                 img, div, input { behavior: url("assets/css/iepngfix.htc"); }
             </style>
         <![endif]-->
+        <script type="text/javascript" src="assets/script/common.js"></script>
         <script>
             window.onload = function() {
                 var tabs = document.getElementsByClassName("tablink");
@@ -24,6 +25,11 @@
                     articles[1].style.display = "none";
                 }
                 tabs[1].onclick = function() {
+                    articles[1].style.display = "block";
+                    articles[0].style.display = "none";
+                }
+                var tabParam = WizUtil.getUrlParam('tab');
+                if (tabParam === 'contact') {
                     articles[1].style.display = "block";
                     articles[0].style.display = "none";
                 }
