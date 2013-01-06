@@ -36,9 +36,19 @@ define(["../../common/util/GlobalUtil","../context","../constant","../remote",".
 				showSetting: function( url) {
 					window.open(url + '?token=' + context.token);
 				},
+				showMainContainer: function() {
+					$('#loading_container').addClass('no-display');
+					setTimeout(function(){
+						$('#main_container').removeClass('hidden');
+					}, 500);
+				},
 				// 显示文档列表
 				requestDocList: function (params) {
 					// 清空当前文档列表
+					if (_bFirst === true) {
+						// 加载完文档列表就显示
+						_messageHandler.showMainContainer();
+					}
 					_requestCmdParams.docList = params;
 					notification.hide();
 					remote.getDocumentList(context.kbGuid, params, _messageDistribute.showDocList, handlerJqueryAjaxError);

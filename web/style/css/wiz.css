@@ -82,6 +82,13 @@ input[type="checkbox"], body:not(.IE_M9) input[type="radio"] {
 	color: red;
 }
 
+.loading-container {
+	padding-top: 150px;
+	margin: auto;
+	text-align: center;
+}
+
+
 /*------------------webkit专有属性------------------------*/
 ::-webkit-scrollbar {
 	width: 17px;
