@@ -19,11 +19,11 @@ body {
 	font-size: 88%;
 	-webkit-font-smoothing: antialiased;
 }
-body {
+/*body {
 	-moz-user-select: none;  
 	-webkit-user-select: none;  
 	-ms-user-select: none;  
-}
+}*/
 
 /*隐藏聚焦时显示的黄色边框*/
 input, button, select, textarea, ul, li {
