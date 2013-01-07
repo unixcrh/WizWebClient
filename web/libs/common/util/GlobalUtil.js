@@ -4,7 +4,7 @@ define(function (require, exports, module){
 	var GlobalUtil = {
 		// 对电子邮件的验证
 		verifyEmail: function (str_email) {
-			var myreg = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
+			var myreg = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
 			if (myreg.test(str_email)) {
 				return true;
 			}
