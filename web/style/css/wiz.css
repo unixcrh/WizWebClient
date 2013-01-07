@@ -19,11 +19,11 @@ body {
 	font-size: 88%;
 	-webkit-font-smoothing: antialiased;
 }
-body {
+/*body {
 	-moz-user-select: none;  
 	-webkit-user-select: none;  
 	-ms-user-select: none;  
-}
+}*/
 
 /*隐藏聚焦时显示的黄色边框*/
 input, button, select, textarea, ul, li {
@@ -322,7 +322,7 @@ input[type="checkbox"], body:not(.IE_M9) input[type="radio"] {
 	z-index: 4000001;
 	min-width: 130px;
 	top: 0;
-	left: 0;
+	right: 0;
 	text-align: left;
 }
 .menu-separator {

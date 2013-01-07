@@ -85,18 +85,16 @@ define(["/web/locale/main"], function (require, exports, module) {
 			return;
 		}
 		_containerObj.delegate('tr', 'click', function (evt) {
-			evt = evt || window.event;
 			$('.' + _action.active).removeClass(_action.active);
 			var curTarget = $(evt.currentTarget);
 			curTarget.addClass(_action.active);
 			requestDocumentBody(this.id);
 		});
 		_containerObj.delegate('tr', 'mouseup', function (evt) {
-			evt = evt || window.event;
 			$('.' + _action.active).removeClass(_action.active);
 			var curTarget = $(evt.currentTarget);
 			curTarget.addClass(_action.active);
-		})
+		});
 		// 绑定排序功能事件
 		bindSortHandler();
 	}

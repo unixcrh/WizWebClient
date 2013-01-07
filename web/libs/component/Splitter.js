@@ -4,7 +4,7 @@ define(["./opacity"], function(require, exports, module){
   var opacity = require('./opacity');
 
   function Splitter () {
-
+    var _self = this;
     var _leftContainer = null;
     var _splitter = null;
     var _rightContainner = null;
@@ -39,6 +39,8 @@ define(["./opacity"], function(require, exports, module){
       _splitter.addClass('active');
       document.onmousemove = move;
       document.onmouseup = end;
+      // 锁定复制
+      _self.lockBodySelection();
     }
 
     //
@@ -61,7 +63,21 @@ define(["./opacity"], function(require, exports, module){
       document.onmousemove = null; 
       document.onmouseup= null
       _splitter.removeClass('active');
+      // 解除锁定复制
+      _self.unlockBodySelection();
     }
+  };
+
+  Splitter.prototype.lockBodySelection = function() {
+    document.body.onselectstart = function(event) {
+      console.log(event);
+      // ff下无效
+      return false;
+    }
+  };
+
+  Splitter.prototype.unlockBodySelection = function() {
+    document.body.onselectstart = null;
   };
 
   module.exports = Splitter;
