@@ -66,7 +66,6 @@ define(["./FrameController", "/web/locale/main"], function (require, exports, mo
 
 		function showWelcomePage() {
 			showTitle(_helpPage.welcomeTitle);
-			console.log(_helpPage.welcomeTitle);
 			showHelpPage('welcome');
 		}
 

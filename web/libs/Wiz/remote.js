@@ -119,6 +119,16 @@ define(["./context","./constant","../component/loading"], function(require, expo
 			sendRequest(constant.api.CATEGORY_CREATE, requestParams, callback, callError);
 		},
 
+		/* 新建标签 */
+		createTag: function(kbGuid, name, parentGuid, callback, callError) {
+			var requestParams = getRequestParams();
+			requestParams.kb_guid = kbGuid;
+			requestParams.new_name = name;
+			// 不能为null
+			requestParams.parent_guid = parentGuid || '';
+			sendRequest(constant.api.TAG_CREATE, requestParams, callback, callError);
+		},
+
 		/* 获取所有标签列表 */
 		getAllTag: function (kbGuid, callback, callError) {
 			var requestParams = getRequestParams();

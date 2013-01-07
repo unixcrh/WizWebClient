@@ -105,7 +105,7 @@ define(function (require, exports, module) {
 	  	async: true
 	  },
 	  TAG_CREATE: {
-	  	url: TAG_BASE,
+	  	url: TAG_BASE + '/item',
 	  	action: 'post',
 	  	async: true
 	  },

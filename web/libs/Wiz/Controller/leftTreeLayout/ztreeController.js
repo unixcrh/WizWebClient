@@ -23,24 +23,38 @@ define(["./treeProperty","/web/libs/component/zTreeBase","/web/locale/main"], fu
 		setting.view.showIcon = showIconForTree;
 
 
+		/**
+		 * 监听该方法，用以判断根节点创建与否
+		 * @param  {[type]} treeId   [description]
+		 * @param  {[type]} treeNode [description]
+		 * @param  {[type]} newName  [description]
+		 * @return {[type]}          [description]
+		 */
 		function zTreeBeforeRename(treeId, treeNode, newName) {
 			// 如果为空，不做任何操作，直接删除节点
 			if (newName === '') {
 				treeObj.removeNode(treeNode, false);
 				return;
 			}
-			if(zTreeBase.checkNewName(newName) === false) {
+			if(zTreeBase.checkNewName(newName, treeNode.type) === false) {
+					treeObj.removeNode(treeNode, false);
 				return;
 			}
 			// 新建目录
-			var location = '/' + newName + '/';
-			treeNode.location = location;
+			if (treeNode.type === 'category') {
+				var location = '/' + newName + '/';
+				treeNode.location = location;
+			}
+			// 请求创建节点
 			_messageCenter.requestCreateItem(newName, treeNode.type, function (data) {
 				if (data.code != '200') {
 					// 创建失败，删除该节点
 					// TODO 提示
 					treeObj.removeNode(treeNode, false);
 				} else {
+					if (treeNode.type === 'tag') {
+						treeNode.tag_guid = data.tag_guid;
+					}
 					treeObj.updateNode(treeNode);
 				}
 			});
@@ -119,8 +133,8 @@ define(["./treeProperty","/web/libs/component/zTreeBase","/web/locale/main"], fu
 							childList = zTreeBase.addChildToNode(treeObj, treeProperty.defaultCategoryNodes, treeNode);
 						}
 						// TODO 放在type判断外，需要openapi增加add tag的接口
-						addDefaultNodes(treeNode, treeNode.type);
 					}
+					addDefaultNodes(treeNode, treeNode.type);
 					_messageCenter.saveNodesInfos(treeNode.type, childList);
 				}
 			});

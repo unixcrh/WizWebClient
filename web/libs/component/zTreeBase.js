@@ -103,12 +103,12 @@ define(["/web/locale/main"], function (require, exports, module) {
 			var newNode = node;
 			treeObj.addNodes(treeNode, newNode, true);
 		},
-		checkNewName: function(newName) {
-			if (newName === '') {
-				alert('Folder name can not be null');
+		checkNewName: function(newName, type) {
+			if (newName === '' || newName.replace(/^\s+|\s+$/g, '') === '') {
+				alert('name can not be null');
 				return false;
 			}
-			if (isConSpeCharacters(newName)) {
+			if (type === 'category' && isConSpeCharacters(newName)) {
 				alert('Folder name can not contain flowing characters: \\,/,:,<,>,*,?,\",&,\'');
 				return false;
 			}

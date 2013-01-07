@@ -167,6 +167,10 @@ define(function (require, exports, module){
 			  }
 			  return -1;
     	}
+    },
+    // 实现类似String.trim功能，不在Global Object上做扩展
+    trimString: String.trim || function(str) {
+  		return str.replace(/^\s+|\s+$/g, '');
     }
 	};
 

@@ -67,16 +67,22 @@ define(["../../common/util/GlobalUtil","../context","../constant","../remote",".
 				},
 				// 所有请求创建的处理
 				// 需要callback函数，自动处理相应的节点
-				requestCreateItem: function(name, type, callback) {
+				requestCreateItem: function(name, type, callback, parentGuid) {
+					// 内部实现的callback方法，为了监听返回数据
+					function innerCallback(data) {
+						if (data.code == 200) {
+							callback(data);
+						} else {
+							notification.callError(data.message);
+						}
+					}
 					notification.hide();
 					if (type === 'category') {
-						remote.createCategory(context.kbGuid, name, function(data) {
-							if (data.code == 200) {
-								callback(data);
-							} else {
-								notification.callError(data.message);
-							}
-						}, handlerJqueryAjaxError);	
+						// 创建目录
+						remote.createCategory(context.kbGuid, name, innerCallback, handlerJqueryAjaxError);	
+					} else if (type === 'tag') {
+						// 创建标签
+						remote.createTag(context.kbGuid, name, parentGuid, innerCallback, handlerJqueryAjaxError);
 					}
 				},
 				// 阅读和编辑页面切换
@@ -99,7 +105,7 @@ define(["../../common/util/GlobalUtil","../context","../constant","../remote",".
 						remote.createTempDocument(context.kbGuid, docInfo, function(data) {
 							if (data.code != '200') {
 							notification.showError(data.message);
-								console.error('GlobalController.switchEditMode() request createTempDocument Error: ' + data.return_msg);
+								window.console && console.error('GlobalController.switchEditMode() request createTempDocument Error: ' + data.return_msg);
 							}
 						}, handlerJqueryAjaxError);
 					}
