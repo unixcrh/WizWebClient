@@ -105,16 +105,21 @@ define(["./treeProperty","/web/libs/component/zTreeBase","/web/locale/main"], fu
  			var childList = [];
  			zTreeBase.loadingNode(treeNode);
 			_messageCenter.getChildNodes(treeNode, function(data) {
-				if (data.list.length > 0) {
+				// list不存在，直接返回，说明出错
+				if (data.list === undefined) {
+					return;
+				}
+				if (data.list.length > -1) {
 					childList = zTreeBase.addChildToNode(treeObj, data.list, treeNode);	
 				}
 				if (treeNode.level === 0) {
 					if (treeNode.type === 'category') {
 						if (data.list.length < 1) {
 							// 新用户添加默认目录
-							// childList = zTreeBase.addChildToNode(treeObj, treeProperty.defaultCategoryNodes, treeNode);
+							childList = zTreeBase.addChildToNode(treeObj, treeProperty.defaultCategoryNodes, treeNode);
 						}
-						addDefaultNodes(treeNode, treeNode.type);	
+						// TODO 放在type判断外，需要openapi增加add tag的接口
+						addDefaultNodes(treeNode, treeNode.type);
 					}
 					_messageCenter.saveNodesInfos(treeNode.type, childList);
 				}

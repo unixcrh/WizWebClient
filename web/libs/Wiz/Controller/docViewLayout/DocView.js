@@ -12,7 +12,8 @@ define(["./FrameController", "/web/locale/main"], function (require, exports, mo
 			_helpPage = {
 				loading: _locale.HelpPage.loading,
 				protected: _locale.HelpPage.protected,
-				welcome: _locale.HelpPage.welcome	
+				welcome: _locale.HelpPage.welcome,
+				welcomeTitle: _locale.HelpPage.welcomeTitle
 			},
 			titleJqElem = $( '#' + _selector.title);
 
@@ -64,6 +65,8 @@ define(["./FrameController", "/web/locale/main"], function (require, exports, mo
 		}
 
 		function showWelcomePage() {
+			showTitle(_helpPage.welcomeTitle);
+			console.log(_helpPage.welcomeTitle);
 			showHelpPage('welcome');
 		}
 

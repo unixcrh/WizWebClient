@@ -35,13 +35,13 @@ define(["/web/locale/main"], function (require, exports, module) {
 			type: 'tag'
 		},
 		defaultCategoryNodes: [{
-			name: locale.DefaultCategory['My Notes'],
+			category_name: locale.DefaultCategory['My Notes'],
 			type: 'category',
 			childType: 'category',
-			location: 'My Notes',
+			location: '/My Notes/',
 			isParent: false
 		}, {
-			name: locale.DefaultCategory['My Drafts'],
+			category_name: locale.DefaultCategory['My Drafts'],
 			type: 'category',
 			childType: 'category',
 			location: '/My Drafts/',

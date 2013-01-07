@@ -69,7 +69,8 @@ define(["/web/libs/component/zTreeBase","/web/libs/common/util/GlobalUtil","/web
 		};
 
 		function showCategory() {
-			if (_docInfo.document_location) {
+			var docLocation = _docInfo.document_location;
+			if (docLocation && docLocation !== '/') {
 				$('#' + _id.categoryCtSpan).html(_docInfo.displayLocation);
 			} else {
 				// 如果文档模型中没有category则加载默认category
