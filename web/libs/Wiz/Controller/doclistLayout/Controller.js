@@ -81,7 +81,7 @@ define(["/web/locale/main"], function (require, exports, module) {
 
 	function initHandler() {
 		if (!_containerObj && console) {
-			console.error('DocList Controller Error: _containerObj not found.')
+			window.console && console.error('DocList Controller Error: _containerObj not found.')
 			return;
 		}
 		_containerObj.delegate('tr', 'click', function (evt) {

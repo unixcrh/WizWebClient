@@ -70,7 +70,6 @@ define(["./opacity"], function(require, exports, module){
 
   Splitter.prototype.lockBodySelection = function() {
     document.body.onselectstart = function(event) {
-      console.log(event);
       // ff下无效
       return false;
     }

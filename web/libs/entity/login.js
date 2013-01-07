@@ -7,7 +7,6 @@ define(function(require, exports) {
 			// redirectUrl = 'http://localhost/web?t=';	
 
 	$(document).ready(function() {
-		console.log('document.ready');
 		$("#login_name").select();
 		/* 验证注册账号事件 */
 		$("#register_name").live("blur",function(){
