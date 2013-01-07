@@ -257,19 +257,19 @@ define(function(require, exports) {
 		$("#tip_error_register").hide();
 
 		if(status=="success"){
-			if(data.code != 501){
-				if(data.code != "900"){
-					// 自动登陆
-					$.cookie("un", params.user_id);
-					$.cookie("up", params.password);
+			if (data.code == 200) {
+				// 自动登陆
+				$.cookie("un", params.user_id);
+				$.cookie("up", params.password);
 
-					autoLogin();
-					// callBackRegister_verify(data);
-					//TODO 跳转到中间页面
-				}
-			}else{
-				$("#tip_error_register").html("超过ip注册限制数").fadeIn();
-			}
+				autoLogin();
+			} else if(data.code == "500"){
+				$("#tip_error_register").html("注册失败").fadeIn();
+		  } else if(data.code == "399"){
+				$("#tip_error_register").html("用户已存在，请直接登录或找回密码").fadeIn();
+		  } else if (data.code == 489) {
+				$("#tip_error_register").html("注册次数过多，请稍后重试").fadeIn();
+	  	}
 
 		}else if(status == null){
 			alert('链接错误');
