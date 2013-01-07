@@ -1256,7 +1256,7 @@ table.formctn tr td{
 
 /*---------------------页脚样式---------------------*/
 #footer {
-  height: 100px;
+  height: auto;
   zoom: 1;
   background: #1a1a1a;
   /*background-repeat: repeat;*/
@@ -1265,11 +1265,18 @@ table.formctn tr td{
   z-index: 9999;
   position: relative;
   clear: both;
+  margin-top: -16px;
 }
+
 #footer .innerFooter{
   width: 998px;
   margin: 0 auto;
-  padding: 0 4px;
+  padding: 4px 8px;
+}
+#footer p{
+  color: #FFF;
+  font-weight: bold;
+  font-size: 14px;
 }
 /*.innerFooter img{
   float: right;
@@ -1278,13 +1285,13 @@ table.formctn tr td{
 #footer span{ 
   display: block;
   float: right;
-  margin: 65px 0 0 0;
+  margin: 45px 0 0 0px;
   width: 100%;
   padding: 0;
   text-align: right;
   color: #FFF;
   font-weight: bold;
-  font-size: 14px
+  font-size: 14px;
 }
 #footer a{
   color: #FFF;
