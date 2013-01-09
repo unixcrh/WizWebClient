@@ -252,16 +252,28 @@ define(["../../constant","../../../../locale/main"], function (require, exports,
 		return $('#' + id);
 	}
 
-	function showSendingGroup() {
+	function showSendingGroup(bEditMode) {
+		if (bEditMode) {
+			return;
+		}
 		_sendingCtrl.active();
 	}
-	function showEditBtnGroup() {
+	function showEditBtnGroup(bEditMode) {
+		if (bEditMode) {
+			return;
+		}
 		_docEditCtrl.active();
 	}
-	function showReadBtnGroup() {
+	function showReadBtnGroup(bEditMode) {
+		if (bEditMode) {
+			return;
+		}
 		_docReadCtrl.active();
 	}
-	function showCreateBtnGroup() {
+	function showCreateBtnGroup(bEditMode) {
+		if (bEditMode) {
+			return;
+		}
 		_createOnlyCtrl.active();
 	}
 

@@ -23,6 +23,9 @@ define(["../../common/util/GlobalUtil","../context","../constant","../remote",".
 
 			// 判断首次加载页面，增加首次加载时默认初始化功能
 			_bFirst = true,
+			// 是否为编辑模式，默认为阅读页面 
+			// 切换模式的时候才改变
+			_bEditMode = false,
 			// 保存当前阅读的文档
 			_curDoc = null,
 			// 缓存标签信息的对象key为tag_guid，value为name
@@ -60,9 +63,11 @@ define(["../../common/util/GlobalUtil","../context","../constant","../remote",".
 					// 首先要显示标题
 					docViewCtrl.showTitle(doc.document_title);
 					// 切换文档时，首先显示加载中页面，并隐藏编辑按钮
-					docViewCtrl.showLoading();
-					headCtrl.showCreateBtnGroup();
-					notification.hide();
+					if (bEditMode) {
+						docViewCtrl.showLoading();
+						headCtrl.showCreateBtnGroup();
+						notification.hide();
+					}
 					remote.getDocumentBody(context.kbGuid, doc.document_guid, doc.version, _messageDistribute.showDoc, handlerJqueryAjaxError);
 				},
 				// 所有请求创建的处理
@@ -118,11 +123,13 @@ define(["../../common/util/GlobalUtil","../context","../constant","../remote",".
 						$('#edit_page').show();
 						$('#edit_page').removeClass('hidden');
 						editPageCtrl.show(docInfo, bNew);
+						_bEditMode = true;
 					} else {
 						$('#edit_page').hide();
 						$('#edit_page').addClass('hidden');
 						$('#resize_container').show();
 						$('#resize_container').removeClass('hidden');
+						_bEditMode = false;
 					}
 				},
 				/**
@@ -220,12 +227,12 @@ define(["../../common/util/GlobalUtil","../context","../constant","../remote",".
 						//成功获取内容后，开始加载右侧内容
 						_curDoc.document_body = data.body;
 						_curDoc.url = docViewCtrl.viewDoc(_curDoc);
-						headCtrl.showReadBtnGroup();
+						headCtrl.showReadBtnGroup(_bEditMode);
 					} else {
 						// 加密文档的特殊处理
 						if (data.code === 500 && _curDoc.document_protect > 0) {
 							docViewCtrl.viewDoc(_curDoc);
-							headCtrl.showCreateBtnGroup();
+							headCtrl.showCreateBtnGroup(_bEditMode);
 						} else {
 							notification.showError(data.message);
 						}
