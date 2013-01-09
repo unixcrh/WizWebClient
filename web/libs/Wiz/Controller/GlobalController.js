@@ -61,9 +61,9 @@ define(["../../common/util/GlobalUtil","../context","../constant","../remote",".
 					// 记录当前显示的文档信息
 					_curDoc = doc;
 					// 首先要显示标题
-					docViewCtrl.showTitle(doc.document_title);
+					docViewCtrl.showTitle(_curDoc.document_title);
 					// 切换文档时，首先显示加载中页面，并隐藏编辑按钮
-					if (bEditMode) {
+					if (_bEditMode) {
 						docViewCtrl.showLoading();
 						headCtrl.showCreateBtnGroup();
 						notification.hide();
@@ -245,6 +245,11 @@ define(["../../common/util/GlobalUtil","../context","../constant","../remote",".
 							headCtrl.showCreateBtnGroup();
 							_messageHandler.switchEditMode();
 							treeCtrl.selectNode('location', docInfo.document_category);
+						}
+						// 保存的文档为当前阅读的文档时，需要刷新阅读区域的文档
+						if (_curDoc.document_guid === data.document_guid) {
+							_curDoc = docInfo;
+							docViewCtrl.viewDoc(_curDoc);
 						}
 					} else {
 						// TODO错误处理
