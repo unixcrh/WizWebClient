@@ -207,10 +207,10 @@ input[type="checkbox"], body:not(.IE_M9) input[type="radio"] {
 	width: 9px;
 	height:7px;
 }
-.sort-item-selected {
+.sort-item-selected{
 	width: 8px;
 	height: 11px;
-	background-position: -35px -155px;
+	background-position: -35px -34px;
 }
 
 /*--------------------------------button组件------------------------------*/
@@ -322,14 +322,19 @@ input[type="checkbox"], body:not(.IE_M9) input[type="radio"] {
 	z-index: 4000001;
 	min-width: 130px;
 	top: 0;
-	right: 0;
 	text-align: left;
 }
 .menu-separator {
 	margin: 2px 5px;
 	border-top: 1px solid #666;
 }
-
+/* 针对排序和用户操作下拉菜单的不同显示样式 */
+.sort-filter-wrapper .wiz-menu {
+	left: 0;
+}
+#user_menu {
+	right: 0;
+}
 /*--------------------------wiz插件----------------------------------*/
 
 /*----------------------------------------------*/
