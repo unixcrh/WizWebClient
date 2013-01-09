@@ -69,12 +69,12 @@ define(["/web/libs/component/zTreeBase","/web/libs/common/util/GlobalUtil","/web
 		};
 
 		function showCategory() {
-			var docLocation = _docInfo.document_location;
+			var docLocation = _docInfo.document_category;
 			if (docLocation && docLocation !== '/') {
 				$('#' + _id.categoryCtSpan).html(_docInfo.displayLocation);
 			} else {
 				// 如果文档模型中没有category则加载默认category
-				_docInfo.document_location = _locale.DefaultFolderObj.location;
+				_docInfo.document_category = _locale.DefaultFolderObj.location;
 				$('#' + _id.categoryCtSpan).html(_locale.DefaultFolderObj.display);
 			}
 		}
@@ -335,7 +335,7 @@ define(["/web/libs/component/zTreeBase","/web/libs/common/util/GlobalUtil","/web
 		function changeDocLocation(treeNode) {
 			var nodeLocation = treeNode.location,
 				displayLocation = treeNode.displayLocation;
-			_docInfo.document_location = nodeLocation;
+			_docInfo.document_category = nodeLocation;
 			$('#' + _id.categoryCtSpan).html(displayLocation);
 			$("#" + _id.categoryTree).hide(500);
 		}
@@ -411,7 +411,7 @@ define(["/web/libs/component/zTreeBase","/web/libs/common/util/GlobalUtil","/web
 			}
 			var documentInfo ={};
 			documentInfo.document_body = _editor.getAllHtml();
-			documentInfo.document_category = _docInfo.document_location;
+			documentInfo.document_category = _docInfo.document_category;
 			documentInfo.document_title = $('#' + _id.titleInput).val();
 			documentInfo.document_guid = _docInfo.document_guid;
 			documentInfo.version = _docInfo.version;

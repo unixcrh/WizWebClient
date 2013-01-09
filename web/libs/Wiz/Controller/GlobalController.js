@@ -106,7 +106,7 @@ define(["../../common/util/GlobalUtil","../context","../constant","../remote",".
 						var documentGuid = GlobalUtil.genGuid();
 						// 暂时屏蔽 lsl 2012-12-19
 						docInfo.document_guid = documentGuid;
-						docInfo.document_location = treeCtrl.getCurrentCategory();
+						docInfo.document_category = treeCtrl.getCurrentCategory();
 						remote.createTempDocument(context.kbGuid, docInfo, function(data) {
 							if (data.code != '200') {
 							notification.showError(data.message);
@@ -117,7 +117,7 @@ define(["../../common/util/GlobalUtil","../context","../constant","../remote",".
 					window.Wiz.curDoc = docInfo;
 					// 最后设置全局变量的值 lsl-2012-12-19
 					if (bEditMode) {
-						docInfo.displayLocation = treeCtrl.changeSpecilaLocation(docInfo.document_location);
+						docInfo.displayLocation = treeCtrl.changeSpecilaLocation(docInfo.document_category);
 						$('#resize_container').hide();
 						$('#resize_container').addClass('hidden');
 						$('#edit_page').show();
@@ -209,6 +209,7 @@ define(["../../common/util/GlobalUtil","../context","../constant","../remote",".
 			// 负责向各控制器发送消息
 			_messageDistribute = {
 				showDocList: function (data) {
+
 					// 首次加载，默认选择文档第一项
 					if (data.code == '200') {
 						listCtrl.show(data.list, true);
@@ -242,7 +243,7 @@ define(["../../common/util/GlobalUtil","../context","../constant","../remote",".
 					if (data.code == '200') {
 						editPageCtrl.saveCallback(data.document_guid);
 						if (bQuit) {
-							headCtrl.showCreateBtnGroup();
+							headCtrl.showReadBtnGroup();
 							_messageHandler.switchEditMode();
 							treeCtrl.selectNode('location', docInfo.document_category);
 						}
