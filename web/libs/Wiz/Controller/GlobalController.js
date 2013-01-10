@@ -63,7 +63,7 @@ define(["../../common/util/GlobalUtil","../context","../constant","../remote",".
 					// 首先要显示标题
 					docViewCtrl.showTitle(_curDoc.document_title);
 					// 切换文档时，首先显示加载中页面，并隐藏编辑按钮
-					if (_bEditMode) {
+					if (_bEditMode === false) {
 						docViewCtrl.showLoading();
 						headCtrl.showCreateBtnGroup();
 						notification.hide();
