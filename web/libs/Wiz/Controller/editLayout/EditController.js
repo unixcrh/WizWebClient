@@ -42,11 +42,15 @@ define(["/web/libs/component/zTreeBase","/web/libs/common/util/GlobalUtil","/web
 
 	function EditController () {
 
-		// 初始化操作
-		initEditor();
-		localizePageMessage();
 
 		function show(docInfo, bNew) {
+			if (_editor === null) {
+				// 初始化操作
+				initEditor(function() {
+					show(docInfo, bNew);
+				});
+				return;
+			}
 			resetAll();
 			_docInfo = docInfo;
 			// 设置目录信息，这里目录需要特殊处理，因为新建的文档也需要有目录信息   2012-12-12 lsl
@@ -104,12 +108,16 @@ define(["/web/libs/component/zTreeBase","/web/libs/common/util/GlobalUtil","/web
 			}
 		}
 
-		function initEditor() {
+		function initEditor(callback) {
 	    _editor = new UE.ui.Editor();
 	    _editor.render(_id.editorCt);
 	    _editor.addListener("ready",function(){
 	    	editorKeyDownhandler();
-			})
+	    	if (callback) {
+	    		callback();	
+	    	}
+			});
+			localizePageMessage();
 		}
 
 		/**
