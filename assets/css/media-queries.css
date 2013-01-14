@@ -1,74 +1,200 @@
-#header {
+/************************************
+smaller than 998
+************************************/
+@media screen and (max-width: 998px) {
+	body{
 		width: 100%;
-}
-#header-container {
-  /*position: relative;*/
-  /*padding: 20px 18%;*/
-  width:960px;
-  
-}
-#logo {
-  width:100%;
-}
-#nav-ct{
-	width:100%;
-}
-#nav li {
-  padding: 0 20px 0 0px;
-}
-.bd{
-	width: 100%;
+		margin: 0;
+		padding: 0;
+	}
+
+	#header{
+		width: 95%;
+		padding: 0;
+		/*background: #accded;*/
+	}
+	#logo{
+		width: 100%;
+	}
+	.nav-v a{
+		font-size: 16px;
+	}
+	.primaryNav{
+		width: 100%;
+	}
+	.primaryNav a{
+		font-size: 16px;
+	}
+	.wraper, .wraper-sh, .presentation, .footer, .innerFooter{
+		min-width: 420px;
+	}
+	.feature,.topic, .topicPic, .enterprise, .tuts, .blog, .faq, .support, .browser, .winintro {
+  	width: 95%;
+	}
+	.presentation{
+		width: 95%;
+	}
+	.l-slogan{
+		width: 44%;
+	}
+	.r-slogan{
+		width: 44%;
+	}
+	.r-display, .l-display{
+		width: 54%;
+		margin: 0 4px 0 0;
+		padding: 0;
+	}
+	.r-display img, .l-display img{
+		width: 100%;
+		height: auto;
+	}
+	.f14-w, .f14-b{
+		font-size: 16px;
+		line-height: 24px
+	}
+	.f64-w, .f64-b{
+		font-size: 48px;
+		line-height: 56px
+	}
+	.btn{
+		font-size: 16px;
+	}
+	.topic ul{
+		width: 100%;
+	}
+	 .topic ul a{
+	 	font-size: 14px;
+	 }
+	.topic ul li{
+		width: 23%;
+		margin: 0 2% 0 0;
+	}
+	.topicPic .iterm{
+		width: 100%;
+	}
+	.topicPic .iterm li{
+		width: 23%;
+		height: 200px;
+		margin: 0 2% 0 0;
+		padding: 0 0 20px 0;
+	}
+	.topicPic .iterm li img{
+		width: 100%;
+		height: auto;
+	}
+	#footer .innerFooter{
+ 	 width: 95%;
+ 	}
 }
 
 
-/************************************************************************************
-smaller than 1024
-*************************************************************************************/
-@media screen and (max-width: 1024px) {
-	#header-container {
-	  /*position: relative;*/
-	  padding: 20px 15%;
+/************************************
+smaller than 640px
+************************************/
+@media screen and (max-width: 720px) {
+	body{
+		width: 100%;
+		min-width: 420px;
+		/*没有专门定义背景色的wraper是会透过去直接显示body的背景的*/
+		/*因此要避免出现横向滚动条拉到右边后没有背景的问题就要从body的min-width入手*/
+		margin: 0;
+		padding: 0;
 	}
-	#second-span{
-	  margin-left:8%;
+	#headerCtn{
+		position: static;
 	}
-	.content {
-	  padding:0 10%;
-	  font-size: 0.9em;
+	#header{
+		width: 95%;
+		height: 88px;
+		padding: 0;
+		min-width: 420px;
+		/*background: #accded;*/
 	}
-}
-
-
-/************************************************************************************
-smaller than 800
-*************************************************************************************/
-@media screen and (max-width: 800px) {
-	#header-container {
-	  /*position: relative;*/
-	  padding: 20px 5%;
+	#logo{
+		width: 100%;
+		height: 32px;
+		margin: 8px 0 0 0;
 	}
-
-	#nav-ct{
-		  width:100%;
-	}
-	#nav li {
-	  padding: 0 0 0 10px;
-	  font-size: 0.6em;
+	.nav-v a{
+		font-size: 16px;
 	}
 	.bd{
+		padding:0;
+	}
+	.primaryNav{
+		width: 100%;
+		min-width: 420px;
+		bottom: 4px;
+	}
+	.primaryNav li{
+		margin: 0 12px 0 0;
+	}
+	.primaryNav a{
+		font-size: 16px;
+	}
+	.wraper, .wraper-sh, .presentation, .footer, .innerFooter{
+		min-width: 420px;
+		/*margin:;*/
+	}
+	.feature,.topic, .topicPic, .enterprise, .tuts, .blog, .faq, .support, .browser, .winintro {
+  	width: 90%;
+  	min-width: 420px;
+	}
+	.presentation{
+		width: 100%;
+  		min-width: 420px;
+
+	}
+	.l-slogan, .r-slogan{
+		float: none;
+		width: 85%;
+		/*min-width: 420px;*/
+		margin: 0 auto 0 10% ;
+		padding: 20px 0 10px 0;
+	}
+	.r-display, .l-display{
+		float: none;
+		width: 100%;
+		margin: 0 auto;
+		padding: 0;
+	}
+	.r-display img, .l-display img{
+		width: 95%;
+		height: auto;
+	}
+	.f14-w, .f14-b{
+		font-size: 16px;
+		line-height: 24px
+	}
+	.f64-w, .f64-b{
+		font-size: 48px;
+		line-height: 56px
+	}
+	.topic ul{
 		width: 100%;
 	}
-	.outline{
-		width:100%;
+	 .topic ul a{
+	 	font-size: 18px;
+	 }
+	.topic ul li{
+		width: 23%;
+		margin: 0 2% 0 0;
 	}
-	
+	.topicPic .iterm li{
+		width: 48%;
+		margin: 0 2% 0 0;
+		padding: 0 0 20px 0;
+	}
+	#footer .innerFooter{
+ 	 width: 95%;
+ 	 min-width: 420px;
+ 	}
+ 	#footer a{
+ 		padding: 0;
+ 		text-align: center;
+ 	}
 }
 
-/************************************************************************************
-smaller than 650
-*************************************************************************************/
-@media screen and (max-width: 650px) {
-	#search input{
-		width:120px;
-	}
-}
+
+

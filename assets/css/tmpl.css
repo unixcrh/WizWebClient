@@ -14,7 +14,7 @@ html, body {
 }
 
 body {
-  min-width: 998px;
+  /*min-width: 998px;*/
   *overflow: hidden;
   _overflow: scroll;
 }
@@ -87,7 +87,6 @@ ul, menu, dir {
   float: left;
   clear: right;
   margin-top: 20px;
-  min-width: 400px;
   /*outline:1px solid #FFF;*/
 }
 #logo img{
@@ -347,14 +346,14 @@ _zoom: 1;
   font-weight: normal;
   line-height: 22px;
   color: #FFF;
-  padding: 0 4px;
+  padding: 0;
 }
 .f14-b{
   font-size: 14px;
   font-weight: normal;
   line-height: 22px;
   color: #000;
-  padding: 0 4px;
+  padding: 0;
 }
 .btn{
   padding: 4px 13px 6px 13px;
@@ -454,7 +453,12 @@ _zoom: 1;
 .feature .featureThmb{
   float: left;
   padding: 0 0 0 4px;
-  width: 484px;
+  width: 49%;
+  /*outline: 1px solid #000;*/
+}
+.feature .featureThmb img{
+  width: 100%;
+  height: auto;
   /*outline: 1px solid #000;*/
 }
 .feature .featureThmb h3{
@@ -468,7 +472,7 @@ _zoom: 1;
 }
 .feature .featureDescribe{
   float: right;
-  width: 484px;
+  width: 49%;
   padding: 0 4px 0 0;
   /*outline: 1px solid #000;*/
 }
@@ -508,8 +512,11 @@ _zoom: 1;
   float: left;
   margin: 0 30px 0 0;
   padding: 0 0 30px 0;
-  width: 227px;
+  width: 20%;
   height: auto;
+}
+.topicPic ul li{
+  height: 300px;
 }
 .topic ul li a{
   font-size: 16px;
@@ -524,13 +531,7 @@ _zoom: 1;
 .topic ul li a:hover, .topicPic a:hover{
   color: #24459A;
 }
-.topic ul li p, .topicPic p{
-  font-size: 13px;
-  line-height: 20px;
-  font-weight: normal;
-  margin: 0;
-  padding: 0 0 0 0;
-}
+
 /*.topicPic{
   width: 998px;
   margin: 0 auto;
@@ -1270,6 +1271,7 @@ table.formctn tr td{
 
 #footer .innerFooter{
   width: 998px;
+
   margin: 0 auto;
   padding: 4px 8px;
 }
