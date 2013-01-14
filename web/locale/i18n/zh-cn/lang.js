@@ -54,7 +54,8 @@ define({
 		SaveAndQuit: '保存并阅读',
 		Sending: '正在保存...',
 		Cancel: '取消',
-		Edit: '编辑'
+		Edit: '编辑',
+		Delete: '删除'
 	},
 	EditPage: {
 		Saving: '正在保存...',

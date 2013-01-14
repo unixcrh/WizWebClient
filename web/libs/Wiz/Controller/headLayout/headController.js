@@ -20,7 +20,9 @@ define(["../../constant","../../../../locale/main"], function (require, exports,
 					saveAndQuitSpan: 'save_and_quit',
 					saveAndQuitBtn: 'save_and_quit_ct',
 					sendingSpan: 'sending_value',
-					sendingCt: 'sending_ct'
+					sendingCt: 'sending_ct',
+					deleteSpan: 'delete_note',
+					deleteBtn: 'delete_note_ct'
 				}
 			},
 			_data = {
@@ -55,6 +57,7 @@ define(["../../constant","../../../../locale/main"], function (require, exports,
 				localizeOperateList: function() {
 					$('#' + _node.id.createSpan).html(_locale.HeadMenuForDoc.Create);
 					$('#' + _node.id.editSpan).html(_locale.HeadMenuForDoc.Edit);
+					$('#' + _node.id.deleteSpan).html(_locale.HeadMenuForDoc.Delete);
 					$('#' + _node.id.saveSpan).html(_locale.HeadMenuForDoc.Save);
 					$('#' + _node.id.cancelSpan).html(_locale.HeadMenuForDoc.Cancel);
 					$('#' + _node.id.saveAndQuitSpan).html(_locale.HeadMenuForDoc.SaveAndQuit);
@@ -85,6 +88,13 @@ define(["../../constant","../../../../locale/main"], function (require, exports,
 						_docEditCtrl.active();
 					});
 
+					// 删除按钮事件绑定
+					var deleteBtn = $('#' + _node.id.deleteBtn);
+					deleteBtn.bind('click', function() {
+						_messageCenter.deleteCurDoc();
+					});
+
+					// 编辑页面按钮事件绑定
 					var cancelBtn = $('#' + _node.id.cancelBtn);
 					var saveBtn = $('#' + _node.id.saveBtn);
 					var saveAndQuitBtn = $('#' + _node.id.saveAndQuitBtn);
@@ -161,7 +171,7 @@ define(["../../constant","../../../../locale/main"], function (require, exports,
 					// TODO createOnlyCtrl 和 docReadCtrl 有冲突，优化 lsl: 2012-12-26
 					_createOnlyCtrl = new StateControl([_node.id.createBtn]);
 					// 选中文档列表中文档后，显示的操作
-					_docReadCtrl = new StateControl([_node.id.createBtn, _node.id.editBtn]);
+					_docReadCtrl = new StateControl([_node.id.createBtn, _node.id.editBtn, _node.id.deleteBtn]);
 					// 编辑、新建文档时，显示的操作
 					_docEditCtrl = new StateControl([_node.id.saveBtn, _node.id.saveAndQuitBtn, _node.id.cancelBtn]);
 					_sendingCtrl = new StateControl([_node.id.sendingCt]);

@@ -36,6 +36,24 @@ define(["../../common/util/GlobalUtil","../context","../constant","../remote",".
 			notification = new Notification(document.getElementById('content_right_wrapper')),
 			//负责接收下级controller的消息
 			_messageHandler = {
+				// 删除当前选中并阅读的文档
+				deleteCurDoc: function() {
+					art.dialog({
+						title: '删除文档',
+				    content: '确定删除文档: ' + _curDoc.document_title + ' ?',
+				    ok: function () {
+				    	// TODO增加图片
+				    	this.content('正在删除 ' + _curDoc.document_title );
+				    	// TODO 删除操作，回调操作
+				      return false;
+				    },
+				    lock: true,
+				    esc:true,
+				    okVal: '删除',
+				    cancelVal: '取消',
+				    cancel: true //为true等价于function(){}
+					});
+				},
 				showSetting: function( url) {
 					window.open(url + '?token=' + context.token);
 				},
