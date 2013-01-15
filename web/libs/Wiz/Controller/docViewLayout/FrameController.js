@@ -39,6 +39,19 @@ define(["../../../common/util/GlobalUtil"], function (require, exports, module) 
 			}
 		}
 
+		// 阅读区域内点击超链接时，如果不设置target，会在当前的iframe中刷新
+		// 再次内容时，会因为跨域问题导致无法载入
+		function initFrameLinkClickHandler() {
+			var fdoc = getFrameDocument();
+			var links = fdoc.getElementsByTagName('a');
+			if(links && links.length > 0) {
+				var length = links.length;
+				for(var i=0; i<length; i++) {
+					links[i].target = '_blank';
+				}
+			}
+		}
+
 		function completeImgSrc(contentDocument) {
 			try {
 				var imgList = contentDocument.getElementsByTagName('img');
@@ -82,6 +95,7 @@ define(["../../../common/util/GlobalUtil"], function (require, exports, module) 
 	      }
 	    }
 			initFrameBodyClickHandler();
+			initFrameLinkClickHandler();
 		}
 
 		function setURL(url) {
