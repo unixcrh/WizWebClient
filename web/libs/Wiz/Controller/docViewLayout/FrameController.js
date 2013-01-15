@@ -111,13 +111,12 @@ define(["../../../common/util/GlobalUtil"], function (require, exports, module) 
 
 		function setHTML(htmlStr) {
 			var fdoc = getFrameDocument();
-			if (htmlStr) {
+			if (typeof htmlStr === 'string') {
 				fdoc.open("text/html", "replace");
 				fdoc.write(htmlStr);
 				fdoc.close();
 			}
 		}
-
 		return {
 			setUrl: setURL,
 			getHTML: getHTML,

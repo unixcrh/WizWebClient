@@ -2,7 +2,7 @@
  * 全局的控制器，转发请求到相应的独立控制器中
  */
 
-define(["../../common/util/GlobalUtil","../context","../constant","../remote","./leftTreeLayout/ztreeController","./leftTreeLayout/searchBoxController","./doclistLayout/Controller","./headLayout/groupEntryController","./headLayout/headController","./docViewLayout/DocView","./editLayout/EditController","../../component/Splitter"], function (require, exports, module) {
+define(["../../../locale/main", "../../common/util/GlobalUtil","../context","../constant","../remote","./leftTreeLayout/ztreeController","./leftTreeLayout/searchBoxController","./doclistLayout/Controller","./headLayout/groupEntryController","./headLayout/headController","./docViewLayout/DocView","./editLayout/EditController","../../component/Splitter"], function (require, exports, module) {
 	'use strict';
 
 	// 暴露给全局变量window，方便其他第三方组件的调用
@@ -20,6 +20,7 @@ define(["../../common/util/GlobalUtil","../context","../constant","../remote",".
 			headCtrl = require('./headLayout/headController'),
 			docViewCtrl = require('./docViewLayout/DocView'),
 			editPageCtrl = require('./editLayout/EditController'),
+			locale = require('../../../locale/main'),
 
 			// 判断首次加载页面，增加首次加载时默认初始化功能
 			_bFirst = true,
@@ -38,19 +39,38 @@ define(["../../common/util/GlobalUtil","../context","../constant","../remote",".
 			_messageHandler = {
 				// 删除当前选中并阅读的文档
 				deleteCurDoc: function() {
+					if (!_curDoc || typeof _curDoc.document_guid !== 'string') {
+						return;
+					}
+
 					art.dialog({
-						title: '删除文档',
-				    content: '确定删除文档: ' + _curDoc.document_title + ' ?',
+						title: locale.DELETE_DOC_TITLE,
+				    content: locale.DELETE_DOC_AFFIRM + ':&nbsp;' + _curDoc.document_title + '&nbsp?',
 				    ok: function () {
-				    	// TODO增加图片
-				    	this.content('正在删除 ' + _curDoc.document_title );
-				    	// TODO 删除操作，回调操作
+				    	var self = this;
+				    	self.content(locale.DELETE_DOC_PROCESSING);
+				    	remote.deleteDocument(context.kbGuid, _curDoc.document_guid, function callback(data) {
+				    		console.log(typeof data);
+				    		self.hide();
+				    		if (data.code != '200') {
+				    			notification.showError(data.message);
+				    			return;
+				    		}
+					    	// 删除文档列表中对应的文档
+					    	listCtrl.removeDocByGuid(_curDoc.document_guid);
+					    	// 删除是否清空阅读区域
+					    	docViewCtrl.reset();
+					    	headCtrl.showCreateBtnGroup();
+				    	}, function (jqXHR, status, error) {
+				    		self.hide();
+				    		handlerJqueryAjaxError(jqXHR, status, error);
+				    	});
 				      return false;
 				    },
 				    lock: true,
 				    esc:true,
-				    okVal: '删除',
-				    cancelVal: '取消',
+				    okVal: locale.HeadMenuForDoc.Delete,
+				    cancelVal: locale.HeadMenuForDoc.Cancel,
 				    cancel: true //为true等价于function(){}
 					});
 				},

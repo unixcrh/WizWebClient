@@ -165,7 +165,7 @@ define(function (require, exports, module) {
 	  	async: true
 	  },
 	  DOCUMENT_DELETE: {
-	  	url: DOCUMENT_BASE,
+	  	url: DOCUMENT_BASE + '/data',
 	  	action: 'delete',
 	  	async: true
 	  },

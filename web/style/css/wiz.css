@@ -265,7 +265,6 @@ input[type="checkbox"], body:not(.IE_M9) input[type="radio"] {
 	background-color: #0264AF;
 }
 
-.wiz-button:active,
 .wiz-button.active{
 	background-color: #005897;
 }

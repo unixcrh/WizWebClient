@@ -247,6 +247,13 @@ define(["./context","./constant","../component/loading"], function(require, expo
 			sendRequest(constant.api.DOCUMENT_CREATE_DATA, requestParams, callback, callError, null, true);
 		},
 
+		deleteDocument: function(kbGuid, docGuid, callback, callError) {
+			var requestParams = getRequestParams();
+			requestParams.kb_guid = kbGuid;
+			requestParams.document_guid = docGuid;
+			sendRequest(constant.api.DOCUMENT_DELETE, requestParams, callback, callError);
+		},
+
 		/* 保持登陆状态 */
 		refreshToken: function (callback, callError) {
 			var requestParams = getRequestParams();

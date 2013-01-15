@@ -1,5 +1,8 @@
 define({
 	title: '为知笔记（Wiz）网页版',
+	DELETE_DOC_TITLE: '删除笔记',
+	DELETE_DOC_AFFIRM: '确认删除笔记',
+	DELETE_DOC_PROCESSING: '正在删除，请稍后...',
 	//目录相关
 	DefaultCategory : {
 		"Completed": "已完成",

@@ -1,5 +1,8 @@
 define({
 	title: '為知筆記（Wiz）網頁版',
+	DELETE_DOC_TITLE: '刪除筆記',
+	DELETE_DOC_AFFIRM: '確認刪除筆記',
+	DELETE_DOC_PROCESSING: '正在刪除，請稍後...',
 	//目录相关
 	DefaultCategory : {
 		"Completed": "已完成",

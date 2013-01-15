@@ -1,5 +1,8 @@
 define({
 	title: 'WizNote Web',
+	DELETE_DOC_TITLE: 'delete note',
+	DELETE_DOC_AFFIRM: 'Are you sure to delete this note',
+	DELETE_DOC_PROCESSING: 'Deleting...',
 	//目录相关
 	DefaultCategory : {
 	  "Completed": "Completed",

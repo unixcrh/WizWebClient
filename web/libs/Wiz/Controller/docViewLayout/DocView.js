@@ -28,6 +28,10 @@ define(["./FrameController", "/web/locale/main"], function (require, exports, mo
 
 		function viewDoc(doc) {
 			_curDoc = doc;
+			if (doc === null) {
+				reset();
+				return;
+			}
 			//显示标题
 			// lsl 2012-12-26 firefox中不能使用innerText
 			titleJqElem.html(doc.document_title);
@@ -73,6 +77,15 @@ define(["./FrameController", "/web/locale/main"], function (require, exports, mo
 			titleJqElem.html(title);
 		}
 
+		/**
+		 * 重置清空页面
+		 * @return {[type]} [description]
+		 */
+		function reset() {
+			_curDoc = null;
+			titleJqElem.html('');
+			readFrameCtrl.setHTML('');
+		}
 
 		return {
 			viewDoc: viewDoc,
@@ -80,7 +93,8 @@ define(["./FrameController", "/web/locale/main"], function (require, exports, mo
 			showLoading: showLoading,
 			showProtectedpage: showProtectedpage,
 			showWelcomePage: showWelcomePage,
-			showTitle: showTitle
+			showTitle: showTitle,
+			reset: reset
 		}
 	}
 

@@ -144,10 +144,56 @@ define(["/web/locale/main"], function (require, exports, module) {
 		return docList;
 	}
 
-	function View(id) {
+
+
+	function formatDate(dateStr) {
+		//标准游览器，如果数组里面最后一个字符为逗号，JS引擎会自动剔除它。
+		//参考https://developer.mozilla.org/en-US/docs/JavaScript/Guide/Values,_variables,_and_literals?redirectlocale=en-US&redirectslug=Core_JavaScript_1.5_Guide%2FValues%2C_Variables%2C_and_Literals#Literals
+		var ie = bIe();
+		if (ie) {
+			//ie6,7下 new Date(dateStr) 不支持dateStr为xxxx-xx-xx格式，需要转换格式
+			dateStr = dateStr.replace(/\-/ig, '/').split('.')[0];
+		}
+		var date = new Date(dateStr);
+		return date.toLocaleDateString();
+	}
+
+	function init(messageCenter) {
+		_messageCenter = messageCenter;
+		_view.fillContentByI18N();
+		initHandler();
+	}
+
+	/**
+	 * 删除指定的文档
+	 * TODO 指定index删除
+	 * @return {[type]} [description]
+	 */
+	function removeDocByGuid(docGuid) {
+		var item = $('#' + docGuid);
+		if (item) {
+			item.remove();
+		}
+	}
+
+	function showDocList(docs, bSelectFirst) {
+		_data.docList = sortDocList(docs);
+		_view.renderList(_data.docList, bSelectFirst);
+	}
+
+	// 清空文档列表
+	function flushAll() {
+		var children = _containerObj.children();
+		if (children && children.length > 0) {
+			$(children[0]).remove();
+		}
+	}
+
+	// 视图
+	var View = function (id) {
 		var _containerId = id;
 
-		function renderList (docs, bSelectFirst, dateCmd) {
+		this.renderList = function(docs, bSelectFirst, dateCmd) {
 			// 清空文档
 			flushAll();
 
@@ -180,22 +226,12 @@ define(["/web/locale/main"], function (require, exports, module) {
 
 		  // 只有初次加载页面时会触发
 		  if (bSelectFirst) {
-		  	selectFirstNode();
+		  	this.selectFirstNode();
 		  }
-		}
-		// 选择文档列表第一个
-		function selectFirstNode() {
-			try {
-				var firstNodeId = document.getElementById(_node.tableId).firstChild.firstChild.id;
-				$('#' + firstNodeId).trigger('click');
-			} catch (error) {
-				// 无需对此处理
-				console && console.error('Doclist Controller selectFirstNode Error:' + error);
-			}
 		}
 
 		// 将国际化的内容填充到html中
-		function fillContentByI18N() {
+		this.fillContentByI18N = function() {
 			var docListI18N = _locale.DocSortArea,
 				  sortMenuElem = $('#' + _node.sortMenuId),
 					childList = $('#' + _node.sortListId + ' ' + _htmlTag.A + ' ' + _htmlTag.SPAN),
@@ -211,39 +247,15 @@ define(["/web/locale/main"], function (require, exports, module) {
 				$(child).html(docListI18N.items[index]);
 			}
 		}
-
-		this.fillContentByI18N = fillContentByI18N;
-		this.renderList = renderList;
 	}
-
-	function formatDate(dateStr) {
-		//标准游览器，如果数组里面最后一个字符为逗号，JS引擎会自动剔除它。
-		//参考https://developer.mozilla.org/en-US/docs/JavaScript/Guide/Values,_variables,_and_literals?redirectlocale=en-US&redirectslug=Core_JavaScript_1.5_Guide%2FValues%2C_Variables%2C_and_Literals#Literals
-		var ie = bIe();
-		if (ie) {
-			//ie6,7下 new Date(dateStr) 不支持dateStr为xxxx-xx-xx格式，需要转换格式
-			dateStr = dateStr.replace(/\-/ig, '/').split('.')[0];
-		}
-		var date = new Date(dateStr);
-		return date.toLocaleDateString();
-	}
-
-	function init(messageCenter) {
-		_messageCenter = messageCenter;
-		_view.fillContentByI18N();
-		initHandler();
-	}
-
-	function showDocList(docs, bSelectFirst) {
-		_data.docList = sortDocList(docs);
-		_view.renderList(_data.docList, bSelectFirst);
-	}
-
-	// 清空文档列表
-	function flushAll() {
-		var children = _containerObj.children();
-		if (children && children.length > 0) {
-			$(children[0]).remove();
+	// 选择文档列表第一个
+	View.prototype.selectFirstNode = function() {
+		try {
+			var firstNodeId = document.getElementById(_node.tableId).firstChild.firstChild.id;
+			$('#' + firstNodeId).trigger('click');
+		} catch (error) {
+			// 无需对此处理
+			console && console.error('Doclist Controller selectFirstNode Error:' + error);
 		}
 	}
 
@@ -251,6 +263,7 @@ define(["/web/locale/main"], function (require, exports, module) {
 	//接口
 	return {
 		show: showDocList,
-		init: init
+		init: init,
+		removeDocByGuid: removeDocByGuid
 	}
 });
