@@ -26,7 +26,7 @@ smaller than 998
 		font-size: 16px;
 	}
 	.wraper, .wraper-sh, .presentation, .footer, .innerFooter{
-		min-width: 420px;
+		min-width: 440px;
 	}
 	.feature,.topic, .topicPic, .enterprise, .tuts, .blog, .faq, .support, .browser, .winintro {
   	width: 95%;
@@ -48,6 +48,13 @@ smaller than 998
 	.r-display img, .l-display img{
 		width: 100%;
 		height: auto;
+	}
+	.enterprise ul li{
+	  float: left;
+	  font-size: 16px;
+	  line-height: 24px;
+	  /*display: inline;*/
+	  width: 90%;
 	}
 	.f14-w, .f14-b{
 		font-size: 16px;
@@ -73,11 +80,11 @@ smaller than 998
 	.topicPic .iterm{
 		width: 100%;
 	}
-	.topicPic .iterm li{
+	.topicPic .iterm li, .topicPic ul li{
 		width: 23%;
-		height: 200px;
-		margin: 0 2% 0 0;
-		padding: 0 0 20px 0;
+		/*height: 200px;*/
+		margin: 20px 2% 0 0;
+		padding: 0;
 	}
 	.topicPic .iterm li img{
 		width: 100%;
@@ -95,11 +102,12 @@ smaller than 640px
 @media screen and (max-width: 720px) {
 	body{
 		width: 100%;
-		min-width: 420px;
+		min-width: 440px;
 		/*没有专门定义背景色的wraper是会透过去直接显示body的背景的*/
 		/*因此要避免出现横向滚动条拉到右边后没有背景的问题就要从body的min-width入手*/
 		margin: 0;
 		padding: 0;
+		/*background: #ACCDED;*/
 	}
 	#headerCtn{
 		position: static;
@@ -108,7 +116,7 @@ smaller than 640px
 		width: 95%;
 		height: 88px;
 		padding: 0;
-		min-width: 420px;
+		min-width: 440px;
 		/*background: #accded;*/
 	}
 	#logo{
@@ -124,8 +132,9 @@ smaller than 640px
 	}
 	.primaryNav{
 		width: 100%;
-		min-width: 420px;
+		min-width: 440px;
 		bottom: 4px;
+		padding: 0;
 	}
 	.primaryNav li{
 		margin: 0 12px 0 0;
@@ -134,34 +143,43 @@ smaller than 640px
 		font-size: 16px;
 	}
 	.wraper, .wraper-sh, .presentation, .footer, .innerFooter{
-		min-width: 420px;
+		min-width: 440px;
 		/*margin:;*/
 	}
-	.feature,.topic, .topicPic, .enterprise, .tuts, .blog, .faq, .support, .browser, .winintro {
+	.feature,.topic, .topicPic, .enterprise, .tuts, .blog, .faq, .support, .browser, .intro,  .winintro,.joinus, .location{
   	width: 90%;
-  	min-width: 420px;
+  	padding-left:0;
+  	padding-right: 0;
+  	/*margin: 0 0 0 2%;*/
+  	min-width: 440px;
+
 	}
 	.presentation{
 		width: 100%;
-  		min-width: 420px;
+  		min-width: 440px;
 
 	}
-	.l-slogan, .r-slogan{
+	.l-slogan, .r-slogan, .featureDescribe, .jobs{
 		float: none;
-		width: 85%;
-		/*min-width: 420px;*/
-		margin: 0 auto 0 10% ;
+		width: 90%;
+		/*min-width: 440px;*/
+		margin: 0 auto 0 5% ;
 		padding: 20px 0 10px 0;
 	}
-	.r-display, .l-display{
+	.featureDescribe{
+		margin: 0;
+	}
+	.r-display, .l-display, .featureThmb{
 		float: none;
 		width: 100%;
 		margin: 0 auto;
 		padding: 0;
 	}
-	.r-display img, .l-display img{
+	.r-display img, .l-display img, .joinus img, .location img, .featureThmb img{
 		width: 95%;
 		height: auto;
+		float: none;
+		margin: 0 0 0 2%;
 	}
 	.f14-w, .f14-b{
 		font-size: 16px;
@@ -170,6 +188,17 @@ smaller than 640px
 	.f64-w, .f64-b{
 		font-size: 48px;
 		line-height: 56px
+	}
+	.jobs ol p{
+	  font-size: 22px;
+	  margin:10px 0 10px -30px;
+	  /*padding:0 0 0 -20px;*/
+	}
+	.jobs ol li{
+	  margin:0;
+	  padding:0 0 5px 0;
+	  font-size: 16px;
+	  line-height: 24px;
 	}
 	.topic ul{
 		width: 100%;
@@ -183,12 +212,30 @@ smaller than 640px
 	}
 	.topicPic .iterm li{
 		width: 48%;
-		margin: 0 2% 0 0;
+		margin: 20px 2% 0 0;
 		padding: 0 0 20px 0;
+	}
+	.location h1 {
+	  /*float: left;*/
+	  /*clear: right;*/
+	  margin:0;
+	  padding: 0;
+	  color: #454545;
+	  font-size: 66px;;
+	  line-height: 66px;
+	}
+	.location p {
+	  /*float: left;*/
+	  /*clear: right;*/
+	  margin:0;
+	  padding: 0;
+	  color: #454545;
+	  font-size: 18px;
+	  line-height: 24px;
 	}
 	#footer .innerFooter{
  	 width: 95%;
- 	 min-width: 420px;
+ 	 min-width: 440px;
  	}
  	#footer a{
  		padding: 0;
