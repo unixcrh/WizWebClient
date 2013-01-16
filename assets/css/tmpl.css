@@ -533,8 +533,10 @@ _zoom: 1;
   margin:0;
 }
 .topicPic img{
-  width: 227px;
-  height: 130px;
+ /* width: 227px;
+  height: 130px;*/
+  width: 100%;
+  height: auto;
 }
 .topicPic h3{
   font-size: 19px;
