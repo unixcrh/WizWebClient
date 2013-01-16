@@ -580,8 +580,8 @@ $.opacity = {
 		var style = elem.style;
 		style.zoom = 1;
 
-		var opacity = 'alpha(opacity=' + value * 100 + ')',
-			filter = style.filter || '';
+		// var opacity = 'alpha(opacity=' + value * 100 + ')',
+		// 	filter = style.filter || '';
 
 		style.filter = ralpha.test(filter) ?
 			filter.replace(ralpha, opacity) :
@@ -920,7 +920,7 @@ artDialog.fn = artDialog.prototype = {
 		DOM.close[config.cancel === false ? 'hide' : 'show']();
 		DOM.icon[0].style.display = icon ? '' : 'none';
 		DOM.iconBg.css(iconBg || {background: 'none'});
-		DOM.se.css('cursor', config.resize ? 'se-resize' : 'auto');
+		// DOM.se.css('cursor', config.resize ? 'se-resize' : 'auto');
 		DOM.title.css('cursor', config.drag ? 'move' : 'auto');
 		DOM.content.css('padding', config.padding);
 		
@@ -1002,7 +1002,7 @@ artDialog.fn = artDialog.prototype = {
 			} else {
 				width = wrap.offsetWidth - width;
 				height = wrap.offsetHeight - height;
-				left = left - width / 2;
+				left = left;
 				top = top - height / 2;
 				wrap.style.left = Math.max(left, 0) + 'px';
 				wrap.style.top = Math.max(top, 0) + 'px';
@@ -1190,7 +1190,7 @@ artDialog.fn = artDialog.prototype = {
 		&& (top - wrapHeight > dt)
 		? top - wrapHeight
 		: setTop;
-		
+		setTop += 5;
 		style.left = setLeft + 'px';
 		style.top = setTop + 'px';
 		
@@ -1390,8 +1390,7 @@ artDialog.fn = artDialog.prototype = {
 		
 		lockMaskWrap[0].style.cssText = sizeCss + ';position:fixed;z-index:'
 			+ index + ';top:0;left:0;overflow:hidden;' + ie6Css;
-		lockMask[0].style.cssText = 'height:100%;background:' + config.background
-			+ ';filter:alpha(opacity=0);opacity:0';
+		lockMask[0].style.cssText = 'height:100%' + ';filter:alpha(opacity=0);opacity:0';
 		
 		// 让IE6锁屏遮罩能够盖住下拉控件
 		if (_isIE6) lockMask.html(
@@ -1400,7 +1399,8 @@ artDialog.fn = artDialog.prototype = {
 			
 		lockMask.stop();
 		lockMask.bind('click', function () {
-			that._reset();
+			that._click(that.config.cancelVal);
+			// that._reset();
 		}).bind('dblclick', function () {
 			that._click(that.config.cancelVal);
 		});
@@ -1782,11 +1782,6 @@ artDialog._templates =
 +	'<table class="aui_border">'
 +		'<tbody>'
 +			'<tr>'
-+				'<td class="aui_nw"></td>'
-+				'<td class="aui_n"></td>'
-+				'<td class="aui_ne"></td>'
-+			'</tr>'
-+			'<tr>'
 +				'<td class="aui_w"></td>'
 +				'<td class="aui_c">'
 +					'<div class="aui_inner">'
@@ -1820,11 +1815,6 @@ artDialog._templates =
 +					'</div>'
 +				'</td>'
 +				'<td class="aui_e"></td>'
-+			'</tr>'
-+			'<tr>'
-+				'<td class="aui_sw"></td>'
-+				'<td class="aui_s"></td>'
-+				'<td class="aui_se"></td>'
 +			'</tr>'
 +		'</tbody>'
 +	'</table>'
@@ -2065,7 +2055,7 @@ _$document.bind('mousedown', function (event) {
 		DOM = api.DOM;
 	
 	if (config.drag !== false && target === DOM.title[0]
-	|| config.resize !== false && target === DOM.se[0]) {
+	|| config.resize !== false && DOM.se && target === DOM.se[0]) {
 		_dragEvent = _dragEvent || new artDialog.dragEvent();
 		_use(event);
 		return false;// 防止firefox与chrome滚屏

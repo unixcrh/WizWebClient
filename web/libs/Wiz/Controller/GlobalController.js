@@ -42,36 +42,45 @@ define(["../../../locale/main", "../../common/util/GlobalUtil","../context","../
 					if (!_curDoc || typeof _curDoc.document_guid !== 'string') {
 						return;
 					}
-
 					art.dialog({
-						title: locale.DELETE_DOC_TITLE,
+						id: 'delete_doc_dialog',
+						zIndex: 99999,
 				    content: locale.DELETE_DOC_AFFIRM + ':&nbsp;' + _curDoc.document_title + '&nbsp?',
-				    ok: function () {
-				    	var self = this;
-				    	self.content(locale.DELETE_DOC_PROCESSING);
-				    	remote.deleteDocument(context.kbGuid, _curDoc.document_guid, function callback(data) {
-				    		console.log(typeof data);
-				    		self.hide();
-				    		if (data.code != '200') {
-				    			notification.showError(data.message);
-				    			return;
-				    		}
-					    	// 删除文档列表中对应的文档
-					    	listCtrl.removeDocByGuid(_curDoc.document_guid);
-					    	// 删除是否清空阅读区域
-					    	docViewCtrl.reset();
-					    	headCtrl.showCreateBtnGroup();
-				    	}, function (jqXHR, status, error) {
-				    		self.hide();
-				    		handlerJqueryAjaxError(jqXHR, status, error);
-				    	});
-				      return false;
-				    },
+				    button: [{
+					    name: locale.HeadMenuForDoc.Delete,
+					    focus: true,
+					    callback: function () {
+				    		var self = this;
+					    	self.content(locale.DELETE_DOC_PROCESSING).button({name: locale.HeadMenuForDoc.Delete,disabled:true});
+					    	remote.deleteDocument(context.kbGuid, _curDoc.document_guid, function callback(data) {
+					    		self.close();
+					    		if (data.code != '200') {
+					    			notification.showError(data.message);
+					    			return;
+					    		}
+						    	// 删除文档列表中对应的文档
+						    	listCtrl.removeDocByGuid(_curDoc.document_guid);
+						    	// 删除是否清空阅读区域
+						    	docViewCtrl.reset();
+						    	headCtrl.showCreateBtnGroup();
+					    	}, function (jqXHR, status, error) {
+					    		self.close();
+					    		handlerJqueryAjaxError(jqXHR, status, error);
+					    	});
+					      return false;
+					    }
+						}, {
+						  name: locale.HeadMenuForDoc.Cancel,
+						  callback: function(){}
+						}],
+				    // ok: ,
 				    lock: true,
+				    background: '#000',
 				    esc:true,
-				    okVal: locale.HeadMenuForDoc.Delete,
-				    cancelVal: locale.HeadMenuForDoc.Cancel,
-				    cancel: true //为true等价于function(){}
+				    // okVal: locale.HeadMenuForDoc.Delete,
+				    // cancelVal: locale.HeadMenuForDoc.Cancel,
+				    // cancel: true ,//为true等价于function(){}
+				    follow: document.getElementById('delete_note_ct')
 					});
 				},
 				showSetting: function( url) {
