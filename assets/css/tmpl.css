@@ -260,6 +260,13 @@ _zoom: 1;
   height: auto;
   padding:0;
 }
+.wraperblue{
+  /*position: relative;*/
+  width: 100%;
+  height: auto;
+  padding:0;
+  background-color: #e6e6f7;
+}
 /*--- 不同页面专用容器  960px 居中显示   ---*/
 /*------  首页“展示”组件样式  -----*/
 .presentation{
