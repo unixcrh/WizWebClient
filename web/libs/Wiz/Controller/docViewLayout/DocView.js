@@ -65,9 +65,9 @@ define(["./FrameController", "/web/locale/main"], function (require, exports, mo
 			if (doc.document_attachment_count > 0) {
 				// TODO 显示加载中动画
 				_messageCenter.requestAttachmentList(doc.document_guid);
-				$('.attachment-containner').show();
+				attachmentCtrl.show();
 			} else {
-				$('.attachment-containner').hide();
+				attachmentCtrl.hide();
 			}
 		}
 

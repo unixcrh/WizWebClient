@@ -1,5 +1,6 @@
 (function($) {
 	var _elemClass = {
+		mainContainer: 'attachment-containner',
 		mediaOuterContainer: 'MediaStripOuterContainer',
 		mediaItemContainer: 'MediaItemContainer',
 		mediaItem: 'MediaItem File',
@@ -144,6 +145,10 @@
 			};
 		}
 
+		function unbindResizeHandler() {
+			window.onresize = null;
+		}
+
 		/**
 		 * get parent element
 		 * @param  {[type]} linkElem [description]
@@ -195,10 +200,21 @@
 			$('#' + _id.title).html(title);
 		}
 
+		function showContainer() {
+			$('.' + _elemClass.mainContainer).show();
+			bindResizeHandler();
+		}
+		function hideContainer() {
+			$('.' + _elemClass.mainContainer).hide();
+			unbindResizeHandler();
+		}
+
 		return {
 			init: init,
 			setItemList: setItemList,
-			setTitle: setTitle
+			setTitle: setTitle,
+			show: showContainer,
+			hide: hideContainer
 		}
 	};
 
