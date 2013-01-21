@@ -5,6 +5,18 @@ define(function(require, exports) {
 			debugModel = GlobalUtil.getUrlParam('debug'),
 			redirectUrl = 'http://service.wiz.cn/web/?t=';
 			// redirectUrl = 'http://localhost/web?t=';	
+	var uType = '';
+	uType = getUrlParam('type');
+	console.log(uType);
+	
+	// TODO增加判断
+	if (document.location.pathname === '/login' || document.location.pathname === '/login') {
+		autoLogin();
+	} 
+	if(uType == 'biz'){
+		// 针对Biz用户进行的个性化提示
+		// Biz用户autologin
+	}
 
 	$(document).ready(function() {
 		$("#login_name").select();
@@ -26,8 +38,6 @@ define(function(require, exports) {
 		});
 		// 往文本框添加保存的cookie值
 		$("#login_name").val($.cookie("un"));
-		$("#login_password").val($.cookie("up"));
-		$("#login_keeppassword").val($.cookie("keepCookie"));
 		$('#register_name').val($.cookie('singin_email'));
 		if (document.location.pathname === '/register') {
 			autoFillInviteCode();
@@ -63,7 +73,6 @@ define(function(require, exports) {
 			GlobalUtil.changeClass("register_password1_div","control-group");
 			$("#register_password1_error").html("");
 			return true;
-
 		}
 	}
 
@@ -153,11 +162,11 @@ define(function(require, exports) {
 				$.cookie("keepCookie", keepCookie, { expires: 14 });
 
 			}else{
+				// cookie生存期置为0
 				$.cookie("un", loginCookie);
 				$.cookie("up", passwordCookie);
 				$.cookie("keepCookie", keepCookie);
 			}
-
 
 			if(data.code==200){
 				// var url = redirectUrl + data.token;
@@ -205,10 +214,6 @@ define(function(require, exports) {
 				});
 		 }
 	}
-	// TODO增加判断
-	if (document.location.pathname === '/login' || document.location.pathname === '/login') {
-		autoLogin();
-	} 
 	
 	// 注册页面自动填充邀请码
 	function autoFillInviteCode() {
@@ -217,9 +222,6 @@ define(function(require, exports) {
 			$('#invite_code').val(inviteCode).show();
 		}
 	}
-
-
-
 
 	// 注册
 	function Register(event){
@@ -244,12 +246,10 @@ define(function(require, exports) {
 			$.post(api.REGISTER, params, function(data,status){
 				callBackRegister(data,status,params);
 			});
-
 		}else{
 			$("#tip_error_register").html("请检查文本格式").fadeIn();
 			return false;
 		}
-
 	}
 
 	// 注册回调函数
@@ -296,6 +296,28 @@ define(function(require, exports) {
 	  }
 	  $('#tip_error_register').html(errorMsg).fadeIn();
 	}
-
+	// 从url中获取参数的方法
+	function getUrlParam(paras){
+		var url = location.href; 
+		var paraString = url.substring(url.indexOf("?")+1,url.length).split("&"); 
+		var paraObj = {};
+		var j = '';
+		for (var i=0; j=paraString[i]; i++){ 
+			paraObj[j.substring(0,j.indexOf("=")).toLowerCase()] = j.substring(j.indexOf("=")+1,j.length); 
+		} 
+		var returnValue = paraObj[paras.toLowerCase()]; 
+		if(typeof(returnValue)=="undefined"){ 
+			return ""; 
+		}else{ 
+			return returnValue; 
+		} 
+	}
+	function initBizLogin(){
+		//修改页面内容的操作
+		$('.login-intro > h1').text('登录到Biz账户');
+	}
+	function inintBizRegister(){
+		// 修改页面内容的操作
+	}
 
 });
