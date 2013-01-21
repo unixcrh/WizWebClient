@@ -149,6 +149,7 @@
 	background-color: transparent;
 	background-position: center;
 	background-repeat: no-repeat;
+	cursor: pointer;
 }
 .NavButton.Next {
 	right: 0;
@@ -158,10 +159,16 @@
 	left: 0;
 	background-image: url(//a.gfx.ms/flipper_left_rest.png);
 }
+.NavButton.Next.Hover {
+	background-image: url(//a.gfx.ms/flipper_right_hover.png);
+}
+.NavButton.Prev.Hover {
+	background-image: url(//a.gfx.ms/flipper_left_hover.png);
+}
 
-.NavButton.Next.Down {
+.NavButton.Next.Press {
 	background-image: url(//a.gfx.ms/flipper_right_pressed.png);
 }
-.NavButton.Prev.Down {
+.NavButton.Prev.Press {
 	background-image: url(//a.gfx.ms/flipper_left_pressed.png);
 }
