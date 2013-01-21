@@ -196,8 +196,8 @@ define(function (require, exports, module) {
 	  	action: 'put',
 	  	async: true
 	  },
-	  ATTACHMENT_GET_BY_DOC: {
-	  	url: ATTACHMENT_BASE,
+	  ATTACHMENT_GETLIST_BY_DOC: {
+	  	url: ATTACHMENT_BASE + '/list',
 	  	action: 'get',
 	  	async: true
 	  },

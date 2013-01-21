@@ -229,7 +229,6 @@ define(["./context","./constant","../component/loading"], function(require, expo
 			var requestParams = getRequestParams();
 			requestParams = mergeParams(requestParams, docInfo);
 			requestParams.kb_guid = kbGuid;
-			requestParams.kb_guid = kbGuid;
 			if (bPostDocLock === true) {
 				return;
 			}
@@ -252,6 +251,17 @@ define(["./context","./constant","../component/loading"], function(require, expo
 			requestParams.kb_guid = kbGuid;
 			requestParams.document_guid = docGuid;
 			sendRequest(constant.api.DOCUMENT_DELETE, requestParams, callback, callError);
+		},
+
+		getAttachmentList: function (kbGuid, docGuid, callback, callError) {
+			var requestParams = getRequestParams();
+			requestParams.kb_guid = kbGuid;
+			requestParams.document_guid = docGuid;
+			sendRequest(constant.api.ATTACHMENT_GETLIST_BY_DOC, requestParams, callback, callError);
+		},
+		downloadAttachment: function (kbGuid, attGuid) {
+			var attDownloadUrl = 'http://localhost/api/attachment/data?token=' + context.token + '&kb_guid=' + kbGuid + '&attachment_guid=' + attGuid;
+			window.open(attDownloadUrl);
 		},
 
 		/* 保持登陆状态 */

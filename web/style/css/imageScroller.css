@@ -1,0 +1,121 @@
+
+/* header部分 */
+.Header {
+	margin-top: 13px;
+	border-bottom: 1px solid #ebebeb;
+	overflow: hidden;
+}
+.IconBar {
+	padding-left: 7px;
+} 
+.IconBar .IconContainer {
+	margin: 6px 4px;
+	border: none;
+}
+.IconBar .IconContainer {
+	float: left;
+}
+.IconBar .Icon {
+	width: 18px;
+	height: 18px;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+/* 附件标题 */
+.TitleContainer, .HMLV .Branding {
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+.TitleContainer {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	padding-left: 9px;
+}
+.TitleWithUpper {
+	border-left: 1px solid #ccc;
+	padding-left: 13px;
+	margin-left: 0;
+}
+.Title {
+	cursor: pointer;
+	margin-left: 4px;
+	color: #000;
+}
+
+/* content部分 */
+.Content {
+	border-bottom: 1px solid #ebebeb;
+}
+.Content .TabSelected {
+	display: block;
+	padding-top: 12px;
+	padding-bottom: 14px;
+}
+.MediaStripOuterContainer {
+	position: relative;
+	padding-bottom: 15px;
+	height: 155px;
+	white-space: nowrap;
+	overflow: hidden;
+}
+.MediaItemContainer {
+	display: inline-block;
+	margin-right: 6px;
+}
+.MediaItem {
+	margin: 2px;
+}
+.ThumbContainer{
+	height: 160px;
+	width: 120px;
+	background-color: rgb(167, 167, 167);
+}
+.MediaItem .FileName {
+	position: absolute;
+	top: 2px;
+	left: 0;
+	width: 100%;
+	z-index: 1;
+	cursor: pointer;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	color: #fff;
+}
+.MediaItem .FileName span {
+	white-space: nowrap;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+.MediaItem .Overlay {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	z-index: 1;
+	opacity: .5;
+	filter: alpha(opacity=50);
+	background-color: #000;
+	color: #fff;
+	cursor: pointer;
+}
+.MediaItem.File .Thumb {
+	cursor: pointer;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+.MediaItem .Overlay span {
+	padding-top: 2px;
+	padding-bottom: 2px;
+	padding-right: 5px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.FloatRight {
+	float: right;
+}
+.TextSizeSmall {
+	font-size: 86%;
+}

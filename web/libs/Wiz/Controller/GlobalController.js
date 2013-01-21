@@ -37,6 +37,12 @@ define(["../../../locale/main", "../../common/util/GlobalUtil","../context","../
 			notification = new Notification(document.getElementById('content_right_wrapper')),
 			//负责接收下级controller的消息
 			_messageHandler = {
+				requestAttachmentList: function(docGuid) {
+					if (docGuid !== _curDoc.document_guid) {
+						return;
+					}
+					remote.getAttachmentList(context.kbGuid, _curDoc.document_guid, _messageDistribute.showAttachmentList, handlerJqueryAjaxError);
+				},
 				// 删除当前选中并阅读的文档
 				deleteCurDoc: function() {
 					if (!_curDoc || typeof _curDoc.document_guid !== 'string') {
@@ -251,10 +257,23 @@ define(["../../../locale/main", "../../common/util/GlobalUtil","../context","../
 						tagName = _tagsMap[tagGuid];
 					}
 					return tagName;
+				},
+				downloadAttachment: function(attGuid) {
+					remote.downloadAttachment(context.kbGuid, attGuid);
 				}
 			},
 			// 负责向各控制器发送消息
 			_messageDistribute = {
+				showAttachmentList: function (data) {
+					if (data.code == '200') {
+						if (!data.list || data.list.length < 1 || _curDoc.document_guid !== data.list[0].attachment_document_guid) {
+							return;
+						}
+						docViewCtrl.showAttachment(data.list);
+					} else {
+						notification.showError(data.message);
+					}
+				},
 				showDocList: function (data) {
 
 					// 首次加载，默认选择文档第一项
@@ -352,6 +371,9 @@ define(["../../../locale/main", "../../common/util/GlobalUtil","../context","../
 
 				//初始化中间文档列表
 				listCtrl.init(_messageHandler);
+
+				docViewCtrl.init(_messageHandler);
+
 				editPageCtrl.initMessageHandler(_messageHandler);
 
 					//初始化滚动条

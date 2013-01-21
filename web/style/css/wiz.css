@@ -869,7 +869,7 @@ input[type="checkbox"], body:not(.IE_M9) input[type="radio"] {
 	border-bottom: 1px solid #ccc;
 }
 
-.frame-ct {
+/*.frame-ct {
 	position: absolute;
 	top: 45px;
 	bottom: 20px;
@@ -877,7 +877,7 @@ input[type="checkbox"], body:not(.IE_M9) input[type="radio"] {
 	right: 20px;
 	*top: 48px;
 	*z-index: 0;
-}
+}*/
 
 .frame-ct iframe {
 	width: 100%;
