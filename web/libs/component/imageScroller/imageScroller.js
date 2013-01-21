@@ -59,6 +59,7 @@
 			initContainer(config.linkElem);
 			setItemList(config.items);
 			bindHeaderClickHandler();
+			bindResizeHandler();
 			showByContainer();
 			addOperateBtn();
 		}
@@ -83,8 +84,7 @@
 		 * @return {[type]}            [description]
 		 */
 		function show(beginIndex, endIndex) {
-			console.log('beginIndex: ' + beginIndex);
-			console.log('endIndex: ' + endIndex);
+			clearItems();
 			var curList = _data.itemList.slice(beginIndex, endIndex),
 				length = curList.length;
 
@@ -113,17 +113,17 @@
 			// 每次更新list的时候，必须要更新btn的状态
 			if (operateBtn !== null) {
 				operateBtn.record(_data.itemList.length, getNumPerPage());
+				operateBtn.changeView();
 			}
 		}
 
 		function reset() {
-			_data = {
-				itemList: [],
-				startIndex: -1,
-				endIndex: -1,
-				totalCount: -1
-			};
-			mediasContainer.html('');
+			_data.itemList = [];
+			clearItems();
+		}
+
+		function clearItems() {
+			$('.' + _elemClass.mediaItemContainer).remove();
 		}
 
 		function bindHeaderClickHandler() {
@@ -132,6 +132,16 @@
 
 		function switchMediasStatus() {
 			$('.Content').toggle(500);
+		}
+
+		function bindResizeHandler() {
+			// 监听窗口改变的事件
+			// TODO 监听容器大小改变的事件，需要手动添加			
+			window.onresize = function() {
+				if (operateBtn !== null) {
+					operateBtn.record(_data.itemList.length, getNumPerPage());
+				}
+			};
 		}
 
 		/**
@@ -181,16 +191,6 @@
 			}
 			return itemCotainer;
 		}
-
-		function refreshItems(itemList) {
-			reset();
-			initItemList(itemList);
-		}
-
-		function reset() {
-			_data.itemList = [];
-		}
-
 		function setTitle(title) {
 			$('#' + _id.title).html(title);
 		}
@@ -204,9 +204,9 @@
 
 
 	var NavButton = function (sum, numPerPage, showFunction) {
-		this.record(sum, numPerPage);
 		this.jqPrevBtnElem = $('<a/>').addClass('NavButton Prev').hide();
 		this.jqNextBtnElem = $('<a/>').addClass('NavButton Next').hide();
+		this.record(sum, numPerPage);
 		this.show = showFunction;
 		this.init();
 	};
@@ -215,10 +215,12 @@
 		this.changeView();
 	};
 	NavButton.prototype.record = function(sum, numPerPage) {
-		this.sum = sum;
-		this.numPerPage = numPerPage;
-		this.pageCount = Math.ceil(sum/numPerPage);
-		this.curPageNum = 1;
+		var self = this;
+		self.sum = sum;
+		self.numPerPage = numPerPage;
+		self.curPageNum = self.curPageNum ? self.curPageNum : 1;
+		self.pageCount = Math.ceil(sum/numPerPage);
+		self.changeView();
 	};
 
 	NavButton.prototype.initEventHandler = function() {
@@ -260,14 +262,10 @@
 	};
 
 	NavButton.prototype.showNext = function () {
-		console.log('pageCount:' + this.pageCount);
-		console.log('curPageNum:' + this.curPageNum);
-		console.log('sum:' + this.sum);
-		console.log('numPerPage:' + this.numPerPage);
 		if(this.pageCount <= 1 || this.curPageNum === this.pageCount) {
 			return;
 		}
-		this.curPageNum += this.curPageNum;
+		this.curPageNum += 1;
 		if (this.curPageNum === this.pageCount) {
 			this.jqNextBtnElem.hide();
 		}
@@ -275,14 +273,10 @@
 		this.changeView();
 	};
 	NavButton.prototype.showPrev = function () {
-		console.log('pageCount:' + this.pageCount);
-		console.log('curPageNum:' + this.curPageNum);
-		console.log('sum:' + this.sum);
-		console.log('numPerPage:' + this.numPerPage);
 		if (this.pageCount <= 1 || this.curPageNum === 1) {
 			return;
 		}
-		this.curPageNum -= this.curPageNum;
+		this.curPageNum -= 1;
 		if (this.curPageNum === 1) {
 			this.jqPrevBtnElem.hide();
 		}
@@ -291,22 +285,23 @@
 	};
 
 	NavButton.prototype.changeView = function() {
-		console.log('pageCount:' + this.pageCount);
-		console.log('curPageNum:' + this.curPageNum);
-		console.log('sum:' + this.sum);
-		console.log('numPerPage:' + this.numPerPage);
-		if (this.pageCount === 1) {
-			this.jqNextBtnElem.hide();
-			this.jqPrevBtnElem.hide();
-		} else if (this.curPageNum === 1) {
-			this.jqNextBtnElem.show();
-			this.jqPrevBtnElem.hide();
-		} else if (this.curPageNum === this.pageCount) {
-			this.jqNextBtnElem.hide();
-			this.jqPrevBtnElem.show();
+		var self = this;
+		if (self.pageCount <= 1) {
+			self.jqNextBtnElem.hide();
+			self.jqPrevBtnElem.hide();
+			if (self.show) {
+				self.show(0, self.sum);
+				self.curPageNum = 1;
+			}
+		} else if (self.curPageNum === 1) {
+			self.jqNextBtnElem.show();
+			self.jqPrevBtnElem.hide();
+		} else if (self.curPageNum === self.pageCount) {
+			self.jqNextBtnElem.hide();
+			self.jqPrevBtnElem.show();
 		} else {
-			this.jqNextBtnElem.show();
-			this.jqPrevBtnElem.show();
+			self.jqNextBtnElem.show();
+			self.jqPrevBtnElem.show();
 		}
 	};
 
