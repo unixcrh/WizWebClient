@@ -62,6 +62,14 @@
 .MediaItemContainer {
 	display: inline-block;
 	margin-right: 6px;
+	*width: 124px;
+	*float: left;
+}
+.MediaItem:hover {
+	margin: 0;
+	border: solid 2px #0072C6;
+	background-color: #979797;
+	cursor: pointer;
 }
 .MediaItem {
 	margin: 2px;
@@ -87,6 +95,11 @@
 	padding-left: 5px;
 	padding-right: 5px;
 }
+.MediaItem .Overlay img {
+	vertical-align: middle;
+	padding-right: 5px;
+	padding-left: 5px;
+}
 .MediaItem .Overlay {
 	position: absolute;
 	bottom: 0;
@@ -99,6 +112,12 @@
 	color: #fff;
 	cursor: pointer;
 }
+
+.MediaItem .Overlay:hover {
+	opacity: .8;
+	filter: alpha(opacity=80);
+}
+
 .MediaItem.File .Thumb {
 	cursor: pointer;
 	display: block;
@@ -118,4 +137,31 @@
 }
 .TextSizeSmall {
 	font-size: 86%;
+}
+
+
+/* 左右按钮 */
+.NavButton {
+	position: absolute;
+	z-index: 100;
+	width: 69px;
+	height: 166px;
+	background-color: transparent;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+.NavButton.Next {
+	right: 0;
+	background-image: url(//a.gfx.ms/flipper_right_rest.png);
+}
+.NavButton.Prev {
+	left: 0;
+	background-image: url(//a.gfx.ms/flipper_left_rest.png);
+}
+
+.NavButton.Next.Down {
+	background-image: url(//a.gfx.ms/flipper_right_pressed.png);
+}
+.NavButton.Prev.Down {
+	background-image: url(//a.gfx.ms/flipper_left_pressed.png);
 }

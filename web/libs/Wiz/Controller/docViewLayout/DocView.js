@@ -65,18 +65,12 @@ define(["./FrameController", "/web/locale/main"], function (require, exports, mo
 			if (doc.document_attachment_count > 0) {
 				// TODO 显示加载中动画
 				_messageCenter.requestAttachmentList(doc.document_guid);
-				resizeFrameContainer();
+				$('.attachment-containner').show();
+			} else {
+				$('.attachment-containner').hide();
 			}
 		}
 
-		function resizeFrameContainer() {
-			var readFrameCtElem = $('#' + _id.readFrameCt)
-			var top = readFrameCtElem.css('top');
-			top = top.substr(0, top.length -2);
-			console.log('(' + top + '+' + 220 + ')');
-			top = eval('(' + top + '+' + 220 + ')');
-			readFrameCtElem.css({'top': top + 'px'});
-		}
 
 		function showAttachment(attList) {
 			var listLenght = attList.length,
@@ -112,6 +106,7 @@ define(["./FrameController", "/web/locale/main"], function (require, exports, mo
 
 		function showLoading() {
 			showHelpPage('loading');
+			$('.attachment-containner').hide();
 		}
 
 		function showProtectedpage() {
@@ -133,6 +128,7 @@ define(["./FrameController", "/web/locale/main"], function (require, exports, mo
 		 */
 		function reset() {
 			_curDoc = null;
+			$('.attachment-containner').hide();
 			titleJqElem.html('');
 			readFrameCtrl.setHTML('');
 		}

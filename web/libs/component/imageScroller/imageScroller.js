@@ -8,7 +8,7 @@
 		fileDiv: 'FileName',
 		fileSpan: 'TextSizeSmall',
 		overLay: 'Overlay',
-		overLaySpan: 'FloatRight TextSizeSmall',
+		overlaySpan: 'FloatRight TextSizeSmall',
 		overLayLink: 'FloatRight'
 	},
 	_id = {
@@ -59,21 +59,71 @@
 			initContainer(config.linkElem);
 			setItemList(config.items);
 			bindHeaderClickHandler();
+			showByContainer();
 		}
 
-		function getDisplayNum() {
-			var width = mediasContainer.width();
+		function showByContainer() {
+			_data.endIndex = _data.pageCount = getPageCount();
+			console.log(_data.endIndex);
+			show(_data.startIndex, _data.endIndex);
 		}
+
+		function getPageCount() {
+			var containerWidth = mediasContainer.width();
+			console.log(containerWidth);
+			var itemWidth = 130;
+			var pageCount = Math.ceil(containerWidth/itemWidth);
+			return pageCount;
+		}
+
+
+		/**
+		 * 通过指定的开始和结束显示
+		 * @param  {[type]} beginIndex [description]
+		 * @param  {[type]} endIndex   [description]
+		 * @return {[type]}            [description]
+		 */
+		function show(beginIndex, endIndex) {
+			var curList = _data.itemList.slice(beginIndex, endIndex),
+				length = curList.length;
+
+			for (var i=0; i<length; i++) {
+				mediasContainer.append(curList[i]);	
+			}
+		}
+
 
 		function setItemList(itemList) {
+			if (_data.itemList !== []) {
+				 removeCurList();
+			}
 			if(itemList) {
 				var length = itemList.length;
 				for (var i=0; i<length; i++) {
-					var itemElem = createItemAndBind(itemList[i]);
+					var itemElem = createItemAndBind(itemList[i], i);
 					_data.itemList.push(itemElem);
 					mediasContainer.append(itemElem);
 				}
 			}
+		}
+
+		/**
+		 * 清除当前显示的列表
+		 * @return {[type]} [description]
+		 */
+		function removeCurList() {
+			reset();
+			mediasContainer.html('');
+			console.log(mediasContainer);
+		}
+
+		function reset() {
+			_data = {
+				itemList: [],
+				startIndex: -1,
+				endIndex: -1,
+				totalCount: -1
+			};
 		}
 
 		function bindHeaderClickHandler() {
@@ -108,7 +158,7 @@
 				$(document.body).append(outerHTML);
 			}
 		}		
-		function createItemAndBind(item) {
+		function createItemAndBind(item, index) {
 			var thumbContainer = $(thumbHTML),
 				fileNameContainer = $('<div/>').addClass(_elemClass.fileDiv).attr('title', item.name),
 				fileSpan = $('<span/>').addClass(_elemClass.fileSpan).html(item.name),
@@ -116,7 +166,7 @@
 				overlaySpan = $('<span/>').addClass(_elemClass.overlaySpan).html('下载'),
 				overlayLink = $(overlayLinkHTML),
 				fileItem = $('<div/>').addClass(_elemClass.mediaItem).css({'position': 'relative'}),
-				itemCotainer = $('<div>').css({'position': 'relative'}).addClass(_elemClass.mediaItemContainer);
+				itemCotainer = $('<div>').css({'position': 'relative'}).addClass(_elemClass.mediaItemContainer).attr('index', index);
 
 			fileNameContainer.append(fileSpan);
 			overlay.append(overlaySpan);
