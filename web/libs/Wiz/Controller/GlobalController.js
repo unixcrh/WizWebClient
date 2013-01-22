@@ -117,7 +117,8 @@ define(["../../../locale/main", "../../common/util/GlobalUtil","../context","../
 					docViewCtrl.showTitle(_curDoc.document_title);
 					// 切换文档时，首先显示加载中页面，并隐藏编辑按钮
 					if (_bEditMode === false) {
-						docViewCtrl.showLoading();
+						var hasAtts = _curDoc.document_attachment_count > 0;
+						docViewCtrl.showLoading(hasAtts);
 						headCtrl.showCreateBtnGroup();
 						notification.hide();
 					}
@@ -269,7 +270,7 @@ define(["../../../locale/main", "../../common/util/GlobalUtil","../context","../
 						if (!data.list || data.list.length < 1 || _curDoc.document_guid !== data.list[0].attachment_document_guid) {
 							return;
 						}
-						docViewCtrl.showAttachment(data.list);
+						docViewCtrl.showAttachments(data.list);
 					} else {
 						notification.showError(data.message);
 					}

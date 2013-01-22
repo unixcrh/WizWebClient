@@ -1,6 +1,5 @@
 (function($) {
 	var _elemClass = {
-		mainContainer: 'attachment-containner',
 		mediaOuterContainer: 'MediaStripOuterContainer',
 		mediaItemContainer: 'MediaItemContainer',
 		mediaItem: 'MediaItem File',
@@ -21,12 +20,10 @@
 		endIndex: -1,
 		totalCount: -1
 	}
-	_parentContainer = null,
 	mediasContainer = null;//$('.' + _elemClass.mediaOuterContainer);
 
 
-	var outerHTML = '<div class="attachment-containner">' 
-				+ '<div class="Header">' 
+	var outerHTML = '<div class="Header">' 
 				+ '<div class="IconBar" id="mpf0_hmlvControl_uib">'
 					+ '<a href="#" class="IconContainer" iconindex="1">'
 					+ '<div style="background-image: url(https://a.gfx.ms/attachment.png);" class="Icon">'
@@ -42,8 +39,7 @@
 				+ '<div class="Content">'
 				+ '<div class="TabSelected">'
 				// TODO 左右滑动控制
-				+ '<div class="MediaStripOuterContainer"></div>'
-				+ '</div></div>',
+				+ '<div class="MediaStripOuterContainer"></div></div>',
 
 			thumbHTML = '<div class="ThumbContainer" style="height: 160px; width: 120px; background-color: rgb(167, 167, 167);" >'
 				+ '<img class="Thumb" src="https://a.gfx.ms//txt_57.png" style="padding-top: 52px;"></div>',
@@ -56,8 +52,8 @@
 		 * @return {[type]}        [description]
 		 */
 		function init(config) {
-			initToLinkElem(config.linkElem);
-			initContainer(config.linkElem);
+			initToLinkElem(config.containerElem);
+			initContainer();
 			setItemList(config.items);
 			bindHeaderClickHandler();
 			bindResizeHandler();
@@ -155,21 +151,12 @@
 		 * @return {[type]}          [description]
 		 */
 		function initContainer(linkElem) {
-			if(linkElem) {
-				_parentContainer = $(linkElem).parent();
-			} else {
-				_parentContainer = $(document.body);
-			}
 			mediasContainer = $('.' + _elemClass.mediaOuterContainer);
 		}
 
 		// 根据配置的linkElem信息确定位置
-		function initToLinkElem(linkElem) {
-			if (linkElem) {
-				$(outerHTML).insertAfter($(linkElem));
-			} else {
-				$(document.body).append(outerHTML);
-			}
+		function initToLinkElem(containerElem) {
+			$(containerElem).append(outerHTML);
 		}		
 		function createItemAndBind(item, index) {
 			var thumbContainer = $(thumbHTML),
@@ -201,11 +188,9 @@
 		}
 
 		function showContainer() {
-			$('.' + _elemClass.mainContainer).show();
 			bindResizeHandler();
 		}
 		function hideContainer() {
-			$('.' + _elemClass.mainContainer).hide();
 			unbindResizeHandler();
 		}
 

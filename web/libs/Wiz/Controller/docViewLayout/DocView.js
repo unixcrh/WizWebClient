@@ -10,7 +10,8 @@ define(["./FrameController", "/web/locale/main"], function (require, exports, mo
 			_id = {
 				title: 'doc_params_title',
 				readFrameCt: 'read_frame_ct',
-				docParam: 'doc_params'
+				docParam: 'doc_params',
+				attachmentContainer: 'att_container'
 			},
 			_helpPage = {
 				loading: _locale.HelpPage.loading,
@@ -19,7 +20,8 @@ define(["./FrameController", "/web/locale/main"], function (require, exports, mo
 				welcomeTitle: _locale.HelpPage.welcomeTitle
 			},
 			titleJqElem = $( '#' + _id.title),
-			_messageCenter = null;
+			_messageCenter = null,
+			_attContainerElem = null;
 
 	function DocView() {
 
@@ -31,8 +33,9 @@ define(["./FrameController", "/web/locale/main"], function (require, exports, mo
 		}
 
 		function initAttachmentCtrl() {
+			_attContainerElem = document.getElementById(_id.attachmentContainer);
 			var config = {
-				linkElem: document.getElementById(_id.docParam)
+				containerElem: _attContainerElem
 			};
 			attachmentCtrl.init(config);
 		}
@@ -65,14 +68,22 @@ define(["./FrameController", "/web/locale/main"], function (require, exports, mo
 			if (doc.document_attachment_count > 0) {
 				// TODO 显示加载中动画
 				_messageCenter.requestAttachmentList(doc.document_guid);
-				attachmentCtrl.show();
+				showAttachmentContainer();
 			} else {
-				attachmentCtrl.hide();
+				hideAttachment()
 			}
 		}
 
+		function showAttachmentContainer() {
+			$(_attContainerElem).removeClass('no-display');
+		}
 
-		function showAttachment(attList) {
+		function hideAttachment() {
+			$(_attContainerElem).addClass('no-display');
+		}
+
+
+		function showAttachments(attList) {
 			var listLenght = attList.length,
 				title = listLenght + '个附件';
 
@@ -104,9 +115,11 @@ define(["./FrameController", "/web/locale/main"], function (require, exports, mo
 			readFrameCtrl.setHTML(bodyHtml);
 		}
 
-		function showLoading() {
+		function showLoading(hasAtts) {
 			showHelpPage('loading');
-			$('.attachment-containner').hide();
+			if (hasAtts === false) {
+				hideAttachment();
+			}
 		}
 
 		function showProtectedpage() {
@@ -128,7 +141,6 @@ define(["./FrameController", "/web/locale/main"], function (require, exports, mo
 		 */
 		function reset() {
 			_curDoc = null;
-			$('.attachment-containner').hide();
 			titleJqElem.html('');
 			readFrameCtrl.setHTML('');
 		}
@@ -142,7 +154,7 @@ define(["./FrameController", "/web/locale/main"], function (require, exports, mo
 			showTitle: showTitle,
 			reset: reset,
 			init: initMessageCenter,
-			showAttachment: showAttachment
+			showAttachments: showAttachments
 		}
 	}
 
