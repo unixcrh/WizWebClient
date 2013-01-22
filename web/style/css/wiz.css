@@ -256,7 +256,7 @@ input[type="checkbox"], body:not(.IE_M9) input[type="radio"] {
 	display:inline;
 	height: 26px;
 	width: 26px;
-	background-image: url("../images/command2.png");
+	background-image: url(../images/command2.png);
 	background-position: -1px -1px;
 	position: relative;
 	top: 7px;
@@ -435,7 +435,7 @@ input[type="checkbox"], body:not(.IE_M9) input[type="radio"] {
 	height: 4px;
 }
 .sending-fallback {
-	background-image:url(https://a.gfx.ms//common/spinner_white_40.gif);
+	background-image:url(../images/spinner_white_40.gif);
 	background-size:20px 20px;
 	background-color: #0072C6;
 	color: #fff;
@@ -1093,7 +1093,7 @@ div.c_loadingDot {
 }
 
 
-.edit-tree li span.button.chk{background-image: url("../images/ztree/zTreeStandard.png");}
+.edit-tree li span.button.chk{background-image: url(../images/ztree/zTreeStandard.png);}
 .edit-tree li span.button.chk.checkbox_false_full {background-position:0 0}
 .edit-tree li span.button.chk.checkbox_false_full_focus {background-position:0 -14px}
 .edit-tree li span.button.chk.checkbox_false_part {background-position:0 -28px}

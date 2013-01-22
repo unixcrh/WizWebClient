@@ -7,31 +7,41 @@
 		thumb: 'Thumb',
 		fileDiv: 'FileName',
 		fileSpan: 'TextSizeSmall',
-		overLay: 'Overlay',
+		overlay: 'Overlay',
 		overlaySpan: 'FloatRight TextSizeSmall',
-		overLayLink: 'FloatRight'
+		overlayLink: 'FloatRight'
 	},
 	_id = {
-		title: 'mpf0_hmlvControl_title'
+		title: 'scroller_title'
 	},
 	_data = {
 		itemList: [],
 		startIndex: 0,
 		endIndex: -1,
 		totalCount: -1
-	}
+	},
+	_css = {
+		relativePos: {'position': 'relative'}
+	},
+	// 初始化默认设置
+	_config = {
+		thumbImgSrc: '/web/style/images/txt_57.png',
+		overlayLinkSrc: '/web/style/images/liveview_download.png',
+		overlayText: 'overlay-text',
+		showOverlay: false
+	},
 	mediasContainer = null;//$('.' + _elemClass.mediaOuterContainer);
 
 
 	var outerHTML = '<div class="Header">' 
-				+ '<div class="IconBar" id="mpf0_hmlvControl_uib">'
+				+ '<div class="IconBar" >'
 					+ '<a href="#" class="IconContainer" iconindex="1">'
-					+ '<div style="background-image: url(https://a.gfx.ms/attachment.png);" class="Icon">'
+					+ '<div class="Icon">'
 					+ '</div>'
 		 		+ '</a>'
 				+ '</div>'
 				+ '<div class="TitleContainer">'
-				+ '<div class="Title TitleWithUpper" id="mpf0_hmlvControl_title" >'
+				+ '<div class="Title TitleWithUpper" id="scroller_title" >'
 				+ '</div>'
 				+ '</div>'
 				+ '</div>'
@@ -39,11 +49,8 @@
 				+ '<div class="Content">'
 				+ '<div class="TabSelected">'
 				// TODO 左右滑动控制
-				+ '<div class="MediaStripOuterContainer"></div></div>',
+				+ '<div class="MediaStripOuterContainer"></div></div>';
 
-			thumbHTML = '<div class="ThumbContainer" style="height: 160px; width: 120px; background-color: rgb(167, 167, 167);" >'
-				+ '<img class="Thumb" src="https://a.gfx.ms//txt_57.png" style="padding-top: 52px;"></div>',
-			overlayLinkHTML = '<a href="#" class="FloatRight"><img src="https://a.gfx.ms/liveview_download.png"></a>';
 	var ScrollBar = function() {
 		var operateBtn = null;
 		/**
@@ -52,6 +59,7 @@
 		 * @return {[type]}        [description]
 		 */
 		function init(config) {
+			initConfig(config);
 			initToLinkElem(config.containerElem);
 			initContainer();
 			setItemList(config.items);
@@ -59,6 +67,12 @@
 			bindResizeHandler();
 			showByContainer();
 			addOperateBtn();
+		}
+
+		function initConfig(config) {
+			for (var key in config) {
+				_config[key] = config[key];
+			}
 		}
 
 		function showByContainer() {
@@ -157,23 +171,26 @@
 		// 根据配置的linkElem信息确定位置
 		function initToLinkElem(containerElem) {
 			$(containerElem).append(outerHTML);
-		}		
+		}
+
 		function createItemAndBind(item, index) {
-			var thumbContainer = $(thumbHTML),
+			var thumbContainer = $('<div/>').addClass(_elemClass.thumbContainer),
+				thumb = $('<img/>').addClass(_elemClass.thumb).attr('src', _config.thumbImgSrc);
+
 				fileNameContainer = $('<div/>').addClass(_elemClass.fileDiv).attr('title', item.name),
 				fileSpan = $('<span/>').addClass(_elemClass.fileSpan).html(item.name),
-				overlay = $('<div/>').addClass(_elemClass.overLay).attr('title', item.name),
-				overlaySpan = $('<span/>').addClass(_elemClass.overlaySpan).html('下载'),
-				overlayLink = $(overlayLinkHTML),
-				fileItem = $('<div/>').addClass(_elemClass.mediaItem).css({'position': 'relative'}),
-				itemCotainer = $('<div>').css({'position': 'relative'}).addClass(_elemClass.mediaItemContainer).attr('index', index);
+				fileItem = $('<div/>').addClass(_elemClass.mediaItem).css(_css.relativePos),
+				itemCotainer = $('<div>').css(_css.relativePos).addClass(_elemClass.mediaItemContainer).attr('index', index);
 
+			thumbContainer.append(thumb);
 			fileNameContainer.append(fileSpan);
-			overlay.append(overlaySpan);
-			overlay.append(overlayLink);
-			fileItem.append(thumbContainer).append(fileNameContainer).append(overlay);
+			fileItem.append(thumbContainer).append(fileNameContainer);
+			if (_config.showOverlay === true) {
+				fileItem.append(initAndGetOverlayCt(item));
+			}
 			itemCotainer.append(fileItem);
 
+			// 绑定事件
 			if (item.linkHref) {
 				itemCotainer[0].onclick = function() {
 					window.open(item.linkHref);
@@ -183,6 +200,18 @@
 			}
 			return itemCotainer;
 		}
+
+
+		function initAndGetOverlayCt(item) {
+			var overlay = $('<div/>').addClass(_elemClass.overlay).attr('title', item.name),
+					overlaySpan = $('<span/>').addClass(_elemClass.overlaySpan).html(_config.overlayText),
+					overlayLink = $('<a/>').addClass(_elemClass.overlayLink).append($('<img/>').attr('src', _config.overlayLinkSrc));
+			overlay.append(overlaySpan);
+			overlay.append(overlayLink);
+			return overlay;
+		}
+
+
 		function setTitle(title) {
 			$('#' + _id.title).html(title);
 		}

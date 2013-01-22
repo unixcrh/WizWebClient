@@ -124,6 +124,10 @@
 	margin-left: auto;
 	margin-right: auto;
 }
+.Thumb {
+	padding-top: 52px;
+}
+
 .MediaItem .Overlay span {
 	padding-top: 2px;
 	padding-bottom: 2px;
@@ -153,22 +157,28 @@
 }
 .NavButton.Next {
 	right: 0;
-	background-image: url(//a.gfx.ms/flipper_right_rest.png);
+	background-image: url(../images/flipper_right_rest.png);
 }
 .NavButton.Prev {
 	left: 0;
-	background-image: url(//a.gfx.ms/flipper_left_rest.png);
+	background-image: url(../images/flipper_left_rest.png);
 }
 .NavButton.Next.Hover {
-	background-image: url(//a.gfx.ms/flipper_right_hover.png);
+	background-image: url(../images/flipper_right_hover.png);
 }
 .NavButton.Prev.Hover {
-	background-image: url(//a.gfx.ms/flipper_left_hover.png);
+	background-image: url(../images/flipper_left_hover.png);
 }
 
 .NavButton.Next.Press {
-	background-image: url(//a.gfx.ms/flipper_right_pressed.png);
+	background-image: url(../images/flipper_right_pressed.png);
 }
 .NavButton.Prev.Press {
-	background-image: url(//a.gfx.ms/flipper_left_pressed.png);
+	background-image: url(../images/flipper_left_pressed.png);
+}
+
+
+/* 针对wizweb特殊处理的 */
+.attachment-containner .Icon {
+	background-image: url(../images/attachment.png);
 }

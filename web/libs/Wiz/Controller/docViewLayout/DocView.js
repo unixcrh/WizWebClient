@@ -19,6 +19,9 @@ define(["./FrameController", "/web/locale/main"], function (require, exports, mo
 				welcome: _locale.HelpPage.welcome,
 				welcomeTitle: _locale.HelpPage.welcomeTitle
 			},
+			_className = {
+				noDisplay: 'no-display'
+			},
 			titleJqElem = $( '#' + _id.title),
 			_messageCenter = null,
 			_attContainerElem = null;
@@ -35,17 +38,13 @@ define(["./FrameController", "/web/locale/main"], function (require, exports, mo
 		function initAttachmentCtrl() {
 			_attContainerElem = document.getElementById(_id.attachmentContainer);
 			var config = {
-				containerElem: _attContainerElem
+				containerElem: _attContainerElem,
+				overlayText: '下载',
+				showOverlay: true
 			};
 			attachmentCtrl.init(config);
 		}
 
-		//初始化
-
-		// 帮助页面的初始化，主要是内容的显示
-		function initHelpPage() {
-
-		}
 
 		function viewDoc(doc) {
 			_curDoc = doc;
@@ -75,11 +74,11 @@ define(["./FrameController", "/web/locale/main"], function (require, exports, mo
 		}
 
 		function showAttachmentContainer() {
-			$(_attContainerElem).removeClass('no-display');
+			$(_attContainerElem).removeClass(_className.noDisplay);
 		}
 
 		function hideAttachment() {
-			$(_attContainerElem).addClass('no-display');
+			$(_attContainerElem).addClass(_className.noDisplay);
 		}
 
 
@@ -88,6 +87,7 @@ define(["./FrameController", "/web/locale/main"], function (require, exports, mo
 				title = listLenght + '个附件';
 
 			for (var i=0; i<listLenght; i++) {
+				// TODO 其他解决异步触发的办法
 				(function(attGuid) {
 					attList[i].onItemclick = function () {
 						_messageCenter.downloadAttachment(attGuid);
@@ -98,10 +98,6 @@ define(["./FrameController", "/web/locale/main"], function (require, exports, mo
 			}
 			attachmentCtrl.setTitle(title);
 			attachmentCtrl.setItemList(attList);
-		}
-
-		function hideAttachmentView() {
-
 		}
 
 		function getCurDocHtml() {
