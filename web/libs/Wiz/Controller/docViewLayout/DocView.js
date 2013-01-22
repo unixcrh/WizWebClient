@@ -67,22 +67,32 @@ define(["./FrameController", "/web/locale/main"], function (require, exports, mo
 			if (doc.document_attachment_count > 0) {
 				// TODO 显示加载中动画
 				_messageCenter.requestAttachmentList(doc.document_guid);
+				if (attachmentCtrl !== null) {
+					attachmentCtrl.reset();
+				}
 				showAttachmentContainer();
 			} else {
-				hideAttachment()
+				hideAttachmentContainer();
 			}
 		}
 
 		function showAttachmentContainer() {
 			$(_attContainerElem).removeClass(_className.noDisplay);
+			if (attachmentCtrl !== null) {
+				attachmentCtrl.show();
+			}
 		}
 
-		function hideAttachment() {
+		function hideAttachmentContainer() {
 			$(_attContainerElem).addClass(_className.noDisplay);
+			if (attachmentCtrl !== null) {
+				attachmentCtrl.hide();
+			}
 		}
 
 
 		function showAttachments(attList) {
+			showAttachmentContainer();
 			var listLenght = attList.length,
 				title = listLenght + '个附件';
 
@@ -113,9 +123,7 @@ define(["./FrameController", "/web/locale/main"], function (require, exports, mo
 
 		function showLoading(hasAtts) {
 			showHelpPage('loading');
-			if (hasAtts === false) {
-				hideAttachment();
-			}
+			hideAttachmentContainer();
 		}
 
 		function showProtectedpage() {

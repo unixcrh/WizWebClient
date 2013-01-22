@@ -9,7 +9,9 @@
 		fileSpan: 'TextSizeSmall',
 		overlay: 'Overlay',
 		overlaySpan: 'FloatRight TextSizeSmall',
-		overlayLink: 'FloatRight'
+		overlayLink: 'FloatRight',
+		header: 'Header',
+		content: 'Content'
 	},
 	_id = {
 		title: 'scroller_title'
@@ -28,9 +30,10 @@
 		thumbImgSrc: '/web/style/images/txt_57.png',
 		overlayLinkSrc: '/web/style/images/liveview_download.png',
 		overlayText: 'overlay-text',
+		containerElem: null,
 		showOverlay: false
 	},
-	mediasContainer = null;//$('.' + _elemClass.mediaOuterContainer);
+	_mediasContainer = null;//$('.' + _elemClass.mediaOuterContainer);
 
 
 	var outerHTML = '<div class="Header">' 
@@ -81,7 +84,10 @@
 		}
 
 		function getNumPerPage() {
-			var containerWidth = mediasContainer.width();
+			if (_config.containerElem === null) {
+				return 0;
+			}
+			var containerWidth = $(_config.containerElem).width();
 			var itemWidth = 130;
 			var pageCount = Math.ceil(containerWidth/itemWidth);
 			return pageCount;
@@ -100,18 +106,24 @@
 				length = curList.length;
 
 			for (var i=0; i<length; i++) {
-				mediasContainer.append(curList[i]);	
+				_mediasContainer.append(curList[i]);	
 			}
 		}
 		function addOperateBtn() {
 			operateBtn = new NavButton(_data.itemList.length, getNumPerPage(), show);
-			operateBtn.insertInto(mediasContainer);
+			operateBtn.insertInto(_mediasContainer);
 		}
 
 
 		function setItemList(itemList) {
+			// 要先显示容器，否则分页部分会出错导致无法显示
+			showMedias();
 			if (_data.itemList !== []) {
-				 reset();
+				_data.itemList = [];
+				clearItems();
+			}
+			if (!itemList) {
+				return;
 			}
 			if(itemList) {
 				var length = itemList.length;
@@ -131,6 +143,7 @@
 		function reset() {
 			_data.itemList = [];
 			clearItems();
+			setTitle('');
 		}
 
 		function clearItems() {
@@ -138,11 +151,14 @@
 		}
 
 		function bindHeaderClickHandler() {
-			$('.Header')[0].onclick = switchMediasStatus;
+			$('.' + _elemClass.header)[0].onclick = switchMediasStatus;
 		}
 
 		function switchMediasStatus() {
-			$('.Content').toggle(500);
+			$('.' + _elemClass.content).toggle(500);
+		}
+		function showMedias() {
+			$('.' + _elemClass.content).show(500);
 		}
 
 		function bindResizeHandler() {
@@ -165,7 +181,7 @@
 		 * @return {[type]}          [description]
 		 */
 		function initContainer(linkElem) {
-			mediasContainer = $('.' + _elemClass.mediaOuterContainer);
+			_mediasContainer = $('.' + _elemClass.mediaOuterContainer);
 		}
 
 		// 根据配置的linkElem信息确定位置
@@ -218,9 +234,15 @@
 
 		function showContainer() {
 			bindResizeHandler();
+			if (_config.containerElem) {
+				$(_config.containerElem).show();
+			}
 		}
 		function hideContainer() {
 			unbindResizeHandler();
+			if (_config.containerElem) {
+				$(_config.containerElem).hide();
+			}
 		}
 
 		return {
@@ -228,7 +250,8 @@
 			setItemList: setItemList,
 			setTitle: setTitle,
 			show: showContainer,
-			hide: hideContainer
+			hide: hideContainer,
+			reset: reset
 		}
 	};
 
