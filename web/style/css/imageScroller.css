@@ -63,7 +63,8 @@
 	display: inline-block;
 	margin-right: 6px;
 	*width: 124px;
-	*float: left;
+	*display:inline;      /* 只有ie6和ie7识别*/
+	zoom:1;               /* 触发ie6和ie7下的haslayout */
 }
 .MediaItem:hover {
 	margin: 0;
