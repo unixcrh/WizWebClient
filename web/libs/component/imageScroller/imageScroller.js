@@ -11,7 +11,17 @@
 		overlaySpan: 'FloatRight TextSizeSmall',
 		overlayLink: 'FloatRight',
 		header: 'Header',
-		content: 'Content'
+		content: 'Content',
+		btnNext: 'NavButton Next',
+		btnPrev: 'NavButton Prev',
+		btnPress: 'Press',
+		btnHover: 'Hover'
+	},
+	_jqElem = {
+		A: '<a/>',
+		DIV: '<div>',
+		SPAN: '<span/>',
+		IMG: '<img/>'
 	},
 	_id = {
 		title: 'scroller_title'
@@ -190,13 +200,13 @@
 		}
 
 		function createItemAndBind(item, index) {
-			var thumbContainer = $('<div/>').addClass(_elemClass.thumbContainer),
-				thumb = $('<img/>').addClass(_elemClass.thumb).attr('src', _config.thumbImgSrc);
+			var thumbContainer = $(_jqElem.DIV).addClass(_elemClass.thumbContainer),
+				thumb = $(_jqElem.IMG).addClass(_elemClass.thumb).attr('src', _config.thumbImgSrc);
 
-				fileNameContainer = $('<div/>').addClass(_elemClass.fileDiv).attr('title', item.name),
-				fileSpan = $('<span/>').addClass(_elemClass.fileSpan).html(item.name),
-				fileItem = $('<div/>').addClass(_elemClass.mediaItem).css(_css.relativePos),
-				itemCotainer = $('<div>').css(_css.relativePos).addClass(_elemClass.mediaItemContainer).attr('index', index);
+				fileNameContainer = $(_jqElem.DIV).addClass(_elemClass.fileDiv).attr('title', item.name),
+				fileSpan = $(_jqElem.SPAN).addClass(_elemClass.fileSpan).html(item.name),
+				fileItem = $(_jqElem.DIV).addClass(_elemClass.mediaItem).css(_css.relativePos),
+				itemCotainer = $(_jqElem.DIV).css(_css.relativePos).addClass(_elemClass.mediaItemContainer).attr('index', index);
 
 			thumbContainer.append(thumb);
 			fileNameContainer.append(fileSpan);
@@ -219,9 +229,9 @@
 
 
 		function initAndGetOverlayCt(item) {
-			var overlay = $('<div/>').addClass(_elemClass.overlay).attr('title', item.name),
-					overlaySpan = $('<span/>').addClass(_elemClass.overlaySpan).html(_config.overlayText),
-					overlayLink = $('<a/>').addClass(_elemClass.overlayLink).append($('<img/>').attr('src', _config.overlayLinkSrc));
+			var overlay = $(_jqElem.DIV).addClass(_elemClass.overlay).attr('title', item.name),
+					overlaySpan = $(_jqElem.SPAN).addClass(_elemClass.overlaySpan).html(_config.overlayText),
+					overlayLink = $(_jqElem.A).addClass(_elemClass.overlayLink).append($(_jqElem.IMG).attr('src', _config.overlayLinkSrc));
 			overlay.append(overlaySpan);
 			overlay.append(overlayLink);
 			return overlay;
@@ -257,8 +267,8 @@
 
 
 	var NavButton = function (sum, numPerPage, showFunction) {
-		this.jqPrevBtnElem = $('<a/>').addClass('NavButton Prev').hide();
-		this.jqNextBtnElem = $('<a/>').addClass('NavButton Next').hide();
+		this.jqPrevBtnElem = $(_jqElem.A).addClass(_elemClass.btnPrev).hide();
+		this.jqNextBtnElem = $(_jqElem.A).addClass(_elemClass.btnNext).hide();
 		this.record(sum, numPerPage);
 		this.show = showFunction;
 		this.init();
@@ -279,28 +289,28 @@
 	NavButton.prototype.initEventHandler = function() {
 		var self = this;
 		self.jqPrevBtnElem[0].onmousedown = function() {
-			self.jqPrevBtnElem.addClass('Press');
+			self.jqPrevBtnElem.addClass(_elemClass.btnPress);
 		};
 		self.jqNextBtnElem[0].onmousedown = function() {
-			self.jqNextBtnElem.addClass('Press');
+			self.jqNextBtnElem.addClass(_elemClass.btnPress);
 		};
 		self.jqPrevBtnElem[0].onmouseup = function() {
-			self.jqPrevBtnElem.removeClass('Press');
+			self.jqPrevBtnElem.removeClass(_elemClass.btnPress);
 		};
 		self.jqNextBtnElem[0].onmouseup = function() {
-			self.jqNextBtnElem.removeClass('Press');
+			self.jqNextBtnElem.removeClass(_elemClass.btnPress);
 		};
 		self.jqPrevBtnElem[0].onmouseover = function() {
-			self.jqPrevBtnElem.addClass('Hover');
+			self.jqPrevBtnElem.addClass(_elemClass.btnHover);
 		};
 		self.jqNextBtnElem[0].onmouseover = function() {
-			self.jqNextBtnElem.addClass('Hover');
+			self.jqNextBtnElem.addClass(_elemClass.btnHover);
 		};
 		self.jqPrevBtnElem[0].onmouseout = function() {
-			self.jqPrevBtnElem.removeClass('Hover');
+			self.jqPrevBtnElem.removeClass(_elemClass.btnHover);
 		};
 		self.jqNextBtnElem[0].onmouseout = function() {
-			self.jqNextBtnElem.removeClass('Hover');
+			self.jqNextBtnElem.removeClass(_elemClass.btnHover);
 		};
 		self.jqPrevBtnElem[0].onclick = function() {
 			self.showPrev();

@@ -39,7 +39,7 @@ define(["./FrameController", "/web/locale/main"], function (require, exports, mo
 			_attContainerElem = document.getElementById(_id.attachmentContainer);
 			var config = {
 				containerElem: _attContainerElem,
-				overlayText: '下载',
+				overlayText:  _locale.AttachmentArea.OverlayText,
 				showOverlay: true
 			};
 			attachmentCtrl.init(config);
@@ -94,7 +94,7 @@ define(["./FrameController", "/web/locale/main"], function (require, exports, mo
 		function showAttachments(attList) {
 			showAttachmentContainer();
 			var listLenght = attList.length,
-				title = listLenght + '个附件';
+				title = listLenght + _locale.AttachmentArea.HeaderTitle;
 
 			for (var i=0; i<listLenght; i++) {
 				// TODO 其他解决异步触发的办法
