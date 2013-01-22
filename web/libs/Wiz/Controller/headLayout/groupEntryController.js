@@ -4,26 +4,28 @@ define(function (require, exports, module) {
 		_node = {
 			groupClass: 'group-per',
 			listClass: 'group-list',
-			bgClass: 'header_group_bg',						//背景div，为了遮挡页面内的其他内容
-			containerClass: 'header_group_ct',
+			bgClass: 'header-group-bg',						//背景div，为了遮挡页面内的其他内容
+			containerClass: 'header-group-ct',
 			groupEntryId: 'group_ctrl'
 		},
 		_setting = {
 			height: '126px',
 			animate_delay_ms: 200
-		};
+		},
+		_groupScrollerCtrl =  new $.fn.scrollbar(),
+		mainContainer = getJqElemByClassName(_node.containerClass);
 
-	function getJqClassSelector(className) {
+	function getJqElemByClassName(className) {
 		return $('.' + className);
 	}
 
-	function getJqIdSelector(id) {
+	function getJqElemById(id) {
 		return $('#' + id);
 	}
 
 	function initialize() {
-		var entrySelector = getJqIdSelector(_node.groupEntryId),
-				containerSelector = getJqClassSelector(_node.containerClass);
+		var entrySelector = getJqElemById(_node.groupEntryId),
+				containerSelector = getJqElemByClassName(_node.containerClass);
 
 		entrySelector.css('display', 'inline-block');
 		entrySelector.bind('click',	function (evt){
@@ -35,10 +37,24 @@ define(function (require, exports, module) {
 		});
 	}
 
+	function initScroller() {
+		var config = {
+			containerElem: mainContainer,
+			thumbImgSrc: 'https://a.gfx.ms/is/invis.gif',
+			overlayText:  '群组入口',
+			contentId: 'group_list_wrap',
+			bThumbCtRamdomBgColor: true,
+			showHeader: false,
+			autoShow: false
+		};
+		_groupScrollerCtrl.init(config);
+	}
+
+
 	function addBackgroundDiv(containerSelector) {
 		$('body').append('<div class="'+ _node.bgClass + '"></div>');
 		// 动态注入的元素，需要加载后再获取选择器对象
-		var bgSelector = getJqClassSelector(_node.bgClass);
+		var bgSelector = getJqElemByClassName(_node.bgClass);
 		var hideContainner = function (evt) {
 			var evt = evt ? evt : window.event,
 					target = evt.srcElement ? evt.srcElement : evt.target;
@@ -73,13 +89,23 @@ define(function (require, exports, module) {
 		$('.header_group_ct').append(content);
 	}
 
-	function init(list, messageCenter) {
+	function init(messageCenter) {
 		_messageCenter = messageCenter;
-		renderList(list);
+		// renderList(list);
 		initialize();
+		initScroller();
+	}
+
+	function setGroupList(list) {
+		var length = list.length, i;
+		for(i=0; i<length; i++) {
+			list[i].name = list[i].kb_name;
+		}
+		_groupScrollerCtrl.setItemList(list);
 	}
 
 	return {
-		init: init
+		init: init,
+		setGroupList: setGroupList
 	}
 });

@@ -369,7 +369,7 @@ input[type="checkbox"], body:not(.IE_M9) input[type="radio"] {
 
 /*-------------------------群组入口显示模块---------------------------------*/
 
-.header_group_ct {
+.header-group-ct {
 	position: fixed;
 	top: 0px;
 	left: 0;
@@ -381,7 +381,7 @@ input[type="checkbox"], body:not(.IE_M9) input[type="radio"] {
 	padding: 37px;
 }
 
-.header_group_bg {
+.header-group-bg {
 	position: relative;
 	width: 100%;
 	height: 100%;
@@ -514,13 +514,13 @@ input[type="checkbox"], body:not(.IE_M9) input[type="radio"] {
 	margin: 0;
 	border: 0;
 	padding-left: 10px;
-	display: none;
+	/*display: none;*/
 }
 
 
 .g_menu_span {
 	position: absolute;
-	top: 17px;
+	top: 10px;
 	vertical-align: top;
 }
 

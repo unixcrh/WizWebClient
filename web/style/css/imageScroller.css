@@ -183,3 +183,36 @@
 .attachment-containner .Icon {
 	background-image: url(../images/attachment.png);
 }
+
+.header-group-ct .MediaStripOuterContainer {
+	height: 115px;
+}
+.header-group-ct .ThumbContainer {
+	height: 120px;
+}
+.header-group-ct .Thumb{
+	background-image: url(https://a.gfx.ms/h/logos2.png);
+	background-position: -121px -0px;
+	width: 120px;
+	height: 120px;
+}
+.header-group-ct .MediaItem .FileName {
+	top: 90px;
+	left: 5px;
+}
+.header-group-ct .Content {
+	border: 0;
+}
+
+.header-group-ct .MediaItem {
+	margin: 3px;
+}
+
+.header-group-ct .MediaItem:hover {
+	margin: 0;
+	border: solid 3px #4a4a4a;
+}
+.header-group-ct .MediaItem:active {
+	margin: 0;
+	border: solid 3px #fff;
+}

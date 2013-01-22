@@ -2,7 +2,7 @@ define(["./FrameController", "/web/locale/main"], function (require, exports, mo
 	'use strict';
 
 	var FrameCtrl = require('./FrameController'),
-			attachmentCtrl = $.fn.scrollbar,
+			attachmentCtrl = new $.fn.scrollbar(),
 			_locale = require('/web/locale/main'),
 			_readFrameId = 'wiz_doc_iframe',
 			_curDoc = null,
@@ -40,7 +40,8 @@ define(["./FrameController", "/web/locale/main"], function (require, exports, mo
 			var config = {
 				containerElem: _attContainerElem,
 				overlayText:  _locale.AttachmentArea.OverlayText,
-				showOverlay: true
+				showOverlay: true,
+				contentId: 'read_attachment_list_wrap'
 			};
 			attachmentCtrl.init(config);
 		}

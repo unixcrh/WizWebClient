@@ -37,11 +37,14 @@ define(["../../../locale/main", "../../common/util/GlobalUtil","../context","../
 			notification = new Notification(document.getElementById('content_right_wrapper')),
 			//负责接收下级controller的消息
 			_messageHandler = {
+				requestGroupList: function() {
+					remote.getGroupKbList(_messageDistributer.showGroupList, handlerJqueryAjaxError);
+				},
 				requestAttachmentList: function(docGuid) {
 					if (docGuid !== _curDoc.document_guid) {
 						return;
 					}
-					remote.getAttachmentList(context.kbGuid, _curDoc.document_guid, _messageDistribute.showAttachmentList, handlerJqueryAjaxError);
+					remote.getAttachmentList(context.kbGuid, _curDoc.document_guid, _messageDistributer.showAttachmentList, handlerJqueryAjaxError);
 				},
 				// 删除当前选中并阅读的文档
 				deleteCurDoc: function() {
@@ -107,7 +110,7 @@ define(["../../../locale/main", "../../common/util/GlobalUtil","../context","../
 					}
 					_requestCmdParams.docList = params;
 					notification.hide();
-					remote.getDocumentList(context.kbGuid, params, _messageDistribute.showDocList, handlerJqueryAjaxError);
+					remote.getDocumentList(context.kbGuid, params, _messageDistributer.showDocList, handlerJqueryAjaxError);
 				},
 				// 加载文档内容
 				requestDocumentBody: function (doc) {
@@ -122,7 +125,7 @@ define(["../../../locale/main", "../../common/util/GlobalUtil","../context","../
 						headCtrl.showCreateBtnGroup();
 						notification.hide();
 					}
-					remote.getDocumentBody(context.kbGuid, doc.document_guid, doc.version, _messageDistribute.showDoc, handlerJqueryAjaxError);
+					remote.getDocumentBody(context.kbGuid, doc.document_guid, doc.version, _messageDistributer.showDoc, handlerJqueryAjaxError);
 				},
 				// 所有请求创建的处理
 				// 需要callback函数，自动处理相应的节点
@@ -208,7 +211,7 @@ define(["../../../locale/main", "../../common/util/GlobalUtil","../context","../
 						headCtrl.showSendingGroup();
 					}
 					remote.postDocument(context.kbGuid, docInfo, function callback(data) {
-						_messageDistribute.saveDocumentCallback(data, bQuit, docInfo);
+						_messageDistributer.saveDocumentCallback(data, bQuit, docInfo);
 					}, function callError(error) {
 						if (bQuit) {
 							headCtrl.showEditBtnGroup();
@@ -226,7 +229,7 @@ define(["../../../locale/main", "../../common/util/GlobalUtil","../context","../
 				refreshCurDocList: function() {
 					notification.hide();
 					headCtrl.showCreateBtnGroup();
-					remote.getDocumentList(context.kbGuid, _requestCmdParams.docList, _messageDistribute.showDocList, handlerJqueryAjaxError);
+					remote.getDocumentList(context.kbGuid, _requestCmdParams.docList, _messageDistributer.showDocList, handlerJqueryAjaxError);
 				},
 				saveNodesInfos: function(key, list) {
 					context[key] = list;
@@ -264,7 +267,17 @@ define(["../../../locale/main", "../../common/util/GlobalUtil","../context","../
 				}
 			},
 			// 负责向各控制器发送消息
-			_messageDistribute = {
+			_messageDistributer = {
+				showGroupList : function (data) {
+					if (data.code == '200') {
+						if (!data.list || data.list.length < 1) {
+							return;
+						}
+						groupCtrl.setGroupList(data.list);
+					} else {
+						notification.showError(data.message);
+					}
+				},
 				showAttachmentList: function (data) {
 					if (data.code == '200') {
 						if (!data.list || data.list.length < 1 || _curDoc.document_guid !== data.list[0].attachment_document_guid) {
@@ -361,6 +374,7 @@ define(["../../../locale/main", "../../common/util/GlobalUtil","../context","../
 				initTagsMap();
 				//顶部功能初始化
 				headCtrl.init(data.user_info, _messageHandler);
+				groupCtrl.init(_messageHandler);
 
 				window.Wiz.token = context.token;
 				window.Wiz.kbGuid = context.kbGuid;
@@ -377,6 +391,8 @@ define(["../../../locale/main", "../../common/util/GlobalUtil","../context","../
 
 				editPageCtrl.initMessageHandler(_messageHandler);
 
+				// 加载群组列表
+				_messageHandler.requestGroupList();
 					//初始化滚动条
 				initSplitter();
 				initBodyClickHandler();

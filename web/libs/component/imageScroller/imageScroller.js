@@ -1,70 +1,61 @@
 (function($) {
+
 	var _elemClass = {
-		mediaOuterContainer: 'MediaStripOuterContainer',
-		mediaItemContainer: 'MediaItemContainer',
-		mediaItem: 'MediaItem File',
-		thumbContainer: 'ThumbContainer',
-		thumb: 'Thumb',
-		fileDiv: 'FileName',
-		fileSpan: 'TextSizeSmall',
-		overlay: 'Overlay',
-		overlaySpan: 'FloatRight TextSizeSmall',
-		overlayLink: 'FloatRight',
-		header: 'Header',
-		content: 'Content',
-		btnNext: 'NavButton Next',
-		btnPrev: 'NavButton Prev',
-		btnPress: 'Press',
-		btnHover: 'Hover'
-	},
-	_jqElem = {
-		A: '<a/>',
-		DIV: '<div>',
-		SPAN: '<span/>',
-		IMG: '<img/>'
-	},
-	_id = {
-		title: 'scroller_title'
-	},
-	_data = {
-		itemList: [],
-		startIndex: 0,
-		endIndex: -1,
-		totalCount: -1
-	},
-	_css = {
-		relativePos: {'position': 'relative'}
-	},
-	// 初始化默认设置
-	_config = {
-		thumbImgSrc: '/web/style/images/txt_57.png',
-		overlayLinkSrc: '/web/style/images/liveview_download.png',
-		overlayText: 'overlay-text',
-		containerElem: null,
-		showOverlay: false
-	},
-	_mediasContainer = null;//$('.' + _elemClass.mediaOuterContainer);
-
-
-	var outerHTML = '<div class="Header">' 
-				+ '<div class="IconBar" >'
-					+ '<a href="#" class="IconContainer" iconindex="1">'
-					+ '<div class="Icon">'
-					+ '</div>'
-		 		+ '</a>'
-				+ '</div>'
-				+ '<div class="TitleContainer">'
-				+ '<div class="Title TitleWithUpper" id="scroller_title" >'
-				+ '</div>'
-				+ '</div>'
-				+ '</div>'
-
-				+ '<div class="Content">'
-				+ '<div class="TabSelected">'
-				// TODO 左右滑动控制
-				+ '<div class="MediaStripOuterContainer"></div></div>';
+			mediaOuterContainer: 'MediaStripOuterContainer',
+			mediaItemContainer: 'MediaItemContainer',
+			mediaItem: 'MediaItem File',
+			thumbContainer: 'ThumbContainer',
+			thumb: 'Thumb',
+			fileDiv: 'FileName',
+			fileSpan: 'TextSizeSmall',
+			overlay: 'Overlay',
+			overlaySpan: 'FloatRight TextSizeSmall',
+			overlayLink: 'FloatRight',
+			header: 'Header',
+			content: 'Content',
+			btnNext: 'NavButton Next',
+			btnPrev: 'NavButton Prev',
+			btnPress: 'Press',
+			btnHover: 'Hover'
+		},
+		_jqElem = {
+			A: '<a/>',
+			DIV: '<div>',
+			SPAN: '<span/>',
+			IMG: '<img/>'
+		};
 
 	var ScrollBar = function() {
+
+		var _id = {
+			title: 'scroller_title'
+		},
+		_data = {
+			itemList: [],
+			startIndex: 0,
+			endIndex: -1,
+			totalCount: -1
+		},
+		_css = {
+			relativePos: {'position': 'relative'}
+		},
+		_event = {
+			oldWindowResizeFunc: null
+		},
+		// 初始化默认设置
+		_config = {
+			thumbImgSrc: '/web/style/images/txt_57.png',
+			overlayLinkSrc: '/web/style/images/liveview_download.png',
+			overlayText: 'overlay-text',
+			containerElem: null,
+			showOverlay: false,
+			bThumbCtRamdomBgColor: false,						 // 业务需求，随机每个item的背景颜色值
+			autoShow: true,													 // 设置itemList时，是否显示
+			showHeader: true,												 // 是否显示头信息
+			contentId: ''														 // 如果只有一个视图，则不用填写，如果有多个视图，并且不共享数据，需要设置用以区别
+		},
+		_mediasContainer = null;//$('.' + _elemClass.mediaOuterContainer);
+
 		var operateBtn = null;
 		/**
 		 * 初始化函数，唯一接口	
@@ -76,10 +67,9 @@
 			initToLinkElem(config.containerElem);
 			initContainer();
 			setItemList(config.items);
-			bindHeaderClickHandler();
 			bindResizeHandler();
-			showByContainer();
 			addOperateBtn();
+			showByContainer();
 		}
 
 		function initConfig(config) {
@@ -89,6 +79,9 @@
 		}
 
 		function showByContainer() {
+			if (_data.itemList.length < 1) {
+				return;
+			}
 			_data.endIndex = _data.pageCount = getNumPerPage();
 			show(_data.startIndex, _data.endIndex);
 		}
@@ -127,18 +120,18 @@
 
 		function setItemList(itemList) {
 			// 要先显示容器，否则分页部分会出错导致无法显示
-			showMedias();
+			showMediasContainer();
 			if (_data.itemList !== []) {
 				_data.itemList = [];
 				clearItems();
 			}
-			if (!itemList) {
+			if (!itemList || itemList.length < 1) {
 				return;
 			}
 			if(itemList) {
 				var length = itemList.length;
 				for (var i=0; i<length; i++) {
-					var itemElem = createItemAndBind(itemList[i], i);
+					var itemElem = createAndGetItem(itemList[i], i);
 					_data.itemList.push(itemElem);
 				}
 				showByContainer();
@@ -146,7 +139,6 @@
 			// 每次更新list的时候，必须要更新btn的状态
 			if (operateBtn !== null) {
 				operateBtn.record(_data.itemList.length, getNumPerPage());
-				operateBtn.changeView();
 			}
 		}
 
@@ -157,32 +149,57 @@
 		}
 
 		function clearItems() {
-			$('.' + _elemClass.mediaItemContainer).remove();
+			_mediasContainer.children('.' + _elemClass.mediaItemContainer).remove();
 		}
 
 		function bindHeaderClickHandler() {
 			$('.' + _elemClass.header)[0].onclick = switchMediasStatus;
 		}
 
+		/**
+		 * 获取随机颜色值
+		 * @return {[type]} [description]
+		 */
+		function getRandomColor() {
+			var colorList = ['#094ab2', '#5133ab', '#d24726', '#0072c6'],
+				index = Math.round(Math.random() * 4);
+			return colorList[index];
+		}
+
 		function switchMediasStatus() {
-			$('.' + _elemClass.content).toggle(500);
+			if (_mediasContainer) {
+				_mediasContainer.toggle(500);
+			}
 		}
-		function showMedias() {
-			$('.' + _elemClass.content).show(500);
+
+		/**
+		 * 显示items容器
+		 * @return {[type]} [description]
+		 */
+		function showMediasContainer() {
+			if (_mediasContainer) {
+				_mediasContainer.show(500);
+			}
 		}
+
 
 		function bindResizeHandler() {
 			// 监听窗口改变的事件
-			// TODO 监听容器大小改变的事件，需要手动添加			
-			window.onresize = function() {
+			// TODO 监听容器大小改变的事件，需要手动添加
+			_event.oldWindowResizeFunc = window.onresize;
+			window.onresize = function(event) {
 				if (operateBtn !== null) {
 					operateBtn.record(_data.itemList.length, getNumPerPage());
+					operateBtn.changeView();
+				}
+				if (typeof _event.oldWindowResizeFunc === 'function') {
+					_event.oldWindowResizeFunc(event);
 				}
 			};
 		}
 
 		function unbindResizeHandler() {
-			window.onresize = null;
+			window.onresize = _event.oldWindowResizeFunc;
 		}
 
 		/**
@@ -191,15 +208,27 @@
 		 * @return {[type]}          [description]
 		 */
 		function initContainer(linkElem) {
-			_mediasContainer = $('.' + _elemClass.mediaOuterContainer);
+			if (_config.contentId === '') {
+				_mediasContainer = $('.' + _elemClass.mediaOuterContainer);	
+			} else {
+				_mediasContainer = $('#' + _config.contentId);
+			}
 		}
 
 		// 根据配置的linkElem信息确定位置
 		function initToLinkElem(containerElem) {
-			$(containerElem).append(outerHTML);
+			var headerElem = initAndGetHeader(),
+					contentElem = initAndGetContentBody();
+
+			if (_config.showHeader === true) {
+				$(containerElem).append(headerElem);
+				bindHeaderClickHandler();
+			}
+			$(containerElem).append(contentElem);
+
 		}
 
-		function createItemAndBind(item, index) {
+		function createAndGetItem(item, index) {
 			var thumbContainer = $(_jqElem.DIV).addClass(_elemClass.thumbContainer),
 				thumb = $(_jqElem.IMG).addClass(_elemClass.thumb).attr('src', _config.thumbImgSrc);
 
@@ -207,6 +236,11 @@
 				fileSpan = $(_jqElem.SPAN).addClass(_elemClass.fileSpan).html(item.name),
 				fileItem = $(_jqElem.DIV).addClass(_elemClass.mediaItem).css(_css.relativePos),
 				itemCotainer = $(_jqElem.DIV).css(_css.relativePos).addClass(_elemClass.mediaItemContainer).attr('index', index);
+
+			if (_config.bThumbCtRamdomBgColor === true) {
+				var colorValueStr = getRandomColor();
+				thumbContainer.css({'background-color': colorValueStr});
+			}
 
 			thumbContainer.append(thumb);
 			fileNameContainer.append(fileSpan);
@@ -235,6 +269,30 @@
 			overlay.append(overlaySpan);
 			overlay.append(overlayLink);
 			return overlay;
+		}
+
+		function initAndGetHeader() {
+			var jqHeader = $(_jqElem.DIV).addClass('Header'),
+					jqIconBar =	$(_jqElem.DIV).addClass('IconBar'),
+					jqIconCt = $(_jqElem.A).addClass('IconContainer'),
+					jqIcon = $(_jqElem.DIV).addClass('Icon'),
+					jqTitleCt =	$(_jqElem.DIV).addClass('TitleContainer'),
+					jqTitle = $(_jqElem.DIV).addClass('Title TitleWithUpper').attr('id', 'scroller_title');
+
+			jqIconCt.append(jqIcon);
+			jqIconBar.append(jqIconCt);
+			jqTitleCt.append(jqTitle);
+			jqHeader.append(jqIconBar).append(jqTitleCt);
+			return jqHeader;
+		}
+
+		function initAndGetContentBody() {
+			var jqContent = $(_jqElem.DIV).addClass('Content'),
+					jqTabSelected = $(_jqElem.DIV).addClass('TabSelected'),
+					jqMediasCt = $(_jqElem.DIV).addClass('MediaStripOuterContainer').attr('id', _config.contentId);
+			jqTabSelected.append(jqMediasCt);
+			jqContent.append(jqTabSelected);
+			return jqContent;
 		}
 
 
@@ -283,7 +341,6 @@
 		self.numPerPage = numPerPage;
 		self.curPageNum = self.curPageNum ? self.curPageNum : 1;
 		self.pageCount = Math.ceil(sum/numPerPage);
-		self.changeView();
 	};
 
 	NavButton.prototype.initEventHandler = function() {
@@ -352,7 +409,7 @@
 		if (self.pageCount <= 1) {
 			self.jqNextBtnElem.hide();
 			self.jqPrevBtnElem.hide();
-			if (self.show) {
+			if (self.show && self.sum > 0) {
 				self.show(0, self.sum);
 				self.curPageNum = 1;
 			}
@@ -368,5 +425,5 @@
 		}
 	};
 
-	$.fn.scrollbar = new ScrollBar();
+	$.fn.scrollbar = ScrollBar;
 })(jQuery);
