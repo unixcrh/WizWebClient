@@ -39,14 +39,12 @@
 		_css = {
 			relativePos: {'position': 'relative'}
 		},
-		_event = {
-			oldWindowResizeFunc: null
-		},
 		// 初始化默认设置
 		_config = {
 			thumbImgSrc: '/web/style/images/txt_57.png',
 			overlayLinkSrc: '/web/style/images/liveview_download.png',
 			overlayText: 'overlay-text',
+			itemWidth : 130,
 			containerElem: null,
 			showOverlay: false,
 			bThumbCtRamdomBgColor: false,						 // 业务需求，随机每个item的背景颜色值
@@ -70,6 +68,7 @@
 			bindResizeHandler();
 			addOperateBtn();
 			showByContainer();
+			bindResizeHandler();
 		}
 
 		function initConfig(config) {
@@ -91,7 +90,7 @@
 				return 0;
 			}
 			var containerWidth = $(_config.containerElem).width();
-			var itemWidth = 130;
+			var itemWidth = _config.itemWidth;
 			var pageCount = Math.ceil(containerWidth/itemWidth);
 			return pageCount;
 		}
@@ -186,20 +185,22 @@
 		function bindResizeHandler() {
 			// 监听窗口改变的事件
 			// TODO 监听容器大小改变的事件，需要手动添加
-			_event.oldWindowResizeFunc = window.onresize;
+			var oldFunc = window.onresize;
 			window.onresize = function(event) {
 				if (operateBtn !== null) {
+					console.log(_data.itemList.length);
+					console.log(getNumPerPage);
 					operateBtn.record(_data.itemList.length, getNumPerPage());
 					operateBtn.changeView();
 				}
-				if (typeof _event.oldWindowResizeFunc === 'function') {
-					_event.oldWindowResizeFunc(event);
+				if (oldFunc) {
+					oldFunc(event);
 				}
 			};
-		}
+		}	
 
 		function unbindResizeHandler() {
-			window.onresize = _event.oldWindowResizeFunc;
+			window.onresize = null;
 		}
 
 		/**
@@ -301,13 +302,11 @@
 		}
 
 		function showContainer() {
-			bindResizeHandler();
 			if (_config.containerElem) {
 				$(_config.containerElem).show();
 			}
 		}
 		function hideContainer() {
-			unbindResizeHandler();
 			if (_config.containerElem) {
 				$(_config.containerElem).hide();
 			}

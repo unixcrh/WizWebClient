@@ -43,6 +43,7 @@ define(function (require, exports, module) {
 			thumbImgSrc: 'https://a.gfx.ms/is/invis.gif',
 			overlayText:  '群组入口',
 			contentId: 'group_list_wrap',
+			itemWidth : 150,
 			bThumbCtRamdomBgColor: true,
 			showHeader: false,
 			autoShow: false
@@ -58,7 +59,8 @@ define(function (require, exports, module) {
 		var hideContainner = function (evt) {
 			var evt = evt ? evt : window.event,
 					target = evt.srcElement ? evt.srcElement : evt.target;
-			if (target.className ==='group-per') {
+			// 点击到左右按钮按钮时，不需要隐藏
+			if (target.className.indexOf('NavButton') > -1) {
 				return;
 			}
 			containerSelector.animate({height: '0'}, _setting.animate_delay_ms);

@@ -216,3 +216,11 @@
 	margin: 0;
 	border: solid 3px #fff;
 }
+.header-group-ct .MediaItem .FileName span {
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.header-group-ct .MediaItemContainer {
+	margin-right: 26px;
+}
