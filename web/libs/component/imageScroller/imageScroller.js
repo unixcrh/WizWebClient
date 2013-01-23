@@ -161,7 +161,7 @@
 		 */
 		function getRandomColor() {
 			var colorList = ['#094ab2', '#5133ab', '#d24726', '#0072c6'],
-				index = Math.round(Math.random() * 4);
+				index = Math.floor(Math.random() * 4);
 			return colorList[index];
 		}
 
@@ -188,8 +188,6 @@
 			var oldFunc = window.onresize;
 			window.onresize = function(event) {
 				if (operateBtn !== null) {
-					console.log(_data.itemList.length);
-					console.log(getNumPerPage);
 					operateBtn.record(_data.itemList.length, getNumPerPage());
 					operateBtn.changeView();
 				}
@@ -231,7 +229,7 @@
 
 		function createAndGetItem(item, index) {
 			var thumbContainer = $(_jqElem.DIV).addClass(_elemClass.thumbContainer),
-				thumb = $(_jqElem.IMG).addClass(_elemClass.thumb).attr('src', _config.thumbImgSrc);
+				thumb = $(_jqElem.IMG).addClass(_elemClass.thumb).attr('src', _config.thumbImgSrc).attr('title', item.name);
 
 				fileNameContainer = $(_jqElem.DIV).addClass(_elemClass.fileDiv).attr('title', item.name),
 				fileSpan = $(_jqElem.SPAN).addClass(_elemClass.fileSpan).html(item.name),

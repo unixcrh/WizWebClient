@@ -224,3 +224,6 @@
 .header-group-ct .MediaItemContainer {
 	margin-right: 26px;
 }
+.header-group-ct .Thumb {
+	padding-top: 0;
+}
