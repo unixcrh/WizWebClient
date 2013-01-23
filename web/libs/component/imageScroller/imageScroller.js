@@ -252,7 +252,7 @@
 			// 绑定事件
 			if (item.linkHref) {
 				itemCotainer[0].onclick = function() {
-					window.open(item.linkHref);
+					location.href = item.linkHref;
 				}	
 			} else if(item.onItemclick && typeof item.onItemclick === 'function') {
 				itemCotainer[0].onclick = item.onItemclick;

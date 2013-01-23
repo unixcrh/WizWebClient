@@ -414,7 +414,7 @@ define(["/web/libs/component/zTreeBase","/web/libs/common/util/GlobalUtil","/web
 		// 获取当前新建或编辑的文档信息及内容
 		function getDocumentInfo() {
 			if ($('#' + _id.titleInput).val() === '' || $('#' + _id.titleInput).val().length < 0) {
-				// TODO 提示
+				showUntitiledDialog();
 				return null;
 			}
 			var documentInfo ={};
@@ -429,6 +429,19 @@ define(["/web/libs/component/zTreeBase","/web/libs/common/util/GlobalUtil","/web
 				documentInfo.document_tag_guids = tags;	
 			}
 			return documentInfo;
+		}
+
+		function showUntitiledDialog() {
+			art.dialog({
+				id: 'edit_waring_dialog',
+				zIndex: 99999,
+		    content: _locale.UntitledWarn,
+		    okVal: _locale.UntitledBtn,
+		    ok: function(){},
+		    lock: true,
+		    background: '#000',
+		    follow: document.getElementById('save_ct')
+			});
 		}
 
 		// 获取当前缓存的所有tagGuid

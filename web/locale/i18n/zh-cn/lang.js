@@ -70,7 +70,9 @@ define({
 		},
 		DefaultTitle: '未命名',
 		TagHelpSpan: '点击添加标签',
-		TagSpan: '标签: '
+		TagSpan: '标签: ', 
+		UntitledWarn: '无法保存无标题的笔记.',
+		UntitledBtn: '确定'
 	},
 	HelpPage: {
 		loading: '<html><head><style type="text/css">#load_word{font-family:"Microsoft Yahei",Verdana,Simsun,"Segoe UI","Segoe UI Web Regular","Segoe UI Symbol","Helvetica Neue","BBAlpha Sans","S60 Sans",Arial,"sans-serif";font-size:142%;padding:30px}</style></head><body><div><p id=load_word>加载中……</p></div>',

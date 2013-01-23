@@ -70,7 +70,9 @@ define({
 		},
 		DefaultTitle: 'Untitled',
 		TagHelpSpan: 'Click to add tags',
-		TagSpan: 'Tag: '
+		TagSpan: 'Tag: ', 
+		UntitledWarn: 'Unable to save this note without a title.',
+		UntitledBtn: 'ok'
 	},
 	HelpPage: {
 		loading: '<html><head><style type="text/css">#load_word{font-family:"Microsoft Yahei",Verdana,Simsun,"Segoe UI","Segoe UI Web Regular","Segoe UI Symbol","Helvetica Neue","BBAlpha Sans","S60 Sans",Arial,"sans-serif";font-size:142%;padding:30px}</style></head><body><div><p id=load_word>加载中……</p></div>',
