@@ -99,12 +99,7 @@ define(["./FrameController", "/web/locale/main"], function (require, exports, mo
 
 			for (var i=0; i<listLenght; i++) {
 				// TODO 其他解决异步触发的办法
-				(function(attGuid) {
-					attList[i].onItemclick = function () {
-						_messageCenter.downloadAttachment(attGuid);
-					}
-				})(attList[i].attachment_guid);
-				
+				attList[i].linkHref = attList[i].download_url;
 				attList[i].name = attList[i].attachment_name;
 			}
 			attachmentCtrl.setTitle(title);
@@ -162,21 +157,6 @@ define(["./FrameController", "/web/locale/main"], function (require, exports, mo
 			showAttachments: showAttachments
 		}
 	}
-
-
-	var AttachmentControl = function() {};
-	AttachmentControl.prototype.docGuid = null;
-	AttachmentControl.prototype.setDocGuid = function(docGuid) {
-		this.docGuid = docGuid;
-	};
-	AttachmentControl.prototype.getList = function (docGuid) {
-		if (typeof this.docGuid === 'string') {
-
-		}
-	};
-	AttachmentControl.prototype.download = function(attGuid) {
-
-	};
 
 
 	module.exports = new DocView();
