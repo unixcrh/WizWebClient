@@ -156,16 +156,16 @@ define(function(require, exports) {
 			// var defCookieMaxAge = data.defCookieMaxAge;
 			if(keepCookie === "checked"){
 				// 设置cookie
-				$.cookie("un", loginCookie, { expires: 14 });
+				$.cookie( uType+"un", loginCookie, { expires: 14 });
 				//TODO password应该要保存为md5格式
-				$.cookie("up", passwordCookie, { expires: 14});
-				$.cookie("keepCookie", keepCookie, { expires: 14 });
+				$.cookie( uType+"up", passwordCookie, { expires: 14});
+				$.cookie( uType+"keepCookie", keepCookie, { expires: 14 });
 
 			}else{
 				// cookie生存期置为0
-				$.cookie("un", loginCookie);
-				$.cookie("up", passwordCookie);
-				$.cookie("keepCookie", keepCookie);
+				$.cookie( uType+"un", loginCookie);
+				$.cookie( uType+"up", passwordCookie);
+				$.cookie( uType+"keepCookie", keepCookie);
 			}
 
 			if(data.code==200){
@@ -193,13 +193,14 @@ define(function(require, exports) {
 		// console.log(cookie('loginCookie'));
 		 if ( $.cookie('un') != null && $.cookie('up') != null ) {
 		 	var params = { 
-					user_id : $.cookie('un'), 
-					password : $.cookie('up'),
+					user_id : $.cookie( uType+'un'), 
+					password : $.cookie( uType+'up'),
 					// isKeep_password : keep_password,
 					debug: debugModel
 				};
 				// 调用一下ajax
 				$('#loginkeycode').attr('disabled', 'disabled');
+				// 用户类型不同 请求地址不同
 				$.post(api.LOGIN, params, function (data, status){
 					if(data.code==200){
 						// var url = redirectUrl + data.token;
