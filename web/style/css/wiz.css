@@ -70,9 +70,6 @@ input[type="checkbox"], body:not(.IE_M9) input[type="radio"] {
 	display: none;
 }
 
-.no-display {
-	display: none;
-}
 
 .no-display a {
 	visibility: hidden;
@@ -1185,4 +1182,7 @@ div.c_loadingDot {
 }
 .edit-tag-span  {
 	*display: inline; /* for ie67*/
+}
+.no-display {
+	display: none;
 }

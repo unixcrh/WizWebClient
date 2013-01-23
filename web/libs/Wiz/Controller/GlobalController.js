@@ -374,7 +374,7 @@ define(["../../../locale/main", "../../common/util/GlobalUtil","../context","../
 				initTagsMap();
 				//顶部功能初始化
 				headCtrl.init(data.user_info, _messageHandler);
-				groupCtrl.init(_messageHandler);
+				// groupCtrl.init(_messageHandler);
 
 				window.Wiz.token = context.token;
 				window.Wiz.kbGuid = context.kbGuid;
@@ -392,7 +392,7 @@ define(["../../../locale/main", "../../common/util/GlobalUtil","../context","../
 				editPageCtrl.initMessageHandler(_messageHandler);
 
 				// 加载群组列表
-				_messageHandler.requestGroupList();
+				// _messageHandler.requestGroupList();
 					//初始化滚动条
 				initSplitter();
 				initBodyClickHandler();
