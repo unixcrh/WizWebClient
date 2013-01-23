@@ -7,8 +7,30 @@ define(function(require, exports) {
 			// redirectUrl = 'http://localhost/web?t=';	
 	var uType = '';
 	uType = getUrlParam('type');
-	console.log(uType);
 	
+	var CONSTANT = {
+		CERTNO_COOKIE: 'CertNo',
+		UNAME_COOKIE: 'wizuser'
+	},
+		jqSelecter = {
+			REGISTER_NAME: "#register_name",
+			REGISTER_PWD1: '#register_password1',
+			REGISTER_PWD2: '#register_password2',
+			REGISTER_BTN: '#register_submit',
+			LOGIN_NAME: "#login_name",
+			LOGIN_PWD: "#login_password",
+			LOGIN_BTN: '#loginkeycode'
+		},
+		jqElem = {
+			regName: $(jqSelecter.REGISTER_NAME),
+			regPwd1: $(jqSelecter.REGISTER_PWD1),
+			regPwd2: $(jqSelecter.REGISTER_PWD2),
+			regBtn: $(jqSelecter.REGISTER_BTN),
+			loginName: $(jqSelecter.LOGIN_NAME),
+			loginPwd: $(jqSelecter.LOGIN_PWD),
+			loginBtn: $(jqSelecter.LOGIN_BTN)
+
+		}
 	// TODO增加判断
 	if (document.location.pathname === '/login' || document.location.pathname === '/login') {
 		autoLogin();
@@ -19,26 +41,26 @@ define(function(require, exports) {
 	}
 
 	$(document).ready(function() {
-		$("#login_name").select();
+		jqElem.loginName.select();
 		/* 验证注册账号事件 */
-		$("#register_name").live("blur",function(){
+		jqElem.regName.live("blur",function(){
 			register_name();
 		});
-		$("#loginkeycode").click(login);
+		jqElem.loginBtn.click(login);
 
-		$('#register_submit').click(Register);
+		jqElem.regBtn.click(Register);
 		/* 验证密码事件 */
-		$("#register_password1").live("blur",function(){
+		jqElem.regPwd1.live("blur",function(){
 			register_password1();
 		});
 
 		/* 验证两次密码是否相等 */
-		$("#register_password2").live("blur",function(){
+		jqElem.regPwd2.live("blur",function(){
 			register_password2();
 		});
 		// 往文本框添加保存的cookie值
-		$("#login_name").val($.cookie("un"));
-		$('#register_name').val($.cookie('singin_email'));
+		jqElem.loginName.val($.cookie(CONSTANT.UNAME_COOKIE));
+		jqElem.regName.val($.cookie('singin_email'));
 		if (document.location.pathname === '/register') {
 			autoFillInviteCode();
 		}
@@ -47,7 +69,7 @@ define(function(require, exports) {
 
 	/*判断用户名*/
 	function register_name(){
-		var register_name = $("#register_name").val();
+		var register_name = jqElem.regName.val();
 		var rtn_register_name = GlobalUtil.verifyEmail(register_name);
 
 		if(rtn_register_name != true){
@@ -62,7 +84,7 @@ define(function(require, exports) {
 	}
 	/*判断密码*/
 	function register_password1(){
-		var register_password1 = $("#register_password1").val();
+		var register_password1 = jqElem.regPwd1.val();
 		var rtn_register_password1 = GlobalUtil.checkValidPasswd(register_password1);
 
 		if(rtn_register_password1 != true){
@@ -78,8 +100,8 @@ define(function(require, exports) {
 
 	/*判断两次密码是否相同*/
 	function register_password2(){
-		var register_password1 = $("#register_password1").val();
-		var register_password2 = $("#register_password2").val();
+		var register_password1 = jqElem.regPwd1.val();
+		var register_password2 = jqElem.regPwd2.val();
 
 		if(register_password1 !== register_password2){
 			GlobalUtil.changeClass("register_password2_div","control-group error");
@@ -96,7 +118,7 @@ define(function(require, exports) {
 	/* 登陆回车监听*/
 	$(document).keydown(function(e){
 		if(e.keyCode == 13){
-			$('#loginkeycode').submit();
+			$(jqSelecter.LOGIN_BTN).submit();
 		}
 	});
 	function preventDefault(event) {
@@ -111,8 +133,8 @@ define(function(require, exports) {
 		preventDefault(event);
 		$("#tip_error_login").hide();
 
-		var user_id = $("#login_name").val();
-		var password = $("#login_password").val();
+		var user_id = jqElem.loginName.val();
+		var password = jqElem.loginPwd.val();
 
 		if(user_id!=""){
 			if(password!=""){
@@ -132,10 +154,8 @@ define(function(require, exports) {
 					'debug': debugModel
 				};
 				// 调用一下ajax
-				$('#loginkeycode').attr('disabled', 'disabled');
-				$.post(api.LOGIN, params, function (data, status){
-					callBackLogin(data, status);
-				});
+				jqElem.loginBtn.attr('disabled', 'disabled');
+				$.post(api.LOGIN, params, callBackLogin);
 			}else{
 				$("#tip_error_login").html("<a style=\"color: #FF0000; font-size:12px\">密码不能为空</a>").fadeIn();
 				return false;
@@ -147,29 +167,22 @@ define(function(require, exports) {
 	}
 
 	function callBackLogin(data,status){
-		$('#loginkeycode').removeAttr('disabled');
+		jqElem.loginBtn.removeAttr('disabled');
 		$("#tip_error_login").hide();
 		if(status=="success"){
-			var loginCookie = $('#login_name').val();
-			var passwordCookie = $('#login_password').val();
+			var loginCookie = jqElem.loginName.val();
 			var keepCookie = $('#login_keeppassword').attr('checked');
-			// var defCookieMaxAge = data.defCookieMaxAge;
 			if(keepCookie === "checked"){
 				// 设置cookie
-				$.cookie( uType+"un", loginCookie, { expires: 14 });
-				//TODO password应该要保存为md5格式
-				$.cookie( uType+"up", passwordCookie, { expires: 14});
-				$.cookie( uType+"keepCookie", keepCookie, { expires: 14 });
-
+				$.cookie(CONSTANT.UNAME_COOKIE, loginCookie, { expires: 14 });
+				$.cookie(CONSTANT.CERTNO_COOKIE, data.cookie_str, {expires: 14})
 			}else{
 				// cookie生存期置为0
-				$.cookie( uType+"un", loginCookie);
-				$.cookie( uType+"up", passwordCookie);
-				$.cookie( uType+"keepCookie", keepCookie);
+				$.cookie(CONSTANT.UNAME_COOKIE, loginCookie);
+				$.cookie(CONSTANT.CERTNO_COOKIE, data.cookie_str)
 			}
 
 			if(data.code==200){
-				// var url = redirectUrl + data.token;
 				var url = api.WEB_URL + '?t=' + data.token + '&debug=' + debugModel;
 				window.location.replace(url);
 			} else if (data.code == 488) {
@@ -190,20 +203,16 @@ define(function(require, exports) {
 	// “记住我”后，自动登录
 	// 读取cookie   post  获取token  跳转
 	function autoLogin() {
-		// console.log(cookie('loginCookie'));
-		 if ( $.cookie('un') != null && $.cookie('up') != null ) {
+		 if ( $.cookie(CONSTANT.CERTNO_COOKIE) != null) {
 		 	var params = { 
-					user_id : $.cookie( uType+'un'), 
-					password : $.cookie( uType+'up'),
-					// isKeep_password : keep_password,
+					cookie_str : $.cookie(CONSTANT.CERTNO_COOKIE),
 					debug: debugModel
 				};
 				// 调用一下ajax
-				$('#loginkeycode').attr('disabled', 'disabled');
+				jqElem.loginBtn.attr('disabled', 'disabled');
 				// 用户类型不同 请求地址不同
 				$.post(api.LOGIN, params, function (data, status){
 					if(data.code==200){
-						// var url = redirectUrl + data.token;
 						var url = api.WEB_URL + '?t=' + data.token + '&debug=' + debugModel;
 						window.location.replace(url);
 					} 
@@ -233,8 +242,8 @@ define(function(require, exports) {
 		var rtn_error2 = register_password1();
 		var rtn_error3 = register_password2();
 		if(rtn_error1 && rtn_error2 && rtn_error3){
-			var str_register_email = $("#register_name").val();
-			var str_register_password = $("#register_password1").val();
+			var str_register_email = jqElem.regName.val();
+			var str_register_password = jqElem.regPwd1.val();
 			var str_invite_code = $("#invite_code").val();
 
 			// 验证码
@@ -244,9 +253,7 @@ define(function(require, exports) {
 					password : str_register_password,
 					invite_code : str_invite_code
 			};
-			$.post(api.REGISTER, params, function(data,status){
-				callBackRegister(data,status,params);
-			});
+			$.post(api.REGISTER, params, callBackRegister);
 		}else{
 			$("#tip_error_register").html("请检查文本格式").fadeIn();
 			return false;
@@ -254,15 +261,12 @@ define(function(require, exports) {
 	}
 
 	// 注册回调函数
-	function callBackRegister(data, status, params){
+	function callBackRegister(data, status){
 		$("#tip_error_register").hide();
-
 		if(status=="success"){
 			if (data.code == 200) {
 				// 自动登陆
-				$.cookie("un", params.user_id);
-				$.cookie("up", params.password);
-
+				$.cookie(CONSTANT.CERTNO_COOKIE, data.cookie_str);
 				autoLogin();
 			} else if(data.code == "500"){
 				$("#tip_error_register").html("注册失败").fadeIn();
@@ -285,8 +289,8 @@ define(function(require, exports) {
 	function callBackRegister_verify(data){
 		var errorMsg = '';
 		if(data.code == "200"){
-			$.cookie("un", $("#register_name").val());//, { domain: '127.0.0.1', secure: true });
-			$.cookie("up", $("#register_password1").val());//, { domain: '127.0.0.1', secure: true});
+			$.cookie(CONSTANT.UNAME_COOKIE, jqElem.regName.val());//, { domain: '127.0.0.1', secure: true });
+			$.cookie(CONSTANT.CERTNO_COOKIE, data.cookie_str);//, { domain: '127.0.0.1', secure: true});
 			window.location.href = api.REGISTER_SUCCESS_URL;
 	  } else if(data.code == "500"){
 		  errorMsg = "注册失败";
@@ -309,7 +313,7 @@ define(function(require, exports) {
 		var returnValue = paraObj[paras.toLowerCase()]; 
 		if(typeof(returnValue)=="undefined"){ 
 			return ""; 
-		}else{ 
+		}else{
 			return returnValue; 
 		} 
 	}

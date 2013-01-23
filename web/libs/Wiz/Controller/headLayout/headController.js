@@ -153,8 +153,8 @@ define(["../../constant","../../../../locale/main"], function (require, exports,
 								// 获取注销后跳转的url
 								var returnUrl = constant.url.LOGIN;
 								var encodeReturnUrl = encodeURIComponent(returnUrl);
-								// 清除cookie中的密码
-								$.cookie('up', null);
+								// 清除cookie
+								$.cookie('CertNo', null);
 								window.location.href = url + encodeReturnUrl;
 							} else {
 								// TODO open dialog

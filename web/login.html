@@ -22,8 +22,7 @@
         <![endif]-->
         <script>
             $(document).ready(function() {
-                console.log(location.search);
-                if ($.cookie('un') && $.cookie('up')) {
+                if ($.cookie('CertNo')) {
                     document.body.style.display = 'none';
                 } else {
                     document.body.style.display = '';
@@ -35,9 +34,7 @@
                     $('input[placeholder], textarea[placeholder]').placeholder();
                     $('input, textarea').placeholder();
                 } catch (error) {
-                    if (console) {
-                        console.log('placeholder error: ' + error);
-                    }
+                     console && console.log('placeholder error: ' + error);
                 }
                 // $('#login_name').focus();
             });
