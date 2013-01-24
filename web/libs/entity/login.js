@@ -134,8 +134,7 @@ define(function(require, exports) {
 		$("#tip_error_login").hide();
 
 		var user_id = jqElem.loginName.val();
-		var password = jqElem.loginPwd.val();
-
+		var password = $(jqSelecter.LOGIN_PWD).val();
 		if(user_id!=""){
 			if(password!=""){
 				// 是否保存密码
